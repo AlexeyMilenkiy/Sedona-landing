@@ -62,10 +62,24 @@
         <div class="contacts-container">
             <span class="contacts-container__headline">Контактная информация:</span>         
         </div>
-        <div class="user-contacts">
+        <div class="user-contacts-container">
+            <div class="user-contacts__number">
                 <label for="tel">Телефон*:</label>
                 <input type="tel" class="user-contacts__tel" name="tel" pattern="+[0-9]{3}-[0-9]{3}" id="tel" placeholder="Введите телефон">
-                <img src="img/phone.svg.png">
+                <div class="user-contacts__img">
+                    <img src="img/Layer_106.png">
+                    <img src="img/phone.svg.png">
+                </div>
+            </div>
+
+            <div class="user-contacts__email">
+                    <label for="tel">Электронная почта*:</label>
+                    <input type="email" id="email" pattern=".+@globex.com" required class="user-contacts__tel" placeholder="Введите e-mail">
+                    <div class="user-contacts__img">
+                        <img src="img/Layer_106.png">
+                        <img id="email-img" src="img/mail.svg.png">
+                    </div>
+                </div>
         </div>
     </main>
 </body>

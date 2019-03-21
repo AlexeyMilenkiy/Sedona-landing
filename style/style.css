@@ -202,9 +202,7 @@ main{
     background: url(../img/Layer_27_copy_3.png)no-repeat center 55% / 100%;
 }
 
-.user-contacts>img{
-    background: url(../img/Layer_106.png);
-}
+
 
 .contacts-container__headline{
     display: block;
@@ -219,11 +217,18 @@ main{
     
 }
 
-.user-contacts{
-    width: 100%
+.user-contacts-container{
+    width: 100%;
+    display: flex;
 }
 
-.user-contacts>label{
+.user-contacts__number, .user-contacts__email{
+    width: 50%;
+    display: flex;
+    margin-top: 6%;
+}
+
+.user-contacts__number>label, .user-contacts__email>label{
     color: #333333;
     font-family: "PT Sans", sans-serif;
     font-size: 0.87em;
@@ -231,12 +236,12 @@ main{
     line-height: 26px;
     text-transform: uppercase;
     display: inline-block;
-    margin: 7% 2% 7% 0;
+    margin: 8.6% 2% 7% 0;
 }
 
 .user-contacts__tel{
-    width: 23%;
-    height: 19%;
+    width: 52%;
+    max-height: 56px;
     background-color: #f2f2f2;
     border: none;
     padding-left: 3%;
@@ -245,4 +250,27 @@ main{
     font-size: 1.125em;
     font-weight: 700;
     line-height: 26px;
+    margin-top: 5%;
+}
+
+input::-webkit-input-placeholder { 
+    color:  #000000; 
+}
+
+.user-contacts__img{
+    width: 12.05%;
+    max-height: 56px;
+    display: inline-block;
+    position: relative;
+    margin-top: 5%;
+}
+
+.user-contacts__img img:nth-child(2){
+    position: absolute;
+    top: 37%;
+    left: 37%;
+}
+
+#email-img{
+    top: 44%
 }
