@@ -197,14 +197,12 @@ main{
     margin-left: -1%;
 }
 
-.contacts-container{
+.contacts-container, .visit-container{
     margin-top: 4%;
     background: url(../img/Layer_27_copy_3.png)no-repeat center 55% / 100%;
 }
 
-
-
-.contacts-container__headline{
+.contacts-container__headline, .visit-container__headline{
     display: block;
     margin: 0 auto;
     width: 29%;
@@ -214,7 +212,7 @@ main{
     font-weight: 700;
     line-height: 26px;
     text-transform: uppercase;
-    
+    text-align: center;
 }
 
 .user-contacts-container{
@@ -273,4 +271,19 @@ input::-webkit-input-placeholder {
 
 #email-img{
     top: 44%
+}
+
+.visit-checkbox{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin: 5% 0; 
+}
+
+.visit-checkbox>label{
+    color: #000000;
+    font-family: "PT Sans", sans-serif;
+    font-size: 1.125em;
+    font-weight: 700;
+    line-height: 26px;
 }
