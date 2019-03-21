@@ -100,7 +100,6 @@ main{
     line-height: 26px;
     margin: 0 0 10% 21%;
     display: block;
-
 }
 
 .review-info__headline{
@@ -358,4 +357,66 @@ input::-webkit-input-placeholder {
     line-height: 26px;
     text-transform: uppercase;
 }
-  
+
+footer{
+    height: 80px;
+    max-width: 960px;
+    margin: 7% auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    padding-bottom: 3%;
+}
+
+.hashtag{
+    max-height: 18px;
+    color: #000000;
+    font-family: "PT Sans", sans-serif;
+    font-size: 1.31em;
+    font-weight: 700;
+    line-height: 26px;
+    text-transform: uppercase;
+}
+
+.social-networks{
+    max-height: 48px;
+    width: 16%;
+    display:flex;
+}
+
+.social-networks__link{
+    position: relative;
+    margin: 0 2% 0;
+    width: 46px;
+    height: 46px;
+    background: url(../img/Layer_52_copy.png);
+}
+
+.social-networks__link>img{
+    position: absolute;
+    top: 36%;
+    left: 30%;
+}
+
+#facebook{
+    top: 33%;
+    left: 41%;
+}
+
+.producer{
+    width: 14%;
+    vertical-align: middle;
+    display: flex;
+    max-height: 34px;
+}
+
+.producer>span{
+    display: block;
+    color: #000000;
+    font-family: "PT Sans";
+    font-size: 0.875em;
+    font-weight: 400;
+    line-height: 26px;
+    text-transform: uppercase;
+    margin-right: 13%;
+}
