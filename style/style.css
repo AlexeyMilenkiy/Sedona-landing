@@ -82,17 +82,74 @@ main{
     text-transform: uppercase;
 }
 
-/* Style for "Оставьте с" */
+.review-info{
+    width: 100%;
+    margin-top: 5%;
+}
 
+.review-info__feeling{
+    width: 50%;
+    border-right: 1px solid grey; 
+}
 
-/* Text style for "Оставьте с" */
+.review-info__feeling>label{
+    color: #000000;
+    font-family: "PT Sans", sans-serif;
+    font-size: 1.125em;
+    font-weight: 700;
+    line-height: 26px;
+    margin: 0 0 10% 21%;
+    display: block;
 
-/* Text style for "" */
-font-family: "PT Sans";
-font-size: 21px;
-font-weight: 700;
-line-height: 26px;
-/* Text style for "Помогите н" */
-font-family: "PT Sans";
-font-weight: 400;
-line-height: 24px;
+}
+
+.review-info__headline{
+    display: block;
+    margin: 0 auto 5%;
+    width: 57%;
+    color: #000000;
+    font-family: "PT Sans", sans-serif;
+    font-size: 1.3em;
+    font-weight: 700;
+    line-height: 26px;
+    text-transform: uppercase;
+}
+
+.radio {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+  }
+
+  .radio + label {
+    position: relative;
+    cursor: pointer;
+  }
+
+  .radio + label:before {
+    content: '';
+    position: absolute;
+    top: -40%;
+    right: 108%;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: #f2f2f2;
+  }
+
+  .radio + label:after {
+    content: '';
+    position: absolute;
+    top: 20%;
+    right: 112%;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #000000;
+    opacity: 0;
+  }
+
+  .radio:checked + label:after {
+    opacity: 1;
+  }
+ 
