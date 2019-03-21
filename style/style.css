@@ -281,9 +281,36 @@ input::-webkit-input-placeholder {
 }
 
 .visit-checkbox>label{
+    width: 20%;
     color: #000000;
     font-family: "PT Sans", sans-serif;
     font-size: 1.125em;
     font-weight: 700;
     line-height: 26px;
 }
+
+
+.checkbox {
+    display: none;
+   }
+   
+   .label-checkbox:before {
+    content: " ";
+    display: inline-block;
+    margin-right: 10%;
+    width: 46px;
+    height: 46px;
+    background: #e6e6e6;
+    border: none;
+    border-radius: 6%;
+    vertical-align: middle;
+   }
+   
+   .checkbox:checked + .label-checkbox:before {
+    background: url(../img/tick.svg.png) no-repeat center 55% / 45%;
+    background-color: #e6e6e6;
+
+   }
+ 
+   
+  
