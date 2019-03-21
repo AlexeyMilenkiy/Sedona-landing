@@ -6,11 +6,13 @@ html{
 body{
     max-width: 1200px;
     margin: 0 auto;
+    box-shadow: 0 5px 15px rgba(0, 1, 1, 0.2);
 }
 
 header{
     background: url(../img/back-desktop.jpg.png)no-repeat center 99% / 101%;
     height: 357px;
+    position: relative;
 }
 
 .header__nav{
@@ -33,7 +35,14 @@ header{
     background-image: url(../img/background-link.png);
 }
 
-/* .header__nav:nth-child(3){
-    display: flex;
-    justify-content: center
-} */
+.header__name{
+    position: absolute;
+    top: 44%;
+    left: 31%;
+}
+
+.header__decoration{
+    position: absolute;
+    bottom: 0;
+    max-height: 57px;
+}
