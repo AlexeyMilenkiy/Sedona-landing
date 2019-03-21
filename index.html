@@ -50,15 +50,22 @@
                 <span class="review-user__headline">Представьтесь:</span>
 
                 <label for="name">Имя*:</label>
-                <input type="text" class="review-user__info" name="name" id="name" required><br>
+                <input type="text" class="review-user__input" name="name" id="name" required><br>
                 
                 <label for="surname">Фамилия*:</label>
-                <input type="text" class="review-user__info" name="name" id="surname" required><br>
+                <input type="text" class="review-user__input" name="name" id="surname" required><br>
                 
                 <label for="patronymic">Отчество:</label>
-                <input type="text" class="review-user__info" name="name" id="patronymic">
-                
+                <input type="text" class="review-user__input" name="name" id="patronymic">
             </div>
+        </div>
+        <div class="contacts-container">
+            <span class="contacts-container__headline">Контактная информация:</span>         
+        </div>
+        <div class="user-contacts">
+                <label for="tel">Телефон*:</label>
+                <input type="tel" class="user-contacts__tel" name="tel" pattern="+[0-9]{3}-[0-9]{3}" id="tel" placeholder="Введите телефон">
+                <img src="img/phone.svg.png">
         </div>
     </main>
 </body>
