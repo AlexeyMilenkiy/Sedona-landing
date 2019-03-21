@@ -85,11 +85,11 @@ main{
 .review-info{
     width: 100%;
     margin-top: 5%;
+    display: flex;
 }
 
 .review-info__feeling{
     width: 50%;
-    border-right: 1px solid grey; 
 }
 
 .review-info__feeling>label{
@@ -105,7 +105,7 @@ main{
 
 .review-info__headline{
     display: block;
-    margin: 0 auto 5%;
+    margin: 0 auto 10%;
     width: 57%;
     color: #000000;
     font-family: "PT Sans", sans-serif;
@@ -140,7 +140,7 @@ main{
   .radio + label:after {
     content: '';
     position: absolute;
-    top: 20%;
+    top: 17%;
     right: 112%;
     width: 16px;
     height: 16px;
@@ -153,3 +153,46 @@ main{
     opacity: 1;
   }
  
+.review-user{
+    width: 50%;
+}
+
+.review-user__headline{
+    width: 33%;
+    margin: 0 20% 10%;
+    color: #000000;
+    font-family: "PT Sans", sans-serif;
+    font-size: 1.3em;
+    font-weight: 700;
+    line-height: 26px;
+    text-transform: uppercase;
+    display: block;
+}
+
+.review-user>label{
+    color: #333333;
+    font-family: "PT Sans", sans-serif;
+    font-size: 0.87em;
+    font-weight: 400;
+    line-height: 26px;
+    text-transform: uppercase;
+    display: inline-block;
+    margin: 0 2% 7% 20%;
+}
+
+.review-user__info{
+    width: 57%;
+    height: 19%;
+    background-color: #f2f2f2;
+    border: none;
+    padding-left: 5%;
+    color: #000000;
+    font-family: "PT Sans", sans-serif;
+    font-size: 1.125em;
+    font-weight: 700;
+    line-height: 26px;
+}
+
+#surname{
+    margin-left: -1%;
+}
