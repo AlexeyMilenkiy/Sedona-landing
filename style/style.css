@@ -10,7 +10,7 @@ body{
 }
 
 header{
-    background: url(../img/back-desktop.jpg.png)no-repeat center 99% / 101%;
+    background: url(../img/back-desktop.jpg.png)no-repeat center 99% / 99.5%;
     height: 357px;
     position: relative;
 }
@@ -43,6 +43,56 @@ header{
 
 .header__decoration{
     position: absolute;
-    bottom: 0;
+    bottom: -0.2%;
     max-height: 57px;
 }
+
+main{
+    max-width: 960px; 
+    margin: 0 auto;
+}
+
+.review{
+    display: flex;
+    justify-content: center;
+}
+
+.review__block{
+    margin-top: 12%;
+    width: 41.5%;
+    display: block;
+    text-align: center;
+    color: #333333;
+    font-family: "PT Sans", sans-serif;
+    font-size: 0.8em;
+    font-weight: 400;
+    text-transform: uppercase;
+    line-height: 24px;
+}
+
+.review__headline{
+    display: block;
+    width: 65%;
+    margin: 2% auto 0;
+    color: #000000;
+    font-family: "PT Sans",sans-serif;
+    font-size: 1.9em;
+    font-weight: 700;
+    line-height: 26px;
+    text-transform: uppercase;
+}
+
+/* Style for "Оставьте с" */
+
+
+/* Text style for "Оставьте с" */
+
+/* Text style for "" */
+font-family: "PT Sans";
+font-size: 21px;
+font-weight: 700;
+line-height: 26px;
+/* Text style for "Помогите н" */
+font-family: "PT Sans";
+font-weight: 400;
+line-height: 24px;
