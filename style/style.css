@@ -58,7 +58,7 @@ main{
 }
 
 .review__block{
-    margin-top: 12%;
+    margin-top: 9%;
     width: 41.5%;
     display: block;
     text-align: center;
@@ -292,6 +292,10 @@ input::-webkit-input-placeholder {
 .checkbox {
     display: none;
    }
+
+   .checkbox + .label-checkbox{
+    cursor: pointer;
+   }
    
    .label-checkbox:before {
     content: " ";
@@ -318,6 +322,11 @@ input::-webkit-input-placeholder {
     padding: 2%;
     margin: 5% 0;
     resize:none;
+    color: #000000;
+    font-family: "PT Sans", sans-serif;
+    font-size: 1.125em;
+    font-weight: 700;
+    line-height: 26px;
 }
 
 .textarea::-webkit-input-placeholder { 
@@ -339,7 +348,6 @@ input::-webkit-input-placeholder {
     height: 58px;
     background-color: #81b3d2;
     text-align: center;
-    /* Style for "ОТПРАВИТЬ" */
     color: #ffffff;
     font-family: "PT Sans", sans-serif;
     font-size: 1.31em;
@@ -347,6 +355,10 @@ input::-webkit-input-placeholder {
     line-height: 26px;
     text-transform: uppercase;
     border: none;
+}
+
+.push:hover{
+    cursor:pointer;
 }
 
 .submit>span{
