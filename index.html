@@ -37,25 +37,25 @@
                 <span class="review-info__headline">Ваше общее впечатление:</span><br>
                 
                 <input type="radio" class="radio" id="positive" name="feeling">
-                <label for="positive">Скорее положительное</label>
+                <label class="review-info__label" for="positive">Скорее положительное</label>
                 
                 <input type="radio" class="radio" id="negative" name="feeling">
-                <label for="negative">Скорее отрицательное</label>
+                <label class="review-info__label" for="negative">Скорее отрицательное</label>
                 
                 <input type="radio" class="radio" id="other" name="feeling">
-                <label for="other">Затрудняюсь ответить</label>
+                <label class="review-info__label" for="other">Затрудняюсь ответить</label>
             </div>
             <img src="img/Layer_105.png">
             <div class="review-user">
                 <span class="review-user__headline">Представьтесь:</span>
 
-                <label for="name">Имя*:</label>
+                <label class="review-user__label"for="name">Имя*:</label>
                 <input type="text" class="review-user__input" name="name" id="name" required><br>
                 
-                <label for="surname">Фамилия*:</label>
+                <label class="review-user__label"for="surname">Фамилия*:</label>
                 <input type="text" class="review-user__input" name="name" id="surname" required><br>
                 
-                <label for="patronymic">Отчество:</label>
+                <label class="review-user__label"for="patronymic">Отчество:</label>
                 <input type="text" class="review-user__input" name="name" id="patronymic">
             </div>
         </div>
@@ -64,7 +64,7 @@
         </div>
         <div class="user-contacts-container">
             <div class="user-contacts__number">
-                <label for="tel">Телефон*:</label>
+                <label class="users__label" for="tel">Телефон*:</label>
                 <input type="tel" class="user-contacts__tel" name="tel" pattern="+[0-9]{3}-[0-9]{3}" id="tel" placeholder="Введите телефон">
                 <div class="user-contacts__img">
                     <img src="img/Layer_106.png">
@@ -72,7 +72,7 @@
                 </div>
             </div>
             <div class="user-contacts__email">
-                <label for="tel">Электронная почта*:</label>
+                <label class="users__label" for="tel">Электронная почта*:</label>
                 <input type="email" id="email" pattern=".+@globex.com" required class="user-contacts__tel" placeholder="Введите e-mail">
                 <div class="user-contacts__img">
                     <img src="img/Layer_106.png">
@@ -103,10 +103,10 @@
         <textarea class ="textarea" placeholder="Опишите подробно все свои восторги" rows = "6"></textarea>
         <div class="submit">
             <button class="push">Отправить отзыв</button>
-            <span>* — обязательные поля</span>
+            <span class="submit__text">* — обязательные поля</span>
         </div>
     </main>
-    <footer>
+    <footer class="footer-block">
         <span class="hashtag">#visitSEDONA</span>
         <div class="social-networks">
             <a href="#" class="social-networks__link">
@@ -120,7 +120,7 @@
             </a>
         </div>
         <div class="producer">
-            <span>Разработано</span>
+            <span class="producer__text">Разработано</span>
             <img src="img/htmlacademy.png">
         </div>
      </footer>

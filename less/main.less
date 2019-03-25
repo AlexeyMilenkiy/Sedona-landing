@@ -113,12 +113,14 @@ body{
 
 .review-info__feeling{
     width: 50%;
-    label{
-        color: @black;
-        .font(1.125em, 700, 26px, none);
-        margin: 0 0 10% 21%;
-        display: block;
-   }
+
+}
+
+.review-info__label{
+    color: @black;
+    .font(1.125em, 700, 26px, none);
+    margin: 0 0 10% 21%;
+    display: block;   
 }
 
 .review-info__headline{
@@ -135,20 +137,20 @@ body{
     position: absolute;
     z-index: -1;
     opacity: 0;
-     & + label {
+     & + .review-info__label {
     position: relative;
     cursor: pointer;
     right: 4.5%;
     margin-bottom: 11%;
   }
-     & + label:before {
+     & + .review-info__label:before {
     content: '';
     .position(-50%, none, 105%);
     .size(55px, 55px);
     border-radius: 50%;
     background: @lightGray;
   } 
-    & + label:after {
+    & + .review-info__label:after {
     content: '';
     .position(18%, none, 109.8%);
     .size(20px, 20px);
@@ -156,22 +158,24 @@ body{
     background: @black;
     opacity: 0;
   }
-    &:checked + label:after {
+    &:checked + .review-info__label:after {
     opacity: 1;
   }
 }
 
 .review-user{
     width: 50%;
-    label{
-        color: @ligthBlack;
-        .font(0.87em, 400, 26px);
-        display: inline-block;
-        margin: 0 2.5% 7% 16.5%;
-    }
+
     #name{
         width: 65.6%;
     }
+}
+
+.review-user__label{
+    color: @ligthBlack;
+    .font(0.87em, 400, 26px);
+    display: inline-block;
+    margin: 0 2.5% 7% 16.5%;
 }
 
 .review-user__headline{
@@ -221,13 +225,14 @@ body{
     width: 50%;
     .flex(none);
     margin-top: 5.3%;
-    label{
+}
+
+.users__label{
         color: @ligthBlack;
         .font(0.87em, 400, 26px);
         display: inline-block;
         margin: 8.6% 3.5% 7% 0;
    }
-}
 
 .user-contacts__tel{
     width: 49.5%;
@@ -238,10 +243,9 @@ body{
     color: @black;
     .font(1.125em, 700, 26px, none);
     margin-top: 5%;
-}
-
-input::-webkit-input-placeholder { 
+    &::-webkit-input-placeholder { 
     color: @black; 
+    }
 }
 
 .user-contacts__img{
@@ -263,17 +267,18 @@ input::-webkit-input-placeholder {
     width: 100%;
     .flex();
     margin: 4.5% 0 7%; 
-    label{
-    width: 21.7%;
-    color: @black;
-    .font(1.125em, 700, 26px, none);
-   }
    .devil{
     margin-right: 2.8%;
   }
    .bell{
     margin-right: 2.5%;
   }
+}
+
+.label-checkbox{
+    width: 21.7%;
+    color: @black;
+    .font(1.125em, 700, 26px, none);
 }
 
 .checkbox {
@@ -319,11 +324,13 @@ input::-webkit-input-placeholder {
 .submit{
     width: 100%;
     .flex();
-    span{
-        margin-top: 2%; 
-        color: @ligthBlack;
-           .font(0.875em, 400, 26px);
-    }
+
+}
+
+.submit__text{
+    margin-top: 2%; 
+    color: @ligthBlack;
+    .font(0.875em, 400, 26px);
 }
 
 .push{
@@ -339,7 +346,7 @@ input::-webkit-input-placeholder {
     }
 }
 
-footer{
+.footer-block{
     height: 80px;
     max-width: 960px;
     margin: 7% auto;
@@ -383,10 +390,11 @@ footer{
     vertical-align: middle;
     .flex(none);
     max-height: 34px;
-    span{
-       display: block;
-       color: @black;
-       .font(0.875em, 400, 26px);
-       margin-right: 10%;
-   }
+}
+
+.producer__text{
+    display: block;
+    color: @black;
+    .font(0.875em, 400, 26px);
+    margin-right: 10%;
 }
