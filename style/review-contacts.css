@@ -175,10 +175,7 @@
   justify-content: none;
   margin-top: 5.3%;
 }
-.users__label-tel{
-  display: none;
-}
-.users__label {
+.users__label, .users__label-tel {
   color: #333333;
   font-family: "PT Sans", sans-serif;
   font-size: 0.87em;

@@ -1,26 +1,30 @@
-@media (min-width: 320px) and (max-width:768px){
+@media (min-width: 625px) and (max-width:768px){
 	.tablet-logo-img{
 		display: block;
 		margin: auto;
 	}
-
 	.desktop-logo{
 		display: none;
 	}
 	.header{
 		height: 344px;
 	}
-
 	.header__nav .header__nav-link {
 		width: 20%;
 	}
-
 	.header__name{
 		top: 43%;
-        left: 20%;
+        left: 17%;
 	}
 	.header__decoration{
 		right: -28%;
+		display: none;
+	}
+	.decoration-img{
+		width: 100%;
+	}
+	.review__headline{
+		width: 74.5%;
 	}
 	.review__block{
 		width: 70%;
@@ -34,8 +38,9 @@
 		margin-top: 7.5%;
 	}
 	.review-info__headline{
-		width: 72%;
-		margin: 0 0 14.5% 15%;
+        width: 88%;
+        margin: 0 auto 15%;
+        display: block;
 	}
 	.radio + .review-info__label {
 		right: -14.5%;
@@ -66,14 +71,17 @@
     	margin-top: 4%;
     }
     .container__headline{
-    	width: 38%
+    	width: 45%;
     }
     .user-contacts-container{
     	display: block;
+    	margin-bottom: 12%;
     }
-    .user-contacts__number{
-    	width: 90%;
-    	margin: 0 auto;
+    .user-contacts__number, .user-contacts__email{
+        width: 85%;
+        margin: 0 auto;
+        flex-wrap: wrap;
+        height: 96px;
     }
     .users__label-tel{
     	display: none;
@@ -85,7 +93,71 @@
         font-weight: 400;
         line-height: 26px;
         text-transform: uppercase;
-        display: inline-block;
-        margin: 8.6% 3.5% 7% 0;
+        display: block;
+        margin: 4.1% 3.5% 0 4%;
+        width: 33%;
     }
+    .user-contacts__tel{
+    	height: 56px;
+    	width: 86.5%;
+    	padding-left: 3.6%;
+    	margin: 1.3% 0 0 0.5%;
+    }
+    .user-contacts__img {
+        width: 9.2%;
+        margin-top: 1.3%;
+    }
+    .users__label{
+    	margin: 7% 3.5% 0 4%;
+    }
+    .checkbox + .label-checkbox{
+		width: 43%;
+		margin-bottom: 7%;
+	}
+	.label-checkbox:before{
+		margin-right: 10.5%;
+	}
+
+	.visit-checkbox .bell{
+		margin: 0;
+	}
+
+	.visit-checkbox{
+        width: 75%;
+        flex-wrap: wrap;
+        margin: 5.8% auto 4.8%;
+	}
+	.textarea{
+	    padding: 2% 0 0 2.2%;
+		width: 82%;
+        margin: 7.5% 8% 6.8%;
+	}
+	.submit{
+		width: 84.6%;
+		margin: auto;
+	}
+	.push{
+		margin-bottom: 2%;
+	}
+	.submit__text{
+		margin-top: 2.6%;
+	}
+	.footer-block{
+		width: 84.6%;
+		margin-top: 8.5%;
+	}
+	.hashtag{
+		margin: 0;
+	}
+	.social-networks{
+		width: 25%;
+	}
+	.producer{
+		width: 20%;
+		margin-top: 1%;	
+	}
+}
+
+@media (min-width: 320px) and (max-width:624px){
+
 }
