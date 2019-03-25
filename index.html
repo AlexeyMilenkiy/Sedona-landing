@@ -13,12 +13,19 @@
 
     <link href="style/media/medium-desktop.css" rel="stylesheet">
     <link href="style/media/tablet-desktop.css" rel="stylesheet">
+    <link href="style/media/mobile-desktop.css" rel="stylesheet">
 
     <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700" rel="stylesheet">
     <title>Sedona</title>
 </head>
 <body>
-    <header class="header">
+    <div class="mobile-navigation">
+            <a href="#" class="mobile__nav">ГЛАВНАЯ</a>
+            <a href="#" class="mobile__nav">ФОТО И ВИДЕО</a>
+            <a href="#" class="mobile__nav">ФОРМА ОТЗЫВА</a>
+            <a href="#" class="mobile__nav">HTML ACADEMY</a>
+        </div>
+    <header class="header">  
         <div class="header__nav">
             <a href="#" class="header__nav-link">ГЛАВНАЯ</a>
             <a href="#" class="header__nav-link">ФОТО И ВИДЕО</a>
@@ -93,6 +100,18 @@
                     <img id="email-img" src="img/mail.png">
                 </div>
             </div>
+        </div>
+        <div class="review-info__mobile">
+                <span class="review-info__headline">Ваше общее впечатление:</span><br>
+                
+                <input type="radio" class="radio" id="positive" name="feeling">
+                <label class="review-info__label" for="positive">Скорее положительное</label>
+                
+                <input type="radio" class="radio" id="negative" name="feeling">
+                <label class="review-info__label" for="negative">Скорее отрицательное</label>
+                
+                <input type="radio" class="radio" id="other" name="feeling">
+                <label class="review-info__label" for="other">Затрудняюсь ответить</label>
         </div>
         <div class="container">
             <span class="container__headline">Посещенные достопримечательности:</span>         

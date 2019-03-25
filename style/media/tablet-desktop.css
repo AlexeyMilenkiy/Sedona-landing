@@ -206,7 +206,7 @@
 		width: 100%;
 	}
 	.review__headline{
-		width: 74.5%;
+		width: 75.5%;
 	}
 	.review__block{
 	    width: 90%;
@@ -228,7 +228,7 @@
     	display: none;
     }
 	.review-info__headline{
-        width: 70%;
+        width: 72%;
         margin: 0 auto 5%;
         display: block;
 	}
@@ -319,7 +319,7 @@
 	}
 
 	.visit-checkbox{
-        width: 94%;
+        width: 96%;
         flex-wrap: wrap;
         margin: 12% auto 4.8%;
 	}

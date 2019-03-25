@@ -8,6 +8,9 @@
   display: flex;
   justify-content: space-between;
 }
+.mobile-navigation{
+  display: none;
+}
 .mobile-menu{
   display: none;
 }
