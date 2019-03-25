@@ -87,24 +87,30 @@
     	display: none;
     }
 	.review-info__headline{
-        width: 72%;
-        margin: 0 auto 5%;
+        width: 74%;
+        margin: 0 auto 5.6%;
         display: block;
+        font-size: 1.12em;
+	}
+	.review-info__label{
+		margin: 0 0 10% 22.2%;
 	}
 	.review-user {
         width: 88%;
         margin:0 auto;	
+        height: 285px;
+        border-bottom: 1px solid #e6e6e6;
     }
 	.radio + .review-info__label {
-		right: -14.5%;
+		right: -8.2%;
         margin-bottom: 13.5%;
 	}
 	.radio + .review-info__label:before {
-		right: 107%;
+		right: 109%;
 	}
 	.radio + .review-info__label:after{
 		top: 17%;
-	    right: 112.5%;
+	    right: 115.5%;
 	}
 	.review-user__headline{
         margin: 0 24.3% 7%;
@@ -125,20 +131,22 @@
         margin-bottom: 6.2%;
     }
     .container{
-    	margin: 10% 0 4% 0;
+        margin: 6% 0 2.8% 0;
     }
     .container__headline{
-        width: 60%;
+        width: 75%;
+        font-size: 1.13em;
     }
     .user-contacts-container{
     	display: block;
-    	margin-bottom: 15%;
+    	margin-bottom: 7%;
+    	border-bottom: 1px solid #e6e6e6;
     }
     .user-contacts__number, .user-contacts__email{
-        width: 85%;
+        width: 89%;
         margin: 0 auto;
         flex-wrap: wrap;
-        height: 96px;
+        margin-bottom: 8%;
     }
     .users__label-tel{
     	display: none;
@@ -146,26 +154,34 @@
     .users__label-tablet {
         color: #333333;
         font-family: "PT Sans", sans-serif;
-        font-size: 0.87em;
+        font-size: 0.88em;
         font-weight: 400;
         line-height: 26px;
         text-transform: uppercase;
         display: block;
-        margin: 4.1% 3.5% 0 4%;
-        width: 40%;
+        margin: 4.1% 3.5% 0 8%;
+        width: 62%;
     }
     .user-contacts__tel{
     	height: 56px;
-    	width: 81%;
-    	padding-left: 3.6%;
+    	width: 70%;
+    	padding-left: 7.6%;
     	margin: 1.3% 0 0 0.5%;
     }
     .user-contacts__img {
-        width: 14.2%;
+        width: 21%;
         margin-top: 1.3%;
     }
+    .img-phone{
+    	top: 38%;
+        left: 38%;
+    }
+    #email-img{
+    	top: 44%;
+        left: 38%;
+    }
     .users__label{
-    	margin: 7% 3.5% 0 4%;
+    	margin: 7% 3.5% 0 9%;
     }
     .checkbox + .label-checkbox{
 		width: 43%;
@@ -173,6 +189,9 @@
 	}
 	.label-checkbox:before{
 		margin-right: 10.5%;
+	}
+	.review-info__mobile{
+		display: block;
 	}
 
 	.visit-checkbox .bell{
