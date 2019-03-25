@@ -256,14 +256,17 @@ body {
   position: relative;
   margin-top: 5%;
 }
-.user-contacts__img img:nth-child(2) {
+.img-phone {
   position: absolute;
   top: 37%;
-  left: 37%;
+  left: 33%;
   right: none;
 }
 #email-img {
-  top: 44%;
+  position: absolute;
+  top: 40%;
+  left: 37%;
+  right: none;
 }
 .visit-checkbox {
   width: 100%;
@@ -392,7 +395,7 @@ body {
   height: 46px;
   background: url(../img/Layer_52_copy.png);
 }
-.social-networks__link img {
+.social-networks__img {
   position: absolute;
   top: 36%;
   left: 30%;
