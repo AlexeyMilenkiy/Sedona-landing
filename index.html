@@ -9,27 +9,27 @@
     <title>Sedona</title>
 </head>
 <body>
-    <header>
+    <header class="header">
         <div class="header__nav">
             <a href="#" class="header__nav-link">ГЛАВНАЯ</a>
             <a href="#" class="header__nav-link">ФОТО И ВИДЕО</a>
-            <a href="#" class="header__nav-link"><img src="img/logotype-desktop.svg.png"></a>
+            <a href="#" class="header__nav-link"><img src="img/logotype-desktop.png"></a>
             <a href="#" class="header__nav-link">ФОРМА ОТЗЫВА</a>
             <a href="#" class="header__nav-link">HTML ACADEMY</a>
         </div>
         <div class="header__name">
-            <img src="img/text-sedona.svg.png">
+            <img src="img/text-sedona.png">
         </div>
         <div class="header__decoration">
-            <img src="img/intro-triangle.svg.png">
+            <img src="img/intro-triangle.png">
         </div>
     </header>
-    <main>
-        <div class="review">
+    <main class="main-container">
+            <div class="review">
             <p class="review__block">
                 <span class="review__headline">Оставьте свой отзыв</span><br>
-                Помогите нашим отелям стать лучше! оставьте отзыв о них, 
-                а также о посещенных вами достопримечательностях
+                <span class="review__podcast">Помогите нашим отелям стать лучше! оставьте отзыв о них, 
+                а также о посещенных вами достопримечательностях</span>
             </p>
         </div>
         <div class="review-info">
@@ -68,7 +68,7 @@
                 <input type="tel" class="user-contacts__tel" name="tel" pattern="+[0-9]{3}-[0-9]{3}" id="tel" placeholder="Введите телефон">
                 <div class="user-contacts__img">
                     <img src="img/Layer_106.png">
-                    <img src="img/phone.svg.png">
+                    <img src="img/phone.png">
                 </div>
             </div>
             <div class="user-contacts__email">
@@ -76,7 +76,7 @@
                 <input type="email" id="email" pattern=".+@globex.com" required class="user-contacts__tel" placeholder="Введите e-mail">
                 <div class="user-contacts__img">
                     <img src="img/Layer_106.png">
-                    <img id="email-img" src="img/mail.svg.png">
+                    <img id="email-img" src="img/mail.png">
                 </div>
             </div>
         </div>
@@ -86,13 +86,13 @@
         <div class="visit-checkbox">
 
             <input type="checkbox" class="checkbox" id="devil">
-            <label class="label-checkbox" for="devil">Мост Дьявола</label>
+            <label class="label-checkbox devil" for="devil">Мост Дьявола</label>
 
             <input type="checkbox" class="checkbox" id="bell">
-            <label class="label-checkbox" for="bell">Гора-Колокол</label>
+            <label class="label-checkbox bell" for="bell">Гора-Колокол</label>
             
             <input type="checkbox" class="checkbox" id="park">
-            <label class="label-checkbox" for="park">Сайд-Парк</label>
+            <label class="label-checkbox" for="park">Слайд-парк</label>
 
             <input type="checkbox" class="checkbox" id="rock">
             <label class="label-checkbox" for="rock">Красные скалы</label>
@@ -100,7 +100,7 @@
         <div class="container">
             <span class="container__headline">Опишите свои эмоции:</span>         
         </div>
-        <textarea class ="textarea" placeholder="Опишите подробно все свои восторги" rows = "8"></textarea>
+        <textarea class ="textarea" placeholder="Опишите подробно все свои восторги" rows = "6"></textarea>
         <div class="submit">
             <button class="push">Отправить отзыв</button>
             <span>* — обязательные поля</span>
@@ -110,19 +110,19 @@
         <span class="hashtag">#visitSEDONA</span>
         <div class="social-networks">
             <a href="#" class="social-networks__link">
-                <img src="img/icon-twitter.svg.png">
+                <img src="img/icon-twitter.png">
             </a>
             <a href="#" class="social-networks__link">
-                <img id="facebook" src="img/icon-facebook.svg.png">
+                <img id="facebook" src="img/icon-facebook.png">
             </a>
             <a href="#" class="social-networks__link">
-                <img src="img/icon-youtube.svg.png">
+                <img src="img/icon-youtube.png">
             </a>
         </div>
         <div class="producer">
             <span>Разработано</span>
-            <img src="img/htmlacademy.svg.png">
+            <img src="img/htmlacademy.png">
         </div>
-    </footer>
+     </footer>
 </body>
 </html>
