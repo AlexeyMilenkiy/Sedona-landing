@@ -175,6 +175,9 @@
   justify-content: none;
   margin-top: 5.3%;
 }
+.users__label-tel{
+  display: none;
+}
 .users__label {
   color: #333333;
   font-family: "PT Sans", sans-serif;
@@ -184,6 +187,9 @@
   text-transform: uppercase;
   display: inline-block;
   margin: 8.6% 3.5% 7% 0;
+}
+.users__label-tablet{
+  display: none;
 }
 .user-contacts__tel {
   width: 49.5%;

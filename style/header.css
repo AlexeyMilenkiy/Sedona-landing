@@ -21,6 +21,9 @@
   text-transform: uppercase;
   background-image: url(../img/background-link.png);
 }
+.tablet-logo-img{
+  display: none;
+}
 .header__name {
   position: absolute;
   top: 44%;
