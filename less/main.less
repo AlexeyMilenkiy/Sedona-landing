@@ -63,6 +63,7 @@ body{
 
 .header__nav{
     width: 100%;
+    max-width: 1200px;
     position:fixed;
     z-index: 1;
     .flex();
@@ -194,7 +195,6 @@ body{
     .font(1.3em, 700);
 }
 
-
 .radio {
     position: absolute;
     z-index: -1;
@@ -214,11 +214,12 @@ body{
   } 
     & + .review-info__label:after {
     content: '';
-    .position(18%, none, 109.8%);
+    .position(18%, none, 115.5%);
     .size(20px, 20px);
     border-radius: 50%;
     background: @black;
     opacity: 0;
+    transform: translateX(115.5%);
   }
     &:checked + .review-info__label:after {
     opacity: 1;
@@ -309,8 +310,10 @@ body{
         .font(0.87em, 400, 26px);
         display: inline-block;
         margin: 8.6% 3.5% 7% 0;
-   }
-
+}
+.tablet-num{
+    display: none;
+}
 .user-contacts__tel{
     width: 49.5%;
     max-height: 56px;

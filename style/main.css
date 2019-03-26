@@ -17,6 +17,7 @@ body {
 }
 .header__nav {
   width: 100%;
+  max-width: 1200px;
   position: fixed;
   z-index: 1;
   display: flex;
@@ -199,12 +200,13 @@ body {
   position: absolute;
   top: 18%;
   left: none;
-  right: 109.8%;
+  right: 115.5%;
   width: 20px;
   height: 20px;
   border-radius: 50%;
   background: #000000;
   opacity: 0;
+  transform: translateX(115.5%);
 }
 .radio:checked + .review-info__label:after {
   opacity: 1;
@@ -319,6 +321,9 @@ body {
   text-transform: uppercase;
   display: inline-block;
   margin: 8.6% 3.5% 7% 0;
+}
+.tablet-num {
+  display: none;
 }
 .user-contacts__tel {
   width: 49.5%;
