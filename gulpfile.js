@@ -22,6 +22,8 @@ gulp.task('default', gulp.parallel('less', function(){
 	gulp.watch('./index.html').on('change', browserSync.reload);
 
     gulp.watch('./style/*.css').on('change', browserSync.reload);
+
+    gulp.watch('./style/media/*.css').on('change', browserSync.reload);
     
     gulp.watch('./less/*.less', gulp.series('less'));
 
