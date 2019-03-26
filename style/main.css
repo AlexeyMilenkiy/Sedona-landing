@@ -43,9 +43,12 @@ body {
   position: absolute;
   bottom: -0.2%;
   max-height: 57px;
+}*/
+.main-container {
+  max-width: 960px;
+  margin: 0 auto;
 }
-
-.review {
+/*.review {
   display: flex;
   justify-content: center;
 }

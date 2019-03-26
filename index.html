@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <link href="style/main.css" rel="stylesheet">
     <link href="style/header.css" rel="stylesheet">
     <link href="style/review-contacts.css" rel="stylesheet">
     <link href="style/visit-feeling.css" rel="stylesheet">
@@ -24,7 +23,7 @@
             <a href="#" class="mobile__nav">ФОТО И ВИДЕО</a>
             <a href="#" class="mobile__nav">ФОРМА ОТЗЫВА</a>
             <a href="#" class="mobile__nav">HTML ACADEMY</a>
-        </div>
+    </div>
     <header class="header">  
         <div class="header__nav">
             <a href="#" class="header__nav-link">ГЛАВНАЯ</a>
@@ -102,16 +101,18 @@
             </div>
         </div>
         <div class="review-info__mobile">
+            
                 <span class="review-info__headline">Ваше общее впечатление:</span><br>
                 
-                <input type="radio" class="radio" id="positive" name="feeling">
-                <label class="review-info__label" for="positive">Скорее положительное</label>
+                <input type="radio" class="radio-m" id="positive" name="feeling">
+                <label class="review-info__label-m" for="positive">Скорее положительное</label>
                 
-                <input type="radio" class="radio" id="negative" name="feeling">
-                <label class="review-info__label" for="negative">Скорее отрицательное</label>
+                <input type="radio" class="radio-m" id="negative" name="feeling">
+                <label class="review-info__label-m" for="negative">Скорее отрицательное</label>
                 
-                <input type="radio" class="radio" id="other" name="feeling">
-                <label class="review-info__label" for="other">Затрудняюсь ответить</label>
+                <input type="radio" class="radio-m" id="other" name="feeling">
+                <label class="review-info__label-m" for="other">Затрудняюсь ответить</label>
+
         </div>
         <div class="container">
             <span class="container__headline">Посещенные достопримечательности:</span>         
@@ -126,9 +127,10 @@
             <label class="label-checkbox bell" for="bell">Гора-Колокол</label>
             
             <input type="checkbox" class="checkbox" id="park">
-            <label class="label-checkbox" for="park">Слайд-парк</label>
+            <label class="label-checkbox park" for="park">Слайд-парк</label>
+
             <input type="checkbox" class="checkbox" id="rock">
-            <label class="label-checkbox" for="rock">Красные скалы</label>
+            <label class="label-checkbox rock" for="rock">Красные скалы</label>
         </div>
         <div class="container">
             <span class="container__headline">Опишите свои эмоции:</span>         

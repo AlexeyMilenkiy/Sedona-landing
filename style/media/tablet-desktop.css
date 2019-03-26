@@ -336,7 +336,7 @@
 		margin-bottom: 2%;
 	}
 	.submit__text{
-		margin-top: 2.6%;
+		display: none;
 	}
 	.footer-block{
 	    width: 84.6%;
