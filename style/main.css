@@ -33,7 +33,7 @@ body {
   font-weight: 700;
   line-height: 4em;
   text-transform: uppercase;
-  background-image: url(../img/background-link.png);
+  background-color: #ffffff;
 }
 .header__nav .tablet-logo-img {
   display: none;
@@ -123,8 +123,29 @@ body {
 .review-info {
   width: 100%;
   margin-top: 4.4%;
+  position: relative;
   display: flex;
   justify-content: none;
+}
+.review-info:before {
+  content: '';
+  border: 1px solid #e6e6e6;
+  width: 0;
+  top: 1%;
+  right: auto;
+  position: absolute;
+  animation: stretching 2s;
+  left: 50%;
+  height: 87%;
+  transform: translateX(-50%);
+}
+@keyframes stretching {
+  0% {
+    height: 0%;
+  }
+  100% {
+    height: 87%;
+  }
 }
 .review-info__feeling {
   width: 50%;
@@ -234,7 +255,35 @@ body {
 }
 .container {
   margin-top: 3.1%;
-  background: url(../img/Layer_27_copy_3.png) no-repeat center 51.55%;
+  position: relative;
+}
+.container:after {
+  content: '';
+  border: 1px solid #e6e6e6;
+  width: 29%;
+  top: 53%;
+  right: auto;
+  position: absolute;
+  animation: widthing 2s;
+  left: 0;
+}
+.container:before {
+  content: '';
+  border: 1px solid #e6e6e6;
+  width: 29%;
+  top: 53%;
+  right: auto;
+  position: absolute;
+  animation: widthing 2s;
+  right: 0;
+}
+@keyframes widthing {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 29%;
+  }
 }
 .container__headline {
   display: block;
