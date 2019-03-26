@@ -45,13 +45,14 @@
 	.radio + .review-info__label {
 		right: -14.5%;
         margin-bottom: 13.5%;
+        width: 185px;
 	}
 	.radio + .review-info__label:before {
 		right: 107%;
 	}
 	.radio + .review-info__label:after{
-		top: 17%;
-	    right: 112.5%;
+		top: 16%;
+	    right: 215px;
 	}
 	.review-user__headline{
 		width: 45%;
@@ -150,7 +151,7 @@
 		margin: 0;
 	}
 	.social-networks{
-		width: 25%;
+		width: 160px;
 	}
 	.producer{
 		width: 20%;
@@ -228,7 +229,7 @@
     	display: none;
     }
 	.review-info__headline{
-        width: 72%;
+        width: 280px;
         margin: 0 auto 5%;
         display: block;
 	}
@@ -239,13 +240,14 @@
 	.radio + .review-info__label {
 		right: -14.5%;
         margin-bottom: 13.5%;
+        width: 185px;
 	}
 	.radio + .review-info__label:before {
 		right: 107%;
 	}
 	.radio + .review-info__label:after{
 		top: 17%;
-	    right: 112.5%;
+	    right: 214px;
 	}
 	.review-user__headline{
 	    width: 45%;
