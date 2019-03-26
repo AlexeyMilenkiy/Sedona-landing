@@ -49,6 +49,9 @@ body {
   position: absolute;
   bottom: -0.2%;
   max-height: 57px;
+  left: 50%;
+  transform: translateX(-50%);
+
 }
 
 .main-container {

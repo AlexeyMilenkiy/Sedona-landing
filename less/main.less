@@ -41,6 +41,9 @@ body{
     margin: 0 auto;
     box-shadow: 0 5px 15px rgba(0, 1, 1, 0.2);
 }
+.mobile-navigation{
+    display: none;
+}
 
 .header{
     background: url(../img/back-desktop.png)no-repeat center 100%;
@@ -50,6 +53,8 @@ body{
 
 .header__nav{
     width: 100%;
+    position:fixed;
+    z-index: 1;
     .flex();
     .header__nav-link {
         text-align: center;
@@ -63,21 +68,49 @@ body{
     .tablet-logo-img{
         display: none;
     }
+    .mobile-menu{
+        display: none;
+    }
+    .nav-logo{
+    position:relative;
+        &:after{
+        content: '';
+        background: url(../img/logotype-desktop.png) no-repeat center 100%;
+        background-size: cover;
+        position: absolute;
+        height: 97px;
+        width: 190px;
+        left: 50%;
+        transform: translateX(-50%);
+        }
+    }
+
 }
 
 .header__name{
-    .position(44%, 30.8%);
+    .position(50%, 49%);
+    transform: translateX(-49%);
+    .header__name-text{
+        .font(6.8em, 700);
+        color: @white;
+        font-family: 'Ubuntu', sans-serif;
+    }
 }
 
 .header__decoration{
     position: absolute;
     bottom: -0.2%;
     max-height: 57px;
+    left: 50%;
+    transform: translateX(-50%);
+    overflow: hidden;
 }
 
 .main-container{
     max-width: 960px; 
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
 }
 
 .review{
