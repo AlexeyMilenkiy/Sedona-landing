@@ -19,7 +19,8 @@ body {
 .header:after {
   left: 50%;
   right: auto;
-  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
   content: '';
   position: absolute;
   background: url(../img/intro-triangle.png) no-repeat center 100%;
@@ -60,7 +61,8 @@ body {
 .header__nav .nav-logo:after {
   left: 50%;
   right: auto;
-  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
   content: '';
   position: absolute;
   background: url(../img/logotype-desktop.png) no-repeat center 100%;
@@ -73,7 +75,8 @@ body {
   top: 50%;
   left: 49%;
   right: none;
-  transform: translateX(-49%);
+  -webkit-transform: translateX(-49%);
+          transform: translateX(-49%);
 }
 .header__name .header__name-text {
   font-family: "PT Sans", sans-serif;
@@ -140,10 +143,20 @@ body {
   top: 1%;
   right: auto;
   position: absolute;
-  animation: stretching 2s;
+  -webkit-animation: stretching 2s;
+          animation: stretching 2s;
   left: 50%;
   height: 87%;
-  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+@-webkit-keyframes stretching {
+  0% {
+    height: 0%;
+  }
+  100% {
+    height: 87%;
+  }
 }
 @keyframes stretching {
   0% {
@@ -200,7 +213,8 @@ body {
   height: 55px;
   border-radius: 50%;
   background: #f2f2f2;
-  transform: translateX(55%);
+  -webkit-transform: translateX(55%);
+          transform: translateX(55%);
 }
 .radio + .review-info__label:after {
   content: '';
@@ -213,7 +227,8 @@ body {
   border-radius: 50%;
   background: #000000;
   opacity: 0;
-  transform: translateX(33.5%);
+  -webkit-transform: translateX(33.5%);
+          transform: translateX(33.5%);
 }
 .radio:checked + .review-info__label:after {
   opacity: 1;
@@ -274,7 +289,8 @@ body {
   top: 53%;
   right: auto;
   position: absolute;
-  animation: widthing 2s;
+  -webkit-animation: widthing 2s;
+          animation: widthing 2s;
   left: 0;
 }
 .container:before {
@@ -284,8 +300,17 @@ body {
   top: 53%;
   right: auto;
   position: absolute;
-  animation: widthing 2s;
+  -webkit-animation: widthing 2s;
+          animation: widthing 2s;
   right: 0;
+}
+@-webkit-keyframes widthing {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 29%;
+  }
 }
 @keyframes widthing {
   0% {
@@ -326,7 +351,8 @@ body {
   top: 0;
   left: auto;
   right: 1%;
-  transform: translateX(1%);
+  -webkit-transform: translateX(1%);
+          transform: translateX(1%);
   content: '';
   position: absolute;
   border: none;
@@ -339,7 +365,8 @@ body {
   top: 30%;
   left: auto;
   right: 5.5%;
-  transform: translateX(5.5%);
+  -webkit-transform: translateX(5.5%);
+          transform: translateX(5.5%);
   content: '';
   position: absolute;
   border: none;
@@ -351,7 +378,8 @@ body {
 .user-contacts__email:after {
   left: auto;
   right: 0;
-  transform: translateX(0);
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
   content: '';
   position: absolute;
 }
@@ -359,7 +387,8 @@ body {
   top: 25%;
   left: auto;
   right: 4%;
-  transform: translateX(4%);
+  -webkit-transform: translateX(4%);
+          transform: translateX(4%);
   content: '';
   position: absolute;
 }
@@ -381,7 +410,8 @@ body {
   top: 0;
   left: auto;
   right: 1%;
-  transform: translateX(1%);
+  -webkit-transform: translateX(1%);
+          transform: translateX(1%);
   content: '';
   position: absolute;
   border: none;
@@ -394,7 +424,8 @@ body {
   top: 30%;
   left: auto;
   right: 5.5%;
-  transform: translateX(5.5%);
+  -webkit-transform: translateX(5.5%);
+          transform: translateX(5.5%);
   content: '';
   position: absolute;
   border: none;
@@ -563,7 +594,8 @@ body {
 .social-networks__link:after {
   left: 50%;
   right: auto;
-  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
   content: '';
   position: absolute;
   width: 19px;

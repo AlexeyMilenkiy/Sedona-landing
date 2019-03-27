@@ -4,15 +4,27 @@ var browserSync = require('browser-sync').create();
 
 var less = require('gulp-less');
 
+var postcss = require('gulp-postcss');
+
+var autoprefixer = require('autoprefixer');
+
 gulp.task('less', function(){
 
 	return gulp.src('./less/main.less')
-	       .pipe(less())
-	       .pipe(gulp.dest('./style'))
+	       .pipe(less({includePaths: require('node-normalize-scss').includePaths}))
+	       .pipe(gulp.dest('./style/dest'))
 	       .pipe(browserSync.stream());
 });
 
-gulp.task('default', gulp.parallel('less', function(){
+gulp.task('css', function () {
+ var processors = [autoprefixer];
+  return gulp.src('./style/dest/*.css')
+         .pipe(postcss(processors))
+         .pipe(gulp.dest('./style'))
+         .pipe(browserSync.stream());
+});
+
+gulp.task('default', gulp.parallel('less', 'css', function(){
        
        browserSync.init({
 
