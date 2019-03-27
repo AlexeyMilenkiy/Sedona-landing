@@ -4,7 +4,7 @@
 @white:#ffffff;
 @blue:#81b3d2;
 @gray:#e6e6e6;
-
+@import 'normalize.css';
 .font(@fz:1.125em, @fw:700, @lh:26px, @tx:uppercase){
     font-family: "PT Sans", sans-serif;
     font-size: @fz;
@@ -69,7 +69,6 @@ html{
     margin: 0;
     padding: 0;
 }
-
 body{
     max-width: 1200px;
     margin: 0 auto;
@@ -247,7 +246,7 @@ body{
 .review-user{
     width: 50%;
     #name-input{
-        width: calc(100% - 35%);
+        width: calc(100% - 36%);
     }
     #name-span{
         width: calc(100% - 92%);
@@ -271,7 +270,7 @@ body{
 }
 
 .review-user__input{
-    width: calc(100% - 42%);
+    width: calc(100% - 43%);
     height: 16.6%;
     margin-bottom: 4.3%;
     background-color: @lightGray;

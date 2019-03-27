@@ -24,6 +24,8 @@
     "npm": "^6.9.0"
   },
   "devDependencies": {
+    "autoprefixer": "^9.5.0",
+    "gulp-postcss": "^8.0.0",
     "node-normalize-scss": "^8.0.0"
   }
 }

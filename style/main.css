@@ -1,3 +1,4 @@
+@import 'normalize.css';
 html {
   margin: 0;
   padding: 0;
@@ -221,7 +222,7 @@ body {
   width: 50%;
 }
 .review-user #name-input {
-  width: calc(100% - 35%);
+  width: calc(100% - 36%);
 }
 .review-user #name-span {
   width: calc(100% - 92%);
