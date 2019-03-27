@@ -249,7 +249,7 @@ body {
   display: block;
 }
 .review-user__input {
-  width: calc(100% - 42%);
+  width: calc(100% - 43%);
   height: 16.6%;
   margin-bottom: 4.3%;
   background-color: #f2f2f2;
