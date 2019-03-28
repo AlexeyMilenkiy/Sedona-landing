@@ -28,6 +28,7 @@
     "autoprefixer": "^9.5.0",
     "gulp-concat": "^2.6.1",
     "gulp-postcss": "^8.0.0",
+    "gulp-real-favicon": "^0.3.2",
     "node-normalize-scss": "^8.0.0"
   }
 }
