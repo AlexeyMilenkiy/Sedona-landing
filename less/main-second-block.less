@@ -151,13 +151,18 @@
 
 .push{
     .size(50%, 58px);
-    background-color: @blue;
+    background-color: @lightBlue;
     text-align: center;
     color: @white;
     .font(1.31em, 700, 26px);
     border: none;
     &:hover{
         cursor: pointer;
+        background-color:@blue;
+    }
+    &:active{
+        background-color:@darkBlue;
+        color:@darkGray;
     }
 }
 

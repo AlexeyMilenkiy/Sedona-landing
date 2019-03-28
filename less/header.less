@@ -40,6 +40,12 @@ body{
         text-decoration: none;
         .font(0.875em, 700, 4em);
         background-color: @white;
+        &:hover{
+            background-color:@lightBlue;
+        }
+        &:active{
+            background-color:@gray;
+        }
     }   
     .tablet-logo-img{
         display: none;
@@ -54,6 +60,9 @@ body{
         background: url(../img/logotype-desktop.png) no-repeat center 100%;
         background-size: cover;
         .size(187px,94px);
+        }
+        &:hover{
+            background-color:@white;
         }
     }
 
