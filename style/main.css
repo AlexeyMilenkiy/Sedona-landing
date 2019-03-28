@@ -1,3 +1,5 @@
+
+
 @import 'normalize.css';
 html {
   margin: 0;
@@ -87,6 +89,7 @@ body {
   color: #ffffff;
   font-family: 'Ubuntu', sans-serif;
 }
+
 .main-container {
   max-width: 960px;
   margin: 0 auto;
@@ -278,6 +281,7 @@ body {
   line-height: 26px;
   text-transform: none;
 }
+
 .container {
   margin-top: 3.1%;
   position: relative;
@@ -559,6 +563,7 @@ body {
 .push:hover {
   cursor: pointer;
 }
+
 .footer-block {
   height: 80px;
   max-width: 960px;

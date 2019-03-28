@@ -1,0 +1,163 @@
+@import 'variables.less';
+@import 'mixines.less';
+.container{
+    margin-top: 3.1%;
+    position: relative;
+    &:after{
+    .animation();
+    left: 0;
+    }
+    &:before{
+    .animation();
+    right: 0;
+     }
+}
+@keyframes widthing {
+    0%{
+        width: 0%;}
+    100%{
+        width: 29%;}
+} 
+
+.container__headline{
+    display: block;
+    margin: 0 auto;
+    width: calc(100% - 70%);
+    color: @black;
+   .font(1.33em, 700, 26px);
+    text-align: center;
+}
+
+.user-contacts-container{
+    width: 100%;
+    margin-bottom: 2.5%;
+    .flex(none);
+    justify-content: space-between;
+}
+
+.user-contacts__email{
+    width: 50%;
+    .contact-container-pseudo(url(../img/mail.png));
+    &:after{
+        .transform-position(auto,0,0);
+    }
+    &:before{
+        top: 25%;
+        .transform-position(auto, 4%, 4%);
+    }
+    .label-email{
+        width: calc(100% - 69%);
+    }
+    #email{
+        width: 49%;
+    }
+}
+
+.user-contacts__number {
+    width: 42%;
+    .contact-container-pseudo();
+}
+
+.users__label{
+    color: @ligthBlack;
+    .font(0.87em, 400, 26px);
+    display: inline-block;
+    width: calc(100% - 82%);
+    margin: 3.6% 3.5% 3% 0;
+}
+.tablet-num{
+    display: none;
+}
+.user-contacts__input{
+    width: 59%;
+    max-height: 56px;
+    background-color: @lightGray;
+    border: none;
+    padding-left: 4.5%;
+    color: @black;
+    .font(1.125em, 700, 26px, none);
+    &::-webkit-input-placeholder { 
+    color: @black; 
+    }
+}
+
+.visit-checkbox{
+    width: 100%;
+    .flex();
+    margin: 4.5% 0 3.5%;
+   .devil{
+    margin-right: 2.8%;
+  }
+   .bell{
+    margin-right: 2.5%;
+  }
+}
+
+.label-checkbox{
+    width: 21.7%;
+    color: @black;
+    .font(1.125em, 700, 26px, none);
+}
+
+.checkbox {
+    display: none;
+    & + .label-checkbox{
+    cursor: pointer;
+   }
+    &:checked + .label-checkbox:before {
+    background: url(../img/tick.png) no-repeat center 52.5%;
+    background-color: @gray;
+   }
+}
+
+.label-checkbox:before {
+    content: " ";
+    display: inline-block;
+    margin-right: 13%;
+    .size(56px, 55px);
+    background: @gray;
+    border: none;
+    border-radius: 6%;
+    vertical-align: middle;
+}
+
+.textarea{
+    width: 98%;
+    background-color: @lightGray;
+    border: none;
+    padding: 1.5% 0 0 2.2%;
+    margin: 6% auto;
+    resize:none;
+    color:@black;
+    max-height: 145px;
+    .font(1.01em, 700, 26px, none);
+    &::-webkit-input-placeholder { 
+    color: @black;
+    .font(1.125em, 700, 26px, none);
+   }
+}
+
+.submit{
+    width: 100%;
+    .flex();
+
+}
+
+.submit__text{
+    margin-top: 2%; 
+    color: @ligthBlack;
+    .font(0.875em, 400, 26px);
+}
+
+.push{
+    .size(50%, 58px);
+    background-color: @blue;
+    text-align: center;
+    color: @white;
+    .font(1.31em, 700, 26px);
+    border: none;
+    &:hover{
+        cursor: pointer;
+    }
+}
+
