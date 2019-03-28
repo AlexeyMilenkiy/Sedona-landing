@@ -82,24 +82,26 @@
     position: absolute;
     z-index: -1;
     opacity: 0;
-
-     & + .review-info__label {
+    & + .review-info__label {
     width: calc(100% - 60%);
     position: relative;
     cursor: pointer;
     right: 4.5%;
     margin-bottom: 11%;
-   }
-   & + .review-info__label:before {
+    }
+    & + .review-info__label:before {
     content: '';
     .position(-53%, -55%, auto);
     .size(55px, 55px);
     border-radius: 50%;
     background: @lightGray; 
     transform: translateX(55%);
-   }
+    }
     & + .review-info__label:hover:before{
-    background-color:@hoverGray;
+    background-color:@grayHover;
+    }
+    & + .review-info__label:active:before{
+    background-color:@grayActive;
     }
     & + .review-info__label:after {
     content: '';
@@ -109,11 +111,13 @@
     background: @black;
     opacity: 0;
     transform: translateX(33.5%);
-  }
+    }
     &:checked + .review-info__label:after {
     opacity: 1;
-  }
-
+    }
+    & + .review-info__label:active:after{
+    background:@darkGray;
+    }
 }
 
 .review-user{
@@ -152,11 +156,5 @@
     color: @black;
    .font(1.125em, 700, 26px, none);
     outline:none;
-   &:hover{
-    background-color:@grayHover;
-   }
-   &:focus{
-    background-color:@white;
-    outline: 4px solid @grayHover;
-   }
+    .hover-input();
 }

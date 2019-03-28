@@ -28,33 +28,60 @@
     margin: 0 2% 0;
     .size(46px, 48px);
     background-color: @lightBlue;
+    &:hover{
+        background-color:@blue;
+    }
+    &:active{
+        background-color:@darkBlue;
+    }
     &:after{
         .transform-position(50%, auto, -50%);
-        .size(19px,20px);
+        .size(19px,15px);
         top: 35%;
         background:url(../img/icon-twitter.png) no-repeat;
     }
+    &:nth-child(1):active:after{
+        background:url(../img/twitter_copy_2.png);
+    }
     &:nth-child(2):after{
         background:url(../img/icon-facebook.png) no-repeat;
-        width: 10px;
+        .size(10px,19px);
         top: 30%;
+    }
+    &:nth-child(2):active:after{
+        background:url(../img/facebook_copy_2.png);
     }
     &:nth-child(3):after{
         background:url(../img/icon-youtube.png) no-repeat;
         height: 15px;
     }
+        &:nth-child(3):active:after{
+        background:url(../img/youtube_copy_2.png);
+    }
 }
 
 .producer{
     width: 13.3%;
-    margin-top: 1%;
     .flex(none);
     max-height: 34px;
 }
 
 .producer__text{
+    width: 10%;
     display: block;
     color: @black;
     .font(0.9em, 400, 26px);
-    margin: 1% 8% 0 0;
+    margin: -1% 8% 0 0;
+    position: absolute;
+    &:after{
+        .transform-position(96%,auto,-96%);
+        background:url(../img/htmlacademy.png);
+        .size(27px,34px);
+    }
+    &:hover:after{
+        background:url(../img/academy_hover.png);
+    }    
+    &:active:after{
+        background:url(../img/academy_active.png);
+    }
 }

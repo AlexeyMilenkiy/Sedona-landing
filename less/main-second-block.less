@@ -79,6 +79,7 @@
     &::-webkit-input-placeholder { 
     color: @black; 
     }
+    .hover-input();
 }
 
 .visit-checkbox{
@@ -97,6 +98,22 @@
     width: 21.7%;
     color: @black;
     .font(1.125em, 700, 26px, none);
+    &:before {
+    content: " ";
+    display: inline-block;
+    margin-right: 13%;
+    .size(56px, 55px);
+    background: @gray;
+    border: none;
+    border-radius: 6%;
+    vertical-align: middle;
+    }
+    &:hover:before{
+        background-color:@grayHover;
+    }
+    &:active:before{
+        background-color:@grayActive;
+    }
 }
 
 .checkbox {
@@ -110,17 +127,6 @@
    }
 }
 
-.label-checkbox:before {
-    content: " ";
-    display: inline-block;
-    margin-right: 13%;
-    .size(56px, 55px);
-    background: @gray;
-    border: none;
-    border-radius: 6%;
-    vertical-align: middle;
-}
-
 .textarea{
     width: 98%;
     background-color: @lightGray;
@@ -130,6 +136,8 @@
     resize:none;
     color:@black;
     max-height: 145px;
+    outline:none;
+    .hover-input();
     .font(1.01em, 700, 26px, none);
     &::-webkit-input-placeholder { 
     color: @black;
