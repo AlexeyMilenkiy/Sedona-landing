@@ -20,7 +20,7 @@ body{
         .transform-position(50%, auto, -50%);
         background: url(../img/intro-triangle.png) no-repeat center 100%;
         .size(100%, 57px);
-        bottom: 0;
+        bottom: -1px;
         }
 }
 
@@ -45,10 +45,12 @@ body{
             background-color:@gray;
             color:@linkActive;
         }
+                .desktop-new({
+                    width:21%;
+                    outline: none;
+                    border: none;
+                 });
     }   
-    .tablet-logo-img{
-        display: none;
-    }
     .mobile-menu{
         display: none;
     }
@@ -59,12 +61,15 @@ body{
         background: url(../img/logotype-desktop.png) no-repeat center 100%;
         background-size: cover;
         .size(187px,94px);
+            .desktop-new({
+                background: url(../img/logotype-tablet.png) no-repeat center;
+                height: 83px;
+                 });
         }
         &:hover{
             background-color:@white;
         }
     }
-
 }
 
 .header__name{

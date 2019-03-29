@@ -17,6 +17,9 @@
     text-align: center;
     color: @ligthBlack;
     .font(0.8em, 400, 24px);
+    .desktop-new({
+        width: 452px;
+    });
 }
 
 .review__headline{
@@ -71,7 +74,7 @@
 .review-info__headline{
     display: block;
     margin: 0 0 11.5% 16.5%;
-    width: calc(100% - 42%);
+    width: calc(100% - 27%);
     color: @black;
     letter-spacing: 0.01em;
     .font(1.3em, 700);
@@ -87,6 +90,10 @@
     cursor: pointer;
     right: 4.5%;
     margin-bottom: 11%;
+    .desktop-new({
+                    width:187px;
+                    right:-10%;
+                 });
     }
     & + .review-info__label:before {
     content: '';
@@ -135,6 +142,9 @@
     .font(0.87em, 400, 26px);
     display: inline-block;
     margin: 0 2.5% 7% 16.5%;
+        .desktop-new({
+            margin : 0 4% 7% 10%;
+                 });
 }
 
 .review-user__headline{
@@ -143,6 +153,9 @@
     color: @black;
    .font(1.37em, 700, 26px);
     display: block;
+        .desktop-new({
+            margin: 0 auto 12%;
+                 });
 }
 
 .review-user__input{

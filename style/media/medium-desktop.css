@@ -9,19 +9,7 @@
 	}
 }
 
-@media (min-width: 769px) and (max-width:969px){
-		
-		.header__name{
-		left: 24%;
-	}
-
-	.decoration-img{
-		width: 100%;
-	}
-
-	.header__decoration{
-		bottom: -1.6%;
-	}
+@media (min-width: 769px) and (max-width:991px){
 
 	.review__block{
 		width: 60%;

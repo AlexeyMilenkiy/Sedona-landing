@@ -25,6 +25,9 @@
     color: @black;
    .font(1.33em, 700, 26px);
     text-align: center;
+        .desktop-new({
+                    width: 285px;
+                 });
 }
 
 .user-contacts-container{
@@ -32,29 +35,63 @@
     margin-bottom: 2.5%;
     .flex(none);
     justify-content: space-between;
+        .desktop-new({
+            display: block;
+                 });
 }
 
 .user-contacts__email{
     width: 50%;
     .contact-container-pseudo(url(../img/mail.png));
+            .desktop-new({
+            width: calc(100% - 25%);
+            margin:8% auto 0;
+        });
     &:after{
         .transform-position(auto,0,0);
     }
     &:before{
         top: 25%;
         .transform-position(auto, 4%, 4%);
+                    .desktop-new({
+                     right: 9px;
+                     transform:translateX(-9px);
+                     });
     }
     .label-email{
         width: calc(100% - 69%);
+        .desktop-new({
+            width: 173px;
+            })
     }
     #email{
         width: 49%;
+            .desktop-new({
+            width:69%;
+            });
     }
 }
 
 .user-contacts__number {
     width: 42%;
     .contact-container-pseudo();
+        .desktop-new({
+            width: calc(100% - 25%);
+            margin:8% auto 0;
+        });
+        &:after{
+            .desktop-new({
+                height: 58px;
+                right: 0;
+                transform: translateX(0);
+                 });
+        }
+        &:before{
+            .desktop-new({
+                right: 8px;
+                transform: translateX(-8px);
+                 });
+        }
 }
 
 .users__label{
@@ -63,9 +100,23 @@
     display: inline-block;
     width: calc(100% - 82%);
     margin: 3.6% 3.5% 3% 0;
+
 }
-.tablet-num{
+#label-tel{
+        .desktop-new({
+        display:none;
+        });
+}
+.label-tablet{
     display: none;
+        .desktop-new({
+        display: inline-block;
+        color: @ligthBlack;
+        .font(0.87em, 400, 26px);
+        display: inline-block;
+        width: 173px;
+        margin: 3.6% 3.5% 3% 0;
+        });
 }
 .user-contacts__input{
     width: 59%;
@@ -79,6 +130,9 @@
     color: @black; 
     }
     .hover-input();
+    .desktop-new({
+        width:69%;
+    });
 }
 
 .visit-checkbox{
@@ -90,7 +144,15 @@
   }
    .bell{
     margin-right: 2.5%;
+    .desktop-new({
+        margin-right: 0;
+        })
   }
+    .desktop-new({
+    width: 70%;
+    flex-wrap: wrap;
+    margin: 5% auto 0;
+    });
 }
 
 .label-checkbox{
@@ -119,6 +181,10 @@
     display: none;
     & + .label-checkbox{
     cursor: pointer;
+    .desktop-new({
+        width: 207px;
+        margin-bottom:10%;
+                     });
    }
     &:checked + .label-checkbox:before {
     background: url(../img/tick.png) no-repeat center 52.5%;
@@ -142,12 +208,18 @@
     color: @black;
     .font(1.125em, 700, 26px, none);
    }
+       .desktop-new({
+        width: 90%;
+       });
 }
 
 .submit{
     width: 100%;
     .flex();
-
+           .desktop-new({
+        width: 92%;
+        margin: auto;
+       });
 }
 
 .submit__text{

@@ -6,6 +6,9 @@
     .flex();
     align-items: center; 
     padding-bottom: 2%;
+        .desktop-new({
+        max-width: 92%;
+       });
 }
 
 .hashtag{
@@ -18,8 +21,11 @@
 .social-networks{
     margin-top: 0.8%;
     max-height: 48px;
-    width: 19%;
+    width: 154px;
     display:flex;
+       .desktop-new({
+        width: 23%;
+       });
 }
 
 .social-networks__link{
@@ -60,22 +66,15 @@
 }
 
 .producer{
-    width: 13.3%;
+    width: 128px;
     .flex(none);
     max-height: 34px;
-}
-
-.producer__text{
-    width: 10%;
-    display: block;
-    color: @black;
-    .font(0.9em, 400, 26px);
-    margin: -1% 8% 0 0;
-    position: absolute;
+    position: relative;
+    align-items: center;
     &:after{
-        .transform-position(96%,auto,-96%);
-        background:url(../img/htmlacademy.png);
-        .size(27px,34px);
+    .transform-position(auto,0,0);
+    background:url(../img/htmlacademy.png);
+    .size(27px,34px);
     }
     &:hover:after{
         background:url(../img/academy_hover.png);
@@ -83,4 +82,11 @@
     &:active:after{
         background:url(../img/academy_active.png);
     }
+}
+
+.producer__text{
+    color: @black;
+    .font(0.9em, 400, 26px);
+    margin: -1% 8% 0 0;
+
 }
