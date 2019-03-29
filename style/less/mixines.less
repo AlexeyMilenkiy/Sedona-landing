@@ -68,7 +68,13 @@
 }
 
 .desktop-new(@rules) {
-  @media (min-width: 769px) and (max-width: 991px) { 
+  @media (min-width: 640px) and (max-width: 991px) { 
     @rules(); 
    }
+}
+
+.tablet-new(@rules) {
+    @media (min-width: 640px) and (max-width: 768px){
+        @rules();
+    }
 }

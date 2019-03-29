@@ -48,6 +48,9 @@
         height:87%;
         transform: translateX(-50%);
     }
+        .tablet-new({
+        margin-top: 10%;
+    });
 }
 @keyframes stretching {
     0%{
@@ -69,6 +72,9 @@
     .font(1.125em, 700, 26px, none);
     margin: 0 0 10% 21%;
     display: block;   
+    .tablet-new({
+        margin-bottom: 18%;
+    });
 }
 
 .review-info__headline{
@@ -78,6 +84,10 @@
     color: @black;
     letter-spacing: 0.01em;
     .font(1.3em, 700);
+    .tablet-new({
+        width: 280px;
+        margin: 0 auto 10%;
+    });
 }
 
 .radio {
@@ -91,9 +101,12 @@
     right: 4.5%;
     margin-bottom: 11%;
     .desktop-new({
-                    width:187px;
-                    right:-10%;
-                 });
+            width:187px;
+            right:-10%;
+            });
+    .tablet-new({
+            margin-bottom: 15%;
+            });
     }
     & + .review-info__label:before {
     content: '';
@@ -130,6 +143,9 @@
     width: 50%;
     #name-input{
         width: calc(100% - 36%);
+            .tablet-new({
+            width: calc(100% - 41%);
+        });
     }
     #name-span{
         width: calc(100% - 92%);
@@ -144,7 +160,10 @@
     margin: 0 2.5% 7% 16.5%;
         .desktop-new({
             margin : 0 4% 7% 10%;
-                 });
+        });
+        .tablet-new({
+            margin: 0 9% 7% 10%;
+        });
 }
 
 .review-user__headline{
@@ -169,4 +188,10 @@
    .font(1.125em, 700, 26px, none);
     outline:none;
     .hover-input();
+            .tablet-new({
+            width: calc(100% - 48%);
+            });
+             .tablet-new({
+            margin-bottom: 7%;
+            });
 }
