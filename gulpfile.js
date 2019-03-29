@@ -4,13 +4,12 @@ var less = require('gulp-less');
 var postcss = require('gulp-postcss');
 var autoprefixer = require('autoprefixer');
 var concat = require('gulp-concat');
-var order = require('gulp-order');
 var realFavicon = require ('gulp-real-favicon');
 var fs = require('fs');
 
 gulp.task('less', function(){
 
-	return gulp.src(['./less/*.less'])
+	return gulp.src(['./style/less/*.less'])
 	       .pipe(less())
          .pipe(concat('main.css'))
 	       .pipe(gulp.dest('./style/dest'))
@@ -36,7 +35,7 @@ gulp.task('default', gulp.series('less', 'css', function(){
 
     gulp.watch('./style/main.css').on('change', browserSync.reload);
  
-    gulp.watch('./less/*.less', gulp.series('less'));
+    gulp.watch('./style/less/*.less', gulp.series('less'));
     gulp.watch('./style/dest/*.css', gulp.series('css'));
 
 }));
