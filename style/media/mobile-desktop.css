@@ -1,108 +1,11 @@
 @media (max-width:479px){
-	.header__nav{
-	    background-color: white;
-	}
-	.header__nav-link{
-		display: none;
-	}
-	.nav-logo{
-		display: block;
-		width: 100%;
-	}
-	.mobile-menu{
-	    display: block;
-        position: absolute;
-        right: 1.4%;
-	}
-	.icon-menu-img{
-		width: 25px;
-        margin: 15px 15px 0 0;
-	}
-	.tablet-logo-img{
-		display: block;
-		margin: auto;
-	}
-	.mobile-navigation{
-		display: block;
-		height: 223px;
-	}
-	.mobile__nav{
-		height: 55px;
-		display: block;
-		text-align: center;
-        color: #ffffff;
-        text-decoration: none;
-        font-family: "PT Sans", sans-serif;
-        font-size: 1.15em;
-        font-weight: 700;
-        line-height: 3em;
-        text-transform: uppercase;
-        background-color:#81b3d2;
-        border-bottom:1px solid gray;
-	}
-	.desktop-logo{
-		display: none;
-	}
-	.header{
-		height: 214px;
-		background: url(../../img/back-desktop.png) no-repeat center 100%/282%;
-	}
-	.header__name{
-        top: 50%;
-        left: 15%;
-        width: 70%;
-	}
-	.header__decoration{
-		right: -28%;
-		display: none;
-	}
-	.decoration-img{
-		width: 100%;
-	}
-	.main-container{
-		width: 100%;
-	}
-	.review{
-		border-bottom: 1px solid #e6e6e6;
-	}
-	.review__headline{
-		width: 200px;
-		font-size: 1.45em;
-		margin: 6.5% auto 0;
-	}
-	.review__block{
-	    width: 90%;
-        margin-top: 6%;
-	}
-	.review__podcast{
-		max-width: 330px;
-        margin: 1% auto 0;
-        line-height: 24px;
-	}
-	.review-info{
-		margin-top: 7%;
-		flex-wrap: wrap;
-		border-bottom: 1px solid #e6e6e6;
-		height: 305px;
-	}
+
 	.review-info__feeling {
         display: none;
     }
     .review__border{
     	display: none;
     }
-	.review-info__headline{
-        width: 239px;
-        margin: 0 auto 5.6%;
-        display: block;
-        font-size: 1.12em;
-	}
-	.review-user {
-        width: 88%;
-        margin:0 auto;	
-        height: 285px;
-    }
-
     .radio-m + .review-info__label-m:before {
 
     }
@@ -112,12 +15,6 @@
     .radio-m:checked + .review-info__label-m:after{
 
     } 
-	.review-user__headline{
-        width: 150px;
-        margin: 0 auto 7%;
-        display: block;
-        font-size: 1.2em;
-	}
 	.review-user #name {
         width: 74%;
         height: 58px;
@@ -126,30 +23,7 @@
     	margin: 0 4% 10% 0%;
 
     }
-    .review-user__input {
-        width: 62%;
-        height: 58px;
-        margin-bottom: 6.2%;
-    }
-    .container{
-        margin: 6% 0 2.8% 0;
-        background: none;
-    }
-    .container__headline{
-        width: 242px;
-        font-size: 1.13em;
-    }
-    .user-contacts-container{
-    	display: block;
-    	margin-bottom: 7%;
-    	border-bottom: 1px solid #e6e6e6;
-    }
-    .user-contacts__number, .user-contacts__email{
-        width: 89%;
-        margin: 0 auto;
-        flex-wrap: wrap;
-        margin-bottom: 8%;
-    }
+
     .users__label-tel{
     	display: none;
     }

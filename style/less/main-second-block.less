@@ -2,11 +2,15 @@
 .container{
     margin-top: 3.1%;
     position: relative;
+    width: 100%;
     &:after{
     .animation();
     left: 0;
        .tablet-new({
            width: 25%;
+        });
+        .mobile-new({
+           display: none;
         });
     }
     &:before{
@@ -14,6 +18,9 @@
     right: 0;
         .tablet-new({
            width: 25%;
+        });
+        .mobile-new({
+           display: none;
         });
      }
 }
@@ -33,7 +40,11 @@
     text-align: center;
         .desktop-new({
                     width: 285px;
-                 });
+        });
+        .mobile-new({
+        width: 242px;
+        font-size: 1.13em;
+        });
 }
 
 .user-contacts-container{
@@ -43,7 +54,14 @@
     justify-content: space-between;
         .desktop-new({
             display: block;
-                 });
+        });
+        .mobile-new({
+            display: block;
+            min-height: 274px;
+            order: 3;
+            border-bottom: 1px solid @gray;
+        });
+
 }
 
 .user-contacts__email{
@@ -56,8 +74,19 @@
            .tablet-new({
             width: calc(100% - 15%);
         });
+            .mobile-new({
+            width: calc(100% - 15%);
+        });
+
     &:after{
         .transform-position(auto,0,0);
+            .mobile-new({
+                height: 57px;
+                top: auto;
+                bottom: 0;
+                right: 0;
+                transform: translateX(0);
+                 });
     }
     &:before{
         top: 25%;
@@ -65,6 +94,12 @@
                     .desktop-new({
                      right: 9px;
                      transform:translateX(-9px);
+                     });
+                    .mobile-new({
+                     right: 10px;
+                     transform:translateX(-10px);
+                     top: auto;
+                     bottom: 24px;
                      });
     }
     .label-email{
@@ -75,13 +110,27 @@
         .tablet-new({
             width: 175px;
         });
+        .mobile-new({
+            width: 150px;
+            margin-left: 8%;
+        });
     }
     #email{
         width: 49%;
             .desktop-new({
             width:69%;
             });
+            .mobile-new({
+            width: 100%;
+            });
     }
+    .mobile-new({
+        width: calc(100% - 15%);
+        min-width: 283px;    
+        margin: 9% auto 4%;
+        max-height: 33vh;
+        flex-wrap: wrap;
+    });
 }
 
 .user-contacts__number {
@@ -94,9 +143,23 @@
         .tablet-new({
            width: calc(100% - 15%);
         });
+        .mobile-new({
+            width: calc(100% - 15%);
+            min-width: 283px;
+            max-height: 33vh;
+            margin: 4% auto;
+            flex-wrap: wrap;
+        });
         &:after{
             .desktop-new({
                 height: 58px;
+                right: 0;
+                transform: translateX(0);
+                 });
+            .mobile-new({
+                height: 57px;
+                top: auto;
+                bottom: 0;
                 right: 0;
                 transform: translateX(0);
                  });
@@ -105,6 +168,12 @@
             .desktop-new({
                 right: 8px;
                 transform: translateX(-8px);
+                 });            
+            .mobile-new({
+                right: 10px;
+                top: auto;
+                bottom: 22px;
+                transform: translateX(-10px);
                  });
         }
 }
@@ -121,6 +190,9 @@
         .desktop-new({
         display:none;
         });
+        .mobile-new({
+        display:none;
+        });
 }
 .label-tablet{
     display: none;
@@ -128,15 +200,22 @@
         display: inline-block;
         color: @ligthBlack;
         .font(0.87em, 400, 26px);
-        display: inline-block;
         width: 173px;
         margin: 3.6% 3.5% 3% 0;
         });
         .tablet-new({
-            width: 176px;
+            width: 177px;
+        });
+        .mobile-new({
+            width: 177px;
+            display: inline-block;
+            color: @ligthBlack;
+            .font(0.87em, 400, 26px);
+            margin: 3.6% 3.5% 1% 8%;
         });
 }
-.user-contacts__input{
+
+.user-contacts__input {
     width: 59%;
     max-height: 56px;
     background-color: @lightGray;
@@ -144,12 +223,24 @@
     padding-left: 4.5%;
     color: @black;
     .font(1.125em, 700, 26px, none);
-    &::-webkit-input-placeholder { 
-    color: @black; 
+
+    &::-webkit-input-placeholder {
+        color: @black;
     }
+
     .hover-input();
-    .desktop-new({
-        width:69%;
+
+    .desktop-new( {
+        width: 69%;
+    }
+
+    );
+
+    .mobile-new( {
+        min-width: 260px;
+        min-height: 56px;
+        padding-left: 8%;
+        width: 100%;
     });
 }
 
@@ -160,16 +251,34 @@
    .devil{
     margin-right: 2.8%;
   }
+   .rock {
+    .mobile-new({
+        order: 4;
+    });
+  }
    .bell{
     margin-right: 2.5%;
     .desktop-new({
         margin-right: 0;
-        })
+    });
+    .mobile-new({
+        margin-right: 0;
+        order: 3;
+    });
   }
+
     .desktop-new({
     width: 70%;
     flex-wrap: wrap;
     margin: 5% auto 0;
+    });
+    .mobile-new( {
+    order: 5;
+    width: 90%;
+    min-width: 290px;
+    flex-wrap: wrap;
+    margin: 7% auto 5%;
+    border-bottom: 1px solid @gray;
     });
 }
 
@@ -193,6 +302,7 @@
     &:active:before{
         background-color:@grayActive;
     }
+
 }
 
 .checkbox {
@@ -201,8 +311,12 @@
     cursor: pointer;
     .desktop-new({
         width: 207px;
-        margin-bottom:10%;
-                     });
+        margin-bottom: 8%;
+    });
+    .mobile-new({
+        width: 204px;
+        margin-bottom: 8%;
+    });
    }
     &:checked + .label-checkbox:before {
     background: url(../img/tick.png) no-repeat center 52.5%;
@@ -229,6 +343,12 @@
        .desktop-new({
         width: 90%;
        });
+        .mobile-new( {
+        order: 6;
+        width: 80%;
+        padding: 3% 6% 0 6%;
+        margin-bottom: 16%;
+       });
 }
 
 .submit{
@@ -238,12 +358,20 @@
         width: 92%;
         margin: auto;
        });
+           .mobile-new( {
+            order: 7;
+            width: 87%;
+            margin: 0 auto;
+       });
 }
 
 .submit__text{
     margin-top: 2%; 
     color: @ligthBlack;
     .font(0.875em, 400, 26px);
+        .mobile-new( {
+         display: none;
+       });
 }
 
 .push{
@@ -253,6 +381,9 @@
     color: @white;
     .font(1.31em, 700, 26px);
     border: none;
+    .mobile-new( {
+        width: 100%;
+    });
     &:hover{
         cursor: pointer;
         background-color:@blue;

@@ -1,38 +1,92 @@
 @import 'main-import.less';
-html{
+
+html {
     margin: 0;
     padding: 0;
 }
-body{ 
+
+body {
     max-width: 1200px;
     margin: 0 auto;
     box-shadow: 0 5px 15px rgba(0, 1, 1, 0.2);
 }
-.mobile-navigation{
+
+.mobile-navigation {
     display: none;
+
+    .mobile-new( {
+        display: block;
+        height: 223px;
+    }
+
+    );
 }
 
-.header{
+.mobile__nav {
+    .mobile-new( {
+        height: 55px;
+        display: block;
+        text-align: center;
+        color: #ffffff;
+        text-decoration: none;
+        font-family: "PT Sans", sans-serif;
+        font-size: 1.15em;
+        font-weight: 700;
+        line-height: 3em;
+        text-transform: uppercase;
+        background-color: #81b3d2;
+        border-bottom: 1px solid gray;
+    }
+
+    );
+}
+
+.header {
     background: url(../img/back-desktop.png)no-repeat center 100%;
     height: 357px;
     position: relative;
-    &:after{
+
+    &:after {
         .transform-position(50%, auto, -50%);
         background: url(../img/intro-triangle.png) no-repeat center 100%;
         .size(100%, 57px);
         bottom: -1px;
-            .tablet-new({
-                    background-size:120%;
-                 });
+
+        .tablet-new( {
+            background-size: 120%;
         }
+
+        );
+
+        .mobile-new( {
+            background-size: 175%;
+        }
+
+        );
+    }
+
+    .mobile-new( {
+        height: 214px;
+    }
+
+    );
 }
 
-.header__nav{
+.header__nav {
     width: 100%;
     max-width: 1200px;
-    position:fixed;
+    position: fixed;
     z-index: 5;
     .flex();
+
+    .mobile-new( {
+        background-color: @white;
+        min-height: 56px;
+        position: relative;
+    }
+
+    );
+
     .header__nav-link {
         text-align: center;
         width: 19.87%;
@@ -41,46 +95,107 @@ body{
         text-decoration: none;
         .font(0.875em, 700, 4em);
         background-color: @white;
-        &:hover{
-            background-color:@lightBlue;
+
+        &:hover {
+            background-color: @lightBlue;
         }
-        &:active{
-            background-color:@gray;
-            color:@linkActive;
+
+        &:active {
+            background-color: @gray;
+            color: @linkActive;
         }
-                .desktop-new({
-                    width:21%;
-                    outline: none;
-                    border: none;
-                 });
-    }   
-    .mobile-menu{
-        display: none;
+
+        .desktop-new( {
+            width: 21%;
+            outline: none;
+            border: none;
+        }
+
+        );
+
+        .mobile-new( {
+            display: none;
+        }
+
+        );
     }
-    .nav-logo{
-        position:relative;
-        &:after{
-        .transform-position(50%, auto, -50%);
-        background: url(../img/logotype-desktop.png) no-repeat center 100%;
-        background-size: cover;
-        .size(187px,94px);
-            .desktop-new({
+
+    .mobile-menu {
+        display: none;
+
+        .mobile-new( {
+            display: block;
+            position: absolute;
+            right: 7%;
+            top: 30%;
+        }
+
+        );
+    }
+
+    .nav-logo {
+        position: relative;
+
+        &:after {
+            .transform-position(50%, auto, -50%);
+            background: url(../img/logotype-desktop.png) no-repeat center 100%;
+            background-size: cover;
+            .size(187px, 94px);
+
+            .desktop-new( {
                 background: url(../img/logotype-tablet.png) no-repeat center;
                 height: 83px;
-                 });
+            }
+
+            );
+
+            .mobile-new( {
+                width: 105px;
+                height: 83px;
+            }
+
+            );
+
+            .tablet-new( {
+                background: url(../img/logotype-tablet.png) no-repeat center;
+            }
+
+            );
+
         }
-        &:hover{
-            background-color:@white;
+
+        &:hover {
+            background-color: @white;
         }
+
+        .mobile-new( {
+            display: block;
+            width: 100%;
+        }
+
+        );
     }
 }
 
-.header__name{
+.header__name {
     .position(50%, 49%);
     transform: translateX(-49%);
-    .header__name-text{
+
+    .header__name-text {
         .font(6.8em, 700);
         color: @white;
         font-family: 'Ubuntu', sans-serif;
+
+        .mobile-new( {
+            font-size: 3.4em;
+        }
+
+        );
     }
+
+    .mobile-new( {
+        top: 52%;
+    }
+
+    );
 }

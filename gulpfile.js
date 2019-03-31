@@ -24,7 +24,7 @@ gulp.task('css', function () {
          .pipe(browserSync.stream());
 });
 
-gulp.task('default', gulp.series('less', 'css', function(){
+gulp.task('default', gulp.parallel('less', 'css', function(){
        
        browserSync.init({
 
