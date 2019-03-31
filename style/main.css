@@ -14,7 +14,12 @@ body {
 @media (max-width: 639px) {
   .mobile-navigation {
     display: block;
+    width: 100%;
     height: 223px;
+    opacity: 0;
+    z-index: 6;
+    position: absolute;
+    transition: 3s;
   }
 }
 @media (max-width: 639px) {
@@ -32,6 +37,18 @@ body {
     background-color: #81b3d2;
     border-bottom: 1px solid gray;
   }
+}
+.mobile__nav:nth-child(1) {
+  position: relative;
+}
+.mobile__nav:nth-child(1):after {
+  content: '';
+  background: url(/img/icon-cross.png);
+  position: absolute;
+  top: 17px;
+  right: 20px;
+  height: 22px;
+  width: 23px;
 }
 .header {
   background: url(../img/back-desktop.png) no-repeat center 100%;
@@ -77,7 +94,6 @@ body {
   .header__nav {
     background-color: #ffffff;
     min-height: 56px;
-    position: relative;
   }
 }
 .header__nav .header__nav-link {
@@ -2478,7 +2494,12 @@ body {
 @media (max-width: 639px) {
   .mobile-navigation {
     display: block;
+    width: 100%;
     height: 223px;
+    opacity: 0;
+    z-index: 6;
+    position: absolute;
+    transition: 3s;
   }
 }
 @media (max-width: 639px) {
@@ -2496,6 +2517,18 @@ body {
     background-color: #81b3d2;
     border-bottom: 1px solid gray;
   }
+}
+.mobile__nav:nth-child(1) {
+  position: relative;
+}
+.mobile__nav:nth-child(1):after {
+  content: '';
+  background: url(/img/icon-cross.png);
+  position: absolute;
+  top: 17px;
+  right: 20px;
+  height: 22px;
+  width: 23px;
 }
 .header {
   background: url(../img/back-desktop.png) no-repeat center 100%;
@@ -2541,7 +2574,6 @@ body {
   .header__nav {
     background-color: #ffffff;
     min-height: 56px;
-    position: relative;
   }
 }
 .header__nav .header__nav-link {
@@ -2672,7 +2704,12 @@ body {
 @media (max-width: 639px) {
   .mobile-navigation {
     display: block;
+    width: 100%;
     height: 223px;
+    opacity: 0;
+    z-index: 6;
+    position: absolute;
+    transition: 3s;
   }
 }
 @media (max-width: 639px) {
@@ -2690,6 +2727,18 @@ body {
     background-color: #81b3d2;
     border-bottom: 1px solid gray;
   }
+}
+.mobile__nav:nth-child(1) {
+  position: relative;
+}
+.mobile__nav:nth-child(1):after {
+  content: '';
+  background: url(/img/icon-cross.png);
+  position: absolute;
+  top: 17px;
+  right: 20px;
+  height: 22px;
+  width: 23px;
 }
 .header {
   background: url(../img/back-desktop.png) no-repeat center 100%;
@@ -2735,7 +2784,6 @@ body {
   .header__nav {
     background-color: #ffffff;
     min-height: 56px;
-    position: relative;
   }
 }
 .header__nav .header__nav-link {
@@ -3993,7 +4041,12 @@ body {
 @media (max-width: 639px) {
   .mobile-navigation {
     display: block;
+    width: 100%;
     height: 223px;
+    opacity: 0;
+    z-index: 6;
+    position: absolute;
+    transition: 3s;
   }
 }
 @media (max-width: 639px) {
@@ -4011,6 +4064,18 @@ body {
     background-color: #81b3d2;
     border-bottom: 1px solid gray;
   }
+}
+.mobile__nav:nth-child(1) {
+  position: relative;
+}
+.mobile__nav:nth-child(1):after {
+  content: '';
+  background: url(/img/icon-cross.png);
+  position: absolute;
+  top: 17px;
+  right: 20px;
+  height: 22px;
+  width: 23px;
 }
 .header {
   background: url(../img/back-desktop.png) no-repeat center 100%;
@@ -4056,7 +4121,6 @@ body {
   .header__nav {
     background-color: #ffffff;
     min-height: 56px;
-    position: relative;
   }
 }
 .header__nav .header__nav-link {
@@ -5314,7 +5378,12 @@ body {
 @media (max-width: 639px) {
   .mobile-navigation {
     display: block;
+    width: 100%;
     height: 223px;
+    opacity: 0;
+    z-index: 6;
+    position: absolute;
+    transition: 3s;
   }
 }
 @media (max-width: 639px) {
@@ -5332,6 +5401,18 @@ body {
     background-color: #81b3d2;
     border-bottom: 1px solid gray;
   }
+}
+.mobile__nav:nth-child(1) {
+  position: relative;
+}
+.mobile__nav:nth-child(1):after {
+  content: '';
+  background: url(/img/icon-cross.png);
+  position: absolute;
+  top: 17px;
+  right: 20px;
+  height: 22px;
+  width: 23px;
 }
 .header {
   background: url(../img/back-desktop.png) no-repeat center 100%;
@@ -5377,7 +5458,6 @@ body {
   .header__nav {
     background-color: #ffffff;
     min-height: 56px;
-    position: relative;
   }
 }
 .header__nav .header__nav-link {
