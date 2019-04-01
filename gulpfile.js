@@ -34,6 +34,7 @@ gulp.task('default', gulp.parallel('less', 'css', function(){
 	gulp.watch('./index.html').on('change', browserSync.reload);
 
     gulp.watch('./style/main.css').on('change', browserSync.reload);
+    gulp.watch('./js/*.js').on('change', browserSync.reload);
  
     gulp.watch('./style/less/*.less', gulp.series('less'));
     gulp.watch('./style/dest/*.css', gulp.series('css'));

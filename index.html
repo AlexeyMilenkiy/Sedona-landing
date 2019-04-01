@@ -23,7 +23,8 @@
 
 <body>
     <div class="mobile-navigation">
-        <a href="#" class="mobile__nav">ГЛАВНАЯ</a>
+        <a href="#" class="mobile__nav">ГЛАВНАЯ
+            <img src="img/icon-cross.png" class="close-mobile-nav"></a>
         <a href="#" class="mobile__nav">ФОТО И ВИДЕО</a>
         <a href="#" class="mobile__nav">ФОРМА ОТЗЫВА</a>
         <a href="#" class="mobile__nav">HTML ACADEMY</a>
@@ -51,7 +52,7 @@
                     а также о посещенных вами достопримечательностях</span>
             </p>
         </div>
-                    <div class="review-info__feeling">
+            <div class="review-info__feeling">
                 <span class="review-info__headline">Ваше общее впечатление:</span><br>
                 <input type="radio" class="radio" id="positive" name="feeling">
                 <label class="review-info__label" for="positive">Скорее положительное</label>
@@ -76,11 +77,11 @@
             <div class="user-contacts__number">
                 <label class="users__label" id="label-tel" for="tel">Телефон*:</label>
                 <label class="users__label label-tablet" for="tel">Контактный Телефон*:</label>
-                <input type="tel" class="user-contacts__input" name="tel" pattern="+[0-9]{3}-[0-9]{3}" id="tel" placeholder="Введите телефон">
+                <input type="tel" class="user-contacts__input" name="tel" pattern="+[0-9]{3}-[0-9]{3}" id="tel" placeholder="Введите телефон" required>
             </div>
             <div class="user-contacts__email">
                 <label class="users__label label-email" for="email">Электронная почта*:</label>
-                <input type="email" id="email" pattern=".+@globex.com" required class="user-contacts__input" placeholder="Введите e-mail">
+                <input type="email" id="email" pattern=".+@globex.com" required class="user-contacts__input" placeholder="Введите e-mail" required>
             </div>
         </div>
         <div class="container">
@@ -119,6 +120,8 @@
         </div>
         </div>
     </footer>
+    <script src="node_modules/validator/validator.js"></script>
+    <script src="js/main.js"></script>
 </body>
 
 </html>

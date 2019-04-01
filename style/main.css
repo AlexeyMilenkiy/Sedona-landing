@@ -13,10 +13,9 @@ body {
 }
 @media (max-width: 639px) {
   .mobile-navigation {
-    display: block;
+    display: none;
     width: 100%;
     height: 223px;
-    opacity: 0;
     z-index: 6;
     position: absolute;
     transition: 3s;
@@ -41,9 +40,7 @@ body {
 .mobile__nav:nth-child(1) {
   position: relative;
 }
-.mobile__nav:nth-child(1):after {
-  content: '';
-  background: url(/img/icon-cross.png);
+.mobile__nav .close-mobile-nav {
   position: absolute;
   top: 17px;
   right: 20px;
@@ -2493,10 +2490,9 @@ body {
 }
 @media (max-width: 639px) {
   .mobile-navigation {
-    display: block;
+    display: none;
     width: 100%;
     height: 223px;
-    opacity: 0;
     z-index: 6;
     position: absolute;
     transition: 3s;
@@ -2521,9 +2517,7 @@ body {
 .mobile__nav:nth-child(1) {
   position: relative;
 }
-.mobile__nav:nth-child(1):after {
-  content: '';
-  background: url(/img/icon-cross.png);
+.mobile__nav .close-mobile-nav {
   position: absolute;
   top: 17px;
   right: 20px;
@@ -2703,10 +2697,9 @@ body {
 }
 @media (max-width: 639px) {
   .mobile-navigation {
-    display: block;
+    display: none;
     width: 100%;
     height: 223px;
-    opacity: 0;
     z-index: 6;
     position: absolute;
     transition: 3s;
@@ -2731,9 +2724,7 @@ body {
 .mobile__nav:nth-child(1) {
   position: relative;
 }
-.mobile__nav:nth-child(1):after {
-  content: '';
-  background: url(/img/icon-cross.png);
+.mobile__nav .close-mobile-nav {
   position: absolute;
   top: 17px;
   right: 20px;
@@ -4040,10 +4031,9 @@ body {
 }
 @media (max-width: 639px) {
   .mobile-navigation {
-    display: block;
+    display: none;
     width: 100%;
     height: 223px;
-    opacity: 0;
     z-index: 6;
     position: absolute;
     transition: 3s;
@@ -4068,9 +4058,7 @@ body {
 .mobile__nav:nth-child(1) {
   position: relative;
 }
-.mobile__nav:nth-child(1):after {
-  content: '';
-  background: url(/img/icon-cross.png);
+.mobile__nav .close-mobile-nav {
   position: absolute;
   top: 17px;
   right: 20px;
@@ -5377,10 +5365,9 @@ body {
 }
 @media (max-width: 639px) {
   .mobile-navigation {
-    display: block;
+    display: none;
     width: 100%;
     height: 223px;
-    opacity: 0;
     z-index: 6;
     position: absolute;
     transition: 3s;
@@ -5405,9 +5392,7 @@ body {
 .mobile__nav:nth-child(1) {
   position: relative;
 }
-.mobile__nav:nth-child(1):after {
-  content: '';
-  background: url(/img/icon-cross.png);
+.mobile__nav .close-mobile-nav {
   position: absolute;
   top: 17px;
   right: 20px;

@@ -15,10 +15,9 @@ body {
     display: none;
 
     .mobile-new( {
-        display: block;
+        display: none;
         width: 100%;
         height: 223px;
-        opacity: 0;
         z-index: 6;
         position: absolute;
         transition: 3s;
@@ -43,9 +42,16 @@ body {
     &:nth-child(1){
         position:relative;
     }
-    &:nth-child(1):after{
-        content: '';
-        background: url(/img/icon-cross.png);
+    // &:nth-child(1):after{
+    //     content: '';
+    //     background: url(/img/icon-cross.png);
+    //     position: absolute;
+    //     top: 17px;
+    //     right: 20px;
+    //     height: 22px;
+    //     width: 23px;
+    // }
+    .close-mobile-nav{
         position: absolute;
         top: 17px;
         right: 20px;
