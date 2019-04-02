@@ -57,7 +57,7 @@
         });
         .mobile-new({
             display: block;
-            min-height: 274px;
+            min-height: 360px;
             order: 3;
             border-bottom: 1px solid @gray;
         });
@@ -67,6 +67,27 @@
 .user-contacts__email{
     width: 50%;
     .contact-container-pseudo(url(../img/mail.png));
+    .wrong-email {
+        display: none;
+        width: 190px;
+        color: @red;
+        .font(0.87em, 400, 26px, none);
+        position: absolute;
+        bottom: 110%;
+        top: auto;
+        left: 65%;
+        transform: translateX(-65%);
+            .desktop-new({
+            left: 50%;
+            transform: translateX(-50%);
+        });
+            .mobile-new({
+            top: 105%;
+            bottom: auto;
+            left: 100px;
+            transform: translateX(-100px);
+        });
+    }
             .desktop-new({
             width: calc(100% - 25%);
             margin:8% auto 0;
@@ -112,7 +133,7 @@
         });
         .mobile-new({
             width: 150px;
-            margin-left: 8%;
+            margin: 0 0 1% 8%;
         });
     }
     #email{
@@ -135,6 +156,24 @@
 
 .user-contacts__number {
     width: 42%;
+    .wrong-number {
+        display: none;
+        width: 190px;
+        color: @red;
+        .font(0.87em, 400, 26px, none);
+        position: absolute;
+        bottom: 110%;
+        top: auto;
+        left: 50%;
+        transform: translateX(-50%);
+            .mobile-new({
+            top: 105%;
+            bottom: auto;
+            left: 100px;
+            transform: translateX(-100px);
+        });
+    }
+
     .contact-container-pseudo();
         .desktop-new({
             width: calc(100% - 25%);
