@@ -1,16 +1,20 @@
-window.onload = function(){
+"use strict";
 
-  let mobileMenuIcon = document.querySelector('.mobile-menu');
-  let mobileMenu = document.querySelector('.mobile-navigation');
-  let closeMobMenu = document.querySelector('.close-mobile-nav');
-  let navigation = document.querySelector('.header__nav');
+window.onload = function () {
+  var mobileMenuIcon = document.querySelector('.mobile-menu');
+  var mobileMenu = document.querySelector('.mobile-navigation');
+  var closeMobMenu = document.querySelector('.close-mobile-nav');
+  var navigation = document.querySelector('.header__nav');
+  var mainForm = document.querySelector('.main-form');
+  var emailUser = document.querySelector('.email');
+  var telUser = document.querySelector('.tel');
 
-  mobileMenuIcon.onclick = function(){
+  mobileMenuIcon.onclick = function () {
     mobileMenu.style.display = "block";
     mobileMenu.style.position = "fixed";
     mobileMenuIcon.style.display = "none";
     navigation.style.display = "none";
-  }; 
+  };
 
   closeMobMenu.onclick = function () {
     mobileMenu.style.display = "none";
@@ -18,4 +22,4 @@ window.onload = function(){
     mobileMenuIcon.style.display = "block";
     navigation.style.display = "block";
   };
-}
+};

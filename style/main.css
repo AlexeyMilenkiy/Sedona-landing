@@ -1252,6 +1252,7 @@ body {
   line-height: 26px;
   text-transform: uppercase;
   border: none;
+  outline: none;
 }
 @media (max-width: 639px) {
   .push {
@@ -2438,6 +2439,7 @@ body {
   line-height: 26px;
   text-transform: uppercase;
   border: none;
+  outline: none;
 }
 @media (max-width: 639px) {
   .push {
@@ -3655,6 +3657,7 @@ body {
   line-height: 26px;
   text-transform: uppercase;
   border: none;
+  outline: none;
 }
 @media (max-width: 639px) {
   .push {
@@ -5425,6 +5428,7 @@ body {
   line-height: 26px;
   text-transform: uppercase;
   border: none;
+  outline: none;
 }
 @media (max-width: 639px) {
   .push {
@@ -6954,6 +6958,7 @@ body {
   line-height: 26px;
   text-transform: uppercase;
   border: none;
+  outline: none;
 }
 @media (max-width: 639px) {
   .push {

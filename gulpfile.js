@@ -6,9 +6,17 @@ var autoprefixer = require('autoprefixer');
 var concat = require('gulp-concat');
 var realFavicon = require ('gulp-real-favicon');
 var fs = require('fs');
+var FAVICON_DATA_FILE = 'faviconData.json';
+var babel = require('gulp-babel');
+
+gulp.task('babel', function () {
+  return gulp.src("./js/script.js")
+    .pipe(babel())
+    .pipe(concat("main.js"))
+    .pipe(gulp.dest("./js"));
+});
 
 gulp.task('less', function(){
-
 	return gulp.src(['./style/less/*.less'])
 	       .pipe(less())
          .pipe(concat('main.css'))
@@ -27,21 +35,17 @@ gulp.task('css', function () {
 gulp.task('default', gulp.parallel('less', 'css', function(){
        
        browserSync.init({
-
        	server: {baseDir: './'}
        })
 
-	gulp.watch('./index.html').on('change', browserSync.reload);
-
+	  gulp.watch('./index.html').on('change', browserSync.reload);
     gulp.watch('./style/main.css').on('change', browserSync.reload);
     gulp.watch('./js/*.js').on('change', browserSync.reload);
- 
     gulp.watch('./style/less/*.less', gulp.series('less'));
     gulp.watch('./style/dest/*.css', gulp.series('css'));
 
 }));
 
-var FAVICON_DATA_FILE = 'faviconData.json';
 
 gulp.task('generate-favicon', function(done) {
   realFavicon.generateFavicon({
