@@ -481,16 +481,16 @@ body {
     order: 2;
   }
 }
-.review-user #name-input {
+.review-user #name {
   width: calc(100% - 36%);
 }
 @media (max-width: 768px) {
-  .review-user #name-input {
+  .review-user #name {
     width: calc(100% - 41%);
   }
 }
 @media (max-width: 639px) {
-  .review-user #name-input {
+  .review-user #name {
     width: calc(100% - 36%);
     min-height: 56px;
   }
@@ -865,6 +865,9 @@ body {
     flex-wrap: wrap;
   }
 }
+.has-error {
+  display: block;
+}
 .user-contacts__number {
   width: 42%;
   position: relative;
@@ -1676,16 +1679,16 @@ body {
     order: 2;
   }
 }
-.review-user #name-input {
+.review-user #name {
   width: calc(100% - 36%);
 }
 @media (max-width: 768px) {
-  .review-user #name-input {
+  .review-user #name {
     width: calc(100% - 41%);
   }
 }
 @media (max-width: 639px) {
-  .review-user #name-input {
+  .review-user #name {
     width: calc(100% - 36%);
     min-height: 56px;
   }
@@ -2051,6 +2054,9 @@ body {
     max-height: 33vh;
     flex-wrap: wrap;
   }
+}
+.has-error {
+  display: block;
 }
 .user-contacts__number {
   width: 42%;
@@ -3270,6 +3276,9 @@ body {
     flex-wrap: wrap;
   }
 }
+.has-error {
+  display: block;
+}
 .user-contacts__number {
   width: 42%;
   position: relative;
@@ -4079,16 +4088,16 @@ body {
     order: 2;
   }
 }
-.review-user #name-input {
+.review-user #name {
   width: calc(100% - 36%);
 }
 @media (max-width: 768px) {
-  .review-user #name-input {
+  .review-user #name {
     width: calc(100% - 41%);
   }
 }
 @media (max-width: 639px) {
-  .review-user #name-input {
+  .review-user #name {
     width: calc(100% - 36%);
     min-height: 56px;
   }
@@ -4665,16 +4674,16 @@ body {
     order: 2;
   }
 }
-.review-user #name-input {
+.review-user #name {
   width: calc(100% - 36%);
 }
 @media (max-width: 768px) {
-  .review-user #name-input {
+  .review-user #name {
     width: calc(100% - 41%);
   }
 }
 @media (max-width: 639px) {
-  .review-user #name-input {
+  .review-user #name {
     width: calc(100% - 36%);
     min-height: 56px;
   }
@@ -5040,6 +5049,9 @@ body {
     max-height: 33vh;
     flex-wrap: wrap;
   }
+}
+.has-error {
+  display: block;
 }
 .user-contacts__number {
   width: 42%;
@@ -6057,16 +6069,16 @@ body {
     order: 2;
   }
 }
-.review-user #name-input {
+.review-user #name {
   width: calc(100% - 36%);
 }
 @media (max-width: 768px) {
-  .review-user #name-input {
+  .review-user #name {
     width: calc(100% - 41%);
   }
 }
 @media (max-width: 639px) {
-  .review-user #name-input {
+  .review-user #name {
     width: calc(100% - 36%);
     min-height: 56px;
   }
@@ -6570,6 +6582,9 @@ body {
     max-height: 33vh;
     flex-wrap: wrap;
   }
+}
+.has-error {
+  display: block;
 }
 .user-contacts__number {
   width: 42%;
