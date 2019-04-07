@@ -24,8 +24,9 @@ body {
 }
 .mobile-navigation {
   opacity: 0;
-  transition: 0.5s;
+  transition: 1s;
   z-index: 5;
+  position: absolute;
 }
 @media (max-width: 639px) {
   .mobile-navigation {
@@ -37,7 +38,7 @@ body {
 }
 .show-nav {
   opacity: 1;
-  transition: 0.5s;
+  transition: 1s;
   z-index: 6;
   width: 100%;
   height: 223px;
@@ -622,7 +623,7 @@ body {
   right: auto;
   position: absolute;
   animation: widthing 2s;
-  left: 0;
+  left: 70%;
 }
 @media (max-width: 768px) {
   .container:after {
@@ -642,7 +643,7 @@ body {
   right: auto;
   position: absolute;
   animation: widthing 2s;
-  right: 0;
+  right: 70%;
 }
 @media (max-width: 768px) {
   .container:before {
@@ -663,16 +664,6 @@ body {
   }
 }
 @media (max-width: 768px) {
-  @keyframes widthing {
-    0% {
-      width: 0%;
-    }
-    100% {
-      width: 25%;
-    }
-  }
-}
-@media (max-width: 639px) {
   @keyframes widthing {
     0% {
       width: 0%;
@@ -1825,7 +1816,7 @@ body {
   right: auto;
   position: absolute;
   animation: widthing 2s;
-  left: 0;
+  left: 70%;
 }
 @media (max-width: 768px) {
   .container:after {
@@ -1845,7 +1836,7 @@ body {
   right: auto;
   position: absolute;
   animation: widthing 2s;
-  right: 0;
+  right: 70%;
 }
 @media (max-width: 768px) {
   .container:before {
@@ -1866,16 +1857,6 @@ body {
   }
 }
 @media (max-width: 768px) {
-  @keyframes widthing {
-    0% {
-      width: 0%;
-    }
-    100% {
-      width: 25%;
-    }
-  }
-}
-@media (max-width: 639px) {
   @keyframes widthing {
     0% {
       width: 0%;
@@ -2653,8 +2634,9 @@ body {
 }
 .mobile-navigation {
   opacity: 0;
-  transition: 0.5s;
+  transition: 1s;
   z-index: 5;
+  position: absolute;
 }
 @media (max-width: 639px) {
   .mobile-navigation {
@@ -2666,7 +2648,7 @@ body {
 }
 .show-nav {
   opacity: 1;
-  transition: 0.5s;
+  transition: 1s;
   z-index: 6;
   width: 100%;
   height: 223px;
@@ -2880,8 +2862,9 @@ body {
 }
 .mobile-navigation {
   opacity: 0;
-  transition: 0.5s;
+  transition: 1s;
   z-index: 5;
+  position: absolute;
 }
 @media (max-width: 639px) {
   .mobile-navigation {
@@ -2893,7 +2876,7 @@ body {
 }
 .show-nav {
   opacity: 1;
-  transition: 0.5s;
+  transition: 1s;
   z-index: 6;
   width: 100%;
   height: 223px;
@@ -3093,7 +3076,7 @@ body {
   right: auto;
   position: absolute;
   animation: widthing 2s;
-  left: 0;
+  left: 70%;
 }
 @media (max-width: 768px) {
   .container:after {
@@ -3113,7 +3096,7 @@ body {
   right: auto;
   position: absolute;
   animation: widthing 2s;
-  right: 0;
+  right: 70%;
 }
 @media (max-width: 768px) {
   .container:before {
@@ -3134,16 +3117,6 @@ body {
   }
 }
 @media (max-width: 768px) {
-  @keyframes widthing {
-    0% {
-      width: 0%;
-    }
-    100% {
-      width: 25%;
-    }
-  }
-}
-@media (max-width: 639px) {
   @keyframes widthing {
     0% {
       width: 0%;
@@ -4308,8 +4281,9 @@ body {
 }
 .mobile-navigation {
   opacity: 0;
-  transition: 0.5s;
+  transition: 1s;
   z-index: 5;
+  position: absolute;
 }
 @media (max-width: 639px) {
   .mobile-navigation {
@@ -4321,7 +4295,7 @@ body {
 }
 .show-nav {
   opacity: 1;
-  transition: 0.5s;
+  transition: 1s;
   z-index: 6;
   width: 100%;
   height: 223px;
@@ -4906,7 +4880,7 @@ body {
   right: auto;
   position: absolute;
   animation: widthing 2s;
-  left: 0;
+  left: 70%;
 }
 @media (max-width: 768px) {
   .container:after {
@@ -4926,7 +4900,7 @@ body {
   right: auto;
   position: absolute;
   animation: widthing 2s;
-  right: 0;
+  right: 70%;
 }
 @media (max-width: 768px) {
   .container:before {
@@ -4947,16 +4921,6 @@ body {
   }
 }
 @media (max-width: 768px) {
-  @keyframes widthing {
-    0% {
-      width: 0%;
-    }
-    100% {
-      width: 25%;
-    }
-  }
-}
-@media (max-width: 639px) {
   @keyframes widthing {
     0% {
       width: 0%;
@@ -5736,8 +5700,9 @@ body {
 }
 .mobile-navigation {
   opacity: 0;
-  transition: 0.5s;
+  transition: 1s;
   z-index: 5;
+  position: absolute;
 }
 @media (max-width: 639px) {
   .mobile-navigation {
@@ -5749,7 +5714,7 @@ body {
 }
 .show-nav {
   opacity: 1;
-  transition: 0.5s;
+  transition: 1s;
   z-index: 6;
   width: 100%;
   height: 223px;
@@ -6472,7 +6437,7 @@ body {
   right: auto;
   position: absolute;
   animation: widthing 2s;
-  left: 0;
+  left: 70%;
 }
 @media (max-width: 768px) {
   .container:after {
@@ -6492,7 +6457,7 @@ body {
   right: auto;
   position: absolute;
   animation: widthing 2s;
-  right: 0;
+  right: 70%;
 }
 @media (max-width: 768px) {
   .container:before {
@@ -6513,16 +6478,6 @@ body {
   }
 }
 @media (max-width: 768px) {
-  @keyframes widthing {
-    0% {
-      width: 0%;
-    }
-    100% {
-      width: 25%;
-    }
-  }
-}
-@media (max-width: 639px) {
   @keyframes widthing {
     0% {
       width: 0%;
