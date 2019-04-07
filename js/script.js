@@ -4,21 +4,16 @@ window.onload = function(){
   let mobileMenu = document.querySelector('.mobile-navigation');
   let closeMobMenu = document.querySelector('.close-mobile-nav');
   let navigation = document.querySelector('.header__nav');
-
   var validate = require("validate.js");
 
-  mobileMenuIcon.onclick = () => {
-    mobileMenu.style.display = "block";
-    mobileMenu.style.position = "fixed";
-    mobileMenuIcon.style.display = "none";
-    navigation.style.display = "none";
+  mobileMenuIcon.onclick = (e) => {
+    e.preventDefault();
+    mobileMenu.classList.add("show-nav");
   }; 
 
-  closeMobMenu.onclick = () => {
-    mobileMenu.style.display = "none";
-    mobileMenu.style.position = "absolute";
-    mobileMenuIcon.style.display = "block";
-    navigation.style.display = "block";
+  closeMobMenu.onclick = (e) => {    
+    e.preventDefault();
+    mobileMenu.classList.remove("show-nav");
   };
 
   let form = document.querySelector(".main-form");

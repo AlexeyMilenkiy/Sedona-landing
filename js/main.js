@@ -44,18 +44,14 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 
       var validate = require("validate.js");
 
-      mobileMenuIcon.onclick = function () {
-        mobileMenu.style.display = "block";
-        mobileMenu.style.position = "fixed";
-        mobileMenuIcon.style.display = "none";
-        navigation.style.display = "none";
+      mobileMenuIcon.onclick = function (e) {
+        e.preventDefault();
+        mobileMenu.classList.add("show-nav");
       };
 
-      closeMobMenu.onclick = function () {
-        mobileMenu.style.display = "none";
-        mobileMenu.style.position = "absolute";
-        mobileMenuIcon.style.display = "block";
-        navigation.style.display = "block";
+      closeMobMenu.onclick = function (e) {
+        e.preventDefault();
+        mobileMenu.classList.remove("show-nav");
       };
 
       var form = document.querySelector(".main-form");

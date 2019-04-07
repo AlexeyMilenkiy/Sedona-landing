@@ -79,7 +79,7 @@
         });
         .mobile-new({
             display: block;
-            min-height: 360px;
+            min-height: 280px;
             order: 3;
             border-bottom: 1px solid @gray;
         });
@@ -90,7 +90,7 @@
     width: 50%;
     .contact-container-pseudo(url(../img/mail.webp));
     .wrong-email {
-        display: none;
+        opacity: 0;
         width: 190px;
         color: @red;
         .font(0.87em, 400, 26px, none);
@@ -170,20 +170,20 @@
     .mobile-new({
         width: calc(100% - 15%);
         min-width: 283px;    
-        margin: 9% auto 4%;
+        margin: 9% auto 8%;
         max-height: 33vh;
         flex-wrap: wrap;
     });
 }
 
-.has-error{
-    display: block;
+.error-message{
+    opacity: 1;
 }
 
 .user-contacts__number {
     width: 42%;
     .wrong-number {
-        display: none;
+        opacity: 0;
         width: 190px;
         color: @red;
         .font(0.87em, 400, 26px, none);
@@ -212,7 +212,7 @@
             width: calc(100% - 15%);
             min-width: 283px;
             max-height: 33vh;
-            margin: 4% auto;
+            margin: 3% auto 11%;
             flex-wrap: wrap;
         });
         &:after{
@@ -233,14 +233,14 @@
             .desktop-new({
                 right: 8px;
                 transform: translateX(-8px);
-                 });            
+            });            
             .mobile-new({
                 right: 10px;
                 top: auto;
                 bottom: 22px;
                 transform: translateX(-10px);
-                 });
-        }
+            });
+    }
 }
 
 .users__label{
@@ -453,6 +453,7 @@
     &:hover{
         cursor: pointer;
         background-color:@blue;
+        transition: 1s;
     }
     &:active{
         background-color:@darkBlue;
