@@ -28,8 +28,30 @@
     0%{
         width: 0%;}
     100%{
-        width: 29%;}
+        width: 29%;
+    }
 } 
+
+.tablet-new({
+    @keyframes widthing {
+        0%{
+            width: 0%;}
+        100%{
+            width: 25%;
+        }
+    } 
+});
+
+.mobile-new({
+    @keyframes widthing {
+        0%{
+           width: 0%;}
+        100%{
+           width: 25%;
+        }
+    } 
+});
+
 
 .container__headline{
     display: block;
@@ -178,7 +200,7 @@
         });
     }
 
-    .contact-container-pseudo();
+    .contact-container-pseudo(url(../img/phone.webp));
         .desktop-new({
             width: calc(100% - 25%);
             margin:8% auto 0;

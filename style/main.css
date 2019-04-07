@@ -239,6 +239,10 @@ body {
     order: 7;
   }
 }
+.main-form {
+  display: flex;
+  flex-wrap: wrap;
+}
 .review {
   display: flex;
   justify-content: center;
@@ -668,6 +672,42 @@ body {
     width: 29%;
   }
 }
+@media (max-width: 768px) {
+  @-webkit-keyframes widthing {
+    0% {
+      width: 0%;
+    }
+    100% {
+      width: 25%;
+    }
+  }
+  @keyframes widthing {
+    0% {
+      width: 0%;
+    }
+    100% {
+      width: 25%;
+    }
+  }
+}
+@media (max-width: 639px) {
+  @-webkit-keyframes widthing {
+    0% {
+      width: 0%;
+    }
+    100% {
+      width: 25%;
+    }
+  }
+  @keyframes widthing {
+    0% {
+      width: 0%;
+    }
+    100% {
+      width: 25%;
+    }
+  }
+}
 .container__headline {
   display: block;
   margin: 0 auto;
@@ -941,7 +981,7 @@ body {
   z-index: 1;
   width: 20px;
   height: 20px;
-  background: url(../img/phone.png) no-repeat center 100%;
+  background: url(../img/phone.webp) no-repeat center 100%;
 }
 @media (min-width: 640px) and (max-width: 991px) {
   .user-contacts__number {
@@ -1445,6 +1485,10 @@ body {
     order: 7;
   }
 }
+.main-form {
+  display: flex;
+  flex-wrap: wrap;
+}
 .review {
   display: flex;
   justify-content: center;
@@ -1858,6 +1902,42 @@ body {
     width: 29%;
   }
 }
+@media (max-width: 768px) {
+  @-webkit-keyframes widthing {
+    0% {
+      width: 0%;
+    }
+    100% {
+      width: 25%;
+    }
+  }
+  @keyframes widthing {
+    0% {
+      width: 0%;
+    }
+    100% {
+      width: 25%;
+    }
+  }
+}
+@media (max-width: 639px) {
+  @-webkit-keyframes widthing {
+    0% {
+      width: 0%;
+    }
+    100% {
+      width: 25%;
+    }
+  }
+  @keyframes widthing {
+    0% {
+      width: 0%;
+    }
+    100% {
+      width: 25%;
+    }
+  }
+}
 .container__headline {
   display: block;
   margin: 0 auto;
@@ -2131,7 +2211,7 @@ body {
   z-index: 1;
   width: 20px;
   height: 20px;
-  background: url(../img/phone.png) no-repeat center 100%;
+  background: url(../img/phone.webp) no-repeat center 100%;
 }
 @media (min-width: 640px) and (max-width: 991px) {
   .user-contacts__number {
@@ -3107,6 +3187,42 @@ body {
     width: 29%;
   }
 }
+@media (max-width: 768px) {
+  @-webkit-keyframes widthing {
+    0% {
+      width: 0%;
+    }
+    100% {
+      width: 25%;
+    }
+  }
+  @keyframes widthing {
+    0% {
+      width: 0%;
+    }
+    100% {
+      width: 25%;
+    }
+  }
+}
+@media (max-width: 639px) {
+  @-webkit-keyframes widthing {
+    0% {
+      width: 0%;
+    }
+    100% {
+      width: 25%;
+    }
+  }
+  @keyframes widthing {
+    0% {
+      width: 0%;
+    }
+    100% {
+      width: 25%;
+    }
+  }
+}
 .container__headline {
   display: block;
   margin: 0 auto;
@@ -3380,7 +3496,7 @@ body {
   z-index: 1;
   width: 20px;
   height: 20px;
-  background: url(../img/phone.png) no-repeat center 100%;
+  background: url(../img/phone.webp) no-repeat center 100%;
 }
 @media (min-width: 640px) and (max-width: 991px) {
   .user-contacts__number {
@@ -3881,6 +3997,10 @@ body {
   .main-container div:nth-child(9) {
     order: 7;
   }
+}
+.main-form {
+  display: flex;
+  flex-wrap: wrap;
 }
 .review {
   display: flex;
@@ -4482,6 +4602,10 @@ body {
     order: 7;
   }
 }
+.main-form {
+  display: flex;
+  flex-wrap: wrap;
+}
 .review {
   display: flex;
   justify-content: center;
@@ -4895,6 +5019,42 @@ body {
     width: 29%;
   }
 }
+@media (max-width: 768px) {
+  @-webkit-keyframes widthing {
+    0% {
+      width: 0%;
+    }
+    100% {
+      width: 25%;
+    }
+  }
+  @keyframes widthing {
+    0% {
+      width: 0%;
+    }
+    100% {
+      width: 25%;
+    }
+  }
+}
+@media (max-width: 639px) {
+  @-webkit-keyframes widthing {
+    0% {
+      width: 0%;
+    }
+    100% {
+      width: 25%;
+    }
+  }
+  @keyframes widthing {
+    0% {
+      width: 0%;
+    }
+    100% {
+      width: 25%;
+    }
+  }
+}
 .container__headline {
   display: block;
   margin: 0 auto;
@@ -5168,7 +5328,7 @@ body {
   z-index: 1;
   width: 20px;
   height: 20px;
-  background: url(../img/phone.png) no-repeat center 100%;
+  background: url(../img/phone.webp) no-repeat center 100%;
 }
 @media (min-width: 640px) and (max-width: 991px) {
   .user-contacts__number {
@@ -5891,6 +6051,10 @@ body {
     order: 7;
   }
 }
+.main-form {
+  display: flex;
+  flex-wrap: wrap;
+}
 .review {
   display: flex;
   justify-content: center;
@@ -6442,6 +6606,42 @@ body {
     width: 29%;
   }
 }
+@media (max-width: 768px) {
+  @-webkit-keyframes widthing {
+    0% {
+      width: 0%;
+    }
+    100% {
+      width: 25%;
+    }
+  }
+  @keyframes widthing {
+    0% {
+      width: 0%;
+    }
+    100% {
+      width: 25%;
+    }
+  }
+}
+@media (max-width: 639px) {
+  @-webkit-keyframes widthing {
+    0% {
+      width: 0%;
+    }
+    100% {
+      width: 25%;
+    }
+  }
+  @keyframes widthing {
+    0% {
+      width: 0%;
+    }
+    100% {
+      width: 25%;
+    }
+  }
+}
 .container__headline {
   display: block;
   margin: 0 auto;
@@ -6715,7 +6915,7 @@ body {
   z-index: 1;
   width: 20px;
   height: 20px;
-  background: url(../img/phone.png) no-repeat center 100%;
+  background: url(../img/phone.webp) no-repeat center 100%;
 }
 @media (min-width: 640px) and (max-width: 991px) {
   .user-contacts__number {
