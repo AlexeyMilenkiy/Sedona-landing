@@ -58,7 +58,6 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
         navigation.style.display = "block";
       };
 
-      console.log('111');
       var form = document.querySelector(".main-form");
       form.addEventListener('submit', function (event) {
         event.preventDefault();

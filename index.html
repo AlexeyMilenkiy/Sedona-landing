@@ -16,64 +16,60 @@
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
     <link href="style/main.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Ubuntu:700" rel="stylesheet">
+<!--     <link href="https://fonts.googleapis.com/css?family=Ubuntu:700" rel="stylesheet"> -->
     <title>Sedona</title>
 </head>
 
 <body>
     <div class="mobile-navigation">
         <a href="#main" class="mobile__nav">ГЛАВНАЯ
-            <img src="img/icon-cross.png" class="close-mobile-nav"></a>
+            <img src="img/icon-cross.png" alt="close" class="close-mobile-nav"></a>
         <a href="#" class="mobile__nav">ФОТО И ВИДЕО</a>
         <a href="#review-form" class="mobile__nav">ФОРМА ОТЗЫВА</a>
         <a href="#html-academy" class="mobile__nav">HTML ACADEMY</a>
     </div>
-    <a name="main"></a>
-    <header class="header">
+    <header class="header" id="main">
         <div class="header__nav">
             <a href="#main" class="header__nav-link">ГЛАВНАЯ</a>
             <a href="#" class="header__nav-link">ФОТО И ВИДЕО</a>
-            <div href="#" class="header__nav-link nav-logo">
-            </div>
+            <a href="#main" class="header__nav-link nav-logo">
+            </a>
             <a href="#review-form" class="header__nav-link">ФОРМА ОТЗЫВА</a>
             <a href="#html-academy" class="header__nav-link">HTML ACADEMY</a>
             <a href="#" class="mobile-menu">
-                <img src="img/icon-menu.png" class="icon-menu-img"></a>
+                <img src="img/icon-menu.png" alt="menu" class="icon-menu-img"></a>
         </div>
         <div class="header__name">
-
             <span class="header__name-text">Sedona</span>
         </div>
     </header>
-    <main class="main-container">
-        <a name="review-form"></a>
+    <main class="main-container" id="review-form">
         <div class="review">
             <p class="review__block">
                 <span class="review__headline">Оставьте свой отзыв</span><br>
                 <span class="review__podcast">Помогите нашим отелям стать лучше! оставьте отзыв о них,
                     а также о посещенных вами достопримечательностях</span>
             </p>
-    <form class="main-form">
+        </div>            
+     <form class="main-form">
+        <div class="review-info__feeling">
+            <span class="review-info__headline">Ваше общее впечатление:</span><br>
+            <input type="radio" class="radio" id="positive" name="feeling">
+            <label class="review-info__label" for="positive">Скорее положительное</label>
+            <input type="radio" class="radio" id="negative" name="feeling">
+            <label class="review-info__label" for="negative">Скорее отрицательное</label>
+            <input type="radio" class="radio" id="other" name="feeling">
+            <label class="review-info__label" for="other">Затрудняюсь ответить</label>
         </div>
-            <div class="review-info__feeling">
-                <span class="review-info__headline">Ваше общее впечатление:</span><br>
-                <input type="radio" class="radio" id="positive" name="feeling">
-                <label class="review-info__label" for="positive">Скорее положительное</label>
-                <input type="radio" class="radio" id="negative" name="feeling">
-                <label class="review-info__label" for="negative">Скорее отрицательное</label>
-                <input type="radio" class="radio" id="other" name="feeling">
-                <label class="review-info__label" for="other">Затрудняюсь ответить</label>
-            </div>
-            <div class="review-user">
-                <span class="review-user__headline">Представьтесь:</span>
-                <label class="review-user__label" for="name" id="name-span">Имя*:</label>
-                <input type="text" class="review-user__input" name="name" id="name" required>
-                <label class="review-user__label" for="surname">Фамилия*:</label>
-                <input type="text" class="review-user__input" name="surname" id="surname" required>
-                <label class="review-user__label" for="patronymic">Отчество:</label>
-                <input type="text" class="review-user__input" name="patronymic" id="patronymic">
-            </div>
+        <div class="review-user">
+            <span class="review-user__headline">Представьтесь:</span>
+            <label class="review-user__label" for="name" id="name-span">Имя*:</label>
+            <input type="text" class="review-user__input" name="name" id="name" required>
+            <label class="review-user__label" for="surname">Фамилия*:</label>
+            <input type="text" class="review-user__input" name="surname" id="surname" required>
+            <label class="review-user__label" for="patronymic">Отчество:</label>
+            <input type="text" class="review-user__input" name="patronymic" id="patronymic">
+        </div>
         <div class="container">
             <span class="container__headline">Контактная информация:</span>
         </div>
@@ -82,7 +78,7 @@
                 <span class="wrong-number">Ошибка, перепроверьте номер</span>
                 <label class="users__label" id="label-tel" for="tel">Телефон*:</label>
                 <label class="users__label label-tablet" for="tel">Контактный Телефон*:</label>
-                <input type="tel" class="user-contacts__input" name="tel" pattern="+[0-9]{3}-[0-9]{3}" id="tel" placeholder="Введите телефон" name ="telephone" required>
+                <input type="tel" class="user-contacts__input" name="tel" pattern="+[0-9]{3}-[0-9]{3}" id="tel" placeholder="Введите телефон" name="telephone" required>
             </div>
             <div class="user-contacts__email">
                 <span class="wrong-email">Ошибка, перепроверьте e-mail</span>
@@ -110,20 +106,19 @@
             <button type="submit" class="push">Отправить отзыв</button>
             <span class="submit__text">* — обязательные поля</span>
         </div>
-    </form>
+        </form>
     </main>
-                        <a name="html-academy"></a>
     <footer class="footer-block">
         <span class="hashtag">#visitSEDONA</span>
         <div class="social-networks">
-            <a href="#" class="social-networks__link">
+            <a href="#" class="social-networks__link" title="twitter">
             </a>
-            <a href="#" class="social-networks__link">
+            <a href="#" class="social-networks__link" title="facebook">
             </a>
-            <a href="#" class="social-networks__link">
+            <a href="#" class="social-networks__link" title="youtube">
             </a>
         </div>
-        <div class="producer">
+        <div class="producer" id="html-academy">
             <span class="producer__text">Разработано</span>
         </div>
     </footer>

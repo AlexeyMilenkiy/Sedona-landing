@@ -1,4 +1,18 @@
 @import 'normalize.css';
+@font-face {
+  font-family: 'PT Sans';
+  src: url('../fonts/pt_sans.eot');
+  /* IE 9 Compatibility Mode */
+  src: url('../fonts/pt_sans.eot?#iefix') format('embedded-opentype'), /* IE < 9 */ url('../fonts/pt_sans.woff2') format('woff2'), /* Super Modern Browsers */ url('../fonts/pt_sans.woff') format('woff'), /* Firefox >= 3.6, any other modern browser */ url('../fonts/pt_sans.ttf') format('truetype'), /* Safari, Android, iOS */ url('../fonts/pt_sans.svg#pt_sans') format('svg');
+  /* Chrome < 4, Legacy iOS */
+}
+@font-face {
+  font-family: 'Ubuntu Bold';
+  src: url('../fonts/ubuntu_bold.eot');
+  /* IE 9 Compatibility Mode */
+  src: url('../fonts/ubuntu_bold.eot?#iefix') format('embedded-opentype'), /* IE < 9 */ url('../fonts/ubuntu_bold.woff2') format('woff2'), /* Super Modern Browsers */ url('../fonts/ubuntu_bold.woff') format('woff'), /* Firefox >= 3.6, any other modern browser */ url('../fonts/ubuntu_bold.ttf') format('truetype'), /* Safari, Android, iOS */ url('../fonts/ubuntu_bold.svg#ubuntu_bold') format('svg');
+  /* Chrome < 4, Legacy iOS */
+}
 html {
   margin: 0;
   padding: 0;
@@ -48,7 +62,7 @@ body {
   width: 23px;
 }
 .header {
-  background: url(../img/back-desktop.png) no-repeat center 100%;
+  background: url(../img/back-desktop.webp) no-repeat center 100%;
   height: 357px;
   position: relative;
 }
@@ -59,7 +73,7 @@ body {
           transform: translateX(-50%);
   content: '';
   position: absolute;
-  background: url(../img/intro-triangle.png) no-repeat center 100%;
+  background: url(../img/intro-triangle.webp) no-repeat center 100%;
   width: 100%;
   height: 57px;
   bottom: -1px;
@@ -99,7 +113,7 @@ body {
   max-height: 56px;
   color: #000000;
   text-decoration: none;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 0.875em;
   font-weight: 700;
   line-height: 4em;
@@ -146,14 +160,14 @@ body {
           transform: translateX(-50%);
   content: '';
   position: absolute;
-  background: url(../img/logotype-desktop.png) no-repeat center 100%;
+  background: url(../img/logotype-desktop.webp) no-repeat center 100%;
   background-size: cover;
   width: 187px;
   height: 94px;
 }
 @media (min-width: 640px) and (max-width: 991px) {
   .header__nav .nav-logo:after {
-    background: url(../img/logotype-tablet.png) no-repeat center;
+    background: url(../img/logotype-tablet.webp) no-repeat center;
     height: 83px;
   }
 }
@@ -165,7 +179,7 @@ body {
 }
 @media (max-width: 768px) {
   .header__nav .nav-logo:after {
-    background: url(../img/logotype-tablet.png) no-repeat center;
+    background: url(../img/logotype-tablet.webp) no-repeat center;
   }
 }
 .header__nav .nav-logo:hover {
@@ -186,7 +200,7 @@ body {
           transform: translateX(-49%);
 }
 .header__name .header__name-text {
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 6.8em;
   font-weight: 700;
   line-height: 26px;
@@ -242,7 +256,7 @@ body {
   display: block;
   text-align: center;
   color: #333333;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 0.8em;
   font-weight: 400;
   line-height: 24px;
@@ -264,7 +278,7 @@ body {
   width: calc(100% - 26%);
   margin: 5.5% auto 0;
   color: #000000;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 2.39em;
   font-weight: 700;
   line-height: 26px;
@@ -280,7 +294,7 @@ body {
 .review__podcast {
   display: block;
   margin-top: 1.5%;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 1.11em;
   font-weight: 400;
   line-height: 26px;
@@ -344,7 +358,7 @@ body {
 }
 .review-info__label {
   color: #000000;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 1.125em;
   font-weight: 700;
   line-height: 26px;
@@ -363,7 +377,7 @@ body {
   width: calc(100% - 27%);
   color: #000000;
   letter-spacing: 0.01em;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 1.3em;
   font-weight: 700;
   line-height: 26px;
@@ -506,7 +520,7 @@ body {
 .review-user__label {
   width: calc(100% - 85%);
   color: #333333;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 0.87em;
   font-weight: 400;
   line-height: 26px;
@@ -533,7 +547,7 @@ body {
   width: calc(100% - 65%);
   margin: 0 16.3% 12%;
   color: #000000;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 1.37em;
   font-weight: 700;
   line-height: 26px;
@@ -560,7 +574,7 @@ body {
   border: none;
   padding-left: 7%;
   color: #000000;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 1.125em;
   font-weight: 700;
   line-height: 26px;
@@ -659,7 +673,7 @@ body {
   margin: 0 auto;
   width: calc(100% - 70%);
   color: #000000;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 1.33em;
   font-weight: 700;
   line-height: 26px;
@@ -731,13 +745,13 @@ body {
   z-index: 1;
   width: 20px;
   height: 20px;
-  background: url(../img/mail.png) no-repeat center 100%;
+  background: url(../img/mail.webp) no-repeat center 100%;
 }
 .user-contacts__email .wrong-email {
   display: none;
   width: 190px;
   color: #ff5c5c;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 0.87em;
   font-weight: 400;
   line-height: 26px;
@@ -880,7 +894,7 @@ body {
   display: none;
   width: 190px;
   color: #ff5c5c;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 0.87em;
   font-weight: 400;
   line-height: 26px;
@@ -985,7 +999,7 @@ body {
 }
 .users__label {
   color: #333333;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 0.87em;
   font-weight: 400;
   line-height: 26px;
@@ -1011,7 +1025,7 @@ body {
   .label-tablet {
     display: inline-block;
     color: #333333;
-    font-family: "PT Sans", sans-serif;
+    font-family: 'PT Sans', sans-serif;
     font-size: 0.87em;
     font-weight: 400;
     line-height: 26px;
@@ -1030,7 +1044,7 @@ body {
     width: 177px;
     display: inline-block;
     color: #333333;
-    font-family: "PT Sans", sans-serif;
+    font-family: 'PT Sans', sans-serif;
     font-size: 0.87em;
     font-weight: 400;
     line-height: 26px;
@@ -1045,7 +1059,7 @@ body {
   border: none;
   padding-left: 4.5%;
   color: #000000;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 1.125em;
   font-weight: 700;
   line-height: 26px;
@@ -1122,7 +1136,7 @@ body {
 .label-checkbox {
   width: 21.7%;
   color: #000000;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 1.125em;
   font-weight: 700;
   line-height: 26px;
@@ -1164,7 +1178,7 @@ body {
   }
 }
 .checkbox:checked + .label-checkbox:before {
-  background: url(../img/tick.png) no-repeat center 52.5%;
+  background: url(../img/tick.webp) no-repeat center 52.5%;
   background-color: #f2f2f2;
 }
 .textarea {
@@ -1177,7 +1191,7 @@ body {
   color: #000000;
   max-height: 145px;
   outline: none;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 1.01em;
   font-weight: 700;
   line-height: 26px;
@@ -1192,7 +1206,7 @@ body {
 }
 .textarea::-webkit-input-placeholder {
   color: #000000;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 1.125em;
   font-weight: 700;
   line-height: 26px;
@@ -1232,7 +1246,7 @@ body {
 .submit__text {
   margin-top: 2%;
   color: #333333;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 0.875em;
   font-weight: 400;
   line-height: 26px;
@@ -1249,7 +1263,7 @@ body {
   background-color: #81b3d2;
   text-align: center;
   color: #ffffff;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 1.31em;
   font-weight: 700;
   line-height: 26px;
@@ -1297,7 +1311,7 @@ body {
   max-height: 22px;
   margin: 0 0 -0.5% 1.3%;
   color: #000000;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 1.31em;
   font-weight: 700;
   line-height: 26px;
@@ -1348,26 +1362,26 @@ body {
   width: 19px;
   height: 15px;
   top: 35%;
-  background: url(../img/icon-twitter.png) no-repeat;
+  background: url(../img/icon-twitter.webp) no-repeat;
 }
 .social-networks__link:nth-child(1):active:after {
-  background: url(../img/twitter_copy_2.png);
+  background: url(../img/twitter_copy_2.webp);
 }
 .social-networks__link:nth-child(2):after {
-  background: url(../img/icon-facebook.png) no-repeat;
+  background: url(../img/icon-facebook.webp) no-repeat;
   width: 10px;
   height: 19px;
   top: 30%;
 }
 .social-networks__link:nth-child(2):active:after {
-  background: url(../img/facebook_copy_2.png);
+  background: url(../img/facebook_copy_2.webp);
 }
 .social-networks__link:nth-child(3):after {
-  background: url(../img/icon-youtube.png) no-repeat;
+  background: url(../img/icon-youtube.webp) no-repeat;
   height: 15px;
 }
 .social-networks__link:nth-child(3):active:after {
-  background: url(../img/youtube_copy_2.png);
+  background: url(../img/youtube_copy_2.webp);
 }
 .producer {
   width: 128px;
@@ -1384,15 +1398,15 @@ body {
           transform: translateX(0);
   content: '';
   position: absolute;
-  background: url(../img/htmlacademy.png);
+  background: url(../img/htmlacademy.webp);
   width: 27px;
   height: 34px;
 }
 .producer:hover:after {
-  background: url(../img/academy_hover.png);
+  background: url(../img/academy_hover.webp);
 }
 .producer:active:after {
-  background: url(../img/academy_active.png);
+  background: url(../img/academy_active.webp);
 }
 @media (max-width: 639px) {
   .producer {
@@ -1401,7 +1415,7 @@ body {
 }
 .producer__text {
   color: #000000;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 0.9em;
   font-weight: 400;
   line-height: 26px;
@@ -1448,7 +1462,7 @@ body {
   display: block;
   text-align: center;
   color: #333333;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 0.8em;
   font-weight: 400;
   line-height: 24px;
@@ -1470,7 +1484,7 @@ body {
   width: calc(100% - 26%);
   margin: 5.5% auto 0;
   color: #000000;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 2.39em;
   font-weight: 700;
   line-height: 26px;
@@ -1486,7 +1500,7 @@ body {
 .review__podcast {
   display: block;
   margin-top: 1.5%;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 1.11em;
   font-weight: 400;
   line-height: 26px;
@@ -1542,7 +1556,7 @@ body {
 }
 .review-info__label {
   color: #000000;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 1.125em;
   font-weight: 700;
   line-height: 26px;
@@ -1561,7 +1575,7 @@ body {
   width: calc(100% - 27%);
   color: #000000;
   letter-spacing: 0.01em;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 1.3em;
   font-weight: 700;
   line-height: 26px;
@@ -1704,7 +1718,7 @@ body {
 .review-user__label {
   width: calc(100% - 85%);
   color: #333333;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 0.87em;
   font-weight: 400;
   line-height: 26px;
@@ -1731,7 +1745,7 @@ body {
   width: calc(100% - 65%);
   margin: 0 16.3% 12%;
   color: #000000;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 1.37em;
   font-weight: 700;
   line-height: 26px;
@@ -1758,7 +1772,7 @@ body {
   border: none;
   padding-left: 7%;
   color: #000000;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 1.125em;
   font-weight: 700;
   line-height: 26px;
@@ -1849,7 +1863,7 @@ body {
   margin: 0 auto;
   width: calc(100% - 70%);
   color: #000000;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 1.33em;
   font-weight: 700;
   line-height: 26px;
@@ -1921,13 +1935,13 @@ body {
   z-index: 1;
   width: 20px;
   height: 20px;
-  background: url(../img/mail.png) no-repeat center 100%;
+  background: url(../img/mail.webp) no-repeat center 100%;
 }
 .user-contacts__email .wrong-email {
   display: none;
   width: 190px;
   color: #ff5c5c;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 0.87em;
   font-weight: 400;
   line-height: 26px;
@@ -2070,7 +2084,7 @@ body {
   display: none;
   width: 190px;
   color: #ff5c5c;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 0.87em;
   font-weight: 400;
   line-height: 26px;
@@ -2175,7 +2189,7 @@ body {
 }
 .users__label {
   color: #333333;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 0.87em;
   font-weight: 400;
   line-height: 26px;
@@ -2201,7 +2215,7 @@ body {
   .label-tablet {
     display: inline-block;
     color: #333333;
-    font-family: "PT Sans", sans-serif;
+    font-family: 'PT Sans', sans-serif;
     font-size: 0.87em;
     font-weight: 400;
     line-height: 26px;
@@ -2220,7 +2234,7 @@ body {
     width: 177px;
     display: inline-block;
     color: #333333;
-    font-family: "PT Sans", sans-serif;
+    font-family: 'PT Sans', sans-serif;
     font-size: 0.87em;
     font-weight: 400;
     line-height: 26px;
@@ -2235,7 +2249,7 @@ body {
   border: none;
   padding-left: 4.5%;
   color: #000000;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 1.125em;
   font-weight: 700;
   line-height: 26px;
@@ -2312,7 +2326,7 @@ body {
 .label-checkbox {
   width: 21.7%;
   color: #000000;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 1.125em;
   font-weight: 700;
   line-height: 26px;
@@ -2354,7 +2368,7 @@ body {
   }
 }
 .checkbox:checked + .label-checkbox:before {
-  background: url(../img/tick.png) no-repeat center 52.5%;
+  background: url(../img/tick.webp) no-repeat center 52.5%;
   background-color: #f2f2f2;
 }
 .textarea {
@@ -2367,7 +2381,7 @@ body {
   color: #000000;
   max-height: 145px;
   outline: none;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 1.01em;
   font-weight: 700;
   line-height: 26px;
@@ -2382,7 +2396,7 @@ body {
 }
 .textarea::-webkit-input-placeholder {
   color: #000000;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 1.125em;
   font-weight: 700;
   line-height: 26px;
@@ -2422,7 +2436,7 @@ body {
 .submit__text {
   margin-top: 2%;
   color: #333333;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 0.875em;
   font-weight: 400;
   line-height: 26px;
@@ -2439,7 +2453,7 @@ body {
   background-color: #81b3d2;
   text-align: center;
   color: #ffffff;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 1.31em;
   font-weight: 700;
   line-height: 26px;
@@ -2487,7 +2501,7 @@ body {
   max-height: 22px;
   margin: 0 0 -0.5% 1.3%;
   color: #000000;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 1.31em;
   font-weight: 700;
   line-height: 26px;
@@ -2538,26 +2552,26 @@ body {
   width: 19px;
   height: 15px;
   top: 35%;
-  background: url(../img/icon-twitter.png) no-repeat;
+  background: url(../img/icon-twitter.webp) no-repeat;
 }
 .social-networks__link:nth-child(1):active:after {
-  background: url(../img/twitter_copy_2.png);
+  background: url(../img/twitter_copy_2.webp);
 }
 .social-networks__link:nth-child(2):after {
-  background: url(../img/icon-facebook.png) no-repeat;
+  background: url(../img/icon-facebook.webp) no-repeat;
   width: 10px;
   height: 19px;
   top: 30%;
 }
 .social-networks__link:nth-child(2):active:after {
-  background: url(../img/facebook_copy_2.png);
+  background: url(../img/facebook_copy_2.webp);
 }
 .social-networks__link:nth-child(3):after {
-  background: url(../img/icon-youtube.png) no-repeat;
+  background: url(../img/icon-youtube.webp) no-repeat;
   height: 15px;
 }
 .social-networks__link:nth-child(3):active:after {
-  background: url(../img/youtube_copy_2.png);
+  background: url(../img/youtube_copy_2.webp);
 }
 .producer {
   width: 128px;
@@ -2574,15 +2588,15 @@ body {
           transform: translateX(0);
   content: '';
   position: absolute;
-  background: url(../img/htmlacademy.png);
+  background: url(../img/htmlacademy.webp);
   width: 27px;
   height: 34px;
 }
 .producer:hover:after {
-  background: url(../img/academy_hover.png);
+  background: url(../img/academy_hover.webp);
 }
 .producer:active:after {
-  background: url(../img/academy_active.png);
+  background: url(../img/academy_active.webp);
 }
 @media (max-width: 639px) {
   .producer {
@@ -2591,12 +2605,26 @@ body {
 }
 .producer__text {
   color: #000000;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 0.9em;
   font-weight: 400;
   line-height: 26px;
   text-transform: uppercase;
   margin: -1% 8% 0 0;
+}
+@font-face {
+  font-family: 'PT Sans';
+  src: url('../fonts/pt_sans.eot');
+  /* IE 9 Compatibility Mode */
+  src: url('../fonts/pt_sans.eot?#iefix') format('embedded-opentype'), /* IE < 9 */ url('../fonts/pt_sans.woff2') format('woff2'), /* Super Modern Browsers */ url('../fonts/pt_sans.woff') format('woff'), /* Firefox >= 3.6, any other modern browser */ url('../fonts/pt_sans.ttf') format('truetype'), /* Safari, Android, iOS */ url('../fonts/pt_sans.svg#pt_sans') format('svg');
+  /* Chrome < 4, Legacy iOS */
+}
+@font-face {
+  font-family: 'Ubuntu Bold';
+  src: url('../fonts/ubuntu_bold.eot');
+  /* IE 9 Compatibility Mode */
+  src: url('../fonts/ubuntu_bold.eot?#iefix') format('embedded-opentype'), /* IE < 9 */ url('../fonts/ubuntu_bold.woff2') format('woff2'), /* Super Modern Browsers */ url('../fonts/ubuntu_bold.woff') format('woff'), /* Firefox >= 3.6, any other modern browser */ url('../fonts/ubuntu_bold.ttf') format('truetype'), /* Safari, Android, iOS */ url('../fonts/ubuntu_bold.svg#ubuntu_bold') format('svg');
+  /* Chrome < 4, Legacy iOS */
 }
 html {
   margin: 0;
@@ -2647,7 +2675,7 @@ body {
   width: 23px;
 }
 .header {
-  background: url(../img/back-desktop.png) no-repeat center 100%;
+  background: url(../img/back-desktop.webp) no-repeat center 100%;
   height: 357px;
   position: relative;
 }
@@ -2658,7 +2686,7 @@ body {
           transform: translateX(-50%);
   content: '';
   position: absolute;
-  background: url(../img/intro-triangle.png) no-repeat center 100%;
+  background: url(../img/intro-triangle.webp) no-repeat center 100%;
   width: 100%;
   height: 57px;
   bottom: -1px;
@@ -2698,7 +2726,7 @@ body {
   max-height: 56px;
   color: #000000;
   text-decoration: none;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 0.875em;
   font-weight: 700;
   line-height: 4em;
@@ -2745,14 +2773,14 @@ body {
           transform: translateX(-50%);
   content: '';
   position: absolute;
-  background: url(../img/logotype-desktop.png) no-repeat center 100%;
+  background: url(../img/logotype-desktop.webp) no-repeat center 100%;
   background-size: cover;
   width: 187px;
   height: 94px;
 }
 @media (min-width: 640px) and (max-width: 991px) {
   .header__nav .nav-logo:after {
-    background: url(../img/logotype-tablet.png) no-repeat center;
+    background: url(../img/logotype-tablet.webp) no-repeat center;
     height: 83px;
   }
 }
@@ -2764,7 +2792,7 @@ body {
 }
 @media (max-width: 768px) {
   .header__nav .nav-logo:after {
-    background: url(../img/logotype-tablet.png) no-repeat center;
+    background: url(../img/logotype-tablet.webp) no-repeat center;
   }
 }
 .header__nav .nav-logo:hover {
@@ -2785,7 +2813,7 @@ body {
           transform: translateX(-49%);
 }
 .header__name .header__name-text {
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 6.8em;
   font-weight: 700;
   line-height: 26px;
@@ -2805,6 +2833,20 @@ body {
 }
 
 @import 'normalize.css';
+@font-face {
+  font-family: 'PT Sans';
+  src: url('../fonts/pt_sans.eot');
+  /* IE 9 Compatibility Mode */
+  src: url('../fonts/pt_sans.eot?#iefix') format('embedded-opentype'), /* IE < 9 */ url('../fonts/pt_sans.woff2') format('woff2'), /* Super Modern Browsers */ url('../fonts/pt_sans.woff') format('woff'), /* Firefox >= 3.6, any other modern browser */ url('../fonts/pt_sans.ttf') format('truetype'), /* Safari, Android, iOS */ url('../fonts/pt_sans.svg#pt_sans') format('svg');
+  /* Chrome < 4, Legacy iOS */
+}
+@font-face {
+  font-family: 'Ubuntu Bold';
+  src: url('../fonts/ubuntu_bold.eot');
+  /* IE 9 Compatibility Mode */
+  src: url('../fonts/ubuntu_bold.eot?#iefix') format('embedded-opentype'), /* IE < 9 */ url('../fonts/ubuntu_bold.woff2') format('woff2'), /* Super Modern Browsers */ url('../fonts/ubuntu_bold.woff') format('woff'), /* Firefox >= 3.6, any other modern browser */ url('../fonts/ubuntu_bold.ttf') format('truetype'), /* Safari, Android, iOS */ url('../fonts/ubuntu_bold.svg#ubuntu_bold') format('svg');
+  /* Chrome < 4, Legacy iOS */
+}
 html {
   margin: 0;
   padding: 0;
@@ -2854,7 +2896,7 @@ body {
   width: 23px;
 }
 .header {
-  background: url(../img/back-desktop.png) no-repeat center 100%;
+  background: url(../img/back-desktop.webp) no-repeat center 100%;
   height: 357px;
   position: relative;
 }
@@ -2865,7 +2907,7 @@ body {
           transform: translateX(-50%);
   content: '';
   position: absolute;
-  background: url(../img/intro-triangle.png) no-repeat center 100%;
+  background: url(../img/intro-triangle.webp) no-repeat center 100%;
   width: 100%;
   height: 57px;
   bottom: -1px;
@@ -2905,7 +2947,7 @@ body {
   max-height: 56px;
   color: #000000;
   text-decoration: none;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 0.875em;
   font-weight: 700;
   line-height: 4em;
@@ -2952,14 +2994,14 @@ body {
           transform: translateX(-50%);
   content: '';
   position: absolute;
-  background: url(../img/logotype-desktop.png) no-repeat center 100%;
+  background: url(../img/logotype-desktop.webp) no-repeat center 100%;
   background-size: cover;
   width: 187px;
   height: 94px;
 }
 @media (min-width: 640px) and (max-width: 991px) {
   .header__nav .nav-logo:after {
-    background: url(../img/logotype-tablet.png) no-repeat center;
+    background: url(../img/logotype-tablet.webp) no-repeat center;
     height: 83px;
   }
 }
@@ -2971,7 +3013,7 @@ body {
 }
 @media (max-width: 768px) {
   .header__nav .nav-logo:after {
-    background: url(../img/logotype-tablet.png) no-repeat center;
+    background: url(../img/logotype-tablet.webp) no-repeat center;
   }
 }
 .header__nav .nav-logo:hover {
@@ -2992,7 +3034,7 @@ body {
           transform: translateX(-49%);
 }
 .header__name .header__name-text {
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 6.8em;
   font-weight: 700;
   line-height: 26px;
@@ -3070,7 +3112,7 @@ body {
   margin: 0 auto;
   width: calc(100% - 70%);
   color: #000000;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 1.33em;
   font-weight: 700;
   line-height: 26px;
@@ -3142,13 +3184,13 @@ body {
   z-index: 1;
   width: 20px;
   height: 20px;
-  background: url(../img/mail.png) no-repeat center 100%;
+  background: url(../img/mail.webp) no-repeat center 100%;
 }
 .user-contacts__email .wrong-email {
   display: none;
   width: 190px;
   color: #ff5c5c;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 0.87em;
   font-weight: 400;
   line-height: 26px;
@@ -3291,7 +3333,7 @@ body {
   display: none;
   width: 190px;
   color: #ff5c5c;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 0.87em;
   font-weight: 400;
   line-height: 26px;
@@ -3396,7 +3438,7 @@ body {
 }
 .users__label {
   color: #333333;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 0.87em;
   font-weight: 400;
   line-height: 26px;
@@ -3422,7 +3464,7 @@ body {
   .label-tablet {
     display: inline-block;
     color: #333333;
-    font-family: "PT Sans", sans-serif;
+    font-family: 'PT Sans', sans-serif;
     font-size: 0.87em;
     font-weight: 400;
     line-height: 26px;
@@ -3441,7 +3483,7 @@ body {
     width: 177px;
     display: inline-block;
     color: #333333;
-    font-family: "PT Sans", sans-serif;
+    font-family: 'PT Sans', sans-serif;
     font-size: 0.87em;
     font-weight: 400;
     line-height: 26px;
@@ -3456,7 +3498,7 @@ body {
   border: none;
   padding-left: 4.5%;
   color: #000000;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 1.125em;
   font-weight: 700;
   line-height: 26px;
@@ -3533,7 +3575,7 @@ body {
 .label-checkbox {
   width: 21.7%;
   color: #000000;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 1.125em;
   font-weight: 700;
   line-height: 26px;
@@ -3575,7 +3617,7 @@ body {
   }
 }
 .checkbox:checked + .label-checkbox:before {
-  background: url(../img/tick.png) no-repeat center 52.5%;
+  background: url(../img/tick.webp) no-repeat center 52.5%;
   background-color: #f2f2f2;
 }
 .textarea {
@@ -3588,7 +3630,7 @@ body {
   color: #000000;
   max-height: 145px;
   outline: none;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 1.01em;
   font-weight: 700;
   line-height: 26px;
@@ -3603,7 +3645,7 @@ body {
 }
 .textarea::-webkit-input-placeholder {
   color: #000000;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 1.125em;
   font-weight: 700;
   line-height: 26px;
@@ -3643,7 +3685,7 @@ body {
 .submit__text {
   margin-top: 2%;
   color: #333333;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 0.875em;
   font-weight: 400;
   line-height: 26px;
@@ -3660,7 +3702,7 @@ body {
   background-color: #81b3d2;
   text-align: center;
   color: #ffffff;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 1.31em;
   font-weight: 700;
   line-height: 26px;
@@ -3708,7 +3750,7 @@ body {
   max-height: 22px;
   margin: 0 0 -0.5% 1.3%;
   color: #000000;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 1.31em;
   font-weight: 700;
   line-height: 26px;
@@ -3759,26 +3801,26 @@ body {
   width: 19px;
   height: 15px;
   top: 35%;
-  background: url(../img/icon-twitter.png) no-repeat;
+  background: url(../img/icon-twitter.webp) no-repeat;
 }
 .social-networks__link:nth-child(1):active:after {
-  background: url(../img/twitter_copy_2.png);
+  background: url(../img/twitter_copy_2.webp);
 }
 .social-networks__link:nth-child(2):after {
-  background: url(../img/icon-facebook.png) no-repeat;
+  background: url(../img/icon-facebook.webp) no-repeat;
   width: 10px;
   height: 19px;
   top: 30%;
 }
 .social-networks__link:nth-child(2):active:after {
-  background: url(../img/facebook_copy_2.png);
+  background: url(../img/facebook_copy_2.webp);
 }
 .social-networks__link:nth-child(3):after {
-  background: url(../img/icon-youtube.png) no-repeat;
+  background: url(../img/icon-youtube.webp) no-repeat;
   height: 15px;
 }
 .social-networks__link:nth-child(3):active:after {
-  background: url(../img/youtube_copy_2.png);
+  background: url(../img/youtube_copy_2.webp);
 }
 .producer {
   width: 128px;
@@ -3795,15 +3837,15 @@ body {
           transform: translateX(0);
   content: '';
   position: absolute;
-  background: url(../img/htmlacademy.png);
+  background: url(../img/htmlacademy.webp);
   width: 27px;
   height: 34px;
 }
 .producer:hover:after {
-  background: url(../img/academy_hover.png);
+  background: url(../img/academy_hover.webp);
 }
 .producer:active:after {
-  background: url(../img/academy_active.png);
+  background: url(../img/academy_active.webp);
 }
 @media (max-width: 639px) {
   .producer {
@@ -3812,7 +3854,7 @@ body {
 }
 .producer__text {
   color: #000000;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 0.9em;
   font-weight: 400;
   line-height: 26px;
@@ -3857,7 +3899,7 @@ body {
   display: block;
   text-align: center;
   color: #333333;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 0.8em;
   font-weight: 400;
   line-height: 24px;
@@ -3879,7 +3921,7 @@ body {
   width: calc(100% - 26%);
   margin: 5.5% auto 0;
   color: #000000;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 2.39em;
   font-weight: 700;
   line-height: 26px;
@@ -3895,7 +3937,7 @@ body {
 .review__podcast {
   display: block;
   margin-top: 1.5%;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 1.11em;
   font-weight: 400;
   line-height: 26px;
@@ -3951,7 +3993,7 @@ body {
 }
 .review-info__label {
   color: #000000;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 1.125em;
   font-weight: 700;
   line-height: 26px;
@@ -3970,7 +4012,7 @@ body {
   width: calc(100% - 27%);
   color: #000000;
   letter-spacing: 0.01em;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 1.3em;
   font-weight: 700;
   line-height: 26px;
@@ -4113,7 +4155,7 @@ body {
 .review-user__label {
   width: calc(100% - 85%);
   color: #333333;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 0.87em;
   font-weight: 400;
   line-height: 26px;
@@ -4140,7 +4182,7 @@ body {
   width: calc(100% - 65%);
   margin: 0 16.3% 12%;
   color: #000000;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 1.37em;
   font-weight: 700;
   line-height: 26px;
@@ -4167,7 +4209,7 @@ body {
   border: none;
   padding-left: 7%;
   color: #000000;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 1.125em;
   font-weight: 700;
   line-height: 26px;
@@ -4200,6 +4242,20 @@ body {
 }
 
 @import 'normalize.css';
+@font-face {
+  font-family: 'PT Sans';
+  src: url('../fonts/pt_sans.eot');
+  /* IE 9 Compatibility Mode */
+  src: url('../fonts/pt_sans.eot?#iefix') format('embedded-opentype'), /* IE < 9 */ url('../fonts/pt_sans.woff2') format('woff2'), /* Super Modern Browsers */ url('../fonts/pt_sans.woff') format('woff'), /* Firefox >= 3.6, any other modern browser */ url('../fonts/pt_sans.ttf') format('truetype'), /* Safari, Android, iOS */ url('../fonts/pt_sans.svg#pt_sans') format('svg');
+  /* Chrome < 4, Legacy iOS */
+}
+@font-face {
+  font-family: 'Ubuntu Bold';
+  src: url('../fonts/ubuntu_bold.eot');
+  /* IE 9 Compatibility Mode */
+  src: url('../fonts/ubuntu_bold.eot?#iefix') format('embedded-opentype'), /* IE < 9 */ url('../fonts/ubuntu_bold.woff2') format('woff2'), /* Super Modern Browsers */ url('../fonts/ubuntu_bold.woff') format('woff'), /* Firefox >= 3.6, any other modern browser */ url('../fonts/ubuntu_bold.ttf') format('truetype'), /* Safari, Android, iOS */ url('../fonts/ubuntu_bold.svg#ubuntu_bold') format('svg');
+  /* Chrome < 4, Legacy iOS */
+}
 html {
   margin: 0;
   padding: 0;
@@ -4249,7 +4305,7 @@ body {
   width: 23px;
 }
 .header {
-  background: url(../img/back-desktop.png) no-repeat center 100%;
+  background: url(../img/back-desktop.webp) no-repeat center 100%;
   height: 357px;
   position: relative;
 }
@@ -4260,7 +4316,7 @@ body {
           transform: translateX(-50%);
   content: '';
   position: absolute;
-  background: url(../img/intro-triangle.png) no-repeat center 100%;
+  background: url(../img/intro-triangle.webp) no-repeat center 100%;
   width: 100%;
   height: 57px;
   bottom: -1px;
@@ -4300,7 +4356,7 @@ body {
   max-height: 56px;
   color: #000000;
   text-decoration: none;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 0.875em;
   font-weight: 700;
   line-height: 4em;
@@ -4347,14 +4403,14 @@ body {
           transform: translateX(-50%);
   content: '';
   position: absolute;
-  background: url(../img/logotype-desktop.png) no-repeat center 100%;
+  background: url(../img/logotype-desktop.webp) no-repeat center 100%;
   background-size: cover;
   width: 187px;
   height: 94px;
 }
 @media (min-width: 640px) and (max-width: 991px) {
   .header__nav .nav-logo:after {
-    background: url(../img/logotype-tablet.png) no-repeat center;
+    background: url(../img/logotype-tablet.webp) no-repeat center;
     height: 83px;
   }
 }
@@ -4366,7 +4422,7 @@ body {
 }
 @media (max-width: 768px) {
   .header__nav .nav-logo:after {
-    background: url(../img/logotype-tablet.png) no-repeat center;
+    background: url(../img/logotype-tablet.webp) no-repeat center;
   }
 }
 .header__nav .nav-logo:hover {
@@ -4387,7 +4443,7 @@ body {
           transform: translateX(-49%);
 }
 .header__name .header__name-text {
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 6.8em;
   font-weight: 700;
   line-height: 26px;
@@ -4443,7 +4499,7 @@ body {
   display: block;
   text-align: center;
   color: #333333;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 0.8em;
   font-weight: 400;
   line-height: 24px;
@@ -4465,7 +4521,7 @@ body {
   width: calc(100% - 26%);
   margin: 5.5% auto 0;
   color: #000000;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 2.39em;
   font-weight: 700;
   line-height: 26px;
@@ -4481,7 +4537,7 @@ body {
 .review__podcast {
   display: block;
   margin-top: 1.5%;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 1.11em;
   font-weight: 400;
   line-height: 26px;
@@ -4537,7 +4593,7 @@ body {
 }
 .review-info__label {
   color: #000000;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 1.125em;
   font-weight: 700;
   line-height: 26px;
@@ -4556,7 +4612,7 @@ body {
   width: calc(100% - 27%);
   color: #000000;
   letter-spacing: 0.01em;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 1.3em;
   font-weight: 700;
   line-height: 26px;
@@ -4699,7 +4755,7 @@ body {
 .review-user__label {
   width: calc(100% - 85%);
   color: #333333;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 0.87em;
   font-weight: 400;
   line-height: 26px;
@@ -4726,7 +4782,7 @@ body {
   width: calc(100% - 65%);
   margin: 0 16.3% 12%;
   color: #000000;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 1.37em;
   font-weight: 700;
   line-height: 26px;
@@ -4753,7 +4809,7 @@ body {
   border: none;
   padding-left: 7%;
   color: #000000;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 1.125em;
   font-weight: 700;
   line-height: 26px;
@@ -4844,7 +4900,7 @@ body {
   margin: 0 auto;
   width: calc(100% - 70%);
   color: #000000;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 1.33em;
   font-weight: 700;
   line-height: 26px;
@@ -4916,13 +4972,13 @@ body {
   z-index: 1;
   width: 20px;
   height: 20px;
-  background: url(../img/mail.png) no-repeat center 100%;
+  background: url(../img/mail.webp) no-repeat center 100%;
 }
 .user-contacts__email .wrong-email {
   display: none;
   width: 190px;
   color: #ff5c5c;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 0.87em;
   font-weight: 400;
   line-height: 26px;
@@ -5065,7 +5121,7 @@ body {
   display: none;
   width: 190px;
   color: #ff5c5c;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 0.87em;
   font-weight: 400;
   line-height: 26px;
@@ -5170,7 +5226,7 @@ body {
 }
 .users__label {
   color: #333333;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 0.87em;
   font-weight: 400;
   line-height: 26px;
@@ -5196,7 +5252,7 @@ body {
   .label-tablet {
     display: inline-block;
     color: #333333;
-    font-family: "PT Sans", sans-serif;
+    font-family: 'PT Sans', sans-serif;
     font-size: 0.87em;
     font-weight: 400;
     line-height: 26px;
@@ -5215,7 +5271,7 @@ body {
     width: 177px;
     display: inline-block;
     color: #333333;
-    font-family: "PT Sans", sans-serif;
+    font-family: 'PT Sans', sans-serif;
     font-size: 0.87em;
     font-weight: 400;
     line-height: 26px;
@@ -5230,7 +5286,7 @@ body {
   border: none;
   padding-left: 4.5%;
   color: #000000;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 1.125em;
   font-weight: 700;
   line-height: 26px;
@@ -5307,7 +5363,7 @@ body {
 .label-checkbox {
   width: 21.7%;
   color: #000000;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 1.125em;
   font-weight: 700;
   line-height: 26px;
@@ -5349,7 +5405,7 @@ body {
   }
 }
 .checkbox:checked + .label-checkbox:before {
-  background: url(../img/tick.png) no-repeat center 52.5%;
+  background: url(../img/tick.webp) no-repeat center 52.5%;
   background-color: #f2f2f2;
 }
 .textarea {
@@ -5362,7 +5418,7 @@ body {
   color: #000000;
   max-height: 145px;
   outline: none;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 1.01em;
   font-weight: 700;
   line-height: 26px;
@@ -5377,7 +5433,7 @@ body {
 }
 .textarea::-webkit-input-placeholder {
   color: #000000;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 1.125em;
   font-weight: 700;
   line-height: 26px;
@@ -5417,7 +5473,7 @@ body {
 .submit__text {
   margin-top: 2%;
   color: #333333;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 0.875em;
   font-weight: 400;
   line-height: 26px;
@@ -5434,7 +5490,7 @@ body {
   background-color: #81b3d2;
   text-align: center;
   color: #ffffff;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 1.31em;
   font-weight: 700;
   line-height: 26px;
@@ -5482,7 +5538,7 @@ body {
   max-height: 22px;
   margin: 0 0 -0.5% 1.3%;
   color: #000000;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 1.31em;
   font-weight: 700;
   line-height: 26px;
@@ -5533,26 +5589,26 @@ body {
   width: 19px;
   height: 15px;
   top: 35%;
-  background: url(../img/icon-twitter.png) no-repeat;
+  background: url(../img/icon-twitter.webp) no-repeat;
 }
 .social-networks__link:nth-child(1):active:after {
-  background: url(../img/twitter_copy_2.png);
+  background: url(../img/twitter_copy_2.webp);
 }
 .social-networks__link:nth-child(2):after {
-  background: url(../img/icon-facebook.png) no-repeat;
+  background: url(../img/icon-facebook.webp) no-repeat;
   width: 10px;
   height: 19px;
   top: 30%;
 }
 .social-networks__link:nth-child(2):active:after {
-  background: url(../img/facebook_copy_2.png);
+  background: url(../img/facebook_copy_2.webp);
 }
 .social-networks__link:nth-child(3):after {
-  background: url(../img/icon-youtube.png) no-repeat;
+  background: url(../img/icon-youtube.webp) no-repeat;
   height: 15px;
 }
 .social-networks__link:nth-child(3):active:after {
-  background: url(../img/youtube_copy_2.png);
+  background: url(../img/youtube_copy_2.webp);
 }
 .producer {
   width: 128px;
@@ -5569,15 +5625,15 @@ body {
           transform: translateX(0);
   content: '';
   position: absolute;
-  background: url(../img/htmlacademy.png);
+  background: url(../img/htmlacademy.webp);
   width: 27px;
   height: 34px;
 }
 .producer:hover:after {
-  background: url(../img/academy_hover.png);
+  background: url(../img/academy_hover.webp);
 }
 .producer:active:after {
-  background: url(../img/academy_active.png);
+  background: url(../img/academy_active.webp);
 }
 @media (max-width: 639px) {
   .producer {
@@ -5586,7 +5642,7 @@ body {
 }
 .producer__text {
   color: #000000;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 0.9em;
   font-weight: 400;
   line-height: 26px;
@@ -5595,6 +5651,20 @@ body {
 }
 
 @import 'normalize.css';
+@font-face {
+  font-family: 'PT Sans';
+  src: url('../fonts/pt_sans.eot');
+  /* IE 9 Compatibility Mode */
+  src: url('../fonts/pt_sans.eot?#iefix') format('embedded-opentype'), /* IE < 9 */ url('../fonts/pt_sans.woff2') format('woff2'), /* Super Modern Browsers */ url('../fonts/pt_sans.woff') format('woff'), /* Firefox >= 3.6, any other modern browser */ url('../fonts/pt_sans.ttf') format('truetype'), /* Safari, Android, iOS */ url('../fonts/pt_sans.svg#pt_sans') format('svg');
+  /* Chrome < 4, Legacy iOS */
+}
+@font-face {
+  font-family: 'Ubuntu Bold';
+  src: url('../fonts/ubuntu_bold.eot');
+  /* IE 9 Compatibility Mode */
+  src: url('../fonts/ubuntu_bold.eot?#iefix') format('embedded-opentype'), /* IE < 9 */ url('../fonts/ubuntu_bold.woff2') format('woff2'), /* Super Modern Browsers */ url('../fonts/ubuntu_bold.woff') format('woff'), /* Firefox >= 3.6, any other modern browser */ url('../fonts/ubuntu_bold.ttf') format('truetype'), /* Safari, Android, iOS */ url('../fonts/ubuntu_bold.svg#ubuntu_bold') format('svg');
+  /* Chrome < 4, Legacy iOS */
+}
 html {
   margin: 0;
   padding: 0;
@@ -5644,7 +5714,7 @@ body {
   width: 23px;
 }
 .header {
-  background: url(../img/back-desktop.png) no-repeat center 100%;
+  background: url(../img/back-desktop.webp) no-repeat center 100%;
   height: 357px;
   position: relative;
 }
@@ -5655,7 +5725,7 @@ body {
           transform: translateX(-50%);
   content: '';
   position: absolute;
-  background: url(../img/intro-triangle.png) no-repeat center 100%;
+  background: url(../img/intro-triangle.webp) no-repeat center 100%;
   width: 100%;
   height: 57px;
   bottom: -1px;
@@ -5695,7 +5765,7 @@ body {
   max-height: 56px;
   color: #000000;
   text-decoration: none;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 0.875em;
   font-weight: 700;
   line-height: 4em;
@@ -5742,14 +5812,14 @@ body {
           transform: translateX(-50%);
   content: '';
   position: absolute;
-  background: url(../img/logotype-desktop.png) no-repeat center 100%;
+  background: url(../img/logotype-desktop.webp) no-repeat center 100%;
   background-size: cover;
   width: 187px;
   height: 94px;
 }
 @media (min-width: 640px) and (max-width: 991px) {
   .header__nav .nav-logo:after {
-    background: url(../img/logotype-tablet.png) no-repeat center;
+    background: url(../img/logotype-tablet.webp) no-repeat center;
     height: 83px;
   }
 }
@@ -5761,7 +5831,7 @@ body {
 }
 @media (max-width: 768px) {
   .header__nav .nav-logo:after {
-    background: url(../img/logotype-tablet.png) no-repeat center;
+    background: url(../img/logotype-tablet.webp) no-repeat center;
   }
 }
 .header__nav .nav-logo:hover {
@@ -5782,7 +5852,7 @@ body {
           transform: translateX(-49%);
 }
 .header__name .header__name-text {
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 6.8em;
   font-weight: 700;
   line-height: 26px;
@@ -5838,7 +5908,7 @@ body {
   display: block;
   text-align: center;
   color: #333333;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 0.8em;
   font-weight: 400;
   line-height: 24px;
@@ -5860,7 +5930,7 @@ body {
   width: calc(100% - 26%);
   margin: 5.5% auto 0;
   color: #000000;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 2.39em;
   font-weight: 700;
   line-height: 26px;
@@ -5876,7 +5946,7 @@ body {
 .review__podcast {
   display: block;
   margin-top: 1.5%;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 1.11em;
   font-weight: 400;
   line-height: 26px;
@@ -5932,7 +6002,7 @@ body {
 }
 .review-info__label {
   color: #000000;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 1.125em;
   font-weight: 700;
   line-height: 26px;
@@ -5951,7 +6021,7 @@ body {
   width: calc(100% - 27%);
   color: #000000;
   letter-spacing: 0.01em;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 1.3em;
   font-weight: 700;
   line-height: 26px;
@@ -6094,7 +6164,7 @@ body {
 .review-user__label {
   width: calc(100% - 85%);
   color: #333333;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 0.87em;
   font-weight: 400;
   line-height: 26px;
@@ -6121,7 +6191,7 @@ body {
   width: calc(100% - 65%);
   margin: 0 16.3% 12%;
   color: #000000;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 1.37em;
   font-weight: 700;
   line-height: 26px;
@@ -6148,7 +6218,7 @@ body {
   border: none;
   padding-left: 7%;
   color: #000000;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 1.125em;
   font-weight: 700;
   line-height: 26px;
@@ -6206,7 +6276,7 @@ body {
   max-height: 22px;
   margin: 0 0 -0.5% 1.3%;
   color: #000000;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 1.31em;
   font-weight: 700;
   line-height: 26px;
@@ -6257,26 +6327,26 @@ body {
   width: 19px;
   height: 15px;
   top: 35%;
-  background: url(../img/icon-twitter.png) no-repeat;
+  background: url(../img/icon-twitter.webp) no-repeat;
 }
 .social-networks__link:nth-child(1):active:after {
-  background: url(../img/twitter_copy_2.png);
+  background: url(../img/twitter_copy_2.webp);
 }
 .social-networks__link:nth-child(2):after {
-  background: url(../img/icon-facebook.png) no-repeat;
+  background: url(../img/icon-facebook.webp) no-repeat;
   width: 10px;
   height: 19px;
   top: 30%;
 }
 .social-networks__link:nth-child(2):active:after {
-  background: url(../img/facebook_copy_2.png);
+  background: url(../img/facebook_copy_2.webp);
 }
 .social-networks__link:nth-child(3):after {
-  background: url(../img/icon-youtube.png) no-repeat;
+  background: url(../img/icon-youtube.webp) no-repeat;
   height: 15px;
 }
 .social-networks__link:nth-child(3):active:after {
-  background: url(../img/youtube_copy_2.png);
+  background: url(../img/youtube_copy_2.webp);
 }
 .producer {
   width: 128px;
@@ -6293,15 +6363,15 @@ body {
           transform: translateX(0);
   content: '';
   position: absolute;
-  background: url(../img/htmlacademy.png);
+  background: url(../img/htmlacademy.webp);
   width: 27px;
   height: 34px;
 }
 .producer:hover:after {
-  background: url(../img/academy_hover.png);
+  background: url(../img/academy_hover.webp);
 }
 .producer:active:after {
-  background: url(../img/academy_active.png);
+  background: url(../img/academy_active.webp);
 }
 @media (max-width: 639px) {
   .producer {
@@ -6310,7 +6380,7 @@ body {
 }
 .producer__text {
   color: #000000;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 0.9em;
   font-weight: 400;
   line-height: 26px;
@@ -6377,7 +6447,7 @@ body {
   margin: 0 auto;
   width: calc(100% - 70%);
   color: #000000;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 1.33em;
   font-weight: 700;
   line-height: 26px;
@@ -6449,13 +6519,13 @@ body {
   z-index: 1;
   width: 20px;
   height: 20px;
-  background: url(../img/mail.png) no-repeat center 100%;
+  background: url(../img/mail.webp) no-repeat center 100%;
 }
 .user-contacts__email .wrong-email {
   display: none;
   width: 190px;
   color: #ff5c5c;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 0.87em;
   font-weight: 400;
   line-height: 26px;
@@ -6598,7 +6668,7 @@ body {
   display: none;
   width: 190px;
   color: #ff5c5c;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 0.87em;
   font-weight: 400;
   line-height: 26px;
@@ -6703,7 +6773,7 @@ body {
 }
 .users__label {
   color: #333333;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 0.87em;
   font-weight: 400;
   line-height: 26px;
@@ -6729,7 +6799,7 @@ body {
   .label-tablet {
     display: inline-block;
     color: #333333;
-    font-family: "PT Sans", sans-serif;
+    font-family: 'PT Sans', sans-serif;
     font-size: 0.87em;
     font-weight: 400;
     line-height: 26px;
@@ -6748,7 +6818,7 @@ body {
     width: 177px;
     display: inline-block;
     color: #333333;
-    font-family: "PT Sans", sans-serif;
+    font-family: 'PT Sans', sans-serif;
     font-size: 0.87em;
     font-weight: 400;
     line-height: 26px;
@@ -6763,7 +6833,7 @@ body {
   border: none;
   padding-left: 4.5%;
   color: #000000;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 1.125em;
   font-weight: 700;
   line-height: 26px;
@@ -6840,7 +6910,7 @@ body {
 .label-checkbox {
   width: 21.7%;
   color: #000000;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 1.125em;
   font-weight: 700;
   line-height: 26px;
@@ -6882,7 +6952,7 @@ body {
   }
 }
 .checkbox:checked + .label-checkbox:before {
-  background: url(../img/tick.png) no-repeat center 52.5%;
+  background: url(../img/tick.webp) no-repeat center 52.5%;
   background-color: #f2f2f2;
 }
 .textarea {
@@ -6895,7 +6965,7 @@ body {
   color: #000000;
   max-height: 145px;
   outline: none;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 1.01em;
   font-weight: 700;
   line-height: 26px;
@@ -6910,7 +6980,7 @@ body {
 }
 .textarea::-webkit-input-placeholder {
   color: #000000;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 1.125em;
   font-weight: 700;
   line-height: 26px;
@@ -6950,7 +7020,7 @@ body {
 .submit__text {
   margin-top: 2%;
   color: #333333;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 0.875em;
   font-weight: 400;
   line-height: 26px;
@@ -6967,7 +7037,7 @@ body {
   background-color: #81b3d2;
   text-align: center;
   color: #ffffff;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 1.31em;
   font-weight: 700;
   line-height: 26px;
