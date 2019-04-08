@@ -63,9 +63,31 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
           email: form.email.value,
           tel: form.tel.value
         };
-        validate.collectFormValues(formData);
+        validate.collectFormValues(formData, constraints);
         console.log(formData, validate.collectFormValues(form));
       });
+      var constraints = {
+        name: {
+          presence: true,
+          length: {
+            minimum: 3
+          }
+        },
+        surname: {
+          presence: true,
+          length: {
+            minimum: 3
+          }
+        },
+        email: {
+          email: true
+        },
+        tel: {
+          length: {
+            minimum: 3
+          }
+        }
+      };
     };
   }, {
     "validate.js": 2
