@@ -1,25 +1,70 @@
 @import 'main-import.less';
 
+//styles for slider
+
+.main-block{
+    max-width: 1000px;
+    max-height: 800px; 
+    margin: 0 auto;
+}
+
+.slider{
+    width: 810px;
+    height: 610px;
+    margin: 0 auto;
+    position:relative;
+    display: block;
+    overflow: hidden;
+    border: 5px solid @darkGray;
+}
+
+.slide-single{
+    width: 800px;
+    height: 600px;
+    position:absolute;
+    transition: all ease 3s;
+    left: 0;
+    top: 0;
+    margin: 5px 0;
+    padding: 0 6px;
+}
+
+.slider-headline{
+    .font(2em, 700, 24px);
+    margin: 10% auto;
+    display: block;
+    width: 360px;
+}
+////////////////////
+
 .main-container {
     max-width: 960px;
     margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
-    & div:nth-child(5){
+}
+
+.main-form{
+    display: flex;
+    flex-wrap: wrap;
+    & div:nth-child(3){
             .mobile-new( {
-                order: 3;
+                order: 2;
         });
     }
-    & div:nth-child(7){
+    & div:nth-child(5){
             .mobile-new( {
                 order: 5;
         });
     }
-    & div:nth-child(9){
+    & div:nth-child(7){
             .mobile-new( {
-                order: 7;
+                order: 6;
         });
     }
+    .mobile-new({
+    order: 2;
+    });
 }
 
 .review {
@@ -194,6 +239,7 @@
 
     &+.review-info__label:hover:before {
         background-color: @grayHover;
+        transition: 1s;
     }
 
     &+.review-info__label:active:before {

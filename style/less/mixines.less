@@ -1,5 +1,5 @@
 .font(@fz: 1.125em, @fw: 700, @lh: 26px, @tx: uppercase) {
-    font-family: "PT Sans", sans-serif;
+    font-family: 'PT Sans', sans-serif;
     font-size: @fz;
     font-weight: @fw;
     line-height: @lh;
@@ -69,11 +69,14 @@
 .hover-input() {
     &:hover {
         background-color: @grayHover;
+        transition: 0.5s;
     }
 
     &:focus {
         background-color: @white;
         outline: 4px solid @grayHover;
+        border: none;
+        transition: 0.5s;
     }
 }
 
