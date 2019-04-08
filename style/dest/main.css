@@ -227,7 +227,7 @@ body {
 }
 .main-block {
   max-width: 1000px;
-  max-height: 800px;
+  max-height: 1000px;
   margin: 0 auto;
 }
 .slider {
@@ -236,7 +236,6 @@ body {
   margin: 0 auto;
   position: relative;
   display: block;
-  overflow: hidden;
   border: 5px solid #b8b8b8;
 }
 .slide-single {
@@ -258,6 +257,29 @@ body {
   margin: 10% auto;
   display: block;
   width: 360px;
+}
+.pagination-block {
+  width: 400px;
+  height: auto;
+  display: flex;
+  justify-content: space-around;
+  margin: 10% auto;
+}
+.slide-navigation {
+  outline: none;
+  background: #81b3d2;
+  color: #ffffff;
+  font-family: 'PT Sans', sans-serif;
+  font-size: 0.872em;
+  font-weight: 400;
+  line-height: 24px;
+  text-transform: uppercase;
+  width: auto;
+  height: 30px;
+}
+.slide-navigation:hover {
+  background-color: #669ec0;
+  transition: 1s;
 }
 .main-container {
   max-width: 960px;
@@ -1454,7 +1476,7 @@ body {
 @import 'normalize.css';
 .main-block {
   max-width: 1000px;
-  max-height: 800px;
+  max-height: 1000px;
   margin: 0 auto;
 }
 .slider {
@@ -1463,7 +1485,6 @@ body {
   margin: 0 auto;
   position: relative;
   display: block;
-  overflow: hidden;
   border: 5px solid #b8b8b8;
 }
 .slide-single {
@@ -1485,6 +1506,29 @@ body {
   margin: 10% auto;
   display: block;
   width: 360px;
+}
+.pagination-block {
+  width: 400px;
+  height: auto;
+  display: flex;
+  justify-content: space-around;
+  margin: 10% auto;
+}
+.slide-navigation {
+  outline: none;
+  background: #81b3d2;
+  color: #ffffff;
+  font-family: 'PT Sans', sans-serif;
+  font-size: 0.872em;
+  font-weight: 400;
+  line-height: 24px;
+  text-transform: uppercase;
+  width: auto;
+  height: 30px;
+}
+.slide-navigation:hover {
+  background-color: #669ec0;
+  transition: 1s;
 }
 .main-container {
   max-width: 960px;
@@ -3939,7 +3983,7 @@ body {
 }
 .main-block {
   max-width: 1000px;
-  max-height: 800px;
+  max-height: 1000px;
   margin: 0 auto;
 }
 .slider {
@@ -3948,7 +3992,6 @@ body {
   margin: 0 auto;
   position: relative;
   display: block;
-  overflow: hidden;
   border: 5px solid #b8b8b8;
 }
 .slide-single {
@@ -3970,6 +4013,29 @@ body {
   margin: 10% auto;
   display: block;
   width: 360px;
+}
+.pagination-block {
+  width: 400px;
+  height: auto;
+  display: flex;
+  justify-content: space-around;
+  margin: 10% auto;
+}
+.slide-navigation {
+  outline: none;
+  background: #81b3d2;
+  color: #ffffff;
+  font-family: 'PT Sans', sans-serif;
+  font-size: 0.872em;
+  font-weight: 400;
+  line-height: 24px;
+  text-transform: uppercase;
+  width: auto;
+  height: 30px;
+}
+.slide-navigation:hover {
+  background-color: #669ec0;
+  transition: 1s;
 }
 .main-container {
   max-width: 960px;
@@ -4586,7 +4652,7 @@ body {
 }
 .main-block {
   max-width: 1000px;
-  max-height: 800px;
+  max-height: 1000px;
   margin: 0 auto;
 }
 .slider {
@@ -4595,7 +4661,6 @@ body {
   margin: 0 auto;
   position: relative;
   display: block;
-  overflow: hidden;
   border: 5px solid #b8b8b8;
 }
 .slide-single {
@@ -4617,6 +4682,29 @@ body {
   margin: 10% auto;
   display: block;
   width: 360px;
+}
+.pagination-block {
+  width: 400px;
+  height: auto;
+  display: flex;
+  justify-content: space-around;
+  margin: 10% auto;
+}
+.slide-navigation {
+  outline: none;
+  background: #81b3d2;
+  color: #ffffff;
+  font-family: 'PT Sans', sans-serif;
+  font-size: 0.872em;
+  font-weight: 400;
+  line-height: 24px;
+  text-transform: uppercase;
+  width: auto;
+  height: 30px;
+}
+.slide-navigation:hover {
+  background-color: #669ec0;
+  transition: 1s;
 }
 .main-container {
   max-width: 960px;
@@ -6039,7 +6127,7 @@ body {
 }
 .main-block {
   max-width: 1000px;
-  max-height: 800px;
+  max-height: 1000px;
   margin: 0 auto;
 }
 .slider {
@@ -6048,7 +6136,6 @@ body {
   margin: 0 auto;
   position: relative;
   display: block;
-  overflow: hidden;
   border: 5px solid #b8b8b8;
 }
 .slide-single {
@@ -6070,6 +6157,29 @@ body {
   margin: 10% auto;
   display: block;
   width: 360px;
+}
+.pagination-block {
+  width: 400px;
+  height: auto;
+  display: flex;
+  justify-content: space-around;
+  margin: 10% auto;
+}
+.slide-navigation {
+  outline: none;
+  background: #81b3d2;
+  color: #ffffff;
+  font-family: 'PT Sans', sans-serif;
+  font-size: 0.872em;
+  font-weight: 400;
+  line-height: 24px;
+  text-transform: uppercase;
+  width: auto;
+  height: 30px;
+}
+.slide-navigation:hover {
+  background-color: #669ec0;
+  transition: 1s;
 }
 .main-container {
   max-width: 960px;
