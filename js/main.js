@@ -41,25 +41,72 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
       var mobileMenu = document.querySelector('.mobile-navigation');
       var closeMobMenu = document.querySelector('.close-mobile-nav');
       var navigation = document.querySelector('.header__nav');
+      var tel = document.querySelector('#tel');
+      var email = document.querySelector('#email');
+      var errorMessageEmail = document.querySelector('.wrong-email');
+      var errorMessageTel = document.querySelector('.wrong-number');
 
       var validate = require("validate.js");
 
-      mobileMenuIcon.onclick = function () {
-        mobileMenu.style.display = "block";
-        mobileMenu.style.position = "fixed";
-        mobileMenuIcon.style.display = "none";
-        navigation.style.display = "none";
-      };
-
-      closeMobMenu.onclick = function () {
-        mobileMenu.style.display = "none";
-        mobileMenu.style.position = "absolute";
-        mobileMenuIcon.style.display = "block";
-        navigation.style.display = "block";
-      };
-
-      console.log('111');
       var form = document.querySelector(".main-form");
+
+      mobileMenuIcon.onclick = function (e) {
+        e.preventDefault();
+        mobileMenu.classList.add("show-nav");
+      };
+
+      closeMobMenu.onclick = function (e) {
+        e.preventDefault();
+        mobileMenu.classList.remove("show-nav");
+      };
+
+      var Constraints = {
+        name: {
+          presence: true,
+          length: {
+            minimum: 3
+          }
+        },
+        surname: {
+          presence: true,
+          length: {
+            minimum: 3
+          }
+        },
+        email: {
+          email: true,
+          presence: true
+        }
+      };
+      validate(form.name.value, Constraints);
+      var errorsname = validate(form.name.value, Constraints) || {};
+      console.log('errors', errorsname.name);
+      validate(form.surname.value, Constraints);
+      var errorssurname = validate(form.surname.value, Constraints) || {};
+      console.log('errors', errorssurname.surname);
+      tel.addEventListener("change", function () {
+        var req = /^\+?([0-9]{2})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4})$/;
+        var errors = validate(form.tel.value, Constraints) || {};
+        console.log('errors', errors.tel);
+
+        if (event.target.value.match(req)) {
+          console.log(11111);
+        } else {
+          errorMessageTel.classList.remove('wrong-number');
+          errorMessageTel.classList.add('wrong-number-visible');
+        }
+      });
+      email.addEventListener("change", function () {
+        var errors = validate(form.email.value, Constraints) || {};
+        console.log('errors', errors.email);
+
+        if (errors.email) {
+          errorMessageEmail.classList.remove('wrong-email');
+          errorMessageEmail.classList.add('wrong-email-visible');
+        } else {
+          console.log('email succes');
+        }
+      });
       form.addEventListener('submit', function (event) {
         event.preventDefault();
         var formData = {
@@ -69,7 +116,6 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
           tel: form.tel.value
         };
         validate.collectFormValues(formData);
-        console.log(formData, validate.collectFormValues(form));
       });
     };
   }, {
