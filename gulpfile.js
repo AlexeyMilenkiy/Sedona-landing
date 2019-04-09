@@ -40,15 +40,6 @@ gulp.task('browserify', function(){
     .pipe(browserSync.stream());
 });
 
-// gulp.task('babel', function () {
-//   return gulp.src("./js/main.js")
-//     .pipe(babel())
-//     .pipe(concat("main.js"))
-//     .pipe(gulp.dest("./js"))
-//     .pipe(browserSync.stream());
-// });
-
-
 gulp.task('default', gulp.parallel('less', 'css', 'browserify', function(){
        
        browserSync.init({

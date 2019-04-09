@@ -876,6 +876,32 @@ body {
 }
 .error-message {
   opacity: 1;
+  width: 190px;
+  color: #ff5c5c;
+  font-family: 'PT Sans', sans-serif;
+  font-size: 0.87em;
+  font-weight: 400;
+  line-height: 26px;
+  text-transform: none;
+  position: absolute;
+  bottom: 110%;
+  top: auto;
+  left: 65%;
+  transform: translateX(-65%);
+}
+@media (min-width: 640px) and (max-width: 991px) {
+  .error-message {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+@media (max-width: 639px) {
+  .error-message {
+    top: 105%;
+    bottom: auto;
+    left: 100px;
+    transform: translateX(-100px);
+  }
 }
 .user-contacts__number {
   width: 42%;
@@ -2069,6 +2095,32 @@ body {
 }
 .error-message {
   opacity: 1;
+  width: 190px;
+  color: #ff5c5c;
+  font-family: 'PT Sans', sans-serif;
+  font-size: 0.87em;
+  font-weight: 400;
+  line-height: 26px;
+  text-transform: none;
+  position: absolute;
+  bottom: 110%;
+  top: auto;
+  left: 65%;
+  transform: translateX(-65%);
+}
+@media (min-width: 640px) and (max-width: 991px) {
+  .error-message {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+@media (max-width: 639px) {
+  .error-message {
+    top: 105%;
+    bottom: auto;
+    left: 100px;
+    transform: translateX(-100px);
+  }
 }
 .user-contacts__number {
   width: 42%;
@@ -3329,6 +3381,32 @@ body {
 }
 .error-message {
   opacity: 1;
+  width: 190px;
+  color: #ff5c5c;
+  font-family: 'PT Sans', sans-serif;
+  font-size: 0.87em;
+  font-weight: 400;
+  line-height: 26px;
+  text-transform: none;
+  position: absolute;
+  bottom: 110%;
+  top: auto;
+  left: 65%;
+  transform: translateX(-65%);
+}
+@media (min-width: 640px) and (max-width: 991px) {
+  .error-message {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+@media (max-width: 639px) {
+  .error-message {
+    top: 105%;
+    bottom: auto;
+    left: 100px;
+    transform: translateX(-100px);
+  }
 }
 .user-contacts__number {
   width: 42%;
@@ -5133,6 +5211,32 @@ body {
 }
 .error-message {
   opacity: 1;
+  width: 190px;
+  color: #ff5c5c;
+  font-family: 'PT Sans', sans-serif;
+  font-size: 0.87em;
+  font-weight: 400;
+  line-height: 26px;
+  text-transform: none;
+  position: absolute;
+  bottom: 110%;
+  top: auto;
+  left: 65%;
+  transform: translateX(-65%);
+}
+@media (min-width: 640px) and (max-width: 991px) {
+  .error-message {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+@media (max-width: 639px) {
+  .error-message {
+    top: 105%;
+    bottom: auto;
+    left: 100px;
+    transform: translateX(-100px);
+  }
 }
 .user-contacts__number {
   width: 42%;
@@ -6690,6 +6794,32 @@ body {
 }
 .error-message {
   opacity: 1;
+  width: 190px;
+  color: #ff5c5c;
+  font-family: 'PT Sans', sans-serif;
+  font-size: 0.87em;
+  font-weight: 400;
+  line-height: 26px;
+  text-transform: none;
+  position: absolute;
+  bottom: 110%;
+  top: auto;
+  left: 65%;
+  transform: translateX(-65%);
+}
+@media (min-width: 640px) and (max-width: 991px) {
+  .error-message {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+@media (max-width: 639px) {
+  .error-message {
+    top: 105%;
+    bottom: auto;
+    left: 100px;
+    transform: translateX(-100px);
+  }
 }
 .user-contacts__number {
   width: 42%;

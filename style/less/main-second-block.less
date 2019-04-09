@@ -166,10 +166,31 @@
     });
 }
 
-.error-message{
-    opacity: 1;
-}
+// .error-visible{
+//     opacity: 
+// }
 
+.error-message{
+opacity: 1;
+        width: 190px;
+        color: @red;
+        .font(0.87em, 400, 26px, none);
+        position: absolute;
+        bottom: 110%;
+        top: auto;
+        left: 65%;
+        transform: translateX(-65%);
+            .desktop-new({
+            left: 50%;
+            transform: translateX(-50%);
+        });
+            .mobile-new({
+            top: 105%;
+            bottom: auto;
+            left: 100px;
+            transform: translateX(-100px);
+        });
+    }
 .user-contacts__number {
     width: 42%;
     .wrong-number {
