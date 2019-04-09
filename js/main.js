@@ -74,8 +74,8 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
           }
         },
         email: {
-          email: true,
-          presence: true
+          email: false,
+          presence: false
         }
       };
       validate(form.name.value, Constraints);
@@ -114,8 +114,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
           surname: form.surname.value,
           email: form.email.value,
           tel: form.tel.value
-        };
-        validate.collectFormValues(formData);
+        }; // validate.collectFormValues(formData)
       });
     };
   }, {

@@ -31,8 +31,8 @@ window.onload = function() {
             length: { minimum: 3 }
         },
         email: {
-            email: true,
-            presence: true
+            email: false,
+            presence: false
         },
     };
 
@@ -82,6 +82,6 @@ window.onload = function() {
             email: form.email.value,
             tel: form.tel.value
         };
-        validate.collectFormValues(formData)
+        // validate.collectFormValues(formData)
     })
 }
