@@ -16,13 +16,13 @@ var rename = require('gulp-rename');
 gulp.task('less', function(){
 	return gulp.src(['./style/less/*.less'])
 	       .pipe(less())
-         .pipe(concat('main.css'))
+           .pipe(concat('main.css'))
 	       .pipe(gulp.dest('./style/dest'))
 	       .pipe(browserSync.stream());
 });
 
 gulp.task('css', function () {
- var processors = [autoprefixer];
+ var processors = [autoprefixer({browsers: ['last 1 version']})];
   return gulp.src('./style/dest/main.css')
          .pipe(postcss(processors))
          .pipe(gulp.dest('./style/'))
@@ -46,7 +46,7 @@ gulp.task('default', gulp.parallel('less', 'css', 'browserify', function(){
        	server: {baseDir: './'}
        })
 
-	  gulp.watch('./index.html').on('change', browserSync.reload);
+    gulp.watch('./index.html').on('change', browserSync.reload);
     gulp.watch('./style/main.css').on('change', browserSync.reload);
     gulp.watch('./js/script.js').on('change', gulp.series('browserify'), browserSync.reload);
     gulp.watch('./style/less/*.less', gulp.series('less'));

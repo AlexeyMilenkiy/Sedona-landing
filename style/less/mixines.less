@@ -1,12 +1,12 @@
 .fontface(@family: @filename, @filename: @family){
     @font-face{
         font-family: @family;
-        src:url('../../fonts/@{filename}.eot');
-        src:url('../../fonts/@{filename}.eot?#iefix') format('embedded-opentype'),
-        url('../../fonts/@{filename}.woff2') format('woff2'),
-        url('../../fonts/@{filename}.woff') format('woff'),
-        url('../../fonts/@{filename}.ttf') format('truetype'),
-        url('../../fonts/@{filename}.svg#@{filename}') format('svg');
+        src:url('../fonts/@{filename}.eot');
+        src:url('../fonts/@{filename}.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/@{filename}.woff2') format('woff2'),
+        url('../fonts/@{filename}.woff') format('woff'),
+        url('../fonts/@{filename}.ttf') format('truetype'),
+        url('../fonts/@{filename}.svg#@{filename}') format('svg');
     }
 }
 .font(@fz: 1.125em, @fw: 700, @lh: 26px, @tx: uppercase) {
