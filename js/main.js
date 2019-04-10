@@ -65,7 +65,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
           presence: true,
           length: {
             minimum: 3,
-            message: 'name is not valid'
+            message: console.log("error name")
           }
         },
         surname: {
@@ -80,7 +80,9 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
           presence: false
         }
       };
-      validate(form.name.value, Constraints);
+      validate(form.name.value, Constraints, {
+        format: "flat"
+      });
       var errorsname = validate(form.name.value, Constraints) || {};
       console.log('errors', errorsname.name);
       validate(form.surname.value, Constraints);

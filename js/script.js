@@ -26,7 +26,7 @@ window.onload = function() {
             presence: true,
             length: {
                 minimum: 3,
-                message: 'name is not valid'}
+                message: console.log("error name")}
                 },
         surname: {
             presence: true,
@@ -41,7 +41,7 @@ window.onload = function() {
     };
 
 
-    validate(form.name.value, Constraints);
+    validate(form.name.value, Constraints,{format: "flat"});
 
     let errorsname = validate(form.name.value, Constraints) || {};
     console.log('errors', errorsname.name);
