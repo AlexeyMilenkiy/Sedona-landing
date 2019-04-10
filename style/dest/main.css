@@ -387,13 +387,13 @@ body {
 }
 @media (max-width: 768px) {
   .review-info__headline {
-    width: 280px;
+    width: 250px;
     margin: 0 auto 10%;
   }
 }
 @media (max-width: 639px) {
   .review-info__headline {
-    width: 240px;
+    width: 250px;
     font-size: 1.12em;
     margin-bottom: 6%;
   }
@@ -412,7 +412,7 @@ body {
 }
 @media (min-width: 640px) and (max-width: 991px) {
   .radio + .review-info__label {
-    width: 187px;
+    width: 192px;
     right: -10%;
   }
 }
@@ -688,7 +688,7 @@ body {
 }
 @media (max-width: 639px) {
   .container__headline {
-    width: 242px;
+    width: 250px;
     font-size: 1.13em;
   }
 }
@@ -1173,7 +1173,7 @@ body {
   }
 }
 .label-checkbox {
-  width: 21.7%;
+  width: 22%;
   color: #000000;
   font-family: 'PT Sans', sans-serif;
   font-size: 1.125em;
@@ -1206,13 +1206,13 @@ body {
 }
 @media (min-width: 640px) and (max-width: 991px) {
   .checkbox + .label-checkbox {
-    width: 207px;
+    width: 210px;
     margin-bottom: 8%;
   }
 }
 @media (max-width: 639px) {
   .checkbox + .label-checkbox {
-    width: 204px;
+    width: 210px;
     margin-bottom: 8%;
   }
 }
@@ -1445,11 +1445,16 @@ body {
   height: 34px;
 }
 .producer:hover:after {
-  background: url(../img/academy_hover.webp) no-repeat, url(../img/academy_hover.png) no-repeat;
-  transition: all ease 1s;
+  content: '';
+  cursor: pointer;
+  background: url(../img/academy_hover.png) no-repeat;
+  -webkit-transition: 1s ;
+  -moz-transition: 1s ;
+  transition: 1s ;
 }
 .producer:active:after {
-  background: url(../img/academy_active.webp) no-repeat, url(../img/academy_active.png) no-repeat;
+  content: '';
+  background: url(../img/academy_active.png) no-repeat;
 }
 @media (max-width: 639px) {
   .producer {
@@ -1633,13 +1638,13 @@ body {
 }
 @media (max-width: 768px) {
   .review-info__headline {
-    width: 280px;
+    width: 250px;
     margin: 0 auto 10%;
   }
 }
 @media (max-width: 639px) {
   .review-info__headline {
-    width: 240px;
+    width: 250px;
     font-size: 1.12em;
     margin-bottom: 6%;
   }
@@ -1658,7 +1663,7 @@ body {
 }
 @media (min-width: 640px) and (max-width: 991px) {
   .radio + .review-info__label {
-    width: 187px;
+    width: 192px;
     right: -10%;
   }
 }
@@ -1934,7 +1939,7 @@ body {
 }
 @media (max-width: 639px) {
   .container__headline {
-    width: 242px;
+    width: 250px;
     font-size: 1.13em;
   }
 }
@@ -2419,7 +2424,7 @@ body {
   }
 }
 .label-checkbox {
-  width: 21.7%;
+  width: 22%;
   color: #000000;
   font-family: 'PT Sans', sans-serif;
   font-size: 1.125em;
@@ -2452,13 +2457,13 @@ body {
 }
 @media (min-width: 640px) and (max-width: 991px) {
   .checkbox + .label-checkbox {
-    width: 207px;
+    width: 210px;
     margin-bottom: 8%;
   }
 }
 @media (max-width: 639px) {
   .checkbox + .label-checkbox {
-    width: 204px;
+    width: 210px;
     margin-bottom: 8%;
   }
 }
@@ -2691,11 +2696,16 @@ body {
   height: 34px;
 }
 .producer:hover:after {
-  background: url(../img/academy_hover.webp) no-repeat, url(../img/academy_hover.png) no-repeat;
-  transition: all ease 1s;
+  content: '';
+  cursor: pointer;
+  background: url(../img/academy_hover.png) no-repeat;
+  -webkit-transition: 1s ;
+  -moz-transition: 1s ;
+  transition: 1s ;
 }
 .producer:active:after {
-  background: url(../img/academy_active.webp) no-repeat, url(../img/academy_active.png) no-repeat;
+  content: '';
+  background: url(../img/academy_active.png) no-repeat;
 }
 @media (max-width: 639px) {
   .producer {
@@ -3239,7 +3249,7 @@ body {
 }
 @media (max-width: 639px) {
   .container__headline {
-    width: 242px;
+    width: 250px;
     font-size: 1.13em;
   }
 }
@@ -3724,7 +3734,7 @@ body {
   }
 }
 .label-checkbox {
-  width: 21.7%;
+  width: 22%;
   color: #000000;
   font-family: 'PT Sans', sans-serif;
   font-size: 1.125em;
@@ -3757,13 +3767,13 @@ body {
 }
 @media (min-width: 640px) and (max-width: 991px) {
   .checkbox + .label-checkbox {
-    width: 207px;
+    width: 210px;
     margin-bottom: 8%;
   }
 }
 @media (max-width: 639px) {
   .checkbox + .label-checkbox {
-    width: 204px;
+    width: 210px;
     margin-bottom: 8%;
   }
 }
@@ -3996,11 +4006,16 @@ body {
   height: 34px;
 }
 .producer:hover:after {
-  background: url(../img/academy_hover.webp) no-repeat, url(../img/academy_hover.png) no-repeat;
-  transition: all ease 1s;
+  content: '';
+  cursor: pointer;
+  background: url(../img/academy_hover.png) no-repeat;
+  -webkit-transition: 1s ;
+  -moz-transition: 1s ;
+  transition: 1s ;
 }
 .producer:active:after {
-  background: url(../img/academy_active.webp) no-repeat, url(../img/academy_active.png) no-repeat;
+  content: '';
+  background: url(../img/academy_active.png) no-repeat;
 }
 @media (max-width: 639px) {
   .producer {
@@ -4182,13 +4197,13 @@ body {
 }
 @media (max-width: 768px) {
   .review-info__headline {
-    width: 280px;
+    width: 250px;
     margin: 0 auto 10%;
   }
 }
 @media (max-width: 639px) {
   .review-info__headline {
-    width: 240px;
+    width: 250px;
     font-size: 1.12em;
     margin-bottom: 6%;
   }
@@ -4207,7 +4222,7 @@ body {
 }
 @media (min-width: 640px) and (max-width: 991px) {
   .radio + .review-info__label {
-    width: 187px;
+    width: 192px;
     right: -10%;
   }
 }
@@ -4791,13 +4806,13 @@ body {
 }
 @media (max-width: 768px) {
   .review-info__headline {
-    width: 280px;
+    width: 250px;
     margin: 0 auto 10%;
   }
 }
 @media (max-width: 639px) {
   .review-info__headline {
-    width: 240px;
+    width: 250px;
     font-size: 1.12em;
     margin-bottom: 6%;
   }
@@ -4816,7 +4831,7 @@ body {
 }
 @media (min-width: 640px) and (max-width: 991px) {
   .radio + .review-info__label {
-    width: 187px;
+    width: 192px;
     right: -10%;
   }
 }
@@ -5092,7 +5107,7 @@ body {
 }
 @media (max-width: 639px) {
   .container__headline {
-    width: 242px;
+    width: 250px;
     font-size: 1.13em;
   }
 }
@@ -5577,7 +5592,7 @@ body {
   }
 }
 .label-checkbox {
-  width: 21.7%;
+  width: 22%;
   color: #000000;
   font-family: 'PT Sans', sans-serif;
   font-size: 1.125em;
@@ -5610,13 +5625,13 @@ body {
 }
 @media (min-width: 640px) and (max-width: 991px) {
   .checkbox + .label-checkbox {
-    width: 207px;
+    width: 210px;
     margin-bottom: 8%;
   }
 }
 @media (max-width: 639px) {
   .checkbox + .label-checkbox {
-    width: 204px;
+    width: 210px;
     margin-bottom: 8%;
   }
 }
@@ -5849,11 +5864,16 @@ body {
   height: 34px;
 }
 .producer:hover:after {
-  background: url(../img/academy_hover.webp) no-repeat, url(../img/academy_hover.png) no-repeat;
-  transition: all ease 1s;
+  content: '';
+  cursor: pointer;
+  background: url(../img/academy_hover.png) no-repeat;
+  -webkit-transition: 1s ;
+  -moz-transition: 1s ;
+  transition: 1s ;
 }
 .producer:active:after {
-  background: url(../img/academy_active.webp) no-repeat, url(../img/academy_active.png) no-repeat;
+  content: '';
+  background: url(../img/academy_active.png) no-repeat;
 }
 @media (max-width: 639px) {
   .producer {
@@ -6259,13 +6279,13 @@ body {
 }
 @media (max-width: 768px) {
   .review-info__headline {
-    width: 280px;
+    width: 250px;
     margin: 0 auto 10%;
   }
 }
 @media (max-width: 639px) {
   .review-info__headline {
-    width: 240px;
+    width: 250px;
     font-size: 1.12em;
     margin-bottom: 6%;
   }
@@ -6284,7 +6304,7 @@ body {
 }
 @media (min-width: 640px) and (max-width: 991px) {
   .radio + .review-info__label {
-    width: 187px;
+    width: 192px;
     right: -10%;
   }
 }
@@ -6596,11 +6616,16 @@ body {
   height: 34px;
 }
 .producer:hover:after {
-  background: url(../img/academy_hover.webp) no-repeat, url(../img/academy_hover.png) no-repeat;
-  transition: all ease 1s;
+  content: '';
+  cursor: pointer;
+  background: url(../img/academy_hover.png) no-repeat;
+  -webkit-transition: 1s ;
+  -moz-transition: 1s ;
+  transition: 1s ;
 }
 .producer:active:after {
-  background: url(../img/academy_active.webp) no-repeat, url(../img/academy_active.png) no-repeat;
+  content: '';
+  background: url(../img/academy_active.png) no-repeat;
 }
 @media (max-width: 639px) {
   .producer {
@@ -6698,7 +6723,7 @@ body {
 }
 @media (max-width: 639px) {
   .container__headline {
-    width: 242px;
+    width: 250px;
     font-size: 1.13em;
   }
 }
@@ -7183,7 +7208,7 @@ body {
   }
 }
 .label-checkbox {
-  width: 21.7%;
+  width: 22%;
   color: #000000;
   font-family: 'PT Sans', sans-serif;
   font-size: 1.125em;
@@ -7216,13 +7241,13 @@ body {
 }
 @media (min-width: 640px) and (max-width: 991px) {
   .checkbox + .label-checkbox {
-    width: 207px;
+    width: 210px;
     margin-bottom: 8%;
   }
 }
 @media (max-width: 639px) {
   .checkbox + .label-checkbox {
-    width: 204px;
+    width: 210px;
     margin-bottom: 8%;
   }
 }

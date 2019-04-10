@@ -99,13 +99,16 @@
     .size(27px,34px);
     }
     &:hover:after{
-        background:url(../img/academy_hover.webp)no-repeat,
-        url(../img/academy_hover.png)no-repeat;
-        transition:  all ease 1s;
+        content: '';
+        cursor: pointer;
+        background:url(../img/academy_hover.png)no-repeat;
+        -webkit-transition:1s ;
+        -moz-transition:1s ;
+        transition:1s ;
     }
     &:active:after{
-        background:url(../img/academy_active.webp)no-repeat,
-        url(../img/academy_active.png)no-repeat;
+        content: '';
+        background:url(../img/academy_active.png)no-repeat;
     }
         .mobile-new( {
         margin: 28% 0 0 9%;
@@ -116,5 +119,4 @@
     color: @black;
     .font(0.9em, 400, 26px);
     margin: -1% 8% 0 0;
-
 }
