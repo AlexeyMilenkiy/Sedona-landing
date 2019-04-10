@@ -224,6 +224,12 @@ body {
     top: 52%;
   }
 }
+.has-error {
+  border-color: red;
+}
+.has-success {
+  border-color: blue;
+}
 .main-container {
   max-width: 960px;
   margin: 0 auto;
@@ -1531,6 +1537,12 @@ body {
 }
 
 @import 'normalize.css';
+.has-error {
+  border-color: red;
+}
+.has-success {
+  border-color: blue;
+}
 .main-container {
   max-width: 960px;
   margin: 0 auto;
@@ -4169,6 +4181,12 @@ body {
   text-transform: uppercase;
   margin: -1% 8% 0 0;
 }
+.has-error {
+  border-color: red;
+}
+.has-success {
+  border-color: blue;
+}
 .main-container {
   max-width: 960px;
   margin: 0 auto;
@@ -4787,6 +4805,12 @@ body {
   .header__name {
     top: 52%;
   }
+}
+.has-error {
+  border-color: red;
+}
+.has-success {
+  border-color: blue;
 }
 .main-container {
   max-width: 960px;
@@ -6303,6 +6327,12 @@ body {
   .header__name {
     top: 52%;
   }
+}
+.has-error {
+  border-color: red;
+}
+.has-success {
+  border-color: blue;
 }
 .main-container {
   max-width: 960px;
