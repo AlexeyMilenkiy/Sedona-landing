@@ -64,13 +64,15 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
         name: {
           presence: true,
           length: {
-            minimum: 3
+            minimum: 3,
+            message: 'name is not valid'
           }
         },
         surname: {
           presence: true,
           length: {
-            minimum: 3
+            minimum: 3,
+            message: 'name is not valid'
           }
         },
         email: {

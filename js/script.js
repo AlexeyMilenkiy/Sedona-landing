@@ -24,17 +24,22 @@ window.onload = function() {
     const Constraints = {
         name: {
             presence: true,
-            length: { minimum: 3 }
-        },
+            length: {
+                minimum: 3,
+                message: 'name is not valid'}
+                },
         surname: {
             presence: true,
-            length: { minimum: 3 }
+            length: {
+                minimum: 3,
+                message: 'name is not valid' }
         },
         email: {
             email: false,
             presence: false
         },
     };
+
 
     validate(form.name.value, Constraints);
 
