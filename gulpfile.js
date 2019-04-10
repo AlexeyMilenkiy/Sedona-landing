@@ -10,50 +10,45 @@ var FAVICON_DATA_FILE = 'faviconData.json';
 var babel = require('gulp-babel');
 var browserify = require('browserify');
 var source = require('vinyl-source-stream');
+var streamify = require('gulp-streamify');
+var rename = require('gulp-rename');
 
 gulp.task('less', function(){
 	return gulp.src(['./style/less/*.less'])
 	       .pipe(less())
-         .pipe(concat('main.css'))
+           .pipe(concat('main.css'))
 	       .pipe(gulp.dest('./style/dest'))
 	       .pipe(browserSync.stream());
 });
 
 gulp.task('css', function () {
- var processors = [autoprefixer];
+ var processors = [autoprefixer({browsers: ['last 1 version']})];
   return gulp.src('./style/dest/main.css')
          .pipe(postcss(processors))
          .pipe(gulp.dest('./style/'))
          .pipe(browserSync.stream());
 });
 
-
 gulp.task('browserify', function(){
-  return browserify('./js/script.js')
-    .bundle()
-    .pipe(source('main.js'))
+  var bundleStream = browserify('./js/script.js').bundle()
+
+  bundleStream
+    .pipe(source('script.js'))
+    .pipe(streamify(babel()))
+    .pipe(rename('main.js'))
     .pipe(gulp.dest('./js'))
     .pipe(browserSync.stream());
 });
 
-gulp.task('babel', function () {
-  return gulp.src("./js/main.js")
-    .pipe(babel())
-    .pipe(concat("main.js"))
-    .pipe(gulp.dest("./js"))
-    .pipe(browserSync.stream());
-});
-
-
-gulp.task('default', gulp.parallel('less', 'css', function(){
+gulp.task('default', gulp.parallel('less', 'css', 'browserify', function(){
        
        browserSync.init({
        	server: {baseDir: './'}
        })
 
-	  gulp.watch('./index.html').on('change', browserSync.reload);
+    gulp.watch('./index.html').on('change', browserSync.reload);
     gulp.watch('./style/main.css').on('change', browserSync.reload);
-    gulp.watch('./js/main.js').on('change', browserSync.reload);
+    gulp.watch('./js/script.js').on('change', gulp.series('browserify'), browserSync.reload);
     gulp.watch('./style/less/*.less', gulp.series('less'));
     gulp.watch('./style/dest/*.css', gulp.series('css'));
 }));

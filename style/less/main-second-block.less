@@ -5,7 +5,7 @@
     width: 100%;
     &:after{
     .animation();
-    left: 0;
+    left: 70%;
        .tablet-new({
            width: 25%;
         });
@@ -15,7 +15,8 @@
     }
     &:before{
     .animation();
-    right: 0;
+
+    right: 70%;
         .tablet-new({
            width: 25%;
         });
@@ -28,21 +29,32 @@
     0%{
         width: 0%;}
     100%{
-        width: 29%;}
+        width: 29%;
+    }
 } 
+
+.tablet-new({
+    @keyframes widthing {
+        0%{
+            width: 0%;}
+        100%{
+            width: 25%;
+        }
+    } 
+});
 
 .container__headline{
     display: block;
     margin: 0 auto;
-    width: calc(100% - 70%);
+    width: calc(100% - 69%);
     color: @black;
    .font(1.33em, 700, 26px);
     text-align: center;
         .desktop-new({
-                    width: 285px;
+          width: 285px;
         });
         .mobile-new({
-        width: 242px;
+        width: 250px;
         font-size: 1.13em;
         });
 }
@@ -57,7 +69,7 @@
         });
         .mobile-new({
             display: block;
-            min-height: 360px;
+            min-height: 280px;
             order: 3;
             border-bottom: 1px solid @gray;
         });
@@ -66,9 +78,13 @@
 
 .user-contacts__email{
     width: 50%;
-    .contact-container-pseudo(url(../img/mail.png));
+    .contact-container-pseudo();
+    &:before{
+      background: url(../img/mail.webp) no-repeat center 100%,
+      url(../img/mail.png) no-repeat center 100%;
+    }
     .wrong-email {
-        display: none;
+        opacity: 0;
         width: 190px;
         color: @red;
         .font(0.87em, 400, 26px, none);
@@ -147,21 +163,38 @@
     }
     .mobile-new({
         width: calc(100% - 15%);
-        min-width: 283px;    
-        margin: 9% auto 4%;
+        min-width: 283px;
+        margin: 9% auto 8%;
         max-height: 33vh;
         flex-wrap: wrap;
     });
 }
 
-.has-error{
-    display: block;
-}
-
+.wrong-email-visible{
+opacity: 1;
+        width: 190px;
+        color: @red;
+        .font(0.87em, 400, 26px, none);
+        position: absolute;
+        bottom: 110%;
+        top: auto;
+        left: 65%;
+        transform: translateX(-65%);
+            .desktop-new({
+            left: 50%;
+            transform: translateX(-50%);
+        });
+            .mobile-new({
+            top: 105%;
+            bottom: auto;
+            left: 100px;
+            transform: translateX(-100px);
+        });
+    }
 .user-contacts__number {
     width: 42%;
     .wrong-number {
-        display: none;
+        opacity: 0;
         width: 190px;
         color: @red;
         .font(0.87em, 400, 26px, none);
@@ -179,6 +212,10 @@
     }
 
     .contact-container-pseudo();
+    &:before{
+    background: url(../img/phone.webp) no-repeat center 100%,
+    url(../img/phone.png) no-repeat center 100%;
+    }
         .desktop-new({
             width: calc(100% - 25%);
             margin:8% auto 0;
@@ -190,7 +227,7 @@
             width: calc(100% - 15%);
             min-width: 283px;
             max-height: 33vh;
-            margin: 4% auto;
+            margin: 3% auto 11%;
             flex-wrap: wrap;
         });
         &:after{
@@ -211,14 +248,32 @@
             .desktop-new({
                 right: 8px;
                 transform: translateX(-8px);
-                 });            
+            });
             .mobile-new({
                 right: 10px;
                 top: auto;
                 bottom: 22px;
                 transform: translateX(-10px);
-                 });
-        }
+            });
+    }
+}
+
+.wrong-number-visible{
+  opacity: 1;
+  width: 190px;
+  color: @red;
+  .font(0.87em, 400, 26px, none);
+  position: absolute;
+  bottom: 110%;
+  top: auto;
+  left: 50%;
+  transform: translateX(-50%);
+  .mobile-new({
+    top: 105%;
+    bottom: auto;
+    left: 100px;
+    transform: translateX(-100px);
+  });
 }
 
 .users__label{
@@ -326,7 +381,7 @@
 }
 
 .label-checkbox{
-    width: 21.7%;
+    width: 22%;
     color: @black;
     .font(1.125em, 700, 26px, none);
     &:before {
@@ -353,16 +408,17 @@
     & + .label-checkbox{
     cursor: pointer;
     .desktop-new({
-        width: 207px;
+        width: 210px;
         margin-bottom: 8%;
     });
     .mobile-new({
-        width: 204px;
+        width: 210px;
         margin-bottom: 8%;
     });
    }
     &:checked + .label-checkbox:before {
-    background: url(../img/tick.png) no-repeat center 52.5%;
+    background: url(../img/tick.webp) no-repeat center 52.5%,
+    url(../img/tick.png) no-repeat center 52.5%;
     background-color: @gray;
    }
 }
@@ -431,6 +487,7 @@
     &:hover{
         cursor: pointer;
         background-color:@blue;
+        transition: 1s;
     }
     &:active{
         background-color:@darkBlue;
