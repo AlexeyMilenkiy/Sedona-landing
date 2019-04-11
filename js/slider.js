@@ -45,7 +45,7 @@ window.onload = function () {
     function findIndex(arg) {
 
         for (; imgIndex < links.length; imgIndex++) {
-            if (links[imgIndex] === arg[2].src) {
+            if (links[imgIndex] === arg.src) {
                 return imgIndex;
             }
         }
@@ -70,7 +70,10 @@ window.onload = function () {
         let leftImg = document.createElement('img');
 
         if (imgIndex === -1) {
-            imgIndex = links.length - 1; }      // присвоение пути каждой новой картинке
+            imgIndex = links.length - 1;
+        }else{
+        imgIndex= imgIndex - 1;
+        }      // присвоение пути каждой новой картинке
         console.log(imgIndex);
         leftImg.src = links[imgIndex];
         leftImg.classList.add('slide-single'); // добавляем картинке класс
@@ -83,7 +86,7 @@ window.onload = function () {
         let offset2 = 0;
         let step2 = 0;
         let slides2 = document.querySelectorAll('.slide-single');
-        findIndex(slides2);
+        findIndex(slides2[2]);
         console.log(slides2[2].src);
         slides2[0].remove();
 
@@ -108,7 +111,7 @@ window.onload = function () {
         let slides3 = document.querySelectorAll('.slide-single');
         let offset3 = 0;
         let step3 = slides3.length;
-
+        findIndex(slides3[0]);
         slides3[2].remove();
 
         for (let i = slides3.length - 1; i >= 0; i--) {
@@ -118,7 +121,6 @@ window.onload = function () {
                 step3--;
             } else {
                 offset3 = 0;
-                imgIndex--;
             }
             slides3[i].style.left = offset3 * 806 + 'px';
         }
