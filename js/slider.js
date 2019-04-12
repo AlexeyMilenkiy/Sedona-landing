@@ -60,10 +60,10 @@ window.onload = function () {
             imgIndex = imgIndex + 1;
         }
         console.log(imgIndex);
-        rightImg.src = links[imgIndex]; // присвоение пути каждой новой картинке
-        rightImg.classList.add('slide-single'); // добавляем картинке класс
-        rightImg.style.left = 806 + 'px'; // смещение картинки на ее ширину, первая картинка не смещена она по центру
-        sliderBlock.appendChild(rightImg);// добавляем картинку в наш блок
+        rightImg.src = links[imgIndex];
+        rightImg.classList.add('slide-single');
+        rightImg.style.left = 806 + 'px';
+        sliderBlock.appendChild(rightImg);
     }
 
     function addPrevImage() {
@@ -75,9 +75,9 @@ window.onload = function () {
         }
 
         leftImg.src = links[imgIndex];
-        leftImg.classList.add('slide-single'); // добавляем картинке класс
-        leftImg.style.left = -806 + 'px'; // смещение картинки на ее ширину, первая картинка не смещена она по центру
-        sliderBlock.insertBefore(leftImg, sliderBlock.children[0]);// добавляем картинку в наш блок
+        leftImg.classList.add('slide-single');
+        leftImg.style.left = -806 + 'px';
+        sliderBlock.insertBefore(leftImg, sliderBlock.children[0]);
     }
 
     function showNextImage() {
