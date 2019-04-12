@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 
 <head>
     <meta charset="UTF-8">
@@ -16,68 +16,89 @@
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
     <link href="style/main.css" rel="stylesheet">
+    <script src="js/modernizr-custom.js"></script>
     <title>Sedona</title>
 </head>
 
 <body>
-    <div class="mobile-navigation">
-        <a href="#main" class="mobile__nav">ГЛАВНАЯ
-            <img src="img/icon-cross.webp" alt="close" class="close-mobile-nav"></a>
-        <a href="#" class="mobile__nav">ФОТО И ВИДЕО</a>
-        <a href="#review-form" class="mobile__nav">ФОРМА ОТЗЫВА</a>
-        <a href="#html-academy" class="mobile__nav">HTML ACADEMY</a>
+<div class="mobile-navigation">
+    <a href="#main" class="mobile__nav">ГЛАВНАЯ
+        <img src="img/icon-cross.webp" alt="close" class="close-mobile-nav"></a>
+    <a href="#" class="mobile__nav">ФОТО И ВИДЕО</a>
+    <a href="#review-form" class="mobile__nav">ФОРМА ОТЗЫВА</a>
+    <a href="#html-academy" class="mobile__nav">HTML ACADEMY</a>
+</div>
+<header class="header" id="main">
+    <div class="header__nav">
+        <a href="#main" class="header__nav-link">ГЛАВНАЯ</a>
+        <a href="#" class="header__nav-link">ФОТО И ВИДЕО</a>
+        <a href="#main" class="header__nav-link nav-logo">
+        </a>
+        <a href="#review-form" class="header__nav-link">ФОРМА ОТЗЫВА</a>
+        <a href="#html-academy" class="header__nav-link">HTML ACADEMY</a>
+        <a href="#" class="mobile-menu">
+            <img src="img/icon-menu.webp" alt="menu" class="icon-menu-img"></a>
     </div>
-    <header class="header" id="main">
-        <div class="header__nav">
-            <a href="#main" class="header__nav-link">ГЛАВНАЯ</a>
-            <a href="#" class="header__nav-link">ФОТО И ВИДЕО</a>
-            <a href="#main" class="header__nav-link nav-logo">
-            </a>
-            <a href="#review-form" class="header__nav-link">ФОРМА ОТЗЫВА</a>
-            <a href="#html-academy" class="header__nav-link">HTML ACADEMY</a>
-            <a href="#" class="mobile-menu">
-                <img src="img/icon-menu.webp" alt="menu" class="icon-menu-img"></a>
-        </div>
-        <div class="header__name">
-            <span class="header__name-text">Sedona</span>
-        </div>
-    </header>
-    <main class="main-block">
-    	<body class="body-block">
-    		
-    		<h1 class="slider-headline">Фотографии</h1>
+    <div class="header__name">
+        <span class="header__name-text">Sedona</span>
+    </div>
+</header>
+<main class="main-block">
+    <body class="body-block">
 
-    		<div class="slider">
-    			<img src="img/slider/slide0.webp" class="slide-single" alt="">
-    			<img src="img/slider/slide1.webp" class="slide-single" alt="">
-    			<img src="img/slider/slide2.webp" class="slide-single" alt="">
-    			<img src="img/slider/slide3.webp" class="slide-single" alt="">
-    			<img src="img/slider/slide4.webp" class="slide-single" alt="">
-    		</div>
+    <h1 class="slider-headline">Фотографии</h1>
 
-            <div class="pagination-block">
-              <button class="slide-navigation" id="prev-slide">Назад</button>
+    <div class="slider">
+        <picture>
+            <source srcset="img/slider/slide0.webp" type="image/webp">
+            <source srcset="img/slider/slide0.jpg" type="image/jpg">
+            <img src="img/slider/slide0.webp" class="slide-single" alt="">
+        </picture>
+        <picture>
+            <source srcset="img/slider/slide1.webp" type="image/webp">
+            <source srcset="img/slider/slide1.jpg" type="image/jpg">
+            <img src="img/slider/slide1.webp" class="slide-single" alt="">
+        </picture>
+        <picture>
+            <source srcset="img/slider/slide2.webp" type="image/webp">
+            <source srcset="img/slider/slide2.jpg" type="image/jpg">
+            <img src="img/slider/slide2.webp" class="slide-single" alt="">
+        </picture>
+        <picture>
+            <source srcset="img/slider/slide3.webp" type="image/webp">
+            <source srcset="img/slider/slide3.jpg" type="image/jpg">
+            <img src="img/slider/slide3.webp" class="slide-single" alt="">
+        </picture>
+        <picture>
+            <source srcset="img/slider/slide4.webp" type="image/webp">
+            <source srcset="img/slider/slide4.jpg" type="image/jpg">
+            <img src="img/slider/slide4.webp" class="slide-single" alt="">
+        </picture>
+    </div>
 
-              <button class="slide-navigation" id="next-slide">Вперед</button>
-            </div>
+    <div class="pagination-block">
+        <button class="slide-navigation" id="prev-slide">Назад</button>
 
-    	</body>
-    </main>
-    <footer class="footer-block">
-        <span class="hashtag">#visitSEDONA</span>
-        <div class="social-networks">
-            <a href="#" class="social-networks__link" title="twitter">
-            </a>
-            <a href="#" class="social-networks__link" title="facebook">
-            </a>
-            <a href="#" class="social-networks__link" title="youtube">
-            </a>
-        </div>
-        <div class="producer" id="html-academy">
-            <span class="producer__text">Разработано</span>
-        </div>
-    </footer>
-    <script src="js/slider.js"></script>
+        <button class="slide-navigation" id="next-slide">Вперед</button>
+    </div>
+
+    </body>
+</main>
+<footer class="footer-block">
+    <span class="hashtag">#visitSEDONA</span>
+    <div class="social-networks">
+        <a href="#" class="social-networks__link" title="twitter">
+        </a>
+        <a href="#" class="social-networks__link" title="facebook">
+        </a>
+        <a href="#" class="social-networks__link" title="youtube">
+        </a>
+    </div>
+    <div class="producer" id="html-academy">
+        <span class="producer__text">Разработано</span>
+    </div>
+</footer>
+<script src="js/slider.js"></script>
 </body>
 
 </html>
