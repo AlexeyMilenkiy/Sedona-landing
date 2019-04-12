@@ -255,16 +255,16 @@ body {
   font-weight: 700;
   line-height: 24px;
   text-transform: uppercase;
-  margin: 10% auto;
+  margin: 6% auto;
   display: block;
-  width: 360px;
+  width: 210px;
 }
 .pagination-block {
   width: 400px;
   height: auto;
   display: flex;
-  justify-content: space-around;
-  margin: 10% auto;
+  justify-content: space-between;
+  margin: 6% auto;
 }
 .slide-navigation {
   outline: none;
@@ -276,7 +276,7 @@ body {
   line-height: 24px;
   text-transform: uppercase;
   width: auto;
-  height: 30px;
+  height: 40px;
 }
 .slide-navigation:hover {
   background-color: #669ec0;
@@ -1505,16 +1505,16 @@ body {
   font-weight: 700;
   line-height: 24px;
   text-transform: uppercase;
-  margin: 10% auto;
+  margin: 6% auto;
   display: block;
-  width: 360px;
+  width: 210px;
 }
 .pagination-block {
   width: 400px;
   height: auto;
   display: flex;
-  justify-content: space-around;
-  margin: 10% auto;
+  justify-content: space-between;
+  margin: 6% auto;
 }
 .slide-navigation {
   outline: none;
@@ -1526,7 +1526,7 @@ body {
   line-height: 24px;
   text-transform: uppercase;
   width: auto;
-  height: 30px;
+  height: 40px;
 }
 .slide-navigation:hover {
   background-color: #669ec0;
@@ -4013,16 +4013,16 @@ body {
   font-weight: 700;
   line-height: 24px;
   text-transform: uppercase;
-  margin: 10% auto;
+  margin: 6% auto;
   display: block;
-  width: 360px;
+  width: 210px;
 }
 .pagination-block {
   width: 400px;
   height: auto;
   display: flex;
-  justify-content: space-around;
-  margin: 10% auto;
+  justify-content: space-between;
+  margin: 6% auto;
 }
 .slide-navigation {
   outline: none;
@@ -4034,7 +4034,7 @@ body {
   line-height: 24px;
   text-transform: uppercase;
   width: auto;
-  height: 30px;
+  height: 40px;
 }
 .slide-navigation:hover {
   background-color: #669ec0;
@@ -4683,16 +4683,16 @@ body {
   font-weight: 700;
   line-height: 24px;
   text-transform: uppercase;
-  margin: 10% auto;
+  margin: 6% auto;
   display: block;
-  width: 360px;
+  width: 210px;
 }
 .pagination-block {
   width: 400px;
   height: auto;
   display: flex;
-  justify-content: space-around;
-  margin: 10% auto;
+  justify-content: space-between;
+  margin: 6% auto;
 }
 .slide-navigation {
   outline: none;
@@ -4704,7 +4704,7 @@ body {
   line-height: 24px;
   text-transform: uppercase;
   width: auto;
-  height: 30px;
+  height: 40px;
 }
 .slide-navigation:hover {
   background-color: #669ec0;
@@ -6159,16 +6159,16 @@ body {
   font-weight: 700;
   line-height: 24px;
   text-transform: uppercase;
-  margin: 10% auto;
+  margin: 6% auto;
   display: block;
-  width: 360px;
+  width: 210px;
 }
 .pagination-block {
   width: 400px;
   height: auto;
   display: flex;
-  justify-content: space-around;
-  margin: 10% auto;
+  justify-content: space-between;
+  margin: 6% auto;
 }
 .slide-navigation {
   outline: none;
@@ -6180,7 +6180,7 @@ body {
   line-height: 24px;
   text-transform: uppercase;
   width: auto;
-  height: 30px;
+  height: 40px;
 }
 .slide-navigation:hover {
   background-color: #669ec0;
