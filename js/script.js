@@ -8,10 +8,43 @@ window.onload = function() {
     const surName = document.getElementById('surname');
     const tel = document.querySelector('#tel');
     const email = document.querySelector('#email');
-    // const errorMessageEmail = document.querySelector('.wrong-email');
-    // const errorMessageTel = document.querySelector('.wrong-number');
-    const validate = require("validate.js");
+    const errorMessageEmail = document.querySelector('.wrong-email');
+    const errorMessageTel = document.querySelector('.wrong-number');
+    // const validate = require("validate.js");
     const form = document.querySelector(".main-form");
+    let inputs  = form.querySelectorAll("input[type=text], input[type=email]");
+
+    console.log(inputs);let i=0;
+
+
+    var validator = new FormValidator('form', [{
+        name: 'name',
+        display: 'required',
+        rules: 'required'
+    }, {
+        name: 'surname',
+        display: 'required',
+        rules: 'required'
+    },  {
+        name: 'email',
+        display: 'required',
+        rules: 'valid_email'
+    }, {
+        name: 'telephone',
+        display: 'min length',
+        rules: 'min_length[8]'
+    }], function(errors) {
+        if (errors.length > 0) {
+            // Show the errors
+            console.log(errors);
+            Name.classList.remove('review-user__input');
+            Name.classList.add('has-error-review-user__input');
+            console.log(errors[i].id);
+           for(; i<errors.length; i++){
+               return errors[i].id
+           }
+        }
+    });
 
     mobileMenuIcon.onclick = (e) => {
         e.preventDefault();
@@ -24,34 +57,6 @@ window.onload = function() {
     };
 
 
-    // Это ограничения, используемые для проверки формы
-    const constraints = {
-        email: {
-            // Email обязателен
-            presence: true,
-            // должен быть email(duh)
-            email: true
-        },
-
-        name: {
-            // имя обязательно
-            presence: true,
-            // должно быть не меньше 3 и не больше 20 символов
-            length: {
-                minimum: 3,
-                maximum: 20
-            }
-        },
-        surname: {
-            // имя обязательно
-            presence: true,
-            // должно быть не меньше 3 и не больше 20 символов
-            length: {
-                minimum: 3,
-                maximum: 20
-            }
-        }
-    };
     const formData = {
         name: form.name,
         surname: form.surname,
@@ -59,112 +64,18 @@ window.onload = function() {
         // tel: form.tel
     };
 
-    // подключение формы
-    form.addEventListener('submit', event => {
-        event.preventDefault();
-
-        handleFormSubmit(form);
-    });
-
-    console.log(form.querySelectorAll("input[name]"));
-
-
-    function handleFormSubmit(form) {
-        // Сначала мы собираем значения из формы
-        var values = validate.collectFormValues(form);
-        // затем мы проверяем их на соответствие ограничениям
-        var errors = validate(values, constraints);
-        // Затем мы обновляем форму, чтобы отразить результаты
-        showErrors(form, errors || {});
-        // И если все ограничения пройдут, мы сообщим пользователю
-        if (!errors) {
-            showSuccess();
-        }
-    }
-
-    // Обновляет инпуты с ошибками проверки
-    function showErrors(form, errors) {
-        // Мы перебираем все инпуты и показываем ошибки для этого инпута
-        form.querySelectorAll("input[name]").forEach(function(input) {
-            // поскольку ошибок может не быть то если ошибок не обнаружено,
-            //  мы должны их обработать
-            showErrorsForInput(input, errors && errors[input.name]);
-        });
-    }
-
-    // Показывает ошибки для конкретного инпута
-    function showErrorsForInput(formData, errors) {
-        // Это корень инпута
-        var formGroup = closestParent(formData.parentNode);
-        console.log(closestParent(formData.parentNode));
-        // Найдите, куда сообщения об ошибках будут вставлены в
-        // var messages = formGroup.querySelector(".messages");
-        // Сначала мы удаляем все старые сообщения и сбрасываем классы
-        resetFormGroup(formGroup);
-        // Если у нас есть ошибки
-        if (errors) {
-            // мы сначала отмечаем, что в форме есть ошибки
-            formGroup.classList.add("has-error");
-            // затем мы добавляем все ошибки
-            errors.forEach(function(error) {
-                addError(messages, error);
-            });
-        } else {
-            // в противном случае мы просто отмечаем это как успех
-            formGroup.classList.add("has-success");
-        }
-    }
-
-    // Рекурсивно найти ближайшего родителя, который имеет указанный класс
-    function closestParent(child, className) {
-        if (!child || child == document) {
-            return null;
-        }
-        if (child.classList.contains(className)) {
-            return child;
-        } else {
-            return closestParent(child.parentNode, className);
-        }
-    }
-
-    function resetFormGroup(formGroup) {
-        // Удалить классы успеха и ошибок
-        formGroup.classList.remove("has-error");
-        formGroup.classList.remove("has-success");
-        // и удалите все старые сообщения
-        formGroup.querySelectorAll(".help-block.error").forEach(function(el) {
-            el.parentNode.removeChild(el);
-        });
-    }
-
-    // Добавляет указанную ошибку со следующей разметкой
-    // <p class="help-block error">[message]</p>
-    function addError(messages, error) {
-        var block = document.createElement("p");
-        block.classList.add("help-block");
-        block.classList.add("error");
-        block.innerHTML = error;
-        messages.appendChild(block);
-    }
-
-    function showSuccess() {
-        // We made it \:D/
-        alert("Success!");
-    }
-
-
-
-
-
-
-
-
+    // // подключение формы
+    // form.addEventListener('submit', event => {
+    //     event.preventDefault();
+    //
+    //     // handleFormSubmit(form);
+    // });
 
 
     // validate(form.name.value, Constraints,{format: "flat"});
     //
-    // let errorsname = validate(form.name.value, Constraints) || {};
-    // console.log('errors', errorsname.name);
+    // validate(form.name.value, Constraints);
+    // // console.log('errors', errorsname.name);
     //
     //
     //
@@ -196,7 +107,4 @@ window.onload = function() {
     //             console.log('email succes')
     //         }
     // });
-
-
-
 }
