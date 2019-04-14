@@ -60,7 +60,7 @@ window.onload = function() {
                 imgNumber.textContent = i + 1;
                 paginationImgBlock.appendChild(imgNumber);
             }
-            showButtonMoreImg();
+            showButtonMore();
 
         } else if (links.length <= indexPagination) {
 
@@ -154,7 +154,7 @@ window.onload = function() {
     next.onclick = showNextImage;
     previous.onclick = showPrevImage;
 
-    function showButtonMoreImg() {
+    function showButtonMore() {
         let moreImg = document.createElement('button');
         moreImg.classList.add('moreImg-class');
         moreImg.id = "moreImg";
@@ -162,7 +162,7 @@ window.onload = function() {
         paginationImgBlock.appendChild(moreImg);
     }
 
-    function showButtonLessImg() {
+    function showButtonLess() {
         let lessImg = document.createElement('button');
         lessImg.classList.add('lessImg-class');
         lessImg.id = "lessImg";
@@ -181,7 +181,7 @@ window.onload = function() {
     function showMoreAmountImage() {
         findNumberImage(2);
         clearPagination();
-        showButtonLessImg();
+        showButtonLess();
         let reserveVariables = +indexStartImg
         indexPagination = +indexStartImg + indexPagination;
 
@@ -190,7 +190,7 @@ window.onload = function() {
             for (+indexStartImg; + indexStartImg < indexPagination; + indexStartImg++) {
                 createNewButton();
             }
-            showButtonMoreImg();
+            showButtonMore();
         } else {
             for (+indexStartImg; + indexStartImg < links.length; + indexStartImg++) {
 
@@ -200,29 +200,38 @@ window.onload = function() {
         indexPagination = indexPagination - reserveVariables;
     }
 
-    // //отрисовка новой пагинации после нажатия <<
-    // function showMorelessImage() {
-    //     findNumberImage(0);
-    //     clearPagination();
-    //     showButtonMoreImg();
-    //     let reserveVariables = +indexStartImg
-    //     indexPagination = +indexStartImg + indexPagination;
+    //отрисовка новой пагинации после нажатия <<
+    function showLessAmountImage() {
+        findNumberImage(0);
+        clearPagination();
+        showButtonMore();
+        let reserveVariables = +indexStartImg
+        indexPagination = +indexStartImg - indexPagination;
+        console.log(indexPagination);
+        if (indexPagination >1) {
 
-    //     if (indexPagination <= links.length) {
+            for (+indexStartImg; + indexStartImg > indexPagination; + indexStartImg--) {
+                let imgNumber = document.createElement('button');
+                imgNumber.classList.add('img-navigation');
+                imgNumber.textContent = +indexStartImg - 1;
+                paginationImgBlock.insertBefore(imgNumber, paginationImgBlock.children[0]);
+            }
+            let lessImg = document.createElement('button');
+            lessImg.classList.add('lessImg-class');
+            lessImg.id = "lessImg";
+            lessImg.textContent = "<<";
+            paginationImgBlock.insertBefore(lessImg, paginationImgBlock.children[0]);
+        } else {
+            for (+indexStartImg; + indexStartImg > 1; + indexStartImg--) {
 
-    //         for (+indexStartImg; + indexStartImg < indexPagination; + indexStartImg++) {
-    //             createNewButton();
-    //         }
-    //         showButtonMoreImg();
-    //     } else {
-    //         for (+indexStartImg; + indexStartImg < links.length; + indexStartImg++) {
-
-    //             createNewButton();
-    //         }
-    //     }
-    //     indexPagination = indexPagination - reserveVariables;
-    // }
-    // }
+                let imgNumber = document.createElement('button');
+                imgNumber.classList.add('img-navigation');
+                imgNumber.textContent = +indexStartImg - 1;
+                paginationImgBlock.insertBefore(imgNumber, paginationImgBlock.children[0]);
+            }
+        }
+        indexPagination = reserveVariables - indexPagination  ;
+    }
     //поиск крайней кнопки пагинации
     function findNumberImage(n) {
         let paginationArr = document.querySelectorAll('.img-navigation');
@@ -244,9 +253,8 @@ window.onload = function() {
         let target = event.target; // где был клик?
         if (target.id === "moreImg") {
             showMoreAmountImage();
+        } else if (target.id === "lessImg") {
+            showLessAmountImage();
         }
-        // else if(target.id === "lessImg"){
-        //     showMorelessImage();
-        // }
     }
 };
