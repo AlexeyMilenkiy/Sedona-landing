@@ -81,5 +81,4 @@ window.onload = function() {
         e.preventDefault();
         mobileMenu.classList.remove("show-nav");
     };
-
 }
