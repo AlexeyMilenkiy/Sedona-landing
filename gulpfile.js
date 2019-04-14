@@ -30,14 +30,14 @@ gulp.task('css', function () {
 });
 
 gulp.task('browserify', function(){
-  var bundleStream = browserify('./js/script.js').bundle()
+ var bundleStream = browserify('./js/script.js').bundle()
 
-  bundleStream
-      .pipe(source('script.js'))
-      .pipe(streamify(babel()))
-      .pipe(rename('main.js'))
-      .pipe(gulp.dest('./js'))
-      .pipe(browserSync.stream());
+  return bundleStream
+    .pipe(source('script.js'))
+    .pipe(streamify(babel()))
+    .pipe(rename('main.js'))
+    .pipe(gulp.dest('./js'))
+    .pipe(browserSync.stream());
 });
 
 gulp.task('default', gulp.parallel('less', 'css', 'browserify', function(){
