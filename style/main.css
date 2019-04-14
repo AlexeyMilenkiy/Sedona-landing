@@ -436,7 +436,7 @@ body {
 .pagination-img-block {
   width: 60%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
 }
 .img-navigation {
