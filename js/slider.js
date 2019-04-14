@@ -1,18 +1,24 @@
-window.onload = function () {
+window.onload = function() {
 
     let slides = document.querySelectorAll('.slide-single');
     const next = document.querySelector('#next-slide');
     const previous = document.querySelector('#prev-slide');
     const sliderBlock = document.querySelector('.slider');
     const paginationImgBlock = document.querySelector('.pagination-img-block');
+    const buttonMoreImg = document.getElementById('moreImg');
     const links = [];
     let imgIndex = 0;
     let offset = 0;
+    let indexPagination = 3;
+    let indexStartImg = 0;
 
     showImage();
-
+    showPagination();
+    
     next.onclick = showNextImage;
     previous.onclick = showPrevImage;
+
+    buttonMoreImg.onclick = showMoreAmountImage;
 
     function findLinksImg() {
         for (let i = 0; i < slides.length; i++) {
@@ -44,6 +50,31 @@ window.onload = function () {
         img2.style.left = offset1 * 100 + '%';
         sliderBlock.appendChild(img2);
     }
+
+
+    function showPagination() {
+
+        if (links.length > indexPagination) {
+
+            for (let i = 0; i < indexPagination; i++) {
+                let imgNumber = document.createElement('button');
+                imgNumber.classList.add('img-navigation');
+                imgNumber.textContent = i + 1;
+                paginationImgBlock.appendChild(imgNumber);
+            }
+                showButtonMoreImg();
+
+        } else if (links.length <= indexPagination) {
+
+            for (let i = 0; i < links.length; i++) {
+                let imgNumber = document.createElement('button');
+                imgNumber.classList.add('img-navigation');
+                imgNumber.textContent = i + 1;
+                paginationImgBlock.appendChild(imgNumber);
+            }
+        }
+    }
+
 
     function findIndexLastImg(arg) {
         for (; imgIndex < links.length; imgIndex++) {
@@ -96,7 +127,7 @@ window.onload = function () {
             }
             slides[i].style.left = offset * 100 - 100 + '%';
         }
-        setTimeout(function () {
+        setTimeout(function() {
             addNextImage();
         }, 3000);
     }
@@ -117,20 +148,64 @@ window.onload = function () {
             }
             slides[i].style.left = offset * 100 + '%';
         }
-        setTimeout(function () {
+        setTimeout(function() {
             addPrevImage();
         }, 3000);
     }
 
-    function showPagination(){
-        
-        for (let i = 0; i < links.length; i++) {
+
+    function showButtonMoreImg(){
+        let moreImg = document.createElement('button');
+            moreImg.classList.add('moreImg-class');
+            moreImg.id = "moreImg";
+            moreImg.textContent = ">>";
+            paginationImgBlock.appendChild(moreImg);
+    }
+
+    function showButtonLessImg(){
+        let lessImg = document.createElement('button');
+            lessImg.classList.add('lessImg-class');
+            lessImg.id = "lessImg";
+            lessImg.textContent = "<<";
+            paginationImgBlock.appendChild(lessImg);
+    }
+   //отрисовка новой пагинации после нажатия >>
+    function showMoreAmountImage() {
+        findNumberImage(2);
+        console.log(indexStartImg);
+        clearPagination();
+        debugger;
+        showButtonLessImg();
+
+        for (indexStartImg; indexStartImg < links.length; indexStartImg++) {
+
         let imgNumber = document.createElement('button');
-           imgNumber.classList.add('img-navigation');
-           imgNumber.textContent = i + 1;
-           paginationImgBlock.appendChild(imgNumber);
+            imgNumber.classList.add('img-navigation');
+            imgNumber.textContent = +indexStartImg + 1;
+            paginationImgBlock.appendChild(imgNumber);
+        }
+        if (indexStartImg + 3 < links.length){
+            showButtonMoreImg();
+        }
+    }
+   //поиск крайней кнопки пагинации
+    function findNumberImage(n){
+        let paginationArr = document.querySelectorAll('.img-navigation');
+
+        for(indexStartImg = 0; indexStartImg<paginationArr.length; i++){
+            return indexStartImg = paginationArr[n].innerText
         }
     }
 
-    showPagination();
+    function clearPagination() {
+
+         while (paginationImgBlock.firstChild) {
+         paginationImgBlock.removeChild(paginationImgBlock.firstChild);
+         }
+
+    }
+
+
+
+
 };

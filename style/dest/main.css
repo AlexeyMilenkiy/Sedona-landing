@@ -456,6 +456,31 @@ body {
   background-color: #5496bd;
   color: #b8b8b8;
 }
+.lessImg-class,
+.moreImg-class {
+  width: 10%;
+  height: 4vh;
+  border: none;
+  outline: none;
+  background-color: #669ec0;
+  color: #ffffff;
+  font-family: 'PT Sans', sans-serif;
+  font-size: 1em;
+  font-weight: 400;
+  line-height: 24px;
+  text-transform: uppercase;
+}
+.lessImg-class:hover,
+.moreImg-class:hover {
+  cursor: pointer;
+  background-color: #669ec0;
+  transition: 1s;
+}
+.lessImg-class:active,
+.moreImg-class:active {
+  background-color: #5496bd;
+  color: #b8b8b8;
+}
 .main-container {
   max-width: 960px;
   margin: 0 auto;
