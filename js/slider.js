@@ -4,6 +4,7 @@ window.onload = function () {
     const next = document.querySelector('#next-slide');
     const previous = document.querySelector('#prev-slide');
     const sliderBlock = document.querySelector('.slider');
+    const paginationImgBlock = document.querySelector('.pagination-img-block');
     const links = [];
     let imgIndex = 0;
     let offset = 0;
@@ -120,4 +121,16 @@ window.onload = function () {
             addPrevImage();
         }, 3000);
     }
+
+    function showPagination(){
+        
+        for (let i = 0; i < links.length; i++) {
+        let imgNumber = document.createElement('button');
+           imgNumber.classList.add('img-navigation');
+           imgNumber.textContent = i + 1;
+           paginationImgBlock.appendChild(imgNumber);
+        }
+    }
+
+    showPagination();
 };
