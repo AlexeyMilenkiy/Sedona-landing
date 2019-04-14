@@ -234,10 +234,10 @@ window.onload = function() {
     }
     //поиск крайней кнопки пагинации
     function findNumberImage(n) {
-        let paginationArr = document.querySelectorAll('.img-navigation');
+        let buttonArr = document.querySelectorAll('.img-navigation');
 
-        for (indexStartImg = 0; indexStartImg < paginationArr.length; i++) {
-            return indexStartImg = paginationArr[n].innerText
+        for (indexStartImg = 0; indexStartImg < buttonArr.length; i++) {
+            return indexStartImg = buttonArr[n].innerText
         }
     }
 
