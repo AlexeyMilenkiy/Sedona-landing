@@ -347,12 +347,14 @@ window.onload = function() {
         for (; indexWaitImage < links.length; indexWaitImage++) {
             if (indexWaitImage === numButton) {
                 for (; b < buttonArr.length; b++) {
-                    if (indexWaitImage > buttonArr[b].classList.contains('active')) {
-                        addNextImageFromPagination();
-                        break
-                    } else if (indexWaitImage < buttonArr[b].classList.contains('active')) {
-                        addPrevImageFromPagination();
-                        break
+                    if (buttonArr[b].classList.contains('active')) {
+                        if (indexWaitImage > b+1) {
+                            addNextImageFromPagination();
+                            break
+                        } else if (indexWaitImage < b+1) {
+                            addPrevImageFromPagination();
+                            break
+                        }
                     }
                 }
             }
@@ -411,25 +413,29 @@ window.onload = function() {
         slides[0].remove();
         slides[2].remove();
 
-        leftImg.src = links[linkNewImage];
+        leftImg.src = linkNewImage;
         leftImg.classList.add('slide-single');
         leftImg.style.left = -100 + '%';
         sliderBlock.insertBefore(leftImg, sliderBlock.children[0]);
         slides = document.querySelectorAll('.slide-single');
 
         offset = 0;
-        let step2 = 0;
-        for (let i = slides.length - 1; i >= 0; i--) {
-            if (step3 - 1 > 0) {
+        let step3 = slides.length;
+        for (let i = slides.length-1; i >= 0; i--) {
+            if (step3 > 0) {
                 offset = 1;
                 step3--;
             } else {
                 offset = 0;
             }
             slides[i].style.left = offset * 100 + '%';
+            step3--
         }
-        findIndexLastImg(slides[1]);
+        findIndexLastImg(slides[0]);
         addPrevImage();
+        slides[1].remove();
+        findIndexLastImg(slides[0]);
+        addNextImage();
         addClassButton();
         numberPushButton = 0;
     }
