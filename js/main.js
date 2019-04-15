@@ -41,20 +41,17 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
       var mobileMenu = document.querySelector('.mobile-navigation');
       var closeMobMenu = document.querySelector('.close-mobile-nav');
       var navigation = document.querySelector('.header__nav');
-      var Name = document.getElementById('name');
+      var name = document.getElementById('name');
       var surName = document.getElementById('surname');
       var tel = document.querySelector('#tel');
       var email = document.querySelector('#email');
       var errorMessageEmail = document.querySelector('.wrong-email');
       var errorMessageTel = document.querySelector('.wrong-number');
 
-      var validator = require("validate-js");
+      var validate = require("validate-js");
 
       var form = document.querySelector(".main-form");
-      var inputs = form.querySelectorAll("input[type=text], input[type=email]");
-      console.log(inputs);
-      var i = 0;
-      validator = new FormValidator('form', [{
+      var validator = new validate('form', [{
         name: 'name',
         display: 'required',
         rules: 'required'
@@ -63,26 +60,51 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
         display: 'required',
         rules: 'required'
       }, {
-        name: 'email',
-        display: 'required',
-        rules: 'valid_email'
-      }, {
         name: 'telephone',
-        display: 'min length',
-        rules: 'min_length[8]'
+        display: 'Telephone No',
+        rules: 'required|callback_check_phone'
+      }, {
+        name: 'email',
+        display: 'Email No',
+        rules: 'required|valid_email'
       }], function (errors) {
-        if (errors.length > 0) {
-          // Show the errors
-          console.log(errors);
-          Name.classList.remove('review-user__input');
-          Name.classList.add('has-error-review-user__input');
-          console.log(errors[i].id);
+        clearErrors();
 
-          for (; i < errors.length; i++) {
-            return errors[i].id;
+        if (errors.length > 0) {
+          for (var i = 0; i < errors.length; i++) {
+            if (errors[i].id === "name") {
+              name.classList.remove("review-user__input");
+              name.classList.add("error");
+            } else if (errors[i].id === 'surname') {
+              surName.classList.remove("review-user__input");
+              surName.classList.add("error");
+            } else if (errors[i].id === 'tel') {
+              errorMessageTel.classList.remove("wrong-number");
+              errorMessageTel.classList.add("error-number");
+            } else if (errors[i].id === "email") {
+              errorMessageEmail.classList.remove("wrong-email");
+              errorMessageEmail.classList.add("error-email");
+            } else {
+              errors.length = 0;
+            }
           }
         }
       });
+      validator.registerCallback('check_phone', function (value) {
+        var phoneCheck = /^\+?([0-9]{2})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4})$/;
+        return phoneCheck.test(value);
+      }).setMessage('check_phone', '');
+
+      function clearErrors() {
+        name.classList.remove("error");
+        name.classList.add("review-user__input");
+        surName.classList.remove("error");
+        surName.classList.add("review-user__input");
+        errorMessageTel.classList.remove("error-number");
+        errorMessageTel.classList.add("wrong-number");
+        errorMessageEmail.classList.remove("error-email");
+        errorMessageEmail.classList.add("wrong-email");
+      }
 
       mobileMenuIcon.onclick = function (e) {
         e.preventDefault();
@@ -93,53 +115,6 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
         e.preventDefault();
         mobileMenu.classList.remove("show-nav");
       };
-
-      var formData = {
-        name: form.name,
-        surname: form.surname,
-        email: form.email // tel: form.tel
-
-      }; // // подключение формы
-      // form.addEventListener('submit', event => {
-      //     event.preventDefault();
-      //
-      //     // handleFormSubmit(form);
-      // });
-      // validate(form.name.value, Constraints,{format: "flat"});
-      //
-      // validate(form.name.value, Constraints);
-      // // console.log('errors', errorsname.name);
-      //
-      //
-      //
-      // validate(form.surname.value, Constraints);
-      //
-      // let errorssurname = validate(form.surname.value, Constraints) || {};
-      // console.log('errors', errorssurname.surname);
-      //
-      //
-      // tel.addEventListener("change",() => {
-      //     const req = /^\+?([0-9]{2})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4})$/;
-      //     let errors = validate(form.tel.value, Constraints) || {};
-      //     console.log('errors', errors.tel);
-      //     if (event.target.value.match(req)) {
-      //         console.log(11111);
-      //     } else {
-      //         errorMessageTel.classList.remove('wrong-number');
-      //         errorMessageTel.classList.add('wrong-number-visible');
-      //     }
-      // });
-      //
-      // email.addEventListener("change",() => {
-      //         let errors = validate(form.email.value, Constraints) || {};
-      //         console.log('errors', errors.email);
-      //         if (errors.email) {
-      //           errorMessageEmail.classList.remove('wrong-email');
-      //           errorMessageEmail.classList.add('wrong-email-visible');
-      //         } else {
-      //             console.log('email succes')
-      //         }
-      // });
     };
   }, {
     "validate-js": 2
@@ -296,6 +271,47 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
       };
       /*
        * @public
+       *
+       * @param fields - Array - [{
+       *     name: The name of the element (i.e. <input name="myField" />)
+       *     display: 'Field Name'
+       *     rules: required|matches[password_confirm]
+       * }]
+       * Sets new custom validation rules set
+       */
+
+
+      FormValidator.prototype.setRules = function (fields) {
+        this.fields = {};
+
+        for (var i = 0, fieldLength = fields.length; i < fieldLength; i++) {
+          var field = fields[i]; // If passed in incorrectly, we need to skip the field.
+
+          if (!field.name && !field.names || !field.rules) {
+            console.warn('validate.js: The following field is being skipped due to a misconfiguration:');
+            console.warn(field);
+            console.warn('Check to ensure you have properly configured a name and rules for this field');
+            continue;
+          }
+          /*
+           * Build the master fields array that has all the information needed to validate
+           */
+
+
+          if (field.names) {
+            for (var j = 0, fieldNamesLength = field.names.length; j < fieldNamesLength; j++) {
+              this._addField(field, field.names[j]);
+            }
+          } else {
+            this._addField(field, field.name);
+          }
+        } // return this for chaining
+
+
+        return this;
+      };
+      /*
+       * @public
        * Registers a callback for a custom rule (i.e. callback_username_check)
        */
 
@@ -415,6 +431,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
       FormValidator.prototype._validateField = function (field) {
         var i,
             j,
+            ruleLength,
             rules = field.rules.split('|'),
             indexOfRequired = field.rules.indexOf('required'),
             isEmpty = !field.value || field.value === '' || field.value === undefined;

@@ -1,13 +1,10 @@
 @import 'main-import.less';
-
-
-.has-error-review-user__input{
-
-    width: calc(100% - 43%);
+.error{
+        width: calc(100% - 43%);
     height: 16.6%;
     margin-bottom: 4.3%;
     background-color: @lightGray;
-    border-color: red;
+    border-color: @red;
     padding-left: 7%;
     color: @black;
     .font(1.125em, 700, 26px, none);
@@ -29,11 +26,7 @@
         width: calc(100% - 46%);
         min-height: 56px;
         margin-bottom: 6%;
-    });}
-
-.has-success{
-
-    outline-color: #5496bd;
+    });
 }
 
 .main-container {
