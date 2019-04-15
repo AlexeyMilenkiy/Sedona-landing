@@ -67,14 +67,14 @@
       var offset = 0;
       var indexPagination = 3;
       var indexStartImg = 0;
+      var indexActiveImg = 0;
       showImage();
       showPagination();
 
       function findLinksImg() {
-        for (var _i = 0; _i < slides.length; _i++) {
-          links[_i] = slides[_i].src;
-
-          slides[_i].remove();
+        for (var i = 0; i < slides.length; i++) {
+          links[i] = slides[i].src;
+          slides[i].remove();
         }
       }
 
@@ -101,27 +101,31 @@
 
       function showPagination() {
         if (links.length > indexPagination) {
-          for (var _i2 = 0; _i2 < indexPagination; _i2++) {
+          for (var i = 0; i < indexPagination; i++) {
             var imgNumber = document.createElement('button');
             imgNumber.classList.add('img-navigation');
-            imgNumber.textContent = _i2 + 1;
+            imgNumber.textContent = i + 1;
             paginationImgBlock.appendChild(imgNumber);
           }
 
           showButtonMore();
         } else if (links.length <= indexPagination) {
-          for (var _i3 = 0; _i3 < links.length; _i3++) {
+          for (var _i = 0; _i < links.length; _i++) {
             var _imgNumber = document.createElement('button');
 
             _imgNumber.classList.add('img-navigation');
 
-            _imgNumber.textContent = _i3 + 1;
+            _imgNumber.textContent = _i + 1;
             paginationImgBlock.appendChild(_imgNumber);
           }
         }
+
+        addClassButton();
       }
 
       function findIndexLastImg(arg) {
+        imgIndex = 0;
+
         for (; imgIndex < links.length; imgIndex++) {
           if (links[imgIndex] === arg.src) {
             return imgIndex;
@@ -147,7 +151,7 @@
       function addPrevImage() {
         var leftImg = document.createElement('img');
 
-        if (imgIndex === -1) {
+        if (imgIndex <= 0) {
           imgIndex = links.length - 1;
         } else {
           imgIndex = imgIndex - 1;
@@ -166,7 +170,7 @@
         findIndexLastImg(slides[2]);
         slides[0].remove();
 
-        for (var _i4 = 0; _i4 < slides.length; _i4++) {
+        for (var i = 0; i < slides.length; i++) {
           if (step2 + 1 === slides.length) {
             offset = 1;
           } else {
@@ -174,13 +178,13 @@
             step2++;
           }
 
-          slides[_i4].style.left = offset * 100 - 100 + '%';
+          slides[i].style.left = offset * 100 - 100 + '%';
         }
 
         setTimeout(function () {
           addNextImage();
           addClassButton();
-        }, 3000);
+        }, 2000);
       }
 
       function showPrevImage() {
@@ -190,7 +194,7 @@
         findIndexLastImg(slides[0]);
         slides[2].remove();
 
-        for (var _i5 = slides.length - 1; _i5 >= 0; _i5--) {
+        for (var i = slides.length - 1; i >= 0; i--) {
           if (step3 - 1 > 0) {
             offset = 1;
             step3--;
@@ -198,13 +202,13 @@
             offset = 0;
           }
 
-          slides[_i5].style.left = offset * 100 + '%';
+          slides[i].style.left = offset * 100 + '%';
         }
 
         setTimeout(function () {
           addPrevImage();
           addClassButton();
-        }, 3000);
+        }, 2000);
       }
 
       next.onclick = showNextImage;
@@ -293,12 +297,14 @@
 
         indexPagination = reserveVariables - indexPagination;
         addClassButton();
-      }
+      } //функция поиска номера крайней картинки
+
 
       function findNumberImage(n) {
         var buttonArr = document.querySelectorAll('.img-navigation');
+        indexStartImg = 0;
 
-        for (indexStartImg = 0; indexStartImg < buttonArr.length; i++) {
+        for (; indexStartImg < buttonArr.length; indexStartImg++) {
           return indexStartImg = buttonArr[n].innerText;
         }
       }
@@ -310,17 +316,16 @@
       }
 
       paginationImgBlock.onclick = function (event) {
-        var target = event.target; // где был клик?
+        var target = event.target;
 
         if (target.id === "moreImg") {
           showMoreAmountImage();
         } else if (target.id === "lessImg") {
           showLessAmountImage();
+        } else if (target.id !== "lessImg" && "moreImg") {
+          containsActiveClass(target.innerText);
         }
-      }; // функция соединения активной картинки и пагинации
-
-
-      var indexActiveImg = 0;
+      };
 
       function findActiveImg() {
         slides = document.querySelectorAll('.slide-single');
@@ -335,21 +340,69 @@
       function addClassButton() {
         var indexActiveButton = 0;
         findActiveImg();
+        indexActiveImg++;
         var buttonArr = document.querySelectorAll('.img-navigation');
+        var buttonMore = document.getElementById('moreImg');
+        var buttonLess = document.getElementById('lessImg');
 
         for (; indexActiveButton < buttonArr.length; indexActiveButton++) {
           buttonArr[indexActiveButton].classList.remove('active');
 
-          if (indexActiveImg > buttonArr.length - 1) {
-            document.getElementById('moreImg').classList.add('active');
-          } else if (indexActiveButton === indexActiveImg) {
+          if (!!buttonMore) {
+            buttonMore.classList.remove('active');
+          }
+
+          if (!!buttonLess) {
+            buttonLess.classList.remove('active');
+          }
+
+          if (indexActiveImg > +buttonArr[buttonArr.length - 1].innerText) {
+            buttonMore.classList.add('active');
+          }
+
+          if (indexActiveImg < +buttonArr[0].innerText) {
+            buttonLess.classList.add('active');
+          } else if (+buttonArr[indexActiveButton].innerText === indexActiveImg) {
             buttonArr[indexActiveButton].classList.add('active');
-            indexActiveImg = 0;
+          }
+        }
+
+        indexActiveImg = 0;
+      }
+
+      function containsActiveClass(x) {
+        var numButton = +x;
+        var buttonArr = document.querySelectorAll('.img-navigation');
+
+        for (var i = 0; i < buttonArr.length; i++) {
+          if (numButton === +buttonArr[i].innerText) {
+            if (buttonArr[i].classList.contains('active')) {
+              break;
+            } else {
+              showNotActiveImg(x); //вставить фукнцию отрисовки изображения которое не активно
+              // buttonArr[i].classList.add('active');
+            }
           }
         }
       }
 
-      addClassButton();
+      function showNotActiveImg(x) {
+        var numButton = +x;
+
+        for (var i = 0; i <= slides.length; i++) {
+          if (i === numButton) {
+            findActiveImg();
+
+            if (i > indexActiveImg + 1) {
+              showNextImage();
+            } else if (i < indexActiveImg + 1) {
+              showPrevImage();
+            }
+          }
+        }
+
+        indexActiveImg = 0;
+      }
     };
   }, {}]
 }, {}, [1]);

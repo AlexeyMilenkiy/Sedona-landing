@@ -1,4 +1,4 @@
-window.onload = function () {
+window.onload = function() {
 
     let slides = document.querySelectorAll('.slide-single');
     const next = document.querySelector('#next-slide');
@@ -68,11 +68,12 @@ window.onload = function () {
                 imgNumber.textContent = i + 1;
                 paginationImgBlock.appendChild(imgNumber);
             }
-        }    addClassButton();
+        }
+        addClassButton();
     }
 
     function findIndexLastImg(arg) {
-        imgIndex = 0;
+        // imgIndex = 0;
         for (; imgIndex < links.length; imgIndex++) {
             if (links[imgIndex] === arg.src) {
                 return imgIndex;
@@ -92,6 +93,7 @@ window.onload = function () {
         rightImg.classList.add('slide-single');
         rightImg.style.left = 100 + '%';
         sliderBlock.appendChild(rightImg);
+        imgIndex = 0;
     }
 
     function addPrevImage() {
@@ -105,6 +107,7 @@ window.onload = function () {
         leftImg.classList.add('slide-single');
         leftImg.style.left = -100 + '%';
         sliderBlock.insertBefore(leftImg, sliderBlock.children[0]);
+        imgIndex = 0;
     }
 
     function showNextImage() {
@@ -123,7 +126,7 @@ window.onload = function () {
             }
             slides[i].style.left = offset * 100 - 100 + '%';
         }
-        setTimeout(function () {
+        setTimeout(function() {
             addNextImage();
             addClassButton();
         }, 2000);
@@ -145,7 +148,7 @@ window.onload = function () {
             }
             slides[i].style.left = offset * 100 + '%';
         }
-        setTimeout(function () {
+        setTimeout(function() {
             addPrevImage();
             addClassButton();
         }, 2000);
@@ -194,12 +197,12 @@ window.onload = function () {
 
         if (indexPagination <= links.length) {
 
-            for (+indexStartImg; +indexStartImg < indexPagination; +indexStartImg++) {
+            for (+indexStartImg; + indexStartImg < indexPagination; + indexStartImg++) {
                 createNewButtonMore();
             }
             showButtonMore();
         } else {
-            for (+indexStartImg; +indexStartImg < links.length; +indexStartImg++) {
+            for (+indexStartImg; + indexStartImg < links.length; + indexStartImg++) {
 
                 createNewButtonMore();
             }
@@ -218,7 +221,7 @@ window.onload = function () {
 
         if (indexPagination > 1) {
 
-            for (+indexStartImg; +indexStartImg > indexPagination; +indexStartImg--) {
+            for (+indexStartImg; + indexStartImg > indexPagination; + indexStartImg--) {
                 createNewButtonLess();
             }
             // вынести в отдельную функцию
@@ -231,7 +234,7 @@ window.onload = function () {
             //
             //
         } else {
-            for (+indexStartImg; +indexStartImg > 1; +indexStartImg--) {
+            for (+indexStartImg; + indexStartImg > 1; + indexStartImg--) {
                 createNewButtonLess();
             }
         }
@@ -256,14 +259,18 @@ window.onload = function () {
 
     }
 
-    paginationImgBlock.onclick = function (event) {
+    let numberPushButton = 0;
+
+    paginationImgBlock.onclick = function(event) {
         let target = event.target;
         if (target.id === "moreImg") {
             showMoreAmountImage();
         } else if (target.id === "lessImg") {
             showLessAmountImage();
-        } else if (target.id !== "lessImg"&&"moreImg" ){
+        } else if (target.id !== "lessImg" && "moreImg") {
+            numberPushButton = +target.innerText;
             containsActiveClass(target.innerText);
+
         }
     };
 
@@ -313,40 +320,82 @@ window.onload = function () {
         indexActiveImg = 0;
     }
 
-    function containsActiveClass(x){
+
+
+    function containsActiveClass(x) {
         let numButton = +x;
         let buttonArr = document.querySelectorAll('.img-navigation');
 
         for (let i = 0; i < buttonArr.length; i++) {
-            if (numButton === +buttonArr[i].innerText){
+            if (numButton === +buttonArr[i].innerText) {
 
-                 if(buttonArr[i].classList.contains('active')){
-                     break
-                 }else{
-                     showNotActiveImg(x);
-                     //вставить фукнцию отрисовки изображения которое не активно
-
-                     // buttonArr[i].classList.add('active');
-                 }
-
+                if (buttonArr[i].classList.contains('active')) {
+                    break
+                } else {
+                    showNotActiveImg(x);
+                }
             }
         }
     }
 
-    function showNotActiveImg(x){
+    function showNotActiveImg(x) {
         let numButton = +x;
-        for (let i = 0; i <= slides.length; i++) {
+        let b = 0;
+        let indexWaitImage = 0;
+        let buttonArr = document.querySelectorAll('.img-navigation');
+        for (; indexWaitImage < links.length; indexWaitImage++) {
+            if (indexWaitImage === numButton) {
+                for (; b < buttonArr.length; b++) {
 
-            if (i === numButton) {
-                findActiveImg();
-                if (i > indexActiveImg+1) {
-                    showNextImage();
-                } else if (i < indexActiveImg+1) {
-
-                    showPrevImage();
+                    if (indexWaitImage > buttonArr[b].classList.contains('active')) {
+                            addNextImageFromPagination();
+                        break
+                    } else if (indexWaitImage < buttonArr[b].classList.contains('active')) {
+                        //функция показа изображения слева
+                        break
+                    }
                 }
             }
-        }                    indexActiveImg = 0;
+
+        }
+    }
+
+    function addNextImageFromPagination() {
+
+        console.log(numberPushButton);
+        let linkNewImage = 0;
+        let rightImg = document.createElement('img');
+
+
+        for (let i = 0; i < links.length; i++) {
+            if (i + 1 === numberPushButton) {
+                linkNewImage = links[i];
+            }
+        }
+        slides[0].remove();
+        slides[2].remove();
+
+        rightImg.src = linkNewImage;
+        rightImg.classList.add('slide-single');
+        rightImg.style.left = 100 + '%';
+        sliderBlock.appendChild(rightImg);
+        slides = document.querySelectorAll('.slide-single');
+
+        offset = 0;
+        let step2 = 0;
+        for (let i = 0; i < slides.length; i++) {
+            if (step2 + 1 === slides.length) {
+                offset = 1;
+            } else {
+                offset = 0;
+                step2++;
+            }
+            slides[i].style.left = offset * 100 - 100 + '%';
+        }
+        findIndexLastImg(slides[1]);
+        addNextImage();
+        addClassButton();
+        numberPushButton = 0;
     }
 
 };

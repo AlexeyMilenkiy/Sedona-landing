@@ -384,7 +384,6 @@ body {
   margin: 0 auto;
   position: relative;
   display: block;
-  overflow: hidden;
   border: 5px solid #b8b8b8;
 }
 .slide-single {
