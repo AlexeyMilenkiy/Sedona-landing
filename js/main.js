@@ -61,28 +61,31 @@
       var next = document.querySelector('#next-slide');
       var previous = document.querySelector('#prev-slide');
       var sliderBlock = document.querySelector('.slider');
+      var paginationImgBlock = document.querySelector('.pagination-img-block');
       var links = [];
       var imgIndex = 0;
       var offset = 0;
+      var indexPagination = 3;
+      var indexStartImg = 0;
       showImage();
-      next.onclick = showNextImage;
-      previous.onclick = showPrevImage;
+      showPagination();
 
       function findLinksImg() {
-        for (var i = 0; i < slides.length; i++) {
-          links[i] = slides[i].src;
-          slides[i].remove();
+        for (var _i = 0; _i < slides.length; _i++) {
+          links[_i] = slides[_i].src;
+
+          slides[_i].remove();
         }
       }
 
       function showImage() {
         findLinksImg();
-        imgIndex = 1;
+        imgIndex = 0;
         var offset1 = 1;
         var img = document.createElement('img');
         var img1 = document.createElement('img');
         var img2 = document.createElement('img');
-        img.src = links[imgIndex - 1];
+        img.src = links[links.length - 1];
         img.classList.add('slide-single');
         img.style.left = offset1 - 100 + '%';
         sliderBlock.appendChild(img);
@@ -94,6 +97,28 @@
         img2.classList.add('slide-single');
         img2.style.left = offset1 * 100 + '%';
         sliderBlock.appendChild(img2);
+      }
+
+      function showPagination() {
+        if (links.length > indexPagination) {
+          for (var _i2 = 0; _i2 < indexPagination; _i2++) {
+            var imgNumber = document.createElement('button');
+            imgNumber.classList.add('img-navigation');
+            imgNumber.textContent = _i2 + 1;
+            paginationImgBlock.appendChild(imgNumber);
+          }
+
+          showButtonMore();
+        } else if (links.length <= indexPagination) {
+          for (var _i3 = 0; _i3 < links.length; _i3++) {
+            var _imgNumber = document.createElement('button');
+
+            _imgNumber.classList.add('img-navigation');
+
+            _imgNumber.textContent = _i3 + 1;
+            paginationImgBlock.appendChild(_imgNumber);
+          }
+        }
       }
 
       function findIndexLastImg(arg) {
@@ -141,7 +166,7 @@
         findIndexLastImg(slides[2]);
         slides[0].remove();
 
-        for (var i = 0; i < slides.length; i++) {
+        for (var _i4 = 0; _i4 < slides.length; _i4++) {
           if (step2 + 1 === slides.length) {
             offset = 1;
           } else {
@@ -149,11 +174,12 @@
             step2++;
           }
 
-          slides[i].style.left = offset * 100 - 100 + '%';
+          slides[_i4].style.left = offset * 100 - 100 + '%';
         }
 
         setTimeout(function () {
           addNextImage();
+          addClassButton();
         }, 3000);
       }
 
@@ -164,7 +190,7 @@
         findIndexLastImg(slides[0]);
         slides[2].remove();
 
-        for (var i = slides.length - 1; i >= 0; i--) {
+        for (var _i5 = slides.length - 1; _i5 >= 0; _i5--) {
           if (step3 - 1 > 0) {
             offset = 1;
             step3--;
@@ -172,13 +198,158 @@
             offset = 0;
           }
 
-          slides[i].style.left = offset * 100 + '%';
+          slides[_i5].style.left = offset * 100 + '%';
         }
 
         setTimeout(function () {
           addPrevImage();
+          addClassButton();
         }, 3000);
       }
+
+      next.onclick = showNextImage;
+      previous.onclick = showPrevImage;
+
+      function showButtonMore() {
+        var moreImg = document.createElement('button');
+        moreImg.classList.add('moreImg-class');
+        moreImg.id = "moreImg";
+        moreImg.textContent = ">>";
+        paginationImgBlock.appendChild(moreImg);
+      }
+
+      function showButtonLess() {
+        var lessImg = document.createElement('button');
+        lessImg.classList.add('lessImg-class');
+        lessImg.id = "lessImg";
+        lessImg.textContent = "<<";
+        paginationImgBlock.appendChild(lessImg);
+      }
+
+      function createNewButtonMore() {
+        var imgNumber = document.createElement('button');
+        imgNumber.classList.add('img-navigation');
+        imgNumber.textContent = +indexStartImg + 1;
+        paginationImgBlock.appendChild(imgNumber);
+      }
+
+      function createNewButtonLess() {
+        var imgNumber = document.createElement('button');
+        imgNumber.classList.add('img-navigation');
+        imgNumber.textContent = +indexStartImg - 1;
+        paginationImgBlock.insertBefore(imgNumber, paginationImgBlock.children[0]);
+      } //отрисовка новой пагинации после нажатия >>
+
+
+      function showMoreAmountImage() {
+        findNumberImage(2);
+        clearPagination();
+        showButtonLess();
+        var reserveVariables = +indexStartImg;
+        indexPagination = +indexStartImg + indexPagination;
+
+        if (indexPagination <= links.length) {
+          for (+indexStartImg; +indexStartImg < indexPagination; +indexStartImg++) {
+            createNewButtonMore();
+          }
+
+          showButtonMore();
+        } else {
+          for (+indexStartImg; +indexStartImg < links.length; +indexStartImg++) {
+            createNewButtonMore();
+          }
+        }
+
+        indexPagination = indexPagination - reserveVariables;
+        addClassButton();
+      } //отрисовка новой пагинации после нажатия <<
+
+
+      function showLessAmountImage() {
+        findNumberImage(0);
+        clearPagination();
+        showButtonMore();
+        var reserveVariables = +indexStartImg;
+        indexPagination = +indexStartImg - indexPagination;
+
+        if (indexPagination > 1) {
+          for (+indexStartImg; +indexStartImg > indexPagination; +indexStartImg--) {
+            createNewButtonLess();
+          } // вынести в отдельную функцию
+          //
+
+
+          var lessImg = document.createElement('button');
+          lessImg.classList.add('lessImg-class');
+          lessImg.id = "lessImg";
+          lessImg.textContent = "<<";
+          paginationImgBlock.insertBefore(lessImg, paginationImgBlock.children[0]); //
+          //
+        } else {
+          for (+indexStartImg; +indexStartImg > 1; +indexStartImg--) {
+            createNewButtonLess();
+          }
+        }
+
+        indexPagination = reserveVariables - indexPagination;
+        addClassButton();
+      }
+
+      function findNumberImage(n) {
+        var buttonArr = document.querySelectorAll('.img-navigation');
+
+        for (indexStartImg = 0; indexStartImg < buttonArr.length; i++) {
+          return indexStartImg = buttonArr[n].innerText;
+        }
+      }
+
+      function clearPagination() {
+        while (paginationImgBlock.firstChild) {
+          paginationImgBlock.removeChild(paginationImgBlock.firstChild);
+        }
+      }
+
+      paginationImgBlock.onclick = function (event) {
+        var target = event.target; // где был клик?
+
+        if (target.id === "moreImg") {
+          showMoreAmountImage();
+        } else if (target.id === "lessImg") {
+          showLessAmountImage();
+        }
+      }; // функция соединения активной картинки и пагинации
+
+
+      var indexActiveImg = 0;
+
+      function findActiveImg() {
+        slides = document.querySelectorAll('.slide-single');
+
+        for (; indexActiveImg < links.length; indexActiveImg++) {
+          if (links[indexActiveImg] === slides[1].src) {
+            return indexActiveImg;
+          }
+        }
+      }
+
+      function addClassButton() {
+        var indexActiveButton = 0;
+        findActiveImg();
+        var buttonArr = document.querySelectorAll('.img-navigation');
+
+        for (; indexActiveButton < buttonArr.length; indexActiveButton++) {
+          buttonArr[indexActiveButton].classList.remove('active');
+
+          if (indexActiveImg > buttonArr.length - 1) {
+            document.getElementById('moreImg').classList.add('active');
+          } else if (indexActiveButton === indexActiveImg) {
+            buttonArr[indexActiveButton].classList.add('active');
+            indexActiveImg = 0;
+          }
+        }
+      }
+
+      addClassButton();
     };
   }, {}]
 }, {}, [1]);

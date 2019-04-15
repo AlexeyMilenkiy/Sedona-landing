@@ -70,6 +70,7 @@ window.onload = function() {
         }
 
         function findIndexLastImg(arg) {
+            imgIndex =0;
             for (; imgIndex < links.length; imgIndex++) {
                 if (links[imgIndex] === arg.src) {
                     return imgIndex;
@@ -78,6 +79,7 @@ window.onload = function() {
         }
 
         function addNextImage() {
+
             let rightImg = document.createElement('img');
             if (imgIndex >= links.length - 1) {
                 imgIndex = 0;
@@ -92,7 +94,7 @@ window.onload = function() {
 
         function addPrevImage() {
             let leftImg = document.createElement('img');
-            if (imgIndex === -1) {
+            if (imgIndex <= 0) {
                 imgIndex = links.length - 1;
             } else {
                 imgIndex = imgIndex - 1;
@@ -123,7 +125,7 @@ window.onload = function() {
             setTimeout(function() {
                 addNextImage();
                 addClassButton();
-            }, 3000);
+            }, 2000);
         }
 
         function showPrevImage() {
@@ -145,7 +147,7 @@ window.onload = function() {
             setTimeout(function() {
                 addPrevImage();
                 addClassButton();
-            }, 3000);
+            }, 2000);
         }
 
         next.onclick = showNextImage;
@@ -177,7 +179,7 @@ window.onload = function() {
         function createNewButtonLess() {
             let imgNumber = document.createElement('button');
             imgNumber.classList.add('img-navigation');
-            imgNumber.textContent = +indexStartImg - 1;
+            imgNumber.textContent = + indexStartImg - 1;
             paginationImgBlock.insertBefore(imgNumber, paginationImgBlock.children[0]);
         }
 
@@ -186,7 +188,7 @@ window.onload = function() {
             findNumberImage(2);
             clearPagination();
             showButtonLess();
-            let reserveVariables = +indexStartImg
+            let reserveVariables = +indexStartImg;
             indexPagination = +indexStartImg + indexPagination;
 
             if (indexPagination <= links.length) {
@@ -210,7 +212,7 @@ window.onload = function() {
             findNumberImage(0);
             clearPagination();
             showButtonMore();
-            let reserveVariables = +indexStartImg
+            let reserveVariables = +indexStartImg;
             indexPagination = +indexStartImg - indexPagination;
 
             if (indexPagination > 1) {
@@ -235,11 +237,11 @@ window.onload = function() {
             indexPagination = reserveVariables - indexPagination;
             addClassButton();
         }
-
+         //функция поиска номера крайней картинки
         function findNumberImage(n) {
             let buttonArr = document.querySelectorAll('.img-navigation');
-
-            for (indexStartImg = 0; indexStartImg < buttonArr.length; i++) {
+            indexStartImg = 0;
+            for (; indexStartImg < buttonArr.length; indexStartImg++) {
                 return indexStartImg = buttonArr[n].innerText
             }
         }
@@ -259,7 +261,7 @@ window.onload = function() {
             } else if (target.id === "lessImg") {
                 showLessAmountImage();
             }
-        }
+        };
 
         // функция соединения активной картинки и пагинации
         let indexActiveImg = 0;
@@ -278,18 +280,35 @@ window.onload = function() {
         function addClassButton() {
             let indexActiveButton = 0;
             findActiveImg();
+            indexActiveImg++;
             let buttonArr = document.querySelectorAll('.img-navigation');
+            let buttonMore = document.getElementById('moreImg');
+            let buttonLess = document.getElementById('lessImg');
 
             for (; indexActiveButton < buttonArr.length; indexActiveButton++) {
-                buttonArr[indexActiveButton].classList.remove('active');
 
-                if (indexActiveImg > buttonArr.length -1) {
-                    document.getElementById('moreImg').classList.add('active');
-                } else if (indexActiveButton === indexActiveImg) {
-                    buttonArr[indexActiveButton].classList.add('active');
-                    indexActiveImg = 0;
+                buttonArr[indexActiveButton].classList.remove('active');
+                if (!!buttonMore) {
+                    buttonMore.classList.remove('active');
                 }
-            }
+                if (!!buttonLess) {
+                    buttonLess.classList.remove('active');
+                }
+
+                if (indexActiveImg > +buttonArr[buttonArr.length - 1].innerText) {
+
+                    buttonMore.classList.add('active');
+
+                }
+                if (indexActiveImg < +buttonArr[0].innerText) {
+
+                    buttonLess.classList.add('active');
+
+                } else if (+buttonArr[indexActiveButton].innerText === indexActiveImg) {
+
+                    buttonArr[indexActiveButton].classList.add('active');
+                }
+            }indexActiveImg = 0;
         }
             addClassButton();
-};
+}
