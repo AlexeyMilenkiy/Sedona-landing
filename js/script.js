@@ -10,14 +10,14 @@ window.onload = function() {
     const email = document.querySelector('#email');
     const errorMessageEmail = document.querySelector('.wrong-email');
     const errorMessageTel = document.querySelector('.wrong-number');
-    // const validate = require("validate.js");
+    let validator = require("validate-js");
     const form = document.querySelector(".main-form");
     let inputs  = form.querySelectorAll("input[type=text], input[type=email]");
 
     console.log(inputs);let i=0;
 
 
-    var validator = new FormValidator('form', [{
+    validator = new FormValidator('form', [{
         name: 'name',
         display: 'required',
         rules: 'required'
