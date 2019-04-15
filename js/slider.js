@@ -344,16 +344,18 @@ window.onload = function() {
         let b = 0;
         let indexWaitImage = 0;
         let buttonArr = document.querySelectorAll('.img-navigation');
-        for (; indexWaitImage < links.length; indexWaitImage++) {
+        for (; indexWaitImage <= links.length; indexWaitImage++) {
             if (indexWaitImage === numButton) {
                 for (; b < buttonArr.length; b++) {
-                    if (buttonArr[b].classList.contains('active')) {
-                        if (indexWaitImage > b+1) {
-                            addNextImageFromPagination();
-                            break
-                        } else if (indexWaitImage < b+1) {
-                            addPrevImageFromPagination();
-                            break
+                    if (+buttonArr[b].innerText === numButton) {
+                        if (!buttonArr[b].classList.contains('active')) {
+                            if (indexWaitImage > b) {
+                                addNextImageFromPagination();
+                                break
+                            } else if (indexWaitImage < b) {
+                                addPrevImageFromPagination();
+                                break
+                            }
                         }
                     }
                 }
@@ -421,7 +423,7 @@ window.onload = function() {
 
         offset = 0;
         let step3 = slides.length;
-        for (let i = slides.length-1; i >= 0; i--) {
+        for (let i = slides.length - 1; i >= 0; i--) {
             if (step3 > 0) {
                 offset = 1;
                 step3--;
