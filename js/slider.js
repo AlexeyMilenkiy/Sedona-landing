@@ -342,11 +342,11 @@ window.onload = function () {
                 if (i > indexActiveImg+1) {
                     showNextImage();
                 } else if (i < indexActiveImg+1) {
-                    indexActiveImg = 0;
+
                     showPrevImage();
                 }
             }
-        }
+        }                    indexActiveImg = 0;
     }
 
 };
