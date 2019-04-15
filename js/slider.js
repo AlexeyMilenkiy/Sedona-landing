@@ -263,7 +263,7 @@ window.onload = function () {
         } else if (target.id === "lessImg") {
             showLessAmountImage();
         } else if (target.id !== "lessImg"&&"moreImg" ){
-            showNotActiveImg(target.innerText);
+            containsActiveClass(target.innerText);
         }
     };
 
@@ -313,7 +313,7 @@ window.onload = function () {
         indexActiveImg = 0;
     }
 
-    function showNotActiveImg(x){
+    function containsActiveClass(x){
         let numButton = +x;
         let buttonArr = document.querySelectorAll('.img-navigation');
 
@@ -323,16 +323,30 @@ window.onload = function () {
                  if(buttonArr[i].classList.contains('active')){
                      break
                  }else{
-
+                     showNotActiveImg(x);
                      //вставить фукнцию отрисовки изображения которое не активно
-                     console.log('add active class')
+
                      // buttonArr[i].classList.add('active');
                  }
 
             }
         }
+    }
 
+    function showNotActiveImg(x){
+        let numButton = +x;
+        for (let i = 0; i <= slides.length; i++) {
 
+            if (i === numButton) {
+                findActiveImg();
+                if (i > indexActiveImg+1) {
+                    showNextImage();
+                } else if (i < indexActiveImg+1) {
+                    indexActiveImg = 0;
+                    showPrevImage();
+                }
+            }
+        }
     }
 
 };
