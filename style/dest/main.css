@@ -421,6 +421,7 @@ body {
   height: 40px;
 }
 .slide-navigation:hover {
+  cursor: pointer;
   background-color: #669ec0;
   transition: 1s;
 }

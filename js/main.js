@@ -124,8 +124,7 @@
       }
 
       function findIndexLastImg(arg) {
-        imgIndex = 0;
-
+        // imgIndex = 0;
         for (; imgIndex < links.length; imgIndex++) {
           if (links[imgIndex] === arg.src) {
             return imgIndex;
@@ -146,6 +145,7 @@
         rightImg.classList.add('slide-single');
         rightImg.style.left = 100 + '%';
         sliderBlock.appendChild(rightImg);
+        imgIndex = 0;
       }
 
       function addPrevImage() {
@@ -161,6 +161,7 @@
         leftImg.classList.add('slide-single');
         leftImg.style.left = -100 + '%';
         sliderBlock.insertBefore(leftImg, sliderBlock.children[0]);
+        imgIndex = 0;
       }
 
       function showNextImage() {
@@ -315,6 +316,8 @@
         }
       }
 
+      var numberPushButton = 0;
+
       paginationImgBlock.onclick = function (event) {
         var target = event.target;
 
@@ -323,6 +326,7 @@
         } else if (target.id === "lessImg") {
           showLessAmountImage();
         } else if (target.id !== "lessImg" && "moreImg") {
+          numberPushButton = +target.innerText;
           containsActiveClass(target.innerText);
         }
       };
@@ -379,8 +383,7 @@
             if (buttonArr[i].classList.contains('active')) {
               break;
             } else {
-              showNotActiveImg(x); //вставить фукнцию отрисовки изображения которое не активно
-              // buttonArr[i].classList.add('active');
+              showNotActiveImg(x);
             }
           }
         }
@@ -388,20 +391,112 @@
 
       function showNotActiveImg(x) {
         var numButton = +x;
+        var b = 0;
+        var indexWaitImage = 0;
+        var buttonArr = document.querySelectorAll('.img-navigation');
 
-        for (var i = 0; i <= slides.length; i++) {
-          if (i === numButton) {
-            findActiveImg();
-
-            if (i > indexActiveImg + 1) {
-              showNextImage();
-            } else if (i < indexActiveImg + 1) {
-              showPrevImage();
+        for (; indexWaitImage <= links.length; indexWaitImage++) {
+          if (indexWaitImage === numButton) {
+            for (; b < buttonArr.length; b++) {
+              if (+buttonArr[b].innerText === numButton) {
+                if (!buttonArr[b].classList.contains('active')) {
+                  if (indexWaitImage > b) {
+                    addNextImageFromPagination();
+                    break;
+                  } else if (indexWaitImage < b) {
+                    addPrevImageFromPagination();
+                    break;
+                  }
+                }
+              }
             }
           }
         }
+      }
 
-        indexActiveImg = 0;
+      function addNextImageFromPagination() {
+        var linkNewImage = 0;
+        var rightImg = document.createElement('img');
+
+        for (var i = 0; i < links.length; i++) {
+          if (i + 1 === numberPushButton) {
+            linkNewImage = links[i];
+            break;
+          }
+        }
+
+        slides[0].remove();
+        slides[2].remove();
+        rightImg.src = linkNewImage;
+        rightImg.classList.add('slide-single');
+        rightImg.style.left = 100 + '%';
+        sliderBlock.appendChild(rightImg);
+        slides = document.querySelectorAll('.slide-single');
+        offset = 0;
+        var step2 = 0;
+
+        for (var _i2 = 0; _i2 < slides.length; _i2++) {
+          if (step2 + 1 === slides.length) {
+            offset = 1;
+          } else {
+            offset = 0;
+            step2++;
+          }
+
+          slides[_i2].style.left = offset * 100 - 100 + '%';
+        }
+
+        findIndexLastImg(slides[1]);
+        addNextImage();
+        slides[0].remove();
+        findIndexLastImg(slides[1]);
+        addPrevImage();
+        addClassButton();
+        numberPushButton = 0;
+      }
+
+      function addPrevImageFromPagination() {
+        var linkNewImage = 0;
+        var leftImg = document.createElement('img');
+        console.log(numberPushButton);
+
+        for (var i = 0; i < links.length; i++) {
+          if (i + 1 === numberPushButton) {
+            linkNewImage = links[i];
+            break;
+          }
+        }
+
+        console.log(linkNewImage);
+        slides[0].remove();
+        slides[2].remove();
+        leftImg.src = linkNewImage;
+        leftImg.classList.add('slide-single');
+        leftImg.style.left = -100 + '%';
+        sliderBlock.insertBefore(leftImg, sliderBlock.children[0]);
+        slides = document.querySelectorAll('.slide-single');
+        offset = 0;
+        var step3 = slides.length;
+
+        for (var _i3 = slides.length - 1; _i3 >= 0; _i3--) {
+          if (step3 > 0) {
+            offset = 1;
+            step3--;
+          } else {
+            offset = 0;
+          }
+
+          slides[_i3].style.left = offset * 100 + '%';
+          step3--;
+        }
+
+        findIndexLastImg(slides[0]);
+        addPrevImage();
+        slides[1].remove();
+        findIndexLastImg(slides[0]);
+        addNextImage();
+        addClassButton();
+        numberPushButton = 0;
       }
     };
   }, {}]
