@@ -16,7 +16,7 @@ var rename = require('gulp-rename');
 gulp.task('less', function(){
 	return gulp.src(['./style/less/*.less'])
 	       .pipe(less())
-           .pipe(concat('main.css'))
+         .pipe(concat('main.css'))
 	       .pipe(gulp.dest('./style/dest'))
 	       .pipe(browserSync.stream());
 });
@@ -30,9 +30,9 @@ gulp.task('css', function () {
 });
 
 gulp.task('browserify', function(){
-  var bundleStream = browserify('./js/script.js').bundle()
+ var bundleStream = browserify('./js/script.js').bundle()
 
-  bundleStream
+  return bundleStream
     .pipe(source('script.js'))
     .pipe(streamify(babel()))
     .pipe(rename('main.js'))

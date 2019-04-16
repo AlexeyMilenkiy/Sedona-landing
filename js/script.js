@@ -1,15 +1,76 @@
 window.onload = function() {
+  let mobileMenuIcon = document.querySelector('.mobile-menu');
+  let mobileMenu = document.querySelector('.mobile-navigation');
+  let closeMobMenu = document.querySelector('.close-mobile-nav');
+  let navigation = document.querySelector('.header__nav');
+  const name = document.getElementById('name');
+  const surName = document.getElementById('surname');
+  const tel = document.querySelector('#tel');
+  const email = document.querySelector('#email');
+  const errorMessageEmail = document.querySelector('.wrong-email');
+  const errorMessageTel = document.querySelector('.wrong-number');
+  let validate = require("validate-js");
+  const form = document.querySelector(".main-form");
+  
+  let validator = new validate('form', [{
+        name: 'name',
+        display: 'required',
+        rules: 'required'
+    }, {
+        name: 'surname',
+        display: 'required',
+        rules: 'required'
+    }, {
+        name: 'telephone',
+        display: 'Telephone No',
+        rules: 'required|callback_check_phone'
+    }, {
+        name: 'email',
+        display: 'Email No',
+        rules: 'required|valid_email'
+    }], function(errors) {
+      clearErrors();
+        if (errors.length > 0) {
+            for (let i = 0; i < errors.length; i++) {
+                if (errors[i].id === "name") {
+                    name.classList.remove("review-user__input");
+                    name.classList.add("error");
+                } else if (errors[i].id === 'surname') {
+                    surName.classList.remove("review-user__input");
+                    surName.classList.add("error");
+                } else if (errors[i].id === 'tel') {
+                    errorMessageTel.classList.remove("wrong-number");
+                    errorMessageTel.classList.add("error-number");
+                } else if (errors[i].id === "email") {
+                    errorMessageEmail.classList.remove("wrong-email");
+                    errorMessageEmail.classList.add("error-email");
+                } else {
+                    errors.length = 0;
+                }
+            }
+        }
+    });
 
-    let mobileMenuIcon = document.querySelector('.mobile-menu');
-    let mobileMenu = document.querySelector('.mobile-navigation');
-    let closeMobMenu = document.querySelector('.close-mobile-nav');
-    let navigation = document.querySelector('.header__nav');
-    let tel = document.querySelector('#tel');
-    const email = document.querySelector('#email');
-    const errorMessageEmail = document.querySelector('.wrong-email');
-    const errorMessageTel = document.querySelector('.wrong-number');
-    const validate = require("validate.js");
-    const form = document.querySelector(".main-form");
+    validator.registerCallback('check_phone', function(value) {
+        let phoneCheck = /^\+?([0-9]{2})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4})$/;
+        return phoneCheck.test(value);
+    })
+    .setMessage('check_phone', '');
+
+    function clearErrors() {
+
+        name.classList.remove("error");
+        name.classList.add("review-user__input");
+
+        surName.classList.remove("error");
+        surName.classList.add("review-user__input");
+
+        errorMessageTel.classList.remove("error-number");
+        errorMessageTel.classList.add("wrong-number");
+
+        errorMessageEmail.classList.remove("error-email");
+        errorMessageEmail.classList.add("wrong-email");
+    };
 
     mobileMenuIcon.onclick = (e) => {
         e.preventDefault();
@@ -20,73 +81,4 @@ window.onload = function() {
         e.preventDefault();
         mobileMenu.classList.remove("show-nav");
     };
-
-    const Constraints = {
-        name: {
-            presence: true,
-            length: {
-                minimum: 3,
-                message: console.log("error name")}
-                },
-        surname: {
-            presence: true,
-            length: {
-                minimum: 3,
-                message: 'name is not valid' }
-        },
-        email: {
-            email: false,
-            presence: false
-        },
-    };
-
-
-    validate(form.name.value, Constraints,{format: "flat"});
-
-    let errorsname = validate(form.name.value, Constraints) || {};
-    console.log('errors', errorsname.name);
-
-
-
-    validate(form.surname.value, Constraints);
-
-    let errorssurname = validate(form.surname.value, Constraints) || {};
-    console.log('errors', errorssurname.surname);
-
-
-    tel.addEventListener("change",() => {
-        const req = /^\+?([0-9]{2})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4})$/;
-        let errors = validate(form.tel.value, Constraints) || {};
-        console.log('errors', errors.tel);
-        if (event.target.value.match(req)) {
-            console.log(11111);
-        } else {
-            errorMessageTel.classList.remove('wrong-number');
-            errorMessageTel.classList.add('wrong-number-visible');
-        }
-    });
-
-    email.addEventListener("change",() => {
-            let errors = validate(form.email.value, Constraints) || {};
-            console.log('errors', errors.email);
-            if (errors.email) {
-              errorMessageEmail.classList.remove('wrong-email');
-              errorMessageEmail.classList.add('wrong-email-visible');
-            } else {
-                console.log('email succes')
-            }
-    });
-
-
-    form.addEventListener('submit', event => {
-        event.preventDefault();
-
-        const formData = {
-            name: form.name.value,
-            surname: form.surname.value,
-            email: form.email.value,
-            tel: form.tel.value
-        };
-        // validate.collectFormValues(formData)
-    })
 }
