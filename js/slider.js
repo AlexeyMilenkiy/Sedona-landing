@@ -242,10 +242,7 @@ window.onload = function () {
     //функция поиска номера крайней картинки
     function findNumberImage(n) {
         let buttonArr = document.querySelectorAll('.img-navigation');
-        indexStartImg = 0;
-        for (; indexStartImg < buttonArr.length; indexStartImg++) {
-            return indexStartImg = buttonArr[n].innerText
-        }
+            indexStartImg = buttonArr[n].innerText
     }
 
     function clearPagination() {
@@ -253,8 +250,7 @@ window.onload = function () {
             paginationImgBlock.removeChild(paginationImgBlock.firstChild);
         }
     }
-
-
+    
     paginationImgBlock.onclick = function (event) {
         let target = event.target;
         if (target.id === "moreImg") {
