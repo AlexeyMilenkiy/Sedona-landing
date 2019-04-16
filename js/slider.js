@@ -80,7 +80,6 @@ window.onload = function () {
     }
 
     function addNextImage() {
-
         let rightImg = document.createElement('img');
         if (imgIndex >= links.length - 1) {
             imgIndex = 0;
@@ -250,7 +249,7 @@ window.onload = function () {
             paginationImgBlock.removeChild(paginationImgBlock.firstChild);
         }
     }
-    
+
     paginationImgBlock.onclick = function (event) {
         let target = event.target;
         if (target.id === "moreImg") {
@@ -335,7 +334,6 @@ window.onload = function () {
             if (indexWaitImage === numberPushButton) {
                 for (let i = 0; i < buttonArr.length; i++) {
                     if (+buttonArr[i].innerText === numberPushButton) {
-
                         if (indexWaitImage > activeButton) {
                             addNextImageFromPagination();
                             break outer;
@@ -388,6 +386,8 @@ window.onload = function () {
     }
 
     function addPrevImageFromPagination() {
+
+
         let linkNewImage = 0;
         let leftImg = document.createElement('img');
         for (let i = 0; i < links.length; i++) {
@@ -405,24 +405,30 @@ window.onload = function () {
         sliderBlock.insertBefore(leftImg, sliderBlock.children[0]);
         slides = document.querySelectorAll('.slide-single');
 
-        offset = 0;
-        let step3 = slides.length;
-        for (let i = slides.length - 1; i >= 0; i--) {
-            if (step3 > 0) {
-                offset = 1;
-                step3--;
-            } else {
-                offset = 0;
-            }
-            slides[i].style.left = offset * 100 + '%';
-            step3--
-        }
-        findIndexLastImg(slides[0]);
-        addPrevImage();
-        slides[1].remove();
-        findIndexLastImg(slides[0]);
-        addNextImage();
-        addClassButton();
-        numberPushButton = 0;
+
+      setTimeout(function () {
+          let step3 = slides.length;
+          offset = 0;
+          for (let i = slides.length - 1; i >= 0; i--) {
+              if (step3 - 1 > 0) {
+                  offset = 1;
+                  step3--;
+              } else {
+                  offset = 0;
+              }
+              slides[i].style.left = offset * 100 + '%';
+          }
+
+      }, 200);
+
+      setTimeout(function () {
+          findIndexLastImg(slides[0]);
+          addPrevImage();
+          slides[1].remove();
+          findIndexLastImg(slides[0]);
+          addNextImage();
+          addClassButton();
+          numberPushButton = 0;
+      },2000);
     }
 };
