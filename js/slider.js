@@ -13,6 +13,7 @@ window.onload = function () {
     let indexActiveImg = 0;
     let numberPushButton = 0;
     let activeButton = 0;
+    let linkNewImage = 0;
 
     showImage();
     showPagination();
@@ -107,13 +108,9 @@ window.onload = function () {
         imgIndex = 0;
     }
 
-    function showNextImage() {
-        slides = document.querySelectorAll('.slide-single');
+    function shiftImageLeft() {
         offset = 0;
         let step2 = 0;
-        findIndexLastImg(slides[2]);
-        slides[0].remove();
-
         for (let i = 0; i < slides.length; i++) {
             if (step2 + 1 === slides.length) {
 
@@ -124,19 +121,22 @@ window.onload = function () {
             }
             slides[i].style.left = offset * 100 - 100 + '%';
         }
+    }
+
+    function showNextImage() {
+        slides = document.querySelectorAll('.slide-single');
+        findIndexLastImg(slides[2]);
+        slides[0].remove();
+        shiftImageLeft();
         setTimeout(function () {
             addNextImage();
             addClassButton();
         }, 2000);
     }
 
-    function showPrevImage() {
-        slides = document.querySelectorAll('.slide-single');
+    function shiftImageRight() {
         offset = 0;
         let step3 = slides.length;
-        findIndexLastImg(slides[0]);
-        slides[2].remove();
-
         for (let i = slides.length - 1; i >= 0; i--) {
             if (step3 - 1 > 0) {
                 offset = 1;
@@ -146,6 +146,15 @@ window.onload = function () {
             }
             slides[i].style.left = offset * 100 + '%';
         }
+    }
+
+    function showPrevImage() {
+        slides = document.querySelectorAll('.slide-single');
+        offset = 0;
+        let step3 = slides.length;
+        findIndexLastImg(slides[0]);
+        slides[2].remove();
+        shiftImageRight();
         setTimeout(function () {
             addPrevImage();
             addClassButton();
@@ -186,8 +195,8 @@ window.onload = function () {
     }
 
     //отрисовка новой пагинации после нажатия >>
-    function showMoreAmountImage() {
-        findNumberImage(2);
+    function showNextPagination() {
+        findLastNumberImage(2);
         clearPagination();
         showButtonLess();
         let reserveVariables = +indexStartImg;
@@ -206,10 +215,10 @@ window.onload = function () {
         indexPagination = indexPagination - reserveVariables;
         addClassButton();
     }
+
     //отрисовка новой пагинации после нажатия <<
-    function showLessAmountImage() {
-        findNumberImage(0);
-        console.log(indexStartImg);
+    function showPrevPagination() {
+        findLastNumberImage(0);
         clearPagination();
         showButtonMore();
         let reserveVariables = +indexStartImg;
@@ -220,15 +229,12 @@ window.onload = function () {
             for (+indexStartImg; +indexStartImg > indexPagination; +indexStartImg--) {
                 createNewButtonLess();
             }
-            // вынести в отдельную функцию
-            //
             let lessImg = document.createElement('button');
             lessImg.classList.add('lessImg-class');
             lessImg.id = "lessImg";
             lessImg.textContent = "<<";
             paginationImgBlock.insertBefore(lessImg, paginationImgBlock.children[0]);
-            //
-            //
+
         } else {
             for (+indexStartImg; +indexStartImg > 1; +indexStartImg--) {
                 createNewButtonLess();
@@ -238,10 +244,9 @@ window.onload = function () {
         addClassButton();
     }
 
-    //функция поиска номера крайней картинки
-    function findNumberImage(n) {
+    function findLastNumberImage(n) {
         let buttonArr = document.querySelectorAll('.img-navigation');
-            indexStartImg = buttonArr[n].innerText
+        indexStartImg = buttonArr[n].innerText
     }
 
     function clearPagination() {
@@ -253,9 +258,9 @@ window.onload = function () {
     paginationImgBlock.onclick = function (event) {
         let target = event.target;
         if (target.id === "moreImg") {
-            showMoreAmountImage();
+            showNextPagination();
         } else if (target.id === "lessImg") {
-            showLessAmountImage();
+            showPrevPagination();
         } else if (target.id !== "lessImg" && "moreImg") {
             numberPushButton = +target.innerText;
             containsActiveClass(target.innerText);
@@ -318,7 +323,19 @@ window.onload = function () {
 
     function bruteForcePagination() {
         let buttonArr = document.querySelectorAll('.img-navigation');
+        let lessButton = document.getElementById('lessImg');
+        let moreButton = document.getElementById('moreImg');
 
+        if (lessButton) {
+            if (lessButton.classList.contains('active')) {
+                return activeButton = -1
+            }
+        }
+        if (moreButton) {
+            if (moreButton.classList.contains('active')) {
+                return activeButton = links.length + 1
+            }
+        }
         for (let i = 0; i < buttonArr.length; i++) {
             if (buttonArr[i].classList.contains('active')) {
                 activeButton = +buttonArr[i].innerText;
@@ -347,55 +364,47 @@ window.onload = function () {
         }
     }
 
-    function addNextImageFromPagination() {
-        let linkNewImage = 0;
-        let rightImg = document.createElement('img');
+    function findIndexNewImage(){
         for (let i = 0; i < links.length; i++) {
             if (i + 1 === numberPushButton) {
                 linkNewImage = links[i];
                 break
             }
         }
+    }
+
+    function addNextImageFromPagination() {
+
+        let rightImg = document.createElement('img');
+        findIndexNewImage();
         slides[0].remove();
         slides[2].remove();
+
         rightImg.src = linkNewImage;
         rightImg.classList.add('slide-single');
         rightImg.style.left = 100 + '%';
         sliderBlock.appendChild(rightImg);
         slides = document.querySelectorAll('.slide-single');
 
-        offset = 0;
-        let step2 = 0;
-        for (let i = 0; i < slides.length; i++) {
-            if (step2 + 1 === slides.length) {
-                offset = 1;
-            } else {
-                offset = 0;
-                step2++;
-            }
-            slides[i].style.left = offset * 100 - 100 + '%';
-        }
+        setTimeout(function () {
+            shiftImageLeft();
+        }, 200);
 
-        findIndexLastImg(slides[1]);
-        addNextImage();
-        slides[0].remove();
-        findIndexLastImg(slides[1]);
-        addPrevImage();
-        addClassButton();
-        numberPushButton = 0;
+        setTimeout(function () {
+            findIndexLastImg(slides[1]);
+            addNextImage();
+            slides[0].remove();
+            findIndexLastImg(slides[1]);
+            addPrevImage();
+            addClassButton();
+            numberPushButton = 0;
+            linkNewImage = 0;
+        }, 2000);
     }
 
     function addPrevImageFromPagination() {
-
-
-        let linkNewImage = 0;
         let leftImg = document.createElement('img');
-        for (let i = 0; i < links.length; i++) {
-            if (i + 1 === numberPushButton) {
-                linkNewImage = links[i];
-                break
-            }
-        }
+        findIndexNewImage();
         slides[0].remove();
         slides[2].remove();
 
@@ -405,30 +414,19 @@ window.onload = function () {
         sliderBlock.insertBefore(leftImg, sliderBlock.children[0]);
         slides = document.querySelectorAll('.slide-single');
 
+        setTimeout(function () {
+            shiftImageRight();
+        }, 200);
 
-      setTimeout(function () {
-          let step3 = slides.length;
-          offset = 0;
-          for (let i = slides.length - 1; i >= 0; i--) {
-              if (step3 - 1 > 0) {
-                  offset = 1;
-                  step3--;
-              } else {
-                  offset = 0;
-              }
-              slides[i].style.left = offset * 100 + '%';
-          }
-
-      }, 200);
-
-      setTimeout(function () {
-          findIndexLastImg(slides[0]);
-          addPrevImage();
-          slides[1].remove();
-          findIndexLastImg(slides[0]);
-          addNextImage();
-          addClassButton();
-          numberPushButton = 0;
-      },2000);
+        setTimeout(function () {
+            findIndexLastImg(slides[0]);
+            addPrevImage();
+            slides[1].remove();
+            findIndexLastImg(slides[0]);
+            addNextImage();
+            addClassButton();
+            numberPushButton = 0;
+            linkNewImage = 0
+        }, 2000);
     }
 };
