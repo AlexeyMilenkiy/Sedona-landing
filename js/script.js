@@ -11,15 +11,26 @@ window.onload = function() {
     const errorMessageTel = document.querySelector('.wrong-number-hidden');
     let validate = require("validate-js");
     const form = document.querySelector(".main-form");
+    let VMasker = require("vanilla-masker");
+
+    mobileMenuIcon.onclick = (e) => {
+        e.preventDefault();
+        mobileMenu.classList.add("show-nav");
+    };
+
+    closeMobMenu.onclick = (e) => {
+        e.preventDefault();
+        mobileMenu.classList.remove("show-nav");
+    };
 
     let validator = new validate('form', [{
         name: 'name',
         display: 'required',
-        rules: 'required'
+        rules: 'required|min_length[2]'
     }, {
         name: 'surname',
         display: 'required',
-        rules: 'required'
+        rules: 'required|min_length[2]'
     }, {
         name: 'telephone',
         display: 'Telephone No',
@@ -60,13 +71,18 @@ window.onload = function() {
         errorMessageEmail.classList.remove("wrong-number-or-email-visible");
     }
 
-    mobileMenuIcon.onclick = (e) => {
-        e.preventDefault();
-        mobileMenu.classList.add("show-nav");
-    };
+    function inputHandler(masks, max, event) {
+        let input = event.target;
+        let inputValue = input.value.replace(/\D/g, '');
+        let maxLength = input.value.length > max ? 1 : 0;
+        VMasker(input).unMask();
+        VMasker(input).maskPattern(masks[maxLength]);
+        input.value = VMasker.toPattern(inputValue, masks[maxLength]);
+    }
 
-    closeMobMenu.onclick = (e) => {
-        e.preventDefault();
-        mobileMenu.classList.remove("show-nav");
-    };
+    let telMask = ['+9(999) 999-99-99', '+9(999) 999-99-99'];
+    VMasker(tel).maskPattern(telMask[0]);
+    tel.addEventListener('input', inputHandler.bind(undefined, telMask, 14), false);
+
+
 };

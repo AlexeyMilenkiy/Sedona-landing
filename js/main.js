@@ -51,14 +51,27 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
       var validate = require("validate-js");
 
       var form = document.querySelector(".main-form");
+
+      var VMasker = require("vanilla-masker");
+
+      mobileMenuIcon.onclick = function (e) {
+        e.preventDefault();
+        mobileMenu.classList.add("show-nav");
+      };
+
+      closeMobMenu.onclick = function (e) {
+        e.preventDefault();
+        mobileMenu.classList.remove("show-nav");
+      };
+
       var validator = new validate('form', [{
         name: 'name',
         display: 'required',
-        rules: 'required'
+        rules: 'required|min_length[2]'
       }, {
         name: 'surname',
         display: 'required',
-        rules: 'required'
+        rules: 'required|min_length[2]'
       }, {
         name: 'telephone',
         display: 'Telephone No',
@@ -98,18 +111,22 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
         errorMessageEmail.classList.remove("wrong-number-or-email-visible");
       }
 
-      mobileMenuIcon.onclick = function (e) {
-        e.preventDefault();
-        mobileMenu.classList.add("show-nav");
-      };
+      function inputHandler(masks, max, event) {
+        var input = event.target;
+        var inputValue = input.value.replace(/\D/g, '');
+        var maxLength = input.value.length > max ? 1 : 0;
+        VMasker(input).unMask();
+        VMasker(input).maskPattern(masks[maxLength]);
+        input.value = VMasker.toPattern(inputValue, masks[maxLength]);
+      }
 
-      closeMobMenu.onclick = function (e) {
-        e.preventDefault();
-        mobileMenu.classList.remove("show-nav");
-      };
+      var telMask = ['+9(999) 999-99-99', '+9(999) 999-99-99'];
+      VMasker(tel).maskPattern(telMask[0]);
+      tel.addEventListener('input', inputHandler.bind(undefined, telMask, 14), false);
     };
   }, {
-    "validate-js": 2
+    "validate-js": 2,
+    "vanilla-masker": 3
   }],
   2: [function (require, module, exports) {
     /*
@@ -742,5 +759,235 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
     if (typeof module !== 'undefined' && module.exports) {
       module.exports = FormValidator;
     }
+  }, {}],
+  3: [function (require, module, exports) {
+    (function (root, factory) {
+      if (typeof define === 'function' && define.amd) {
+        define(factory);
+      } else if (_typeof(exports) === 'object') {
+        module.exports = factory();
+      } else {
+        root.VMasker = factory();
+      }
+    })(this, function () {
+      var DIGIT = "9",
+          ALPHA = "A",
+          ALPHANUM = "S",
+          BY_PASS_KEYS = [9, 16, 17, 18, 36, 37, 38, 39, 40, 91, 92, 93],
+          isAllowedKeyCode = function isAllowedKeyCode(keyCode) {
+        for (var i = 0, len = BY_PASS_KEYS.length; i < len; i++) {
+          if (keyCode == BY_PASS_KEYS[i]) {
+            return false;
+          }
+        }
+
+        return true;
+      },
+          mergeMoneyOptions = function mergeMoneyOptions(opts) {
+        opts = opts || {};
+        opts = {
+          delimiter: opts.delimiter || ".",
+          lastOutput: opts.lastOutput,
+          precision: opts.hasOwnProperty("precision") ? opts.precision : 2,
+          separator: opts.separator || ",",
+          showSignal: opts.showSignal,
+          suffixUnit: opts.suffixUnit && " " + opts.suffixUnit.replace(/[\s]/g, '') || "",
+          unit: opts.unit && opts.unit.replace(/[\s]/g, '') + " " || "",
+          zeroCents: opts.zeroCents
+        };
+        opts.moneyPrecision = opts.zeroCents ? 0 : opts.precision;
+        return opts;
+      },
+          // Fill wildcards past index in output with placeholder
+      addPlaceholdersToOutput = function addPlaceholdersToOutput(output, index, placeholder) {
+        for (; index < output.length; index++) {
+          if (output[index] === DIGIT || output[index] === ALPHA || output[index] === ALPHANUM) {
+            output[index] = placeholder;
+          }
+        }
+
+        return output;
+      };
+
+      var VanillaMasker = function VanillaMasker(elements) {
+        this.elements = elements;
+      };
+
+      VanillaMasker.prototype.unbindElementToMask = function () {
+        for (var i = 0, len = this.elements.length; i < len; i++) {
+          this.elements[i].lastOutput = "";
+          this.elements[i].onkeyup = false;
+          this.elements[i].onkeydown = false;
+
+          if (this.elements[i].value.length) {
+            this.elements[i].value = this.elements[i].value.replace(/\D/g, '');
+          }
+        }
+      };
+
+      VanillaMasker.prototype.bindElementToMask = function (maskFunction) {
+        var that = this,
+            onType = function onType(e) {
+          e = e || window.event;
+          var source = e.target || e.srcElement;
+
+          if (isAllowedKeyCode(e.keyCode)) {
+            setTimeout(function () {
+              that.opts.lastOutput = source.lastOutput;
+              source.value = VMasker[maskFunction](source.value, that.opts);
+              source.lastOutput = source.value;
+
+              if (source.setSelectionRange && that.opts.suffixUnit) {
+                source.setSelectionRange(source.value.length, source.value.length - that.opts.suffixUnit.length);
+              }
+            }, 0);
+          }
+        };
+
+        for (var i = 0, len = this.elements.length; i < len; i++) {
+          this.elements[i].lastOutput = "";
+          this.elements[i].onkeyup = onType;
+
+          if (this.elements[i].value.length) {
+            this.elements[i].value = VMasker[maskFunction](this.elements[i].value, this.opts);
+          }
+        }
+      };
+
+      VanillaMasker.prototype.maskMoney = function (opts) {
+        this.opts = mergeMoneyOptions(opts);
+        this.bindElementToMask("toMoney");
+      };
+
+      VanillaMasker.prototype.maskNumber = function () {
+        this.opts = {};
+        this.bindElementToMask("toNumber");
+      };
+
+      VanillaMasker.prototype.maskAlphaNum = function () {
+        this.opts = {};
+        this.bindElementToMask("toAlphaNumeric");
+      };
+
+      VanillaMasker.prototype.maskPattern = function (pattern) {
+        this.opts = {
+          pattern: pattern
+        };
+        this.bindElementToMask("toPattern");
+      };
+
+      VanillaMasker.prototype.unMask = function () {
+        this.unbindElementToMask();
+      };
+
+      var VMasker = function VMasker(el) {
+        if (!el) {
+          throw new Error("VanillaMasker: There is no element to bind.");
+        }
+
+        var elements = "length" in el ? el.length ? el : [] : [el];
+        return new VanillaMasker(elements);
+      };
+
+      VMasker.toMoney = function (value, opts) {
+        opts = mergeMoneyOptions(opts);
+
+        if (opts.zeroCents) {
+          opts.lastOutput = opts.lastOutput || "";
+          var zeroMatcher = "(" + opts.separator + "[0]{0," + opts.precision + "})",
+              zeroRegExp = new RegExp(zeroMatcher, "g"),
+              digitsLength = value.toString().replace(/[\D]/g, "").length || 0,
+              lastDigitLength = opts.lastOutput.toString().replace(/[\D]/g, "").length || 0;
+          value = value.toString().replace(zeroRegExp, "");
+
+          if (digitsLength < lastDigitLength) {
+            value = value.slice(0, value.length - 1);
+          }
+        }
+
+        var number = value.toString().replace(/[\D]/g, ""),
+            clearDelimiter = new RegExp("^(0|\\" + opts.delimiter + ")"),
+            clearSeparator = new RegExp("(\\" + opts.separator + ")$"),
+            money = number.substr(0, number.length - opts.moneyPrecision),
+            masked = money.substr(0, money.length % 3),
+            cents = new Array(opts.precision + 1).join("0");
+        money = money.substr(money.length % 3, money.length);
+
+        for (var i = 0, len = money.length; i < len; i++) {
+          if (i % 3 === 0) {
+            masked += opts.delimiter;
+          }
+
+          masked += money[i];
+        }
+
+        masked = masked.replace(clearDelimiter, "");
+        masked = masked.length ? masked : "0";
+        var signal = "";
+
+        if (opts.showSignal === true) {
+          signal = value < 0 || value.startsWith && value.startsWith('-') ? "-" : "";
+        }
+
+        if (!opts.zeroCents) {
+          var beginCents = number.length - opts.precision,
+              centsValue = number.substr(beginCents, opts.precision),
+              centsLength = centsValue.length,
+              centsSliced = opts.precision > centsLength ? opts.precision : centsLength;
+          cents = (cents + centsValue).slice(-centsSliced);
+        }
+
+        var output = opts.unit + signal + masked + opts.separator + cents;
+        return output.replace(clearSeparator, "") + opts.suffixUnit;
+      };
+
+      VMasker.toPattern = function (value, opts) {
+        var pattern = _typeof(opts) === 'object' ? opts.pattern : opts,
+            patternChars = pattern.replace(/\W/g, ''),
+            output = pattern.split(""),
+            values = value.toString().replace(/\W/g, ""),
+            charsValues = values.replace(/\W/g, ''),
+            index = 0,
+            i,
+            outputLength = output.length,
+            placeholder = _typeof(opts) === 'object' ? opts.placeholder : undefined;
+
+        for (i = 0; i < outputLength; i++) {
+          // Reached the end of input
+          if (index >= values.length) {
+            if (patternChars.length == charsValues.length) {
+              return output.join("");
+            } else if (placeholder !== undefined && patternChars.length > charsValues.length) {
+              return addPlaceholdersToOutput(output, i, placeholder).join("");
+            } else {
+              break;
+            }
+          } // Remaining chars in input
+          else {
+              if (output[i] === DIGIT && values[index].match(/[0-9]/) || output[i] === ALPHA && values[index].match(/[a-zA-Z]/) || output[i] === ALPHANUM && values[index].match(/[0-9a-zA-Z]/)) {
+                output[i] = values[index++];
+              } else if (output[i] === DIGIT || output[i] === ALPHA || output[i] === ALPHANUM) {
+                if (placeholder !== undefined) {
+                  return addPlaceholdersToOutput(output, i, placeholder).join("");
+                } else {
+                  return output.slice(0, i).join("");
+                }
+              }
+            }
+        }
+
+        return output.join("").substr(0, i);
+      };
+
+      VMasker.toNumber = function (value) {
+        return value.toString().replace(/(?!^-)[^0-9]/g, "");
+      };
+
+      VMasker.toAlphaNumeric = function (value) {
+        return value.toString().replace(/[^a-z0-9 ]+/i, "");
+      };
+
+      return VMasker;
+    });
   }, {}]
 }, {}, [1]);

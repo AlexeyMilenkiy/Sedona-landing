@@ -29,6 +29,7 @@
     "normalize.css": "^8.0.1",
     "npm": "^6.9.0",
     "validate-js": "github:rickharrison/validate.js#master",
+    "vanilla-masker": "^1.2.0",
     "vinyl-source-stream": "^2.0.0"
   },
   "devDependencies": {
