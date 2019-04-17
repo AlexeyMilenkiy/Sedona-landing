@@ -11,24 +11,25 @@ window.onload = function() {
   const errorMessageTel = document.querySelector('.wrong-number');
   let validate = require("validate-js");
   const form = document.querySelector(".main-form");
+  const constraints = [{
+    name: 'name',
+    display: 'required',
+    rules: 'required'
+  }, {
+    name: 'surname',
+    display: 'required',
+    rules: 'required'
+  }, {
+    name: 'telephone',
+    display: 'Telephone No',
+    rules: 'required|callback_check_phone'
+  }, {
+    name: 'email',
+    display: 'Email No',
+    rules: 'required|valid_email'
+  }]
   
-  let validator = new validate('form', [{
-        name: 'name',
-        display: 'required',
-        rules: 'required'
-    }, {
-        name: 'surname',
-        display: 'required',
-        rules: 'required'
-    }, {
-        name: 'telephone',
-        display: 'Telephone No',
-        rules: 'required|callback_check_phone'
-    }, {
-        name: 'email',
-        display: 'Email No',
-        rules: 'required|valid_email'
-    }], function(errors) {
+  let validator = new validate('form', constraints, function(errors) {
       clearErrors();
         if (errors.length > 0) {
             for (let i = 0; i < errors.length; i++) {
@@ -81,4 +82,18 @@ window.onload = function() {
         e.preventDefault();
         mobileMenu.classList.remove("show-nav");
     };
+
+  const formInputs = document.getElementsByTagName('input');
+  console.log('formInputs', formInputs);
+
+  for (let input of formInputs) {
+    const currentInputName = input.name;
+
+    input.addEventListener('change', () => {
+      if (!constraints[currentInputName]) {
+        const validationResult = new validate('form', constraints);
+        console.log('validationResult', validationResult);
+      }
+    });
+  };
 }
