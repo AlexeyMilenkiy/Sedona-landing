@@ -33,11 +33,11 @@ window.onload = function() {
         if (errors.length > 0) {
             for (let i = 0; i < errors.length; i++) {
                 if (errors[i].id === "name") {
-                    name.classList.remove("review-user__input");
-                    name.classList.add("error");
+                    name.classList.remove("review-user__input-error");
+                    name.classList.add("review-user__input-error");
                 } else if (errors[i].id === 'surname') {
-                    surName.classList.remove("review-user__input");
-                    surName.classList.add("error");
+                    surName.classList.remove("review-user__input-error");
+                    surName.classList.add("review-user__input-error");
                 } else if (errors[i].id === 'tel') {
                     errorMessageTel.classList.remove("wrong-number");
                     errorMessageTel.classList.add("error-number");
