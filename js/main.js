@@ -92,14 +92,10 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
       }).setMessage('check_phone', '');
 
       function clearErrors() {
-        name.classList.remove("error");
-        name.classList.add("review-user__input");
-        surName.classList.remove("error");
-        surName.classList.add("review-user__input");
-        errorMessageTel.classList.remove("error-number");
-        errorMessageTel.classList.add("wrong-number");
-        errorMessageEmail.classList.remove("error-email");
-        errorMessageEmail.classList.add("wrong-email");
+        name.classList.remove("review-user__input-error");
+        surName.classList.remove("review-user__input-error");
+        errorMessageTel.classList.remove("wrong-number-or-email-visible");
+        errorMessageEmail.classList.remove("wrong-number-or-email-visible");
       }
 
       mobileMenuIcon.onclick = function (e) {
