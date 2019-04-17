@@ -7,8 +7,8 @@ window.onload = function() {
     const surName = document.getElementById('surname');
     const tel = document.querySelector('#tel');
     const email = document.querySelector('#email');
-    const errorMessageEmail = document.querySelector('.wrong-email');
-    const errorMessageTel = document.querySelector('.wrong-number');
+    const errorMessageEmail = document.querySelector('.wrong-email-hidden');
+    const errorMessageTel = document.querySelector('.wrong-number-hidden');
     let validate = require("validate-js");
     const form = document.querySelector(".main-form");
 
@@ -33,17 +33,13 @@ window.onload = function() {
         if (errors.length > 0) {
             for (let i = 0; i < errors.length; i++) {
                 if (errors[i].id === "name") {
-                    name.classList.remove("review-user__input-error");
                     name.classList.add("review-user__input-error");
                 } else if (errors[i].id === 'surname') {
-                    surName.classList.remove("review-user__input-error");
                     surName.classList.add("review-user__input-error");
                 } else if (errors[i].id === 'tel') {
-                    errorMessageTel.classList.remove("wrong-number");
-                    errorMessageTel.classList.add("error-number");
+                    errorMessageTel.classList.add("wrong-number-or-email-visible");
                 } else if (errors[i].id === "email") {
-                    errorMessageEmail.classList.remove("wrong-email");
-                    errorMessageEmail.classList.add("error-email");
+                    errorMessageEmail.classList.add("wrong-number-or-email-visible");
                 } else {
                     errors.length = 0;
                 }

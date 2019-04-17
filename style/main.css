@@ -941,38 +941,6 @@ body {
 .user-contacts__email:before {
   background: url(../img/mail.webp) no-repeat center 100%, url(../img/mail.png) no-repeat center 100%;
 }
-.user-contacts__email .wrong-email {
-  opacity: 0;
-  width: 190px;
-  color: #ff5c5c;
-  font-family: 'PT Sans', sans-serif;
-  font-size: 0.87em;
-  font-weight: 400;
-  line-height: 26px;
-  text-transform: none;
-  position: absolute;
-  bottom: 110%;
-  top: auto;
-  left: 65%;
-  -webkit-transform: translateX(-65%);
-          transform: translateX(-65%);
-}
-@media (min-width: 640px) and (max-width: 991px) {
-  .user-contacts__email .wrong-email {
-    left: 50%;
-    -webkit-transform: translateX(-50%);
-            transform: translateX(-50%);
-  }
-}
-@media (max-width: 639px) {
-  .user-contacts__email .wrong-email {
-    top: 105%;
-    bottom: auto;
-    left: 100px;
-    -webkit-transform: translateX(-100px);
-            transform: translateX(-100px);
-  }
-}
 @media (min-width: 640px) and (max-width: 991px) {
   .user-contacts__email {
     width: calc(100% - 25%);
@@ -1073,8 +1041,8 @@ body {
     flex-wrap: wrap;
   }
 }
-.error-email {
-  opacity: 1;
+.wrong-email-hidden {
+  opacity: 0;
   width: 190px;
   color: #ff5c5c;
   font-family: 'PT Sans', sans-serif;
@@ -1090,14 +1058,14 @@ body {
           transform: translateX(-65%);
 }
 @media (min-width: 640px) and (max-width: 991px) {
-  .error-email {
+  .wrong-email-hidden {
     left: 50%;
     -webkit-transform: translateX(-50%);
             transform: translateX(-50%);
   }
 }
 @media (max-width: 639px) {
-  .error-email {
+  .wrong-email-hidden {
     top: 105%;
     bottom: auto;
     left: 100px;
@@ -1112,31 +1080,6 @@ body {
   justify-content: none;
   margin-top: 7.7%;
   max-height: 58px;
-}
-.user-contacts__number .wrong-number {
-  opacity: 0;
-  width: 190px;
-  color: #ff5c5c;
-  font-family: 'PT Sans', sans-serif;
-  font-size: 0.87em;
-  font-weight: 400;
-  line-height: 26px;
-  text-transform: none;
-  position: absolute;
-  bottom: 110%;
-  top: auto;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
-}
-@media (max-width: 639px) {
-  .user-contacts__number .wrong-number {
-    top: 105%;
-    bottom: auto;
-    left: 100px;
-    -webkit-transform: translateX(-100px);
-            transform: translateX(-100px);
-  }
 }
 .user-contacts__number:after {
   top: 0;
@@ -1222,8 +1165,8 @@ body {
             transform: translateX(-10px);
   }
 }
-.error-number {
-  opacity: 1;
+.wrong-number-hidden {
+  opacity: 0;
   width: 190px;
   color: #ff5c5c;
   font-family: 'PT Sans', sans-serif;
@@ -1239,13 +1182,16 @@ body {
           transform: translateX(-50%);
 }
 @media (max-width: 639px) {
-  .error-number {
+  .wrong-number-hidden {
     top: 105%;
     bottom: auto;
     left: 100px;
     -webkit-transform: translateX(-100px);
             transform: translateX(-100px);
   }
+}
+.wrong-number-or-email-visible {
+  opacity: 1;
 }
 .users__label {
   color: #333333;
