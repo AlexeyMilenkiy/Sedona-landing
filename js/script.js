@@ -1,4 +1,4 @@
-window.onload = function() {
+window.onload = function () {
     let mobileMenuIcon = document.querySelector('.mobile-menu');
     let mobileMenu = document.querySelector('.mobile-navigation');
     let closeMobMenu = document.querySelector('.close-mobile-nav');
@@ -9,24 +9,16 @@ window.onload = function() {
     const email = document.querySelector('#email');
     const errorMessageEmail = document.querySelector('.wrong-email-hidden');
     const errorMessageTel = document.querySelector('.wrong-number-hidden');
-    let validate = require("validate-js");
     const form = document.querySelector(".main-form");
     let VMasker = require("vanilla-masker");
+    let validate = require("validate-js");
 
-    mobileMenuIcon.onclick = (e) => {
-        e.preventDefault();
-        mobileMenu.classList.add("show-nav");
-    };
+    const formInputs = document.getElementsByTagName('input');
 
-    closeMobMenu.onclick = (e) => {
-        e.preventDefault();
-        mobileMenu.classList.remove("show-nav");
-    };
-
-    let validator = new validate('form', [{
+    const constraints = [{
         name: 'name',
         display: 'required',
-        rules: 'required|min_length[2]'
+        rules: 'required|min_length[2]',
     }, {
         name: 'surname',
         display: 'required',
@@ -39,7 +31,19 @@ window.onload = function() {
         name: 'email',
         display: 'Email No',
         rules: 'required|valid_email'
-    }], function(errors) {
+    }];
+
+    mobileMenuIcon.onclick = (e) => {
+        e.preventDefault();
+        mobileMenu.classList.add("show-nav");
+    };
+
+    closeMobMenu.onclick = (e) => {
+        e.preventDefault();
+        mobileMenu.classList.remove("show-nav");
+    };
+
+    let validator = new validate('form', constraints, function (errors) {
         clearErrors();
         if (errors.length > 0) {
             for (let i = 0; i < errors.length; i++) {
@@ -58,11 +62,66 @@ window.onload = function() {
         }
     });
 
-    validator.registerCallback('check_phone', function(value) {
+    console.log('formInputs', formInputs);
+
+    for (let input of formInputs) {
+        const currentInputName = input.name;
+
+        input.addEventListener('change', () => {
+            if (!constraints[currentInputName]) {
+                console.log('constraints[currentInputName]', constraints[currentInputName]);
+                const validationResult = new validate('form', constraints,function (errors) {
+                    name.classList.remove("review-user__input-error");
+                    if (errors.length > 0) {
+                        for (let i = 0; i < errors.length; i++) {
+                            if (errors[i].id === "name") {
+                                name.classList.add("review-user__input-error");
+                            }}}});
+                // console.log('validationResult', validationResult);
+            }
+        });
+    }
+
+
+
+    // name.addEventListener("change", function () {
+    //
+    //     new validate('form', [{
+    //         name: 'name',
+    //         display: 'required',
+    //         rules: 'required|min_length[2]'
+    //     }], function (errors) {
+    //         if (errors.length > 0) {
+    //             console.log("change");
+    //             if (name.classList.contains("review-user__input-error")) {
+    //                 name.classList.remove("review-user__input-error");
+    //             }
+    //             for (var i = 0; i < errors.length; i++) {
+    //                 if (errors[i].id === "name") {
+    //                     name.classList.add("review-user__input-error");
+    //                 }
+    //             }
+    //         }
+    //     });
+    // });
+
+
+    validator.registerCallback('check_phone', function (value) {
         let phoneCheck = /^\+?([0-9]{2})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4})$/;
         return phoneCheck.test(value);
     })
         .setMessage('check_phone', '');
+
+
+
+
+
+
+
+
+
+
+
 
     function clearErrors() {
         name.classList.remove("review-user__input-error");
@@ -83,6 +142,4 @@ window.onload = function() {
     let telMask = ['+9(999) 999-99-99', '+9(999) 999-99-99'];
     VMasker(tel).maskPattern(telMask[0]);
     tel.addEventListener('input', inputHandler.bind(undefined, telMask, 14), false);
-
-
 };

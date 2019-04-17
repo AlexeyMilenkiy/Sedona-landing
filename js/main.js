@@ -47,24 +47,14 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
       var email = document.querySelector('#email');
       var errorMessageEmail = document.querySelector('.wrong-email-hidden');
       var errorMessageTel = document.querySelector('.wrong-number-hidden');
-
-      var validate = require("validate-js");
-
       var form = document.querySelector(".main-form");
 
       var VMasker = require("vanilla-masker");
 
-      mobileMenuIcon.onclick = function (e) {
-        e.preventDefault();
-        mobileMenu.classList.add("show-nav");
-      };
+      var validate = require("validate-js");
 
-      closeMobMenu.onclick = function (e) {
-        e.preventDefault();
-        mobileMenu.classList.remove("show-nav");
-      };
-
-      var validator = new validate('form', [{
+      var formInputs = document.getElementsByTagName('input');
+      var constraints = [{
         name: 'name',
         display: 'required',
         rules: 'required|min_length[2]'
@@ -80,7 +70,19 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
         name: 'email',
         display: 'Email No',
         rules: 'required|valid_email'
-      }], function (errors) {
+      }];
+
+      mobileMenuIcon.onclick = function (e) {
+        e.preventDefault();
+        mobileMenu.classList.add("show-nav");
+      };
+
+      closeMobMenu.onclick = function (e) {
+        e.preventDefault();
+        mobileMenu.classList.remove("show-nav");
+      };
+
+      var validator = new validate('form', constraints, function (errors) {
         clearErrors();
 
         if (errors.length > 0) {
@@ -99,6 +101,71 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
           }
         }
       });
+      console.log('formInputs', formInputs);
+      var _iteratorNormalCompletion = true;
+      var _didIteratorError = false;
+      var _iteratorError = undefined;
+
+      try {
+        var _loop = function _loop() {
+          var input = _step.value;
+          var currentInputName = input.name;
+          input.addEventListener('change', function () {
+            if (!constraints[currentInputName]) {
+              console.log('constraints[currentInputName]', constraints[currentInputName]);
+              var validationResult = new validate('form', constraints, function (errors) {
+                name.classList.remove("review-user__input-error");
+
+                if (errors.length > 0) {
+                  for (var i = 0; i < errors.length; i++) {
+                    if (errors[i].id === "name") {
+                      name.classList.add("review-user__input-error");
+                    }
+                  }
+                }
+              }); // console.log('validationResult', validationResult);
+            }
+          });
+        };
+
+        for (var _iterator = formInputs[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+          _loop();
+        } // name.addEventListener("change", function () {
+        //
+        //     new validate('form', [{
+        //         name: 'name',
+        //         display: 'required',
+        //         rules: 'required|min_length[2]'
+        //     }], function (errors) {
+        //         if (errors.length > 0) {
+        //             console.log("change");
+        //             if (name.classList.contains("review-user__input-error")) {
+        //                 name.classList.remove("review-user__input-error");
+        //             }
+        //             for (var i = 0; i < errors.length; i++) {
+        //                 if (errors[i].id === "name") {
+        //                     name.classList.add("review-user__input-error");
+        //                 }
+        //             }
+        //         }
+        //     });
+        // });
+
+      } catch (err) {
+        _didIteratorError = true;
+        _iteratorError = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion && _iterator["return"] != null) {
+            _iterator["return"]();
+          }
+        } finally {
+          if (_didIteratorError) {
+            throw _iteratorError;
+          }
+        }
+      }
+
       validator.registerCallback('check_phone', function (value) {
         var phoneCheck = /^\+?([0-9]{2})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4})$/;
         return phoneCheck.test(value);
