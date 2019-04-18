@@ -40,20 +40,52 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
       var mobileMenuIcon = document.querySelector('.mobile-menu');
       var mobileMenu = document.querySelector('.mobile-navigation');
       var closeMobMenu = document.querySelector('.close-mobile-nav');
-      var navigation = document.querySelector('.header__nav');
       var name = document.getElementById('name');
       var surName = document.getElementById('surname');
       var tel = document.querySelector('#tel');
-      var email = document.querySelector('#email');
       var errorMessageEmail = document.querySelector('.wrong-email-hidden');
       var errorMessageTel = document.querySelector('.wrong-number-hidden');
-      var form = document.querySelector(".main-form");
 
       var VMasker = require("vanilla-masker");
 
       var validate = require("validate-js");
 
+      var popUpContainer = document.querySelector('.pop-up-container');
+      var closePopUp = document.querySelector('.pop-up__close');
       var formInputs = document.getElementsByTagName('input');
+
+      mobileMenuIcon.onclick = function (e) {
+        e.preventDefault();
+        mobileMenu.classList.add("show-nav");
+      };
+
+      closeMobMenu.onclick = function (e) {
+        e.preventDefault();
+        mobileMenu.classList.remove("show-nav");
+      };
+
+      function showPopUpWindow() {
+        popUpContainer.classList.add('pop-up-show');
+        setTimeout(function () {
+          popUpContainer.classList.add('pop-up-visible');
+        }, 10);
+      }
+
+      function popUpClosed() {
+        popUpContainer.classList.remove('pop-up-visible');
+        setTimeout(function () {
+          popUpContainer.classList.remove('pop-up-show');
+        }, 2000);
+      }
+
+      function clearInputs() {
+        for (var i = 0; i < formInputs.length; i++) {
+          console.log(formInputs[i].value);
+          formInputs[i].value = "";
+        }
+      }
+
+      closePopUp.onclick = popUpClosed;
       var constraints = [{
         name: 'name',
         display: 'required',
@@ -71,18 +103,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
         display: 'Email No',
         rules: 'required|valid_email'
       }];
-
-      mobileMenuIcon.onclick = function (e) {
-        e.preventDefault();
-        mobileMenu.classList.add("show-nav");
-      };
-
-      closeMobMenu.onclick = function (e) {
-        e.preventDefault();
-        mobileMenu.classList.remove("show-nav");
-      };
-
-      var validator = new validate('form', constraints, function (errors) {
+      var validator = new validate('form', constraints, function (errors, event) {
         clearErrors();
 
         if (errors.length > 0) {
@@ -99,9 +120,18 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
               errors.length = 0;
             }
           }
+        } else if (errors.length <= 0) {
+          event.preventDefault();
+          clearInputs();
+          showPopUpWindow();
+          var scrollX = window.scrollX;
+          var scrollY = window.scrollY;
+
+          window.onscroll = function () {
+            window.scrollTo(scrollX, scrollY);
+          };
         }
       });
-      console.log('formInputs', formInputs);
       var _iteratorNormalCompletion = true;
       var _didIteratorError = false;
       var _iteratorError = undefined;
@@ -111,46 +141,23 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
           var input = _step.value;
           var currentInputName = input.name;
           input.addEventListener('change', function () {
-            if (!constraints[currentInputName]) {
-              console.log('constraints[currentInputName]', constraints[currentInputName]);
-              var validationResult = new validate('form', constraints, function (errors) {
-                name.classList.remove("review-user__input-error");
+            var searchInput = false;
+            constraints.forEach(function (item) {
+              if (item.name === currentInputName) {
+                return searchInput = true;
+              }
+            });
 
-                if (errors.length > 0) {
-                  for (var i = 0; i < errors.length; i++) {
-                    if (errors[i].id === "name") {
-                      name.classList.add("review-user__input-error");
-                    }
-                  }
-                }
-              }); // console.log('validationResult', validationResult);
+            if (searchInput) {
+              var validationResult = new validate('form', constraints);
+              console.log('validationResult', validationResult);
             }
           });
         };
 
         for (var _iterator = formInputs[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
           _loop();
-        } // name.addEventListener("change", function () {
-        //
-        //     new validate('form', [{
-        //         name: 'name',
-        //         display: 'required',
-        //         rules: 'required|min_length[2]'
-        //     }], function (errors) {
-        //         if (errors.length > 0) {
-        //             console.log("change");
-        //             if (name.classList.contains("review-user__input-error")) {
-        //                 name.classList.remove("review-user__input-error");
-        //             }
-        //             for (var i = 0; i < errors.length; i++) {
-        //                 if (errors[i].id === "name") {
-        //                     name.classList.add("review-user__input-error");
-        //                 }
-        //             }
-        //         }
-        //     });
-        // });
-
+        }
       } catch (err) {
         _didIteratorError = true;
         _iteratorError = err;
@@ -167,7 +174,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
       }
 
       validator.registerCallback('check_phone', function (value) {
-        var phoneCheck = /^\+?([0-9]{2})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4})$/;
+        var phoneCheck = /^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$/;
         return phoneCheck.test(value);
       }).setMessage('check_phone', '');
 
@@ -176,7 +183,8 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
         surName.classList.remove("review-user__input-error");
         errorMessageTel.classList.remove("wrong-number-or-email-visible");
         errorMessageEmail.classList.remove("wrong-number-or-email-visible");
-      }
+      } //mask for phone
+
 
       function inputHandler(masks, max, event) {
         var input = event.target;
@@ -187,9 +195,9 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
         input.value = VMasker.toPattern(inputValue, masks[maxLength]);
       }
 
-      var telMask = ['+9(999) 999-99-99', '+9(999) 999-99-99'];
+      var telMask = ['+9(999)999-99-99', '+9(999)999-99-99'];
       VMasker(tel).maskPattern(telMask[0]);
-      tel.addEventListener('input', inputHandler.bind(undefined, telMask, 14), false);
+      tel.addEventListener('input', inputHandler.bind(undefined, telMask, 14), false); //
     };
   }, {
     "validate-js": 2,

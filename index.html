@@ -19,7 +19,19 @@
     <script src="js/modernizr-custom.js"></script>
     <title>Sedona</title>
 </head>
+<div class="pop-up-container">
+    <div class="pop-up">
+        <div class="pop-up__close">
+            <picture>
+                <source srcset="img/icon-cross.webp" type="image/webp">
+                <source srcset="img/icon-cross.png" type="image/png">
+                <img src="img/icon-cross.webp" alt="close" >
+            </picture>
+        </div>
 
+        <span class="pop-up__text">Ваша информация успешно<br> прошла проверку</span>
+    </div>
+</div>
 <body>
 <div class="mobile-navigation">
     <a href="#main" class="mobile__nav">ГЛАВНАЯ
@@ -46,12 +58,14 @@
                 <source srcset="img/icon-menu.webp" type="image/webp">
                 <source srcset="img/icon-menu.png" type="image/png">
                 <img src="img/icon-menu.webp" alt="menu" class="icon-menu-img">
-            </picture> </a>
+            </picture>
+        </a>
     </div>
     <div class="header__name">
         <span class="header__name-text">Sedona</span>
     </div>
 </header>
+
 <main class="main-container" id="review-form">
     <div class="review">
         <p class="review__block">
@@ -109,14 +123,16 @@
             <label class="label-checkbox rock" for="rock">Красные скалы</label>
         </div>
         <div class="container">
-            <span class="container__headline">Опишите свои эмоции:</span> </div>
+            <span class="container__headline">Опишите свои эмоции:</span></div>
         <textarea class="textarea" placeholder="Опишите подробно все свои восторги" rows="6"></textarea>
         <div class="submit">
             <button type="submit" class="push">Отправить отзыв</button>
             <span class="submit__text">* — обязательные поля</span>
         </div>
     </form>
+
 </main>
+
 <footer class="footer-block">
     <span class="hashtag">#visitSEDONA</span>
     <div class="social-networks">

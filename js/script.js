@@ -2,18 +2,49 @@ window.onload = function () {
     let mobileMenuIcon = document.querySelector('.mobile-menu');
     let mobileMenu = document.querySelector('.mobile-navigation');
     let closeMobMenu = document.querySelector('.close-mobile-nav');
-    let navigation = document.querySelector('.header__nav');
     const name = document.getElementById('name');
     const surName = document.getElementById('surname');
     const tel = document.querySelector('#tel');
-    const email = document.querySelector('#email');
     const errorMessageEmail = document.querySelector('.wrong-email-hidden');
     const errorMessageTel = document.querySelector('.wrong-number-hidden');
-    const form = document.querySelector(".main-form");
     let VMasker = require("vanilla-masker");
     let validate = require("validate-js");
-
+    const popUpContainer = document.querySelector('.pop-up-container');
+    const closePopUp = document.querySelector('.pop-up__close');
     const formInputs = document.getElementsByTagName('input');
+
+    mobileMenuIcon.onclick = (e) => {
+        e.preventDefault();
+        mobileMenu.classList.add("show-nav");
+    };
+
+    closeMobMenu.onclick = (e) => {
+        e.preventDefault();
+        mobileMenu.classList.remove("show-nav");
+    };
+
+    function showPopUpWindow(){
+        popUpContainer.classList.add('pop-up-show');
+        setTimeout(function () {
+            popUpContainer.classList.add('pop-up-visible');
+        }, 10);
+    }
+
+    function popUpClosed(){
+        popUpContainer.classList.remove('pop-up-visible');
+        setTimeout(function () {
+            popUpContainer.classList.remove('pop-up-show');
+        }, 2000);
+    }
+
+    function clearInputs(){
+        for (let i=0; i< formInputs.length; i++){
+            console.log(formInputs[i].value);
+            formInputs[i].value = "";
+        }
+    }
+
+    closePopUp.onclick = popUpClosed;
 
     const constraints = [{
         name: 'name',
@@ -33,17 +64,7 @@ window.onload = function () {
         rules: 'required|valid_email'
     }];
 
-    mobileMenuIcon.onclick = (e) => {
-        e.preventDefault();
-        mobileMenu.classList.add("show-nav");
-    };
-
-    closeMobMenu.onclick = (e) => {
-        e.preventDefault();
-        mobileMenu.classList.remove("show-nav");
-    };
-
-    let validator = new validate('form', constraints, function (errors) {
+    let validator = new validate('form', constraints, function (errors,event) {
         clearErrors();
         if (errors.length > 0) {
             for (let i = 0; i < errors.length; i++) {
@@ -59,69 +80,38 @@ window.onload = function () {
                     errors.length = 0;
                 }
             }
+        }else if (errors.length<=0){
+            event.preventDefault();
+            clearInputs();
+            showPopUpWindow();
+            let scrollX = window.scrollX;
+            let scrollY = window.scrollY;
+            window.onscroll = function () { window.scrollTo(scrollX, scrollY);};
         }
     });
-
-    console.log('formInputs', formInputs);
 
     for (let input of formInputs) {
         const currentInputName = input.name;
 
         input.addEventListener('change', () => {
-            if (!constraints[currentInputName]) {
-                console.log('constraints[currentInputName]', constraints[currentInputName]);
-                const validationResult = new validate('form', constraints,function (errors) {
-                    name.classList.remove("review-user__input-error");
-                    if (errors.length > 0) {
-                        for (let i = 0; i < errors.length; i++) {
-                            if (errors[i].id === "name") {
-                                name.classList.add("review-user__input-error");
-                            }}}});
-                // console.log('validationResult', validationResult);
+            let searchInput = false;
+            constraints.forEach(item => {
+                if (item.name === currentInputName) {
+                    return searchInput = true
+                }
+            });
+            if (searchInput) {
+                const validationResult = new validate('form', constraints);
+                 console.log('validationResult', validationResult);
             }
         });
     }
 
-
-
-    // name.addEventListener("change", function () {
-    //
-    //     new validate('form', [{
-    //         name: 'name',
-    //         display: 'required',
-    //         rules: 'required|min_length[2]'
-    //     }], function (errors) {
-    //         if (errors.length > 0) {
-    //             console.log("change");
-    //             if (name.classList.contains("review-user__input-error")) {
-    //                 name.classList.remove("review-user__input-error");
-    //             }
-    //             for (var i = 0; i < errors.length; i++) {
-    //                 if (errors[i].id === "name") {
-    //                     name.classList.add("review-user__input-error");
-    //                 }
-    //             }
-    //         }
-    //     });
-    // });
-
-
     validator.registerCallback('check_phone', function (value) {
-        let phoneCheck = /^\+?([0-9]{2})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4})$/;
+        let phoneCheck = /^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$/;
         return phoneCheck.test(value);
     })
         .setMessage('check_phone', '');
-
-
-
-
-
-
-
-
-
-
-
 
     function clearErrors() {
         name.classList.remove("review-user__input-error");
@@ -130,6 +120,7 @@ window.onload = function () {
         errorMessageEmail.classList.remove("wrong-number-or-email-visible");
     }
 
+    //mask for phone
     function inputHandler(masks, max, event) {
         let input = event.target;
         let inputValue = input.value.replace(/\D/g, '');
@@ -139,7 +130,9 @@ window.onload = function () {
         input.value = VMasker.toPattern(inputValue, masks[maxLength]);
     }
 
-    let telMask = ['+9(999) 999-99-99', '+9(999) 999-99-99'];
+    let telMask = ['+9(999)999-99-99', '+9(999)999-99-99'];
     VMasker(tel).maskPattern(telMask[0]);
     tel.addEventListener('input', inputHandler.bind(undefined, telMask, 14), false);
+
+    //
 };
