@@ -89,11 +89,11 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
       var constraints = [{
         name: 'name',
         display: 'required',
-        rules: 'required|min_length[2]'
+        rules: 'required|min_length[2]|alpha'
       }, {
         name: 'surname',
         display: 'required',
-        rules: 'required|min_length[2]'
+        rules: 'required|min_length[2]|alpha'
       }, {
         name: 'telephone',
         display: 'Telephone No',
