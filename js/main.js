@@ -79,10 +79,9 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
       }
 
       function clearInputs() {
-        for (var i = 0; i < formInputs.length; i++) {
-          console.log(formInputs[i].value);
+        formInputs.forEach(function (i) {
           formInputs[i].value = "";
-        }
+        });
       }
 
       closePopUp.onclick = popUpClosed;

@@ -38,10 +38,9 @@ window.onload = function () {
     }
 
     function clearInputs(){
-        for (let i=0; i< formInputs.length; i++){
-            console.log(formInputs[i].value);
+        formInputs.forEach(i =>{
             formInputs[i].value = "";
-        }
+        })
     }
 
     closePopUp.onclick = popUpClosed;
