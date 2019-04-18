@@ -53,6 +53,8 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
       var popUpContainer = document.querySelector('.pop-up-container');
       var closePopUp = document.querySelector('.pop-up__close');
       var formInputs = document.getElementsByTagName('input');
+      var pushButton = document.querySelector('.push');
+      var form = document.querySelector('.main-form');
 
       mobileMenuIcon.onclick = function (e) {
         e.preventDefault();
@@ -67,6 +69,13 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
       function showPopUpWindow() {
         popUpContainer.classList.add('pop-up-show');
         setTimeout(function () {
+          var scrollX = window.scrollX;
+          var scrollY = window.scrollY;
+
+          window.onscroll = function () {
+            window.scrollTo(scrollX, scrollY);
+          };
+
           popUpContainer.classList.add('pop-up-visible');
         }, 10);
       }
@@ -75,16 +84,28 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
         popUpContainer.classList.remove('pop-up-visible');
         setTimeout(function () {
           popUpContainer.classList.remove('pop-up-show');
+
+          window.onscroll = function () {
+            window.scrollTo();
+          };
         }, 2000);
       }
 
       function clearInputs() {
-        formInputs.forEach(function (i) {
+        for (var i = 0; i < formInputs.length; i++) {
           formInputs[i].value = "";
-        });
+        }
       }
 
       closePopUp.onclick = popUpClosed;
+
+      function clearErrors() {
+        name.classList.remove("review-user__input-error");
+        surName.classList.remove("review-user__input-error");
+        errorMessageTel.classList.remove("wrong-number-or-email-visible");
+        errorMessageEmail.classList.remove("wrong-number-or-email-visible");
+      }
+
       var constraints = [{
         name: 'name',
         display: 'required',
@@ -102,7 +123,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
         display: 'Email No',
         rules: 'required|valid_email'
       }];
-      var validator = new validate('form', constraints, function (errors, event) {
+      var validator = new validate('form', constraints, function (errors, evt) {
         clearErrors();
 
         if (errors.length > 0) {
@@ -119,16 +140,16 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
               errors.length = 0;
             }
           }
-        } else if (errors.length <= 0) {
-          event.preventDefault();
+        } else {
           clearInputs();
+          popUpContainer.classList.add('pop-up-show');
           showPopUpWindow();
-          var scrollX = window.scrollX;
-          var scrollY = window.scrollY;
+        }
 
-          window.onscroll = function () {
-            window.scrollTo(scrollX, scrollY);
-          };
+        if (evt && evt.preventDefault) {
+          evt.preventDefault();
+        } else if (event) {
+          event.returnValue = false;
         }
       });
       var _iteratorNormalCompletion = true;
@@ -139,18 +160,24 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
         var _loop = function _loop() {
           var input = _step.value;
           var currentInputName = input.name;
+          var currentInputSurName = input.surname;
+          var currentInputTel = input.telephone;
+          var currentInputEmail = input.email;
           input.addEventListener('change', function () {
+            var click = document.createEvent("MouseEvents");
+            click.initMouseEvent("click", true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
             var searchInput = false;
             constraints.forEach(function (item) {
               if (item.name === currentInputName) {
-                return searchInput = true;
+                pushButton.dispatchEvent(click);
+              } else if (item.name === currentInputSurName) {
+                pushButton.dispatchEvent(click);
+              } else if (item.name === currentInputTel) {
+                pushButton.dispatchEvent(click);
+              } else if (item.name === currentInputEmail) {
+                pushButton.dispatchEvent(click);
               }
             });
-
-            if (searchInput) {
-              var validationResult = new validate('form', constraints);
-              console.log('validationResult', validationResult);
-            }
           });
         };
 
@@ -175,15 +202,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
       validator.registerCallback('check_phone', function (value) {
         var phoneCheck = /^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$/;
         return phoneCheck.test(value);
-      }).setMessage('check_phone', '');
-
-      function clearErrors() {
-        name.classList.remove("review-user__input-error");
-        surName.classList.remove("review-user__input-error");
-        errorMessageTel.classList.remove("wrong-number-or-email-visible");
-        errorMessageEmail.classList.remove("wrong-number-or-email-visible");
-      } //mask for phone
-
+      }).setMessage('check_phone', ''); //mask for phone
 
       function inputHandler(masks, max, event) {
         var input = event.target;

@@ -1,4 +1,4 @@
-window.onload = function () {
+window.onload = function() {
     let mobileMenuIcon = document.querySelector('.mobile-menu');
     let mobileMenu = document.querySelector('.mobile-navigation');
     let closeMobMenu = document.querySelector('.close-mobile-nav');
@@ -12,6 +12,8 @@ window.onload = function () {
     const popUpContainer = document.querySelector('.pop-up-container');
     const closePopUp = document.querySelector('.pop-up__close');
     const formInputs = document.getElementsByTagName('input');
+    const pushButton = document.querySelector('.push');
+    const form = document.querySelector('.main-form');
 
     mobileMenuIcon.onclick = (e) => {
         e.preventDefault();
@@ -23,27 +25,38 @@ window.onload = function () {
         mobileMenu.classList.remove("show-nav");
     };
 
-    function showPopUpWindow(){
+    function showPopUpWindow() {
         popUpContainer.classList.add('pop-up-show');
-        setTimeout(function () {
+        setTimeout(function() {
+            let scrollX = window.scrollX;
+            let scrollY = window.scrollY;
+            window.onscroll = function () { window.scrollTo(scrollX, scrollY);};
             popUpContainer.classList.add('pop-up-visible');
         }, 10);
     }
 
-    function popUpClosed(){
+    function popUpClosed() {
         popUpContainer.classList.remove('pop-up-visible');
-        setTimeout(function () {
+        setTimeout(function() {
             popUpContainer.classList.remove('pop-up-show');
+            window.onscroll = function() { window.scrollTo(); };
         }, 2000);
     }
 
-    function clearInputs(){
-        formInputs.forEach(i =>{
-            formInputs[i].value = "";
-        })
+    function clearInputs() {
+            for (let i = 0; i < formInputs.length; i++) {
+                formInputs[i].value = "";
+            }
     }
 
     closePopUp.onclick = popUpClosed;
+
+    function clearErrors() {
+        name.classList.remove("review-user__input-error");
+        surName.classList.remove("review-user__input-error");
+        errorMessageTel.classList.remove("wrong-number-or-email-visible");
+        errorMessageEmail.classList.remove("wrong-number-or-email-visible");
+    }
 
     const constraints = [{
         name: 'name',
@@ -63,7 +76,7 @@ window.onload = function () {
         rules: 'required|valid_email'
     }];
 
-    let validator = new validate('form', constraints, function (errors,event) {
+    let validator = new validate('form', constraints, function(errors, evt) {
         clearErrors();
         if (errors.length > 0) {
             for (let i = 0; i < errors.length; i++) {
@@ -79,45 +92,49 @@ window.onload = function () {
                     errors.length = 0;
                 }
             }
-        }else if (errors.length<=0){
-            event.preventDefault();
+        } else {
             clearInputs();
+            popUpContainer.classList.add('pop-up-show');
             showPopUpWindow();
-            let scrollX = window.scrollX;
-            let scrollY = window.scrollY;
-            window.onscroll = function () { window.scrollTo(scrollX, scrollY);};
+        }
+        if (evt && evt.preventDefault) {
+            evt.preventDefault();
+        } else if (event) {
+            event.returnValue = false;
         }
     });
 
     for (let input of formInputs) {
         const currentInputName = input.name;
+        const currentInputSurName = input.surname;
+        const currentInputTel = input.telephone;
+        const currentInputEmail = input.email;
 
         input.addEventListener('change', () => {
+            const click = document.createEvent("MouseEvents");
+            click.initMouseEvent("click", true, true, window,
+                0, 0, 0, 0, 0, false, false, false, false, 0, null);
+
             let searchInput = false;
             constraints.forEach(item => {
                 if (item.name === currentInputName) {
-                    return searchInput = true
+                    pushButton.dispatchEvent(click);
+                } else if (item.name === currentInputSurName) {
+                    pushButton.dispatchEvent(click);
+                } else if (item.name === currentInputTel) {
+                    pushButton.dispatchEvent(click);
+                } else if (item.name === currentInputEmail) {
+                    pushButton.dispatchEvent(click);
                 }
             });
-            if (searchInput) {
-                const validationResult = new validate('form', constraints);
-                 console.log('validationResult', validationResult);
-            }
         });
     }
 
-    validator.registerCallback('check_phone', function (value) {
-        let phoneCheck = /^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$/;
-        return phoneCheck.test(value);
-    })
+    validator.registerCallback('check_phone', function(value) {
+            let phoneCheck = /^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$/;
+            return phoneCheck.test(value);
+        })
         .setMessage('check_phone', '');
-
-    function clearErrors() {
-        name.classList.remove("review-user__input-error");
-        surName.classList.remove("review-user__input-error");
-        errorMessageTel.classList.remove("wrong-number-or-email-visible");
-        errorMessageEmail.classList.remove("wrong-number-or-email-visible");
-    }
 
     //mask for phone
     function inputHandler(masks, max, event) {
