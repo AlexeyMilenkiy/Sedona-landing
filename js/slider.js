@@ -196,13 +196,17 @@ window.onload = function () {
 
     //отрисовка новой пагинации после нажатия >>
     function showNextPagination() {
-        findLastNumberImage(2);
+        findLastNumberButton(indexPagination);
         clearPagination();
         showButtonLess();
         let reserveVariables = +indexStartImg;
         indexPagination = +indexStartImg + indexPagination;
 
-        if (indexPagination <= links.length) {
+        if (indexPagination === links.length) {
+            for (+indexStartImg; +indexStartImg < indexPagination; +indexStartImg++) {
+                createNewButtonMore();
+            }
+        } else if (indexPagination < links.length) {
             for (+indexStartImg; +indexStartImg < indexPagination; +indexStartImg++) {
                 createNewButtonMore();
             }
@@ -218,7 +222,7 @@ window.onload = function () {
 
     //отрисовка новой пагинации после нажатия <<
     function showPrevPagination() {
-        findLastNumberImage(0);
+        findLastNumberButton(1);
         clearPagination();
         showButtonMore();
         let reserveVariables = +indexStartImg;
@@ -244,9 +248,13 @@ window.onload = function () {
         addClassButton();
     }
 
-    function findLastNumberImage(n) {
+    function findLastNumberButton(n) {
         let buttonArr = document.querySelectorAll('.img-navigation');
-        indexStartImg = buttonArr[n].innerText
+        for (let i = 0; i < buttonArr.length; i++) {
+            if (i+1 === n) {
+                return indexStartImg = buttonArr[i].innerText
+            }
+        }
     }
 
     function clearPagination() {
