@@ -9,7 +9,7 @@ window.onload = function () {
     let imgIndex = 0;
     let offset = 0;
     let indexPagination = 3;
-    let indexStartImg = 0;
+    let indexStartNumButton = 0;
     let indexActiveImg = 0;
     let numberPushButton = 0;
     let activeButton = 0;
@@ -151,7 +151,6 @@ window.onload = function () {
     function showPrevImage() {
         slides = document.querySelectorAll('.slide-single');
         offset = 0;
-        let step3 = slides.length;
         findIndexLastImg(slides[0]);
         slides[2].remove();
         shiftImageRight();
@@ -183,14 +182,14 @@ window.onload = function () {
     function createNewButtonMore() {
         let imgNumber = document.createElement('button');
         imgNumber.classList.add('img-navigation');
-        imgNumber.textContent = +indexStartImg + 1;
+        imgNumber.textContent = +indexStartNumButton + 1;
         paginationImgBlock.appendChild(imgNumber);
     }
 
     function createNewButtonLess() {
         let imgNumber = document.createElement('button');
         imgNumber.classList.add('img-navigation');
-        imgNumber.textContent = +indexStartImg - 1;
+        imgNumber.textContent = +indexStartNumButton - 1;
         paginationImgBlock.insertBefore(imgNumber, paginationImgBlock.children[0]);
     }
 
@@ -199,20 +198,20 @@ window.onload = function () {
         findLastNumberButton(indexPagination);
         clearPagination();
         showButtonLess();
-        let reserveVariables = +indexStartImg;
-        indexPagination = +indexStartImg + indexPagination;
+        let reserveVariables = +indexStartNumButton;
+        indexPagination = +indexStartNumButton + indexPagination;
 
         if (indexPagination === links.length) {
-            for (+indexStartImg; +indexStartImg < indexPagination; +indexStartImg++) {
+            for (+indexStartNumButton; +indexStartNumButton < indexPagination; +indexStartNumButton++) {
                 createNewButtonMore();
             }
         } else if (indexPagination < links.length) {
-            for (+indexStartImg; +indexStartImg < indexPagination; +indexStartImg++) {
+            for (+indexStartNumButton; +indexStartNumButton < indexPagination; +indexStartNumButton++) {
                 createNewButtonMore();
             }
             showButtonMore();
         } else {
-            for (+indexStartImg; +indexStartImg < links.length; +indexStartImg++) {
+            for (+indexStartNumButton; +indexStartNumButton < links.length; +indexStartNumButton++) {
                 createNewButtonMore();
             }
         }
@@ -225,12 +224,12 @@ window.onload = function () {
         findLastNumberButton(1);
         clearPagination();
         showButtonMore();
-        let reserveVariables = +indexStartImg;
-        indexPagination = +indexStartImg - indexPagination;
+        let reserveVariables = +indexStartNumButton;
+        indexPagination = +indexStartNumButton - indexPagination;
 
         if (indexPagination > 1) {
 
-            for (+indexStartImg; +indexStartImg > indexPagination; +indexStartImg--) {
+            for (+indexStartNumButton; +indexStartNumButton > indexPagination; +indexStartNumButton--) {
                 createNewButtonLess();
             }
             let lessImg = document.createElement('button');
@@ -240,7 +239,7 @@ window.onload = function () {
             paginationImgBlock.insertBefore(lessImg, paginationImgBlock.children[0]);
 
         } else {
-            for (+indexStartImg; +indexStartImg > 1; +indexStartImg--) {
+            for (+indexStartNumButton; +indexStartNumButton > 1; +indexStartNumButton--) {
                 createNewButtonLess();
             }
         }
@@ -252,7 +251,7 @@ window.onload = function () {
         let buttonArr = document.querySelectorAll('.img-navigation');
         for (let i = 0; i < buttonArr.length; i++) {
             if (i+1 === n) {
-                return indexStartImg = buttonArr[i].innerText
+                return indexStartNumButton = buttonArr[i].innerText
             }
         }
     }

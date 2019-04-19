@@ -36,21 +36,6 @@
   1: [function (require, module, exports) {
     window.onload = function () {
       require('./slider.js');
-
-      var mobileMenuIcon = document.querySelector('.mobile-menu');
-      var mobileMenu = document.querySelector('.mobile-navigation');
-      var closeMobMenu = document.querySelector('.close-mobile-nav');
-      var navigation = document.querySelector('.header__nav');
-
-      mobileMenuIcon.onclick = function (e) {
-        e.preventDefault();
-        mobileMenu.classList.add("show-nav");
-      };
-
-      closeMobMenu.onclick = function (e) {
-        e.preventDefault();
-        mobileMenu.classList.remove("show-nav");
-      };
     };
   }, {
     "./slider.js": 2
@@ -65,8 +50,8 @@
       var links = [];
       var imgIndex = 0;
       var offset = 0;
-      var indexPagination = 4;
-      var indexStartImg = 0;
+      var indexPagination = 3;
+      var indexStartNumButton = 0;
       var indexActiveImg = 0;
       var numberPushButton = 0;
       var activeButton = 0;
@@ -212,7 +197,6 @@
       function showPrevImage() {
         slides = document.querySelectorAll('.slide-single');
         offset = 0;
-        var step3 = slides.length;
         findIndexLastImg(slides[0]);
         slides[2].remove();
         shiftImageRight();
@@ -244,14 +228,14 @@
       function createNewButtonMore() {
         var imgNumber = document.createElement('button');
         imgNumber.classList.add('img-navigation');
-        imgNumber.textContent = +indexStartImg + 1;
+        imgNumber.textContent = +indexStartNumButton + 1;
         paginationImgBlock.appendChild(imgNumber);
       }
 
       function createNewButtonLess() {
         var imgNumber = document.createElement('button');
         imgNumber.classList.add('img-navigation');
-        imgNumber.textContent = +indexStartImg - 1;
+        imgNumber.textContent = +indexStartNumButton - 1;
         paginationImgBlock.insertBefore(imgNumber, paginationImgBlock.children[0]);
       } //отрисовка новой пагинации после нажатия >>
 
@@ -260,21 +244,21 @@
         findLastNumberButton(indexPagination);
         clearPagination();
         showButtonLess();
-        var reserveVariables = +indexStartImg;
-        indexPagination = +indexStartImg + indexPagination;
+        var reserveVariables = +indexStartNumButton;
+        indexPagination = +indexStartNumButton + indexPagination;
 
         if (indexPagination === links.length) {
-          for (+indexStartImg; +indexStartImg < indexPagination; +indexStartImg++) {
+          for (+indexStartNumButton; +indexStartNumButton < indexPagination; +indexStartNumButton++) {
             createNewButtonMore();
           }
         } else if (indexPagination < links.length) {
-          for (+indexStartImg; +indexStartImg < indexPagination; +indexStartImg++) {
+          for (+indexStartNumButton; +indexStartNumButton < indexPagination; +indexStartNumButton++) {
             createNewButtonMore();
           }
 
           showButtonMore();
         } else {
-          for (+indexStartImg; +indexStartImg < links.length; +indexStartImg++) {
+          for (+indexStartNumButton; +indexStartNumButton < links.length; +indexStartNumButton++) {
             createNewButtonMore();
           }
         }
@@ -288,11 +272,11 @@
         findLastNumberButton(1);
         clearPagination();
         showButtonMore();
-        var reserveVariables = +indexStartImg;
-        indexPagination = +indexStartImg - indexPagination;
+        var reserveVariables = +indexStartNumButton;
+        indexPagination = +indexStartNumButton - indexPagination;
 
         if (indexPagination > 1) {
-          for (+indexStartImg; +indexStartImg > indexPagination; +indexStartImg--) {
+          for (+indexStartNumButton; +indexStartNumButton > indexPagination; +indexStartNumButton--) {
             createNewButtonLess();
           }
 
@@ -302,7 +286,7 @@
           lessImg.textContent = "<<";
           paginationImgBlock.insertBefore(lessImg, paginationImgBlock.children[0]);
         } else {
-          for (+indexStartImg; +indexStartImg > 1; +indexStartImg--) {
+          for (+indexStartNumButton; +indexStartNumButton > 1; +indexStartNumButton--) {
             createNewButtonLess();
           }
         }
@@ -316,7 +300,7 @@
 
         for (var i = 0; i < buttonArr.length; i++) {
           if (i + 1 === n) {
-            return indexStartImg = buttonArr[i].innerText;
+            return indexStartNumButton = buttonArr[i].innerText;
           }
         }
       }
