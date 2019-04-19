@@ -20,10 +20,13 @@ body {
   transition: 1s;
   position: absolute;
 
-  .mobile-new({ opacity: 0; width: 100%; height: 223px; position: absolute; });
+  .mobile-new({
+    width: 100%;
+    height: 223px;
+    position: absolute; });
 }
 
-.add-nav{
+.show-nav{
   display:block;
   z-index: 6;
   width: 100%;
@@ -31,7 +34,7 @@ body {
   position: fixed;
 }
 
-.show-nav {
+.visible-nav {
   opacity: 1;
   transition: 1s;
 }
@@ -74,10 +77,6 @@ body {
   transition: 2s;
 }
 
-.pop-up-fixed {
-  position: fixed;
-}
-
 .pop-up {
   position: absolute;
   max-width: 300px;
@@ -88,6 +87,10 @@ body {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+  .mobile-new({
+    width: 50%;
+    height: 50vw;
+ });
 }
 
 .pop-up__close {

@@ -16,17 +16,17 @@ window.onload = function() {
 
     mobileMenuIcon.onclick = (e) => {
         e.preventDefault();
-        mobileMenu.classList.add("add-nav");
+        mobileMenu.classList.add("show-nav");
         setTimeout(function(){
-            mobileMenu.classList.add("show-nav");
+            mobileMenu.classList.add("visible-nav");
         },10);
     };
 
     closeMobMenu.onclick = (e) => {
         e.preventDefault();
-        mobileMenu.classList.remove("show-nav");
+        mobileMenu.classList.remove("visible-nav");
         setTimeout(function (){
-            mobileMenu.classList.remove("add-nav");
+            mobileMenu.classList.remove("show-nav");
         },1000)
     };
 
