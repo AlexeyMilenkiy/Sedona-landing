@@ -13,16 +13,21 @@ window.onload = function() {
     const closePopUp = document.querySelector('.pop-up__close');
     const formInputs = document.getElementsByTagName('input');
     const pushButton = document.querySelector('.push');
-    const form = document.querySelector('.main-form');
 
     mobileMenuIcon.onclick = (e) => {
         e.preventDefault();
-        mobileMenu.classList.add("show-nav");
+        mobileMenu.classList.add("add-nav");
+        setTimeout(function(){
+            mobileMenu.classList.add("show-nav");
+        },10);
     };
 
     closeMobMenu.onclick = (e) => {
         e.preventDefault();
         mobileMenu.classList.remove("show-nav");
+        setTimeout(function (){
+            mobileMenu.classList.remove("add-nav");
+        },1000)
     };
 
     function showPopUpWindow() {
@@ -115,7 +120,6 @@ window.onload = function() {
             click.initMouseEvent("click", true, true, window,
                 0, 0, 0, 0, 0, false, false, false, false, 0, null);
 
-            let searchInput = false;
             constraints.forEach(item => {
                 if (item.name === currentInputName) {
                     pushButton.dispatchEvent(click);

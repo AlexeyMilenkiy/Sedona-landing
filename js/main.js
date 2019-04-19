@@ -54,16 +54,21 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
       var closePopUp = document.querySelector('.pop-up__close');
       var formInputs = document.getElementsByTagName('input');
       var pushButton = document.querySelector('.push');
-      var form = document.querySelector('.main-form');
 
       mobileMenuIcon.onclick = function (e) {
         e.preventDefault();
-        mobileMenu.classList.add("show-nav");
+        mobileMenu.classList.add("add-nav");
+        setTimeout(function () {
+          mobileMenu.classList.add("show-nav");
+        }, 10);
       };
 
       closeMobMenu.onclick = function (e) {
         e.preventDefault();
         mobileMenu.classList.remove("show-nav");
+        setTimeout(function () {
+          mobileMenu.classList.remove("add-nav");
+        }, 1000);
       };
 
       function showPopUpWindow() {
@@ -166,7 +171,6 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
           input.addEventListener('change', function () {
             var click = document.createEvent("MouseEvents");
             click.initMouseEvent("click", true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
-            var searchInput = false;
             constraints.forEach(function (item) {
               if (item.name === currentInputName) {
                 pushButton.dispatchEvent(click);
