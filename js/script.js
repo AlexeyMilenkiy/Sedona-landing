@@ -32,20 +32,14 @@ window.onload = function() {
 
     function showPopUpWindow() {
         popUpContainer.classList.add('pop-up-show');
-        setTimeout(function() {
-            let scrollX = window.scrollX;
-            let scrollY = window.scrollY;
-            window.onscroll = function () { window.scrollTo(scrollX, scrollY);};
-            popUpContainer.classList.add('pop-up-visible');
-        }, 10);
+        let scrollX = window.scrollX;
+        let scrollY = window.scrollY;
+        window.onscroll = function () { window.scrollTo(scrollX, scrollY);};
     }
 
     function popUpClosed() {
-        popUpContainer.classList.remove('pop-up-visible');
-        setTimeout(function() {
-            popUpContainer.classList.remove('pop-up-show');
-            window.onscroll = function() { window.scrollTo(); };
-        }, 2000);
+        popUpContainer.classList.remove('pop-up-show');
+        window.onscroll = function() { window.scrollTo(); };
     }
 
     function clearInputs() {

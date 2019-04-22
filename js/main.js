@@ -73,27 +73,20 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 
       function showPopUpWindow() {
         popUpContainer.classList.add('pop-up-show');
-        setTimeout(function () {
-          var scrollX = window.scrollX;
-          var scrollY = window.scrollY;
+        var scrollX = window.scrollX;
+        var scrollY = window.scrollY;
 
-          window.onscroll = function () {
-            window.scrollTo(scrollX, scrollY);
-          };
-
-          popUpContainer.classList.add('pop-up-visible');
-        }, 10);
+        window.onscroll = function () {
+          window.scrollTo(scrollX, scrollY);
+        };
       }
 
       function popUpClosed() {
-        popUpContainer.classList.remove('pop-up-visible');
-        setTimeout(function () {
-          popUpContainer.classList.remove('pop-up-show');
+        popUpContainer.classList.remove('pop-up-show');
 
-          window.onscroll = function () {
-            window.scrollTo();
-          };
-        }, 2000);
+        window.onscroll = function () {
+          window.scrollTo();
+        };
       }
 
       function clearInputs() {

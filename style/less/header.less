@@ -61,6 +61,29 @@ body {
   max-width: inherit;
   width: 100%;
   height: 100vh;
+  animation: pop-Up-None 2s;
+}
+
+@keyframes show-animation {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes pop-Up-None {
+  0% {
+    opacity: 1;
+    display: block;
+  }
+
+  100% {
+    opacity: 0;
+    display: none;
+  }
 }
 
 .pop-up-show {
@@ -68,13 +91,8 @@ body {
   display: block;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 7;
-  opacity: 0;
-  transition: 2s;
-}
-
-.pop-up-visible {
-  opacity: 1;
-  transition: 2s;
+  animation: show-animation 2s;
+  //animation: pop-Up-None 2s;
 }
 
 .pop-up {
