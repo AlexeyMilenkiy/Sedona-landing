@@ -14,7 +14,7 @@ window.onload = function () {
     let numberPushButton = 0;
     let activeButton = 0;
     let linkNewImage = 0;
-    let flagAction = false;
+    let isFlagAction = false;
 
     showImage();
     showPagination();
@@ -125,18 +125,18 @@ window.onload = function () {
     }
 
     function showNextImage() {
-        if (flagAction){
+        if (isFlagAction){
             return false;
         }else {
             slides = document.querySelectorAll('.slide-single');
             findIndexLastImg(slides[2]);
             slides[0].remove();
             shiftImageLeft();
-            flagAction = true;
+            isFlagAction = true;
             setTimeout(function () {
                 addNextImage();
                 addClassButton();
-                flagAction = false;
+                isFlagAction = false;
             }, 2000);
         }
     }
@@ -156,7 +156,7 @@ window.onload = function () {
     }
 
     function showPrevImage() {
-        if (flagAction){
+        if (isFlagAction){
             return false;
         }else{
         slides = document.querySelectorAll('.slide-single');
@@ -164,11 +164,11 @@ window.onload = function () {
         findIndexLastImg(slides[0]);
         slides[2].remove();
         shiftImageRight();
-        flagAction = true;
+        isFlagAction = true;
         setTimeout(function () {
             addPrevImage();
             addClassButton();
-            flagAction = false;
+            isFlagAction = false;
             }, 2000);
         }
     }
@@ -394,7 +394,7 @@ window.onload = function () {
     }
 
     function addNextImageFromPagination() {
-        if (flagAction){
+        if (isFlagAction){
             return false;
         }else {
             let rightImg = document.createElement('img');
@@ -407,7 +407,7 @@ window.onload = function () {
             rightImg.style.left = 100 + '%';
             sliderBlock.appendChild(rightImg);
             slides = document.querySelectorAll('.slide-single');
-            flagAction = true;
+            isFlagAction = true;
             setTimeout(function () {
                 shiftImageLeft();
             }, 200);
@@ -421,13 +421,13 @@ window.onload = function () {
                 addClassButton();
                 numberPushButton = 0;
                 linkNewImage = 0;
-                flagAction = false;
+                isFlagAction = false;
             }, 2000);
         }
     }
 
     function addPrevImageFromPagination() {
-        if (flagAction){
+        if (isFlagAction){
             return false;
         }else {
             let leftImg = document.createElement('img');
@@ -440,7 +440,7 @@ window.onload = function () {
             leftImg.style.left = -100 + '%';
             sliderBlock.insertBefore(leftImg, sliderBlock.children[0]);
             slides = document.querySelectorAll('.slide-single');
-            flagAction = true;
+            isFlagAction = true;
             setTimeout(function () {
                 shiftImageRight();
             }, 200);
@@ -454,7 +454,7 @@ window.onload = function () {
                 addClassButton();
                 numberPushButton = 0;
                 linkNewImage = 0;
-                flagAction = false;
+                isFlagAction = false;
             }, 2000);
         }
     }
