@@ -8,7 +8,7 @@ window.onload = function () {
     const links = [];
     let imgIndex = 0;
     let offset = 0;
-    let indexPagination = 3;
+    let indexPagination = 3;  //  number of buttons pagination
     let indexStartNumButton = 0;
     let indexActiveImg = 0;
     let numberPushButton = 0;
@@ -19,13 +19,14 @@ window.onload = function () {
     showImage();
     showPagination();
 
+    // create array with links images on slider
     function findLinksImg() {
         for (let i = 0; i < slides.length; i++) {
             links[i] = slides[i].src;
             slides[i].remove();
         }
     }
-
+    // start function create images on pages
     function showImage() {
         findLinksImg();
         imgIndex = 0;
@@ -49,7 +50,7 @@ window.onload = function () {
         img2.style.left = offset1 * 100 + '%';
         sliderBlock.appendChild(img2);
     }
-
+   // start function create pagination button
     function showPagination() {
 
         if (links.length > indexPagination) {
@@ -72,7 +73,7 @@ window.onload = function () {
         }
         addClassButton();
     }
-
+    // find link active image after shift
     function findIndexLastImg(arg) {
         for (; imgIndex < links.length; imgIndex++) {
             if (links[imgIndex] === arg.src) {
@@ -80,7 +81,7 @@ window.onload = function () {
             }
         }
     }
-
+    // add new image on the right after shift
     function addNextImage() {
         let rightImg = document.createElement('img');
         if (imgIndex >= links.length - 1) {
@@ -94,7 +95,7 @@ window.onload = function () {
         sliderBlock.appendChild(rightImg);
         imgIndex = 0;
     }
-
+    // add new image on the left after shift
     function addPrevImage() {
         let leftImg = document.createElement('img');
         if (imgIndex <= 0) {
@@ -108,7 +109,7 @@ window.onload = function () {
         sliderBlock.insertBefore(leftImg, sliderBlock.children[0]);
         imgIndex = 0;
     }
-
+    // image shift function to the left
     function shiftImageLeft() {
         offset = 0;
         let step2 = 0;
@@ -123,7 +124,7 @@ window.onload = function () {
             slides[i].style.left = offset * 100 - 100 + '%';
         }
     }
-
+    //function showing new image after pressing a button "next"
     function showNextImage() {
         if (isFlagAction){
             return false;
@@ -140,7 +141,7 @@ window.onload = function () {
             }, 2000);
         }
     }
-
+    // image shift function to the rights
     function shiftImageRight() {
         offset = 0;
         let step3 = slides.length;
@@ -154,7 +155,7 @@ window.onload = function () {
             slides[i].style.left = offset * 100 + '%';
         }
     }
-
+    //function showing new image after pressing a button "previous"
     function showPrevImage() {
         if (isFlagAction){
             return false;
@@ -191,14 +192,14 @@ window.onload = function () {
         lessImg.textContent = "<<";
         paginationImgBlock.appendChild(lessImg);
     }
-
+    // creating a new button with a number greater than the previous one
     function createNewButtonMore() {
         let imgNumber = document.createElement('button');
         imgNumber.classList.add('img-navigation');
         imgNumber.textContent = +indexStartNumButton + 1;
         paginationImgBlock.appendChild(imgNumber);
     }
-
+    // creating a new button with a number less than the previous one
     function createNewButtonLess() {
         let imgNumber = document.createElement('button');
         imgNumber.classList.add('img-navigation');
@@ -206,9 +207,9 @@ window.onload = function () {
         paginationImgBlock.insertBefore(imgNumber, paginationImgBlock.children[0]);
     }
 
-    //отрисовка новой пагинации после нажатия >>
+    //show new pagination button after push button ">>"
     function showNextPagination() {
-        findLastNumberButton(indexPagination);
+        searchLastNumberButton(indexPagination);
         clearPagination();
         showButtonLess();
         let reserveVariables = +indexStartNumButton;
@@ -232,9 +233,9 @@ window.onload = function () {
         addClassButton();
     }
 
-    //отрисовка новой пагинации после нажатия <<
+    //show new pagination button after push button "<<"
     function showPrevPagination() {
-        findLastNumberButton(1);
+        searchLastNumberButton(1);
         clearPagination();
         showButtonMore();
         let reserveVariables = +indexStartNumButton;
@@ -259,8 +260,8 @@ window.onload = function () {
         indexPagination = reserveVariables - indexPagination;
         addClassButton();
     }
-
-    function findLastNumberButton(n) {
+    // search for the number of the last button pagination
+    function searchLastNumberButton(n) {
         let buttonArr = document.querySelectorAll('.img-navigation');
         for (let i = 0; i < buttonArr.length; i++) {
             if (i+1 === n) {
@@ -268,7 +269,7 @@ window.onload = function () {
             }
         }
     }
-
+    // clear all button pagination
     function clearPagination() {
         while (paginationImgBlock.firstChild) {
             paginationImgBlock.removeChild(paginationImgBlock.firstChild);
@@ -286,8 +287,8 @@ window.onload = function () {
             containsActiveClass(target.innerText);
         }
     };
-
-    function findActiveImg() {
+    // active image index definition
+    function searchActiveImg() {
         slides = document.querySelectorAll('.slide-single');
         for (; indexActiveImg < links.length; indexActiveImg++) {
             if (links[indexActiveImg] === slides[1].src) {
@@ -295,10 +296,10 @@ window.onload = function () {
             }
         }
     }
-
+    //adding "active" class to a button
     function addClassButton() {
         let indexActiveButton = 0;
-        findActiveImg();
+        searchActiveImg();
         indexActiveImg++;
         let buttonArr = document.querySelectorAll('.img-navigation');
         let buttonMore = document.getElementById('moreImg');
@@ -324,7 +325,7 @@ window.onload = function () {
         }
         indexActiveImg = 0;
     }
-
+    //checking whether the active class has a button
     function containsActiveClass(x) {
         let numButton = +x;
         let buttonArr = document.querySelectorAll('.img-navigation');
@@ -340,7 +341,7 @@ window.onload = function () {
             }
         }
     }
-
+    // brute force pagination array
     function bruteForcePagination() {
         let buttonArr = document.querySelectorAll('.img-navigation');
         let lessButton = document.getElementById('lessImg');
@@ -362,7 +363,7 @@ window.onload = function () {
             }
         }
     }
-
+    //showing a new image after pressing a button pagination
     function showNotActiveImg() {
         let indexWaitImage = 0;
         let buttonArr = document.querySelectorAll('.img-navigation');
@@ -383,8 +384,8 @@ window.onload = function () {
             }
         }
     }
-
-    function findIndexNewImage(){
+    //search for a link to a picture of the corresponding pressed button
+    function searchIndexNewImage(){
         for (let i = 0; i < links.length; i++) {
             if (i + 1 === numberPushButton) {
                 linkNewImage = links[i];
@@ -392,13 +393,13 @@ window.onload = function () {
             }
         }
     }
-
+    //adding a new image after pressing the button with the number more than the active one
     function addNextImageFromPagination() {
         if (isFlagAction){
             return false;
         }else {
             let rightImg = document.createElement('img');
-            findIndexNewImage();
+            searchIndexNewImage();
             slides[0].remove();
             slides[2].remove();
 
@@ -425,13 +426,13 @@ window.onload = function () {
             }, 2000);
         }
     }
-
+    //adding a new image after pressing the button with the number less than the active one
     function addPrevImageFromPagination() {
         if (isFlagAction){
             return false;
         }else {
             let leftImg = document.createElement('img');
-            findIndexNewImage();
+            searchIndexNewImage();
             slides[0].remove();
             slides[2].remove();
 

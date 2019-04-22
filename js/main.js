@@ -36,9 +36,15 @@
   1: [function (require, module, exports) {
     window.onload = function () {
       require('./slider.js');
+
+      require('./slider/slider-img.js');
+
+      require('./slider/slider-pagination.js');
     };
   }, {
-    "./slider.js": 2
+    "./slider.js": 2,
+    "./slider/slider-img.js": 3,
+    "./slider/slider-pagination.js": 4
   }],
   2: [function (require, module, exports) {
     window.onload = function () {
@@ -56,7 +62,7 @@
       var numberPushButton = 0;
       var activeButton = 0;
       var linkNewImage = 0;
-      var flagAction = false;
+      var isFlagAction = false;
       showImage();
       showPagination();
 
@@ -169,14 +175,20 @@
       }
 
       function showNextImage() {
-        slides = document.querySelectorAll('.slide-single');
-        findIndexLastImg(slides[2]);
-        slides[0].remove();
-        shiftImageLeft();
-        setTimeout(function () {
-          addNextImage();
-          addClassButton();
-        }, 2000);
+        if (isFlagAction) {
+          return false;
+        } else {
+          slides = document.querySelectorAll('.slide-single');
+          findIndexLastImg(slides[2]);
+          slides[0].remove();
+          shiftImageLeft();
+          isFlagAction = true;
+          setTimeout(function () {
+            addNextImage();
+            addClassButton();
+            isFlagAction = false;
+          }, 2000);
+        }
       }
 
       function shiftImageRight() {
@@ -196,9 +208,7 @@
       }
 
       function showPrevImage() {
-        s;
-
-        if (flagAction) {
+        if (isFlagAction) {
           return false;
         } else {
           slides = document.querySelectorAll('.slide-single');
@@ -206,11 +216,11 @@
           findIndexLastImg(slides[0]);
           slides[2].remove();
           shiftImageRight();
-          flagAction = true;
+          isFlagAction = true;
           setTimeout(function () {
             addPrevImage();
             addClassButton();
-            flagAction = false;
+            isFlagAction = false;
           }, 2000);
         }
       }
@@ -448,54 +458,72 @@
       }
 
       function addNextImageFromPagination() {
-        var rightImg = document.createElement('img');
-        findIndexNewImage();
-        slides[0].remove();
-        slides[2].remove();
-        rightImg.src = linkNewImage;
-        rightImg.classList.add('slide-single');
-        rightImg.style.left = 100 + '%';
-        sliderBlock.appendChild(rightImg);
-        slides = document.querySelectorAll('.slide-single');
-        setTimeout(function () {
-          shiftImageLeft();
-        }, 200);
-        setTimeout(function () {
-          findIndexLastImg(slides[1]);
-          addNextImage();
+        if (isFlagAction) {
+          return false;
+        } else {
+          var rightImg = document.createElement('img');
+          findIndexNewImage();
           slides[0].remove();
-          findIndexLastImg(slides[1]);
-          addPrevImage();
-          addClassButton();
-          numberPushButton = 0;
-          linkNewImage = 0;
-        }, 2000);
+          slides[2].remove();
+          rightImg.src = linkNewImage;
+          rightImg.classList.add('slide-single');
+          rightImg.style.left = 100 + '%';
+          sliderBlock.appendChild(rightImg);
+          slides = document.querySelectorAll('.slide-single');
+          isFlagAction = true;
+          setTimeout(function () {
+            shiftImageLeft();
+          }, 200);
+          setTimeout(function () {
+            findIndexLastImg(slides[1]);
+            addNextImage();
+            slides[0].remove();
+            findIndexLastImg(slides[1]);
+            addPrevImage();
+            addClassButton();
+            numberPushButton = 0;
+            linkNewImage = 0;
+            isFlagAction = false;
+          }, 2000);
+        }
       }
 
       function addPrevImageFromPagination() {
-        var leftImg = document.createElement('img');
-        findIndexNewImage();
-        slides[0].remove();
-        slides[2].remove();
-        leftImg.src = linkNewImage;
-        leftImg.classList.add('slide-single');
-        leftImg.style.left = -100 + '%';
-        sliderBlock.insertBefore(leftImg, sliderBlock.children[0]);
-        slides = document.querySelectorAll('.slide-single');
-        setTimeout(function () {
-          shiftImageRight();
-        }, 200);
-        setTimeout(function () {
-          findIndexLastImg(slides[0]);
-          addPrevImage();
-          slides[1].remove();
-          findIndexLastImg(slides[0]);
-          addNextImage();
-          addClassButton();
-          numberPushButton = 0;
-          linkNewImage = 0;
-        }, 2000);
+        if (isFlagAction) {
+          return false;
+        } else {
+          var leftImg = document.createElement('img');
+          findIndexNewImage();
+          slides[0].remove();
+          slides[2].remove();
+          leftImg.src = linkNewImage;
+          leftImg.classList.add('slide-single');
+          leftImg.style.left = -100 + '%';
+          sliderBlock.insertBefore(leftImg, sliderBlock.children[0]);
+          slides = document.querySelectorAll('.slide-single');
+          isFlagAction = true;
+          setTimeout(function () {
+            shiftImageRight();
+          }, 200);
+          setTimeout(function () {
+            findIndexLastImg(slides[0]);
+            addPrevImage();
+            slides[1].remove();
+            findIndexLastImg(slides[0]);
+            addNextImage();
+            addClassButton();
+            numberPushButton = 0;
+            linkNewImage = 0;
+            isFlagAction = false;
+          }, 2000);
+        }
       }
     };
-  }, {}]
+  }, {}],
+  3: [function (require, module, exports) {}, {}],
+  4: [function (require, module, exports) {
+    arguments[4][3][0].apply(exports, arguments);
+  }, {
+    "dup": 3
+  }]
 }, {}, [1]);
