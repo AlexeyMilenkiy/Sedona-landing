@@ -43,18 +43,19 @@ gulp.task('browserify', function(){
 gulp.task('default', gulp.parallel('less', 'css', 'browserify', function(){
        
        browserSync.init({
-         files:['index.html', 'slider.html'],
-       	server: {
+         files:['./index.html', './slider.html'],
+       	 server: {
            baseDir: './',
+           port: 3000,
            directory: true
         }
        });
 
-	  gulp.watch('./*.html').on('change', browserSync.reload);
-    gulp.watch('./style/main.css').on('change', browserSync.reload);
-    gulp.watch('./js/script.js').on('change', gulp.series('browserify'), browserSync.reload);
-    gulp.watch('./style/less/*.less', gulp.series('less'));
-    gulp.watch('./style/dest/*.css', gulp.series('css'));
+       gulp.watch('./*.html').on('change', browserSync.reload);
+       gulp.watch('./style/main.css').on('change', browserSync.reload);
+       gulp.watch('./js/script.js').on('change', gulp.series('browserify'), browserSync.reload);
+       gulp.watch('./style/less/*.less', gulp.series('less'));
+       gulp.watch('./style/dest/*.css', gulp.series('css'));
 }));
 
 
