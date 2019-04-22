@@ -43,8 +43,12 @@ gulp.task('browserify', function(){
 gulp.task('default', gulp.parallel('less', 'css', 'browserify', function(){
        
        browserSync.init({
-       	server: {baseDir: './'}
-       })
+         files:['index.html', 'slider.html'],
+       	server: {
+           baseDir: './',
+           directory: true
+        }
+       });
 
 	  gulp.watch('./*.html').on('change', browserSync.reload);
     gulp.watch('./style/main.css').on('change', browserSync.reload);

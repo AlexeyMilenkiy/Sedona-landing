@@ -56,7 +56,8 @@
       var links = [];
       var imgIndex = 0;
       var offset = 0;
-      var indexPagination = 3;
+      var indexPagination = 3; //  number of buttons pagination
+
       var indexStartNumButton = 0;
       var indexActiveImg = 0;
       var numberPushButton = 0;
@@ -64,14 +65,15 @@
       var linkNewImage = 0;
       var isFlagAction = false;
       showImage();
-      showPagination();
+      showPagination(); // create array with links images on slider
 
       function findLinksImg() {
         for (var i = 0; i < slides.length; i++) {
           links[i] = slides[i].src;
           slides[i].remove();
         }
-      }
+      } // start function create images on pages
+
 
       function showImage() {
         findLinksImg();
@@ -92,7 +94,8 @@
         img2.classList.add('slide-single');
         img2.style.left = offset1 * 100 + '%';
         sliderBlock.appendChild(img2);
-      }
+      } // start function create pagination button
+
 
       function showPagination() {
         if (links.length > indexPagination) {
@@ -116,7 +119,8 @@
         }
 
         addClassButton();
-      }
+      } // find link active image after shift
+
 
       function findIndexLastImg(arg) {
         for (; imgIndex < links.length; imgIndex++) {
@@ -124,7 +128,8 @@
             return imgIndex;
           }
         }
-      }
+      } // add new image on the right after shift
+
 
       function addNextImage() {
         var rightImg = document.createElement('img');
@@ -140,7 +145,8 @@
         rightImg.style.left = 100 + '%';
         sliderBlock.appendChild(rightImg);
         imgIndex = 0;
-      }
+      } // add new image on the left after shift
+
 
       function addPrevImage() {
         var leftImg = document.createElement('img');
@@ -156,7 +162,8 @@
         leftImg.style.left = -100 + '%';
         sliderBlock.insertBefore(leftImg, sliderBlock.children[0]);
         imgIndex = 0;
-      }
+      } // image shift function to the left
+
 
       function shiftImageLeft() {
         offset = 0;
@@ -172,7 +179,8 @@
 
           slides[i].style.left = offset * 100 - 100 + '%';
         }
-      }
+      } //function showing new image after pressing a button "next"
+
 
       function showNextImage() {
         if (isFlagAction) {
@@ -189,7 +197,8 @@
             isFlagAction = false;
           }, 2000);
         }
-      }
+      } // image shift function to the rights
+
 
       function shiftImageRight() {
         offset = 0;
@@ -205,7 +214,8 @@
 
           slides[i].style.left = offset * 100 + '%';
         }
-      }
+      } //function showing new image after pressing a button "previous"
+
 
       function showPrevImage() {
         if (isFlagAction) {
@@ -242,25 +252,27 @@
         lessImg.id = "lessImg";
         lessImg.textContent = "<<";
         paginationImgBlock.appendChild(lessImg);
-      }
+      } // creating a new button with a number greater than the previous one
+
 
       function createNewButtonMore() {
         var imgNumber = document.createElement('button');
         imgNumber.classList.add('img-navigation');
         imgNumber.textContent = +indexStartNumButton + 1;
         paginationImgBlock.appendChild(imgNumber);
-      }
+      } // creating a new button with a number less than the previous one
+
 
       function createNewButtonLess() {
         var imgNumber = document.createElement('button');
         imgNumber.classList.add('img-navigation');
         imgNumber.textContent = +indexStartNumButton - 1;
         paginationImgBlock.insertBefore(imgNumber, paginationImgBlock.children[0]);
-      } //отрисовка новой пагинации после нажатия >>
+      } //show new pagination button after push button ">>"
 
 
       function showNextPagination() {
-        findLastNumberButton(indexPagination);
+        searchLastNumberButton(indexPagination);
         clearPagination();
         showButtonLess();
         var reserveVariables = +indexStartNumButton;
@@ -284,11 +296,11 @@
 
         indexPagination = indexPagination - reserveVariables;
         addClassButton();
-      } //отрисовка новой пагинации после нажатия <<
+      } //show new pagination button after push button "<<"
 
 
       function showPrevPagination() {
-        findLastNumberButton(1);
+        searchLastNumberButton(1);
         clearPagination();
         showButtonMore();
         var reserveVariables = +indexStartNumButton;
@@ -312,9 +324,10 @@
 
         indexPagination = reserveVariables - indexPagination;
         addClassButton();
-      }
+      } // search for the number of the last button pagination
 
-      function findLastNumberButton(n) {
+
+      function searchLastNumberButton(n) {
         var buttonArr = document.querySelectorAll('.img-navigation');
 
         for (var i = 0; i < buttonArr.length; i++) {
@@ -322,7 +335,8 @@
             return indexStartNumButton = buttonArr[i].innerText;
           }
         }
-      }
+      } // clear all button pagination
+
 
       function clearPagination() {
         while (paginationImgBlock.firstChild) {
@@ -341,9 +355,10 @@
           numberPushButton = +target.innerText;
           containsActiveClass(target.innerText);
         }
-      };
+      }; // active image index definition
 
-      function findActiveImg() {
+
+      function searchActiveImg() {
         slides = document.querySelectorAll('.slide-single');
 
         for (; indexActiveImg < links.length; indexActiveImg++) {
@@ -351,11 +366,12 @@
             return indexActiveImg;
           }
         }
-      }
+      } //adding "active" class to a button
+
 
       function addClassButton() {
         var indexActiveButton = 0;
-        findActiveImg();
+        searchActiveImg();
         indexActiveImg++;
         var buttonArr = document.querySelectorAll('.img-navigation');
         var buttonMore = document.getElementById('moreImg');
@@ -384,7 +400,8 @@
         }
 
         indexActiveImg = 0;
-      }
+      } //checking whether the active class has a button
+
 
       function containsActiveClass(x) {
         var numButton = +x;
@@ -400,7 +417,8 @@
             }
           }
         }
-      }
+      } // brute force pagination array
+
 
       function bruteForcePagination() {
         var buttonArr = document.querySelectorAll('.img-navigation');
@@ -424,7 +442,8 @@
             activeButton = +buttonArr[i].innerText;
           }
         }
-      }
+      } //showing a new image after pressing a button pagination
+
 
       function showNotActiveImg() {
         var indexWaitImage = 0;
@@ -446,23 +465,25 @@
             }
           }
         }
-      }
+      } //search for a link to a picture of the corresponding pressed button
 
-      function findIndexNewImage() {
+
+      function searchIndexNewImage() {
         for (var i = 0; i < links.length; i++) {
           if (i + 1 === numberPushButton) {
             linkNewImage = links[i];
             break;
           }
         }
-      }
+      } //adding a new image after pressing the button with the number more than the active one
+
 
       function addNextImageFromPagination() {
         if (isFlagAction) {
           return false;
         } else {
           var rightImg = document.createElement('img');
-          findIndexNewImage();
+          searchIndexNewImage();
           slides[0].remove();
           slides[2].remove();
           rightImg.src = linkNewImage;
@@ -486,14 +507,15 @@
             isFlagAction = false;
           }, 2000);
         }
-      }
+      } //adding a new image after pressing the button with the number less than the active one
+
 
       function addPrevImageFromPagination() {
         if (isFlagAction) {
           return false;
         } else {
           var leftImg = document.createElement('img');
-          findIndexNewImage();
+          searchIndexNewImage();
           slides[0].remove();
           slides[2].remove();
           leftImg.src = linkNewImage;
