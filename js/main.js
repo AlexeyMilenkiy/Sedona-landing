@@ -56,6 +56,7 @@
       var numberPushButton = 0;
       var activeButton = 0;
       var linkNewImage = 0;
+      var flagAction = false;
       showImage();
       showPagination();
 
@@ -195,15 +196,23 @@
       }
 
       function showPrevImage() {
-        slides = document.querySelectorAll('.slide-single');
-        offset = 0;
-        findIndexLastImg(slides[0]);
-        slides[2].remove();
-        shiftImageRight();
-        setTimeout(function () {
-          addPrevImage();
-          addClassButton();
-        }, 2000);
+        s;
+
+        if (flagAction) {
+          return false;
+        } else {
+          slides = document.querySelectorAll('.slide-single');
+          offset = 0;
+          findIndexLastImg(slides[0]);
+          slides[2].remove();
+          shiftImageRight();
+          flagAction = true;
+          setTimeout(function () {
+            addPrevImage();
+            addClassButton();
+            flagAction = false;
+          }, 2000);
+        }
       }
 
       next.onclick = showNextImage;

@@ -14,6 +14,7 @@ window.onload = function () {
     let numberPushButton = 0;
     let activeButton = 0;
     let linkNewImage = 0;
+    let flagAction = false;
 
     showImage();
     showPagination();
@@ -124,14 +125,20 @@ window.onload = function () {
     }
 
     function showNextImage() {
-        slides = document.querySelectorAll('.slide-single');
-        findIndexLastImg(slides[2]);
-        slides[0].remove();
-        shiftImageLeft();
-        setTimeout(function () {
-            addNextImage();
-            addClassButton();
-        }, 2000);
+        if (flagAction){
+            return false;
+        }else {
+            slides = document.querySelectorAll('.slide-single');
+            findIndexLastImg(slides[2]);
+            slides[0].remove();
+            shiftImageLeft();
+            flagAction = true;
+            setTimeout(function () {
+                addNextImage();
+                addClassButton();
+                flagAction = false;
+            }, 2000);
+        }
     }
 
     function shiftImageRight() {
@@ -149,15 +156,21 @@ window.onload = function () {
     }
 
     function showPrevImage() {
+        if (flagAction){
+            return false;
+        }else{
         slides = document.querySelectorAll('.slide-single');
         offset = 0;
         findIndexLastImg(slides[0]);
         slides[2].remove();
         shiftImageRight();
+        flagAction = true;
         setTimeout(function () {
             addPrevImage();
             addClassButton();
-        }, 2000);
+            flagAction = false;
+            }, 2000);
+        }
     }
 
     next.onclick = showNextImage;
@@ -381,59 +394,68 @@ window.onload = function () {
     }
 
     function addNextImageFromPagination() {
-
-        let rightImg = document.createElement('img');
-        findIndexNewImage();
-        slides[0].remove();
-        slides[2].remove();
-
-        rightImg.src = linkNewImage;
-        rightImg.classList.add('slide-single');
-        rightImg.style.left = 100 + '%';
-        sliderBlock.appendChild(rightImg);
-        slides = document.querySelectorAll('.slide-single');
-
-        setTimeout(function () {
-            shiftImageLeft();
-        }, 200);
-
-        setTimeout(function () {
-            findIndexLastImg(slides[1]);
-            addNextImage();
+        if (flagAction){
+            return false;
+        }else {
+            let rightImg = document.createElement('img');
+            findIndexNewImage();
             slides[0].remove();
-            findIndexLastImg(slides[1]);
-            addPrevImage();
-            addClassButton();
-            numberPushButton = 0;
-            linkNewImage = 0;
-        }, 2000);
+            slides[2].remove();
+
+            rightImg.src = linkNewImage;
+            rightImg.classList.add('slide-single');
+            rightImg.style.left = 100 + '%';
+            sliderBlock.appendChild(rightImg);
+            slides = document.querySelectorAll('.slide-single');
+            flagAction = true;
+            setTimeout(function () {
+                shiftImageLeft();
+            }, 200);
+
+            setTimeout(function () {
+                findIndexLastImg(slides[1]);
+                addNextImage();
+                slides[0].remove();
+                findIndexLastImg(slides[1]);
+                addPrevImage();
+                addClassButton();
+                numberPushButton = 0;
+                linkNewImage = 0;
+                flagAction = false;
+            }, 2000);
+        }
     }
 
     function addPrevImageFromPagination() {
-        let leftImg = document.createElement('img');
-        findIndexNewImage();
-        slides[0].remove();
-        slides[2].remove();
+        if (flagAction){
+            return false;
+        }else {
+            let leftImg = document.createElement('img');
+            findIndexNewImage();
+            slides[0].remove();
+            slides[2].remove();
 
-        leftImg.src = linkNewImage;
-        leftImg.classList.add('slide-single');
-        leftImg.style.left = -100 + '%';
-        sliderBlock.insertBefore(leftImg, sliderBlock.children[0]);
-        slides = document.querySelectorAll('.slide-single');
+            leftImg.src = linkNewImage;
+            leftImg.classList.add('slide-single');
+            leftImg.style.left = -100 + '%';
+            sliderBlock.insertBefore(leftImg, sliderBlock.children[0]);
+            slides = document.querySelectorAll('.slide-single');
+            flagAction = true;
+            setTimeout(function () {
+                shiftImageRight();
+            }, 200);
 
-        setTimeout(function () {
-            shiftImageRight();
-        }, 200);
-
-        setTimeout(function () {
-            findIndexLastImg(slides[0]);
-            addPrevImage();
-            slides[1].remove();
-            findIndexLastImg(slides[0]);
-            addNextImage();
-            addClassButton();
-            numberPushButton = 0;
-            linkNewImage = 0
-        }, 2000);
+            setTimeout(function () {
+                findIndexLastImg(slides[0]);
+                addPrevImage();
+                slides[1].remove();
+                findIndexLastImg(slides[0]);
+                addNextImage();
+                addClassButton();
+                numberPushButton = 0;
+                linkNewImage = 0;
+                flagAction = false;
+            }, 2000);
+        }
     }
 };
