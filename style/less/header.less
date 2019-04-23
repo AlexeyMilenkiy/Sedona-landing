@@ -56,33 +56,35 @@ body {
 }
 
 .pop-up-container {
-  display: none;
   position: absolute;
   max-width: inherit;
   width: 100%;
   height: 100vh;
-  animation: pop-Up-None 2s;
+  z-index: 7;
+  background-color: rgba(0, 0, 0, 0.5);
+  animation: none-animation 2s;
+}
+
+.pop-up-none{
+  display: none;
 }
 
 @keyframes show-animation {
   0% {
     opacity: 0;
   }
-
   100% {
     opacity: 1;
   }
 }
-
-@keyframes pop-Up-None {
+@keyframes none-animation {
   0% {
+    position:fixed;
     opacity: 1;
-    display: block;
   }
-
   100% {
+    position:fixed;
     opacity: 0;
-    display: none;
   }
 }
 
@@ -92,7 +94,6 @@ body {
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 7;
   animation: show-animation 2s;
-  //animation: pop-Up-None 2s;
 }
 
 .pop-up {

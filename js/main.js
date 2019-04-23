@@ -71,7 +71,8 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
         }, 1000);
       };
 
-      function showPopUpWindow() {
+      var showPopUpWindow = function showPopUpWindow() {
+        popUpContainer.classList.remove('pop-up-none');
         popUpContainer.classList.add('pop-up-show');
         var scrollX = window.scrollX;
         var scrollY = window.scrollY;
@@ -79,23 +80,24 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
         window.onscroll = function () {
           window.scrollTo(scrollX, scrollY);
         };
-      }
+      };
 
-      function popUpClosed() {
+      closePopUp.onclick = function () {
         popUpContainer.classList.remove('pop-up-show');
+        popUpContainer.addEventListener("animationend", function () {
+          popUpContainer.classList.add('pop-up-none');
+        });
 
         window.onscroll = function () {
           window.scrollTo();
         };
-      }
+      };
 
       function clearInputs() {
         for (var i = 0; i < formInputs.length; i++) {
           formInputs[i].value = "";
         }
       }
-
-      closePopUp.onclick = popUpClosed;
 
       function clearErrors() {
         name.classList.remove("review-user__input-error");

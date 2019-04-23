@@ -30,25 +30,27 @@ window.onload = function() {
         },1000)
     };
 
-    function showPopUpWindow() {
+    const showPopUpWindow = function () {
+        popUpContainer.classList.remove('pop-up-none');
         popUpContainer.classList.add('pop-up-show');
         let scrollX = window.scrollX;
         let scrollY = window.scrollY;
         window.onscroll = function () { window.scrollTo(scrollX, scrollY);};
-    }
+    };
 
-    function popUpClosed() {
+    closePopUp.onclick =  function () {
         popUpContainer.classList.remove('pop-up-show');
+        popUpContainer.addEventListener("animationend", function(){
+            popUpContainer.classList.add('pop-up-none');
+        });
         window.onscroll = function() { window.scrollTo(); };
-    }
+    };
 
     function clearInputs() {
             for (let i = 0; i < formInputs.length; i++) {
                 formInputs[i].value = "";
             }
     }
-
-    closePopUp.onclick = popUpClosed;
 
     function clearErrors() {
         name.classList.remove("review-user__input-error");
