@@ -46,18 +46,18 @@ window.onload = function() {
         window.onscroll = function() { window.scrollTo(); };
     };
 
-    function clearInputs() {
+    const clearInputs = function () {
             for (let i = 0; i < formInputs.length; i++) {
                 formInputs[i].value = "";
             }
-    }
+    };
 
-    function clearErrors() {
+    const clearErrors = function () {
         name.classList.remove("review-user__input-error");
         surName.classList.remove("review-user__input-error");
         errorMessageTel.classList.remove("wrong-number-or-email-visible");
         errorMessageEmail.classList.remove("wrong-number-or-email-visible");
-    }
+    };
 
     const constraints = [{
         name: 'name',
@@ -100,8 +100,8 @@ window.onload = function() {
         }
         if (evt && evt.preventDefault) {
             evt.preventDefault();
-        } else if (event) {
-            event.returnValue = false;
+        } else if (evt) {
+            evt.returnValue = false;
         }
     });
 
@@ -137,14 +137,14 @@ window.onload = function() {
         .setMessage('check_phone', '');
 
     //mask for phone
-    function inputHandler(masks, max, event) {
+    const inputHandler = function (masks, max, event) {
         let input = event.target;
         let inputValue = input.value.replace(/\D/g, '');
         let maxLength = input.value.length > max ? 1 : 0;
         VMasker(input).unMask();
         VMasker(input).maskPattern(masks[maxLength]);
         input.value = VMasker.toPattern(inputValue, masks[maxLength]);
-    }
+    };
 
     let telMask = ['+9(999)999-99-99', '+9(999)999-99-99'];
     VMasker(tel).maskPattern(telMask[0]);

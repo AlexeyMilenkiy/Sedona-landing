@@ -93,18 +93,18 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
         };
       };
 
-      function clearInputs() {
+      var clearInputs = function clearInputs() {
         for (var i = 0; i < formInputs.length; i++) {
           formInputs[i].value = "";
         }
-      }
+      };
 
-      function clearErrors() {
+      var clearErrors = function clearErrors() {
         name.classList.remove("review-user__input-error");
         surName.classList.remove("review-user__input-error");
         errorMessageTel.classList.remove("wrong-number-or-email-visible");
         errorMessageEmail.classList.remove("wrong-number-or-email-visible");
-      }
+      };
 
       var constraints = [{
         name: 'name',
@@ -148,8 +148,8 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 
         if (evt && evt.preventDefault) {
           evt.preventDefault();
-        } else if (event) {
-          event.returnValue = false;
+        } else if (evt) {
+          evt.returnValue = false;
         }
       });
       var _iteratorNormalCompletion = true;
@@ -203,14 +203,14 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
         return phoneCheck.test(value);
       }).setMessage('check_phone', ''); //mask for phone
 
-      function inputHandler(masks, max, event) {
+      var inputHandler = function inputHandler(masks, max, event) {
         var input = event.target;
         var inputValue = input.value.replace(/\D/g, '');
         var maxLength = input.value.length > max ? 1 : 0;
         VMasker(input).unMask();
         VMasker(input).maskPattern(masks[maxLength]);
         input.value = VMasker.toPattern(inputValue, masks[maxLength]);
-      }
+      };
 
       var telMask = ['+9(999)999-99-99', '+9(999)999-99-99'];
       VMasker(tel).maskPattern(telMask[0]);
