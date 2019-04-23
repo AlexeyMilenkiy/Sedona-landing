@@ -312,7 +312,7 @@ window.onload = () => {
   };
 
   // brute force pagination array
-  const bruteForcePagination = function () {
+  const bruteForcePagination = () => {
     const buttonArr = document.querySelectorAll('.img-navigation');
     const lessButton = document.getElementById('lessImg');
     const moreButton = document.getElementById('moreImg');
@@ -333,6 +333,7 @@ window.onload = () => {
       }
     }
   };
+
   // search for a link to a picture of the corresponding pressed button
   const searchIndexNewImage = () => {
     for (let i = 0; i < links.length; i += 1) {
@@ -346,7 +347,7 @@ window.onload = () => {
   // adding a new image after pressing the button with the number more than the active one
   const addNextImageFromPagination = () => {
     if (isFlagAction) {
-      return false;
+      return;
     }
     const rightImg = document.createElement('img');
     searchIndexNewImage();
@@ -379,7 +380,7 @@ window.onload = () => {
   // adding a new image after pressing the button with the number less than the active one
   const addPrevImageFromPagination = () => {
     if (isFlagAction) {
-      return false;
+      return;
     }
     const leftImg = document.createElement('img');
     searchIndexNewImage();
@@ -434,7 +435,7 @@ window.onload = () => {
     const numButton = +x;
     const buttonArr = document.querySelectorAll('.img-navigation');
 
-    for (let i = 0; i < buttonArr.length; i++) {
+    for (let i = 0; i < buttonArr.length; i += 1) {
       if (numButton === +buttonArr[i].innerText) {
         if (buttonArr[i].classList.contains('active')) {
           break;
