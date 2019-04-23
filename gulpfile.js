@@ -46,8 +46,7 @@ gulp.task('default', gulp.parallel('less', 'css', 'browserify', function(){
          files:['./index.html', './slider.html'],
        	 server: {
            baseDir: './',
-           port: 3000,
-           directory: true
+           port: 3000
         }
        });
 
