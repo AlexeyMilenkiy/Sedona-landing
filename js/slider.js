@@ -16,18 +16,15 @@ window.onload = function () {
     let linkNewImage = 0;
     let isFlagAction = false;
 
-    showImage();
-    showPagination();
-
     // create array with links images on slider
-    function findLinksImg() {
+    const findLinksImg = function() {
         for (let i = 0; i < slides.length; i++) {
             links[i] = slides[i].src;
             slides[i].remove();
         }
-    }
+    };
     // start function create images on pages
-    function showImage() {
+    const showImage = function() {
         findLinksImg();
         imgIndex = 0;
         let offset1 = 1;
@@ -49,9 +46,9 @@ window.onload = function () {
         img2.classList.add('slide-single');
         img2.style.left = offset1 * 100 + '%';
         sliderBlock.appendChild(img2);
-    }
+    };
    // start function create pagination button
-    function showPagination() {
+    const showPagination = function() {
 
         if (links.length > indexPagination) {
 
@@ -72,17 +69,19 @@ window.onload = function () {
             }
         }
         addClassButton();
-    }
+    };
+
+
     // find link active image after shift
-    function findIndexLastImg(arg) {
+    const findIndexLastImg = function (arg) {
         for (; imgIndex < links.length; imgIndex++) {
             if (links[imgIndex] === arg.src) {
                 return imgIndex;
             }
         }
-    }
+    };
     // add new image on the right after shift
-    function addNextImage() {
+    const addNextImage = function () {
         let rightImg = document.createElement('img');
         if (imgIndex >= links.length - 1) {
             imgIndex = 0;
@@ -94,9 +93,9 @@ window.onload = function () {
         rightImg.style.left = 100 + '%';
         sliderBlock.appendChild(rightImg);
         imgIndex = 0;
-    }
+    };
     // add new image on the left after shift
-    function addPrevImage() {
+    const addPrevImage = function() {
         let leftImg = document.createElement('img');
         if (imgIndex <= 0) {
             imgIndex = links.length - 1;
@@ -108,9 +107,9 @@ window.onload = function () {
         leftImg.style.left = -100 + '%';
         sliderBlock.insertBefore(leftImg, sliderBlock.children[0]);
         imgIndex = 0;
-    }
+    };
     // image shift function to the left
-    function shiftImageLeft() {
+    const shiftImageLeft = function () {
         offset = 0;
         let step2 = 0;
         for (let i = 0; i < slides.length; i++) {
@@ -123,9 +122,24 @@ window.onload = function () {
             }
             slides[i].style.left = offset * 100 - 100 + '%';
         }
-    }
+    };
+
+    // image shift function to the rights
+    const shiftImageRight = function () {
+        offset = 0;
+        let step3 = slides.length;
+        for (let i = slides.length - 1; i >= 0; i--) {
+            if (step3 - 1 > 0) {
+                offset = 1;
+                step3--;
+            } else {
+                offset = 0;
+            }
+            slides[i].style.left = offset * 100 + '%';
+        }
+    };
     //function showing new image after pressing a button "next"
-    function showNextImage() {
+    next.onclick = function() {
         if (isFlagAction){
             return false;
         }else {
@@ -140,75 +154,58 @@ window.onload = function () {
                 isFlagAction = false;
             }, 2000);
         }
-    }
-    // image shift function to the rights
-    function shiftImageRight() {
-        offset = 0;
-        let step3 = slides.length;
-        for (let i = slides.length - 1; i >= 0; i--) {
-            if (step3 - 1 > 0) {
-                offset = 1;
-                step3--;
-            } else {
-                offset = 0;
-            }
-            slides[i].style.left = offset * 100 + '%';
-        }
-    }
+    };
     //function showing new image after pressing a button "previous"
-    function showPrevImage() {
+    previous.onclick = function () {
         if (isFlagAction){
             return false;
         }else{
-        slides = document.querySelectorAll('.slide-single');
-        offset = 0;
-        findIndexLastImg(slides[0]);
-        slides[2].remove();
-        shiftImageRight();
-        isFlagAction = true;
-        setTimeout(function () {
-            addPrevImage();
-            addClassButton();
-            isFlagAction = false;
+            slides = document.querySelectorAll('.slide-single');
+            offset = 0;
+            findIndexLastImg(slides[0]);
+            slides[2].remove();
+            shiftImageRight();
+            isFlagAction = true;
+            setTimeout(function () {
+                addPrevImage();
+                addClassButton();
+                isFlagAction = false;
             }, 2000);
         }
-    }
+    };
 
-    next.onclick = showNextImage;
-    previous.onclick = showPrevImage;
-
-    function showButtonMore() {
+    const showButtonMore = function()  {
         let moreImg = document.createElement('button');
         moreImg.classList.add('moreImg-class');
         moreImg.id = "moreImg";
         moreImg.textContent = ">>";
         paginationImgBlock.appendChild(moreImg);
-    }
+    };
 
-    function showButtonLess() {
+    const showButtonLess = function() {
         let lessImg = document.createElement('button');
         lessImg.classList.add('lessImg-class');
         lessImg.id = "lessImg";
         lessImg.textContent = "<<";
         paginationImgBlock.appendChild(lessImg);
-    }
+    };
     // creating a new button with a number greater than the previous one
-    function createNewButtonMore() {
+    const createNewButtonMore = function() {
         let imgNumber = document.createElement('button');
         imgNumber.classList.add('img-navigation');
         imgNumber.textContent = +indexStartNumButton + 1;
         paginationImgBlock.appendChild(imgNumber);
-    }
+    };
     // creating a new button with a number less than the previous one
-    function createNewButtonLess() {
+    const createNewButtonLess = function() {
         let imgNumber = document.createElement('button');
         imgNumber.classList.add('img-navigation');
         imgNumber.textContent = +indexStartNumButton - 1;
         paginationImgBlock.insertBefore(imgNumber, paginationImgBlock.children[0]);
-    }
+    };
 
     //show new pagination button after push button ">>"
-    function showNextPagination() {
+    const showNextPagination = function() {
         searchLastNumberButton(indexPagination);
         clearPagination();
         showButtonLess();
@@ -231,10 +228,10 @@ window.onload = function () {
         }
         indexPagination = indexPagination - reserveVariables;
         addClassButton();
-    }
+    };
 
     //show new pagination button after push button "<<"
-    function showPrevPagination() {
+    const showPrevPagination = function() {
         searchLastNumberButton(1);
         clearPagination();
         showButtonMore();
@@ -259,22 +256,22 @@ window.onload = function () {
         }
         indexPagination = reserveVariables - indexPagination;
         addClassButton();
-    }
+    };
     // search for the number of the last button pagination
-    function searchLastNumberButton(n) {
+    const searchLastNumberButton = function(n) {
         let buttonArr = document.querySelectorAll('.img-navigation');
         for (let i = 0; i < buttonArr.length; i++) {
             if (i+1 === n) {
                 return indexStartNumButton = buttonArr[i].innerText
             }
         }
-    }
+    };
     // clear all button pagination
-    function clearPagination() {
+    const clearPagination = function() {
         while (paginationImgBlock.firstChild) {
             paginationImgBlock.removeChild(paginationImgBlock.firstChild);
         }
-    }
+    };
 
     paginationImgBlock.onclick = function (event) {
         let target = event.target;
@@ -288,16 +285,16 @@ window.onload = function () {
         }
     };
     // active image index definition
-    function searchActiveImg() {
+    const searchActiveImg = function() {
         slides = document.querySelectorAll('.slide-single');
         for (; indexActiveImg < links.length; indexActiveImg++) {
             if (links[indexActiveImg] === slides[1].src) {
                 return indexActiveImg;
             }
         }
-    }
+    };
     //adding "active" class to a button
-    function addClassButton() {
+    const addClassButton = function() {
         let indexActiveButton = 0;
         searchActiveImg();
         indexActiveImg++;
@@ -324,9 +321,9 @@ window.onload = function () {
             }
         }
         indexActiveImg = 0;
-    }
+    };
     //checking whether the active class has a button
-    function containsActiveClass(x) {
+    const containsActiveClass = function(x) {
         let numButton = +x;
         let buttonArr = document.querySelectorAll('.img-navigation');
 
@@ -340,9 +337,9 @@ window.onload = function () {
                 }
             }
         }
-    }
+    };
     // brute force pagination array
-    function bruteForcePagination() {
+    const bruteForcePagination = function() {
         let buttonArr = document.querySelectorAll('.img-navigation');
         let lessButton = document.getElementById('lessImg');
         let moreButton = document.getElementById('moreImg');
@@ -362,9 +359,9 @@ window.onload = function () {
                 activeButton = +buttonArr[i].innerText;
             }
         }
-    }
+    };
     //showing a new image after pressing a button pagination
-    function showNotActiveImg() {
+    const showNotActiveImg = function() {
         let indexWaitImage = 0;
         let buttonArr = document.querySelectorAll('.img-navigation');
         bruteForcePagination();
@@ -383,18 +380,18 @@ window.onload = function () {
                 }
             }
         }
-    }
+    };
     //search for a link to a picture of the corresponding pressed button
-    function searchIndexNewImage(){
+    const searchIndexNewImage = function(){
         for (let i = 0; i < links.length; i++) {
             if (i + 1 === numberPushButton) {
                 linkNewImage = links[i];
                 break
             }
         }
-    }
+    };
     //adding a new image after pressing the button with the number more than the active one
-    function addNextImageFromPagination() {
+    const addNextImageFromPagination = function() {
         if (isFlagAction){
             return false;
         }else {
@@ -425,9 +422,9 @@ window.onload = function () {
                 isFlagAction = false;
             }, 2000);
         }
-    }
+    };
     //adding a new image after pressing the button with the number less than the active one
-    function addPrevImageFromPagination() {
+    const addPrevImageFromPagination = function() {
         if (isFlagAction){
             return false;
         }else {
@@ -458,5 +455,9 @@ window.onload = function () {
                 isFlagAction = false;
             }, 2000);
         }
-    }
+    };
+
+    showImage();
+    showPagination();
+
 };
