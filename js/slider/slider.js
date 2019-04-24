@@ -1,2 +1,2 @@
-require ('./slider-img.js');
-require ('./slider-pagination.js');
+require('./slider-img.js');
+require('./slider-pagination.js');
