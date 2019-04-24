@@ -1,4 +1,4 @@
-# Don't track content of these folders
+
 node_modules/
 .idea
 .gitignore.swp
@@ -8,3 +8,4 @@ node_modules/
 /js/.DS_Store
 /js/slider/.DS_Store
 /style/.DS_Store
+

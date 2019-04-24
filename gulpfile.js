@@ -1,3 +1,4 @@
+
 const gulp = require('gulp');
 const browserSync = require('browser-sync').create();
 const less = require('gulp-less');
@@ -6,7 +7,6 @@ const autoprefixer = require('autoprefixer');
 const concat = require('gulp-concat');
 const realFavicon = require('gulp-real-favicon');
 const fs = require('fs');
-
 const FAVICON_DATA_FILE = 'faviconData.json';
 const babel = require('gulp-babel');
 const browserify = require('browserify');
@@ -21,7 +21,8 @@ gulp.task('less', () => gulp.src(['./style/less/*.less'])
   .pipe(browserSync.stream()));
 
 gulp.task('css', () => {
-  const processors = [autoprefixer];
+  const processors = [autoprefixer({ browsers: ['last 1 version'] })];
+
   return gulp.src('./style/dest/main.css')
     .pipe(postcss(processors))
     .pipe(gulp.dest('./style/'))
