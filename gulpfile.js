@@ -44,8 +44,8 @@ gulp.task('default', gulp.parallel('less', 'css', 'browserify', () => {
     files: ['./index.html', './slider.html'],
     server: {
       baseDir: './',
-      port: 3000,
-    },
+      port: 3000
+    }
   });
 
   gulp.watch('./*.html').on('change', browserSync.reload);
@@ -54,7 +54,6 @@ gulp.task('default', gulp.parallel('less', 'css', 'browserify', () => {
   gulp.watch('./style/less/*.less', gulp.series('less'));
   gulp.watch('./style/dest/*.css', gulp.series('css'));
 }));
-
 
 gulp.task('generate-favicon', (done) => {
   realFavicon.generateFavicon({
@@ -65,13 +64,13 @@ gulp.task('generate-favicon', (done) => {
       ios: {
         pictureAspect: 'backgroundAndMargin',
         backgroundColor: '#ffffff',
-        margin: '21%',
+        margin: '21%'
       },
       desktopBrowser: {},
       windows: {
         pictureAspect: 'whiteSilhouette',
         backgroundColor: '#da532c',
-        onConflict: 'override',
+        onConflict: 'override'
       },
       androidChrome: {
         pictureAspect: 'shadow',
@@ -80,20 +79,20 @@ gulp.task('generate-favicon', (done) => {
           name: 'Distillery',
           display: 'browser',
           orientation: 'notSet',
-          onConflict: 'override',
-        },
+          onConflict: 'override'
+        }
       },
       safariPinnedTab: {
         pictureAspect: 'silhouette',
-        themeColor: '#5bbad5',
-      },
+        themeColor: '#5bbad5'
+      }
     },
     settings: {
       compression: 5,
       scalingAlgorithm: 'Mitchell',
-      errorOnImageTooSmall: false,
+      errorOnImageTooSmall: false
     },
-    markupFile: FAVICON_DATA_FILE,
+    markupFile: FAVICON_DATA_FILE
   }, () => {
     done();
   });
@@ -104,7 +103,6 @@ gulp.task('inject-favicon-markups', () => {
     .pipe(realFavicon.injectFaviconMarkups(JSON.parse(fs.readFileSync(FAVICON_DATA_FILE)).favicon.html_code))
     .pipe(gulp.dest('./'));
 });
-
 
 gulp.task('check-for-favicon-update', (done) => {
   const currentVersion = JSON.parse(fs.readFileSync(FAVICON_DATA_FILE)).version;

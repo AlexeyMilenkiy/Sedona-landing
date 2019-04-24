@@ -4,7 +4,7 @@ module.exports = {
     commonjs: true,
     es6: true,
   },
-  extends: 'airbnb-base',
+  extends: "airbnb-standard",
   globals: {
     Atomics: 'readonly',
     SharedArrayBuffer: 'readonly',
