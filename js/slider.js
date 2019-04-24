@@ -49,6 +49,7 @@ window.onload = () => {
   };
 
   // find link active image after shift
+  // eslint-disable-next-line consistent-return
   const findIndexLastImg = (arg) => {
     for (; imgIndex < links.length; imgIndex += 1) {
       if (links[imgIndex] === arg.src) {
@@ -120,9 +121,9 @@ window.onload = () => {
   // active image index definition
   const searchActiveImg = () => {
     slides = document.querySelectorAll('.slide-single');
-    for (; indexActiveImg < links.length; indexActiveImg += 1) {
-      if (links[indexActiveImg] === slides[1].src) {
-        return indexActiveImg;
+    for (let i = 0; i < links.length; i += 1) {
+      if (links[i] === slides[1].src) {
+        indexActiveImg = i;
       }
     }
   };
@@ -157,38 +158,37 @@ window.onload = () => {
   };
 
   // function showing new image after pressing a button "next"
-  next.onclick = function () {
-    if (isFlagAction) {
-      return false;
-    }
-    slides = document.querySelectorAll('.slide-single');
-    findIndexLastImg(slides[2]);
-    slides[0].remove();
-    shiftImageLeft();
-    isFlagAction = true;
-    setTimeout(() => {
-      addNextImage();
-      addClassButton();
-      isFlagAction = false;
-    }, 2000);
+  next.onclick = () => {
+    if (!isFlagAction) {
+      slides = document.querySelectorAll('.slide-single');
+      findIndexLastImg(slides[2]);
+      slides[0].remove();
+      shiftImageLeft();
+      isFlagAction = true;
+      setTimeout(() => {
+        addNextImage();
+        addClassButton();
+        isFlagAction = false;
+      }, 2000);
+    } return false;
   };
 
   // function showing new image after pressing a button "previous"
-  previous.onclick = function () {
-    if (isFlagAction) {
-      return false;
+  previous.onclick = () => {
+    if (!isFlagAction) {
+      slides = document.querySelectorAll('.slide-single');
+      offset = 0;
+      findIndexLastImg(slides[0]);
+      slides[2].remove();
+      shiftImageRight();
+      isFlagAction = true;
+      setTimeout(() => {
+        addPrevImage();
+        addClassButton();
+        isFlagAction = false;
+      }, 2000);
     }
-    slides = document.querySelectorAll('.slide-single');
-    offset = 0;
-    findIndexLastImg(slides[0]);
-    slides[2].remove();
-    shiftImageRight();
-    isFlagAction = true;
-    setTimeout(() => {
-      addPrevImage();
-      addClassButton();
-      isFlagAction = false;
-    }, 2000);
+    return false;
   };
 
   const showButtonMore = () => {
@@ -319,12 +319,12 @@ window.onload = () => {
 
     if (lessButton) {
       if (lessButton.classList.contains('active')) {
-        return activeButton = -1;
+        activeButton = -1;
       }
     }
     if (moreButton) {
       if (moreButton.classList.contains('active')) {
-        return activeButton = links.length + 1;
+        activeButton = links.length + 1;
       }
     }
     for (let i = 0; i < buttonArr.length; i += 1) {
@@ -414,16 +414,16 @@ window.onload = () => {
     let indexWaitImage = 0;
     const buttonArr = document.querySelectorAll('.img-navigation');
     bruteForcePagination();
-    outer: for (; indexWaitImage <= links.length; indexWaitImage += 1) {
+    for (; indexWaitImage <= links.length; indexWaitImage += 1) {
       if (indexWaitImage === numberPushButton) {
         for (let i = 0; i < buttonArr.length; i += 1) {
           if (+buttonArr[i].innerText === numberPushButton) {
             if (indexWaitImage > activeButton) {
               addNextImageFromPagination();
-              break outer;
+              break;
             } else {
               addPrevImageFromPagination();
-              break outer;
+              break;
             }
           }
         }

@@ -63,19 +63,17 @@
       var numberPushButton = 0;
       var activeButton = 0;
       var linkNewImage = 0;
-      var isFlagAction = false;
-      showImage();
-      showPagination(); // create array with links images on slider
+      var isFlagAction = false; // create array with links images on slider
 
-      function findLinksImg() {
-        for (var i = 0; i < slides.length; i++) {
+      var findLinksImg = function findLinksImg() {
+        for (var i = 0; i < slides.length; i += 1) {
           links[i] = slides[i].src;
           slides[i].remove();
         }
-      } // start function create images on pages
+      }; // start function create images on pages
 
 
-      function showImage() {
+      var showImage = function showImage() {
         findLinksImg();
         imgIndex = 0;
         var offset1 = 1;
@@ -84,307 +82,124 @@
         var img2 = document.createElement('img');
         img.src = links[links.length - 1];
         img.classList.add('slide-single');
-        img.style.left = offset1 - 100 + '%';
+        img.style.left = "".concat(offset1 - 100, "%");
         sliderBlock.appendChild(img);
         img1.src = links[imgIndex];
         img1.classList.add('slide-single');
-        img1.style.left = offset * 100 + '%';
+        img1.style.left = "".concat(offset * 100, "%");
         sliderBlock.appendChild(img1);
         img2.src = links[imgIndex + 1];
         img2.classList.add('slide-single');
-        img2.style.left = offset1 * 100 + '%';
+        img2.style.left = "".concat(offset1 * 100, "%");
         sliderBlock.appendChild(img2);
-      } // start function create pagination button
+      }; // find link active image after shift
+      // eslint-disable-next-line consistent-return
 
 
-      function showPagination() {
-        if (links.length > indexPagination) {
-          for (var i = 0; i < indexPagination; i++) {
-            var imgNumber = document.createElement('button');
-            imgNumber.classList.add('img-navigation');
-            imgNumber.textContent = i + 1;
-            paginationImgBlock.appendChild(imgNumber);
-          }
-
-          showButtonMore();
-        } else if (links.length <= indexPagination) {
-          for (var _i = 0; _i < links.length; _i++) {
-            var _imgNumber = document.createElement('button');
-
-            _imgNumber.classList.add('img-navigation');
-
-            _imgNumber.textContent = _i + 1;
-            paginationImgBlock.appendChild(_imgNumber);
-          }
-        }
-
-        addClassButton();
-      } // find link active image after shift
-
-
-      function findIndexLastImg(arg) {
-        for (; imgIndex < links.length; imgIndex++) {
+      var findIndexLastImg = function findIndexLastImg(arg) {
+        for (; imgIndex < links.length; imgIndex += 1) {
           if (links[imgIndex] === arg.src) {
             return imgIndex;
           }
         }
-      } // add new image on the right after shift
+      }; // add new image on the right after shift
 
 
-      function addNextImage() {
+      var addNextImage = function addNextImage() {
         var rightImg = document.createElement('img');
 
         if (imgIndex >= links.length - 1) {
           imgIndex = 0;
         } else {
-          imgIndex = imgIndex + 1;
+          imgIndex += 1;
         }
 
         rightImg.src = links[imgIndex];
         rightImg.classList.add('slide-single');
-        rightImg.style.left = 100 + '%';
+        rightImg.style.left = "".concat(100, "%");
         sliderBlock.appendChild(rightImg);
         imgIndex = 0;
-      } // add new image on the left after shift
+      }; // add new image on the left after shift
 
 
-      function addPrevImage() {
+      var addPrevImage = function addPrevImage() {
         var leftImg = document.createElement('img');
 
         if (imgIndex <= 0) {
           imgIndex = links.length - 1;
         } else {
-          imgIndex = imgIndex - 1;
+          imgIndex -= 1;
         }
 
         leftImg.src = links[imgIndex];
         leftImg.classList.add('slide-single');
-        leftImg.style.left = -100 + '%';
+        leftImg.style.left = "".concat(-100, "%");
         sliderBlock.insertBefore(leftImg, sliderBlock.children[0]);
         imgIndex = 0;
-      } // image shift function to the left
+      }; // image shift function to the left
 
 
-      function shiftImageLeft() {
+      var shiftImageLeft = function shiftImageLeft() {
         offset = 0;
         var step2 = 0;
 
-        for (var i = 0; i < slides.length; i++) {
+        for (var i = 0; i < slides.length; i += 1) {
           if (step2 + 1 === slides.length) {
             offset = 1;
           } else {
             offset = 0;
-            step2++;
+            step2 += 1;
           }
 
-          slides[i].style.left = offset * 100 - 100 + '%';
+          slides[i].style.left = "".concat(offset * 100 - 100, "%");
         }
-      } //function showing new image after pressing a button "next"
+      }; // image shift function to the rights
 
 
-      function showNextImage() {
-        if (isFlagAction) {
-          return false;
-        } else {
-          slides = document.querySelectorAll('.slide-single');
-          findIndexLastImg(slides[2]);
-          slides[0].remove();
-          shiftImageLeft();
-          isFlagAction = true;
-          setTimeout(function () {
-            addNextImage();
-            addClassButton();
-            isFlagAction = false;
-          }, 2000);
-        }
-      } // image shift function to the rights
-
-
-      function shiftImageRight() {
+      var shiftImageRight = function shiftImageRight() {
         offset = 0;
         var step3 = slides.length;
 
-        for (var i = slides.length - 1; i >= 0; i--) {
+        for (var i = slides.length - 1; i >= 0; i -= 1) {
           if (step3 - 1 > 0) {
             offset = 1;
-            step3--;
+            step3 -= 1;
           } else {
             offset = 0;
           }
 
-          slides[i].style.left = offset * 100 + '%';
-        }
-      } //function showing new image after pressing a button "previous"
-
-
-      function showPrevImage() {
-        if (isFlagAction) {
-          return false;
-        } else {
-          slides = document.querySelectorAll('.slide-single');
-          offset = 0;
-          findIndexLastImg(slides[0]);
-          slides[2].remove();
-          shiftImageRight();
-          isFlagAction = true;
-          setTimeout(function () {
-            addPrevImage();
-            addClassButton();
-            isFlagAction = false;
-          }, 2000);
-        }
-      }
-
-      next.onclick = showNextImage;
-      previous.onclick = showPrevImage;
-
-      function showButtonMore() {
-        var moreImg = document.createElement('button');
-        moreImg.classList.add('moreImg-class');
-        moreImg.id = "moreImg";
-        moreImg.textContent = ">>";
-        paginationImgBlock.appendChild(moreImg);
-      }
-
-      function showButtonLess() {
-        var lessImg = document.createElement('button');
-        lessImg.classList.add('lessImg-class');
-        lessImg.id = "lessImg";
-        lessImg.textContent = "<<";
-        paginationImgBlock.appendChild(lessImg);
-      } // creating a new button with a number greater than the previous one
-
-
-      function createNewButtonMore() {
-        var imgNumber = document.createElement('button');
-        imgNumber.classList.add('img-navigation');
-        imgNumber.textContent = +indexStartNumButton + 1;
-        paginationImgBlock.appendChild(imgNumber);
-      } // creating a new button with a number less than the previous one
-
-
-      function createNewButtonLess() {
-        var imgNumber = document.createElement('button');
-        imgNumber.classList.add('img-navigation');
-        imgNumber.textContent = +indexStartNumButton - 1;
-        paginationImgBlock.insertBefore(imgNumber, paginationImgBlock.children[0]);
-      } //show new pagination button after push button ">>"
-
-
-      function showNextPagination() {
-        searchLastNumberButton(indexPagination);
-        clearPagination();
-        showButtonLess();
-        var reserveVariables = +indexStartNumButton;
-        indexPagination = +indexStartNumButton + indexPagination;
-
-        if (indexPagination === links.length) {
-          for (+indexStartNumButton; +indexStartNumButton < indexPagination; +indexStartNumButton++) {
-            createNewButtonMore();
-          }
-        } else if (indexPagination < links.length) {
-          for (+indexStartNumButton; +indexStartNumButton < indexPagination; +indexStartNumButton++) {
-            createNewButtonMore();
-          }
-
-          showButtonMore();
-        } else {
-          for (+indexStartNumButton; +indexStartNumButton < links.length; +indexStartNumButton++) {
-            createNewButtonMore();
-          }
-        }
-
-        indexPagination = indexPagination - reserveVariables;
-        addClassButton();
-      } //show new pagination button after push button "<<"
-
-
-      function showPrevPagination() {
-        searchLastNumberButton(1);
-        clearPagination();
-        showButtonMore();
-        var reserveVariables = +indexStartNumButton;
-        indexPagination = +indexStartNumButton - indexPagination;
-
-        if (indexPagination > 1) {
-          for (+indexStartNumButton; +indexStartNumButton > indexPagination; +indexStartNumButton--) {
-            createNewButtonLess();
-          }
-
-          var lessImg = document.createElement('button');
-          lessImg.classList.add('lessImg-class');
-          lessImg.id = "lessImg";
-          lessImg.textContent = "<<";
-          paginationImgBlock.insertBefore(lessImg, paginationImgBlock.children[0]);
-        } else {
-          for (+indexStartNumButton; +indexStartNumButton > 1; +indexStartNumButton--) {
-            createNewButtonLess();
-          }
-        }
-
-        indexPagination = reserveVariables - indexPagination;
-        addClassButton();
-      } // search for the number of the last button pagination
-
-
-      function searchLastNumberButton(n) {
-        var buttonArr = document.querySelectorAll('.img-navigation');
-
-        for (var i = 0; i < buttonArr.length; i++) {
-          if (i + 1 === n) {
-            return indexStartNumButton = buttonArr[i].innerText;
-          }
-        }
-      } // clear all button pagination
-
-
-      function clearPagination() {
-        while (paginationImgBlock.firstChild) {
-          paginationImgBlock.removeChild(paginationImgBlock.firstChild);
-        }
-      }
-
-      paginationImgBlock.onclick = function (event) {
-        var target = event.target;
-
-        if (target.id === "moreImg") {
-          showNextPagination();
-        } else if (target.id === "lessImg") {
-          showPrevPagination();
-        } else if (target.id !== "lessImg" && "moreImg") {
-          numberPushButton = +target.innerText;
-          containsActiveClass(target.innerText);
+          slides[i].style.left = "".concat(offset * 100, "%");
         }
       }; // active image index definition
 
 
-      function searchActiveImg() {
+      var searchActiveImg = function searchActiveImg() {
         slides = document.querySelectorAll('.slide-single');
 
-        for (; indexActiveImg < links.length; indexActiveImg++) {
-          if (links[indexActiveImg] === slides[1].src) {
-            return indexActiveImg;
+        for (var i = 0; indexActiveImg < links.length; i += 1) {
+          if (links[i] === slides[1].src) {
+            indexActiveImg = i;
           }
         }
-      } //adding "active" class to a button
+      }; // adding "active" class to a button
 
 
-      function addClassButton() {
+      var addClassButton = function addClassButton() {
         var indexActiveButton = 0;
         searchActiveImg();
-        indexActiveImg++;
+        indexActiveImg += 1;
         var buttonArr = document.querySelectorAll('.img-navigation');
         var buttonMore = document.getElementById('moreImg');
         var buttonLess = document.getElementById('lessImg');
 
-        for (; indexActiveButton < buttonArr.length; indexActiveButton++) {
+        for (; indexActiveButton < buttonArr.length; indexActiveButton += 1) {
           buttonArr[indexActiveButton].classList.remove('active');
 
-          if (!!buttonMore) {
+          if (buttonMore) {
             buttonMore.classList.remove('active');
           }
 
-          if (!!buttonLess) {
+          if (buttonLess) {
             buttonLess.classList.remove('active');
           }
 
@@ -400,27 +215,178 @@
         }
 
         indexActiveImg = 0;
-      } //checking whether the active class has a button
+      }; // function showing new image after pressing a button "next"
 
 
-      function containsActiveClass(x) {
-        var numButton = +x;
-        var buttonArr = document.querySelectorAll('.img-navigation');
+      next.onclick = function () {
+        if (isFlagAction) {
+          return false;
+        }
 
-        for (var i = 0; i < buttonArr.length; i++) {
-          if (numButton === +buttonArr[i].innerText) {
-            if (buttonArr[i].classList.contains('active')) {
-              break;
-            } else {
-              showNotActiveImg();
-              break;
-            }
+        slides = document.querySelectorAll('.slide-single');
+        findIndexLastImg(slides[2]);
+        slides[0].remove();
+        shiftImageLeft();
+        isFlagAction = true;
+        setTimeout(function () {
+          addNextImage();
+          addClassButton();
+          isFlagAction = false;
+        }, 2000);
+      }; // function showing new image after pressing a button "previous"
+
+
+      previous.onclick = function () {
+        if (isFlagAction) {
+          return false;
+        }
+
+        slides = document.querySelectorAll('.slide-single');
+        offset = 0;
+        findIndexLastImg(slides[0]);
+        slides[2].remove();
+        shiftImageRight();
+        isFlagAction = true;
+        setTimeout(function () {
+          addPrevImage();
+          addClassButton();
+          isFlagAction = false;
+        }, 2000);
+      };
+
+      var showButtonMore = function showButtonMore() {
+        var moreImg = document.createElement('button');
+        moreImg.classList.add('moreImg-class');
+        moreImg.id = 'moreImg';
+        moreImg.textContent = '>>';
+        paginationImgBlock.appendChild(moreImg);
+      };
+
+      var showButtonLess = function showButtonLess() {
+        var lessImg = document.createElement('button');
+        lessImg.classList.add('lessImg-class');
+        lessImg.id = 'lessImg';
+        lessImg.textContent = '<<';
+        paginationImgBlock.appendChild(lessImg);
+      }; // creating a new button with a number greater than the previous one
+
+
+      var createNewButtonMore = function createNewButtonMore() {
+        var imgNumber = document.createElement('button');
+        imgNumber.classList.add('img-navigation');
+        imgNumber.textContent = +indexStartNumButton + 1;
+        paginationImgBlock.appendChild(imgNumber);
+      }; // creating a new button with a number less than the previous one
+
+
+      var createNewButtonLess = function createNewButtonLess() {
+        var imgNumber = document.createElement('button');
+        imgNumber.classList.add('img-navigation');
+        imgNumber.textContent = +indexStartNumButton - 1;
+        paginationImgBlock.insertBefore(imgNumber, paginationImgBlock.children[0]);
+      }; // start function create pagination button
+
+
+      var showPagination = function showPagination() {
+        if (links.length > indexPagination) {
+          for (var i = 0; i < indexPagination; i += 1) {
+            var imgNumber = document.createElement('button');
+            imgNumber.classList.add('img-navigation');
+            imgNumber.textContent = i + 1;
+            paginationImgBlock.appendChild(imgNumber);
+          }
+
+          showButtonMore();
+        } else if (links.length <= indexPagination) {
+          for (var _i = 0; _i < links.length; _i += 1) {
+            var _imgNumber = document.createElement('button');
+
+            _imgNumber.classList.add('img-navigation');
+
+            _imgNumber.textContent = _i + 1;
+            paginationImgBlock.appendChild(_imgNumber);
           }
         }
-      } // brute force pagination array
+
+        addClassButton();
+      }; // search for the number of the last button pagination
 
 
-      function bruteForcePagination() {
+      var searchLastNumberButton = function searchLastNumberButton(n) {
+        var buttonArr = document.querySelectorAll('.img-navigation');
+
+        for (var i = 0; i < buttonArr.length; i += 1) {
+          if (i + 1 === n) {
+            indexStartNumButton = +buttonArr[i].innerText;
+          }
+        }
+      }; // clear all button pagination
+
+
+      var clearPagination = function clearPagination() {
+        while (paginationImgBlock.firstChild) {
+          paginationImgBlock.removeChild(paginationImgBlock.firstChild);
+        }
+      }; // show new pagination button after push button ">>"
+
+
+      var showNextPagination = function showNextPagination() {
+        searchLastNumberButton(indexPagination);
+        clearPagination();
+        showButtonLess();
+        var reserveVariables = indexStartNumButton;
+        indexPagination = indexStartNumButton + indexPagination;
+
+        if (indexPagination === links.length) {
+          for (indexStartNumButton; indexStartNumButton < indexPagination; indexStartNumButton += 1) {
+            createNewButtonMore();
+          }
+        } else if (indexPagination < links.length) {
+          for (indexStartNumButton; indexStartNumButton < indexPagination; indexStartNumButton += 1) {
+            createNewButtonMore();
+          }
+
+          showButtonMore();
+        } else {
+          for (indexStartNumButton; indexStartNumButton < links.length; indexStartNumButton += 1) {
+            createNewButtonMore();
+          }
+        }
+
+        indexPagination -= reserveVariables;
+        addClassButton();
+      }; // show new pagination button after push button "<<"
+
+
+      var showPrevPagination = function showPrevPagination() {
+        searchLastNumberButton(1);
+        clearPagination();
+        showButtonMore();
+        var reserveVariables = indexStartNumButton;
+        indexPagination = indexStartNumButton - indexPagination;
+
+        if (indexPagination > 1) {
+          for (indexStartNumButton; indexStartNumButton > indexPagination; indexStartNumButton -= 1) {
+            createNewButtonLess();
+          }
+
+          var lessImg = document.createElement('button');
+          lessImg.classList.add('lessImg-class');
+          lessImg.id = 'lessImg';
+          lessImg.textContent = '<<';
+          paginationImgBlock.insertBefore(lessImg, paginationImgBlock.children[0]);
+        } else {
+          for (indexStartNumButton; indexStartNumButton > 1; indexStartNumButton -= 1) {
+            createNewButtonLess();
+          }
+        }
+
+        indexPagination = reserveVariables - indexPagination;
+        addClassButton();
+      }; // brute force pagination array
+
+
+      var bruteForcePagination = function bruteForcePagination() {
         var buttonArr = document.querySelectorAll('.img-navigation');
         var lessButton = document.getElementById('lessImg');
         var moreButton = document.getElementById('moreImg');
@@ -437,22 +403,96 @@
           }
         }
 
-        for (var i = 0; i < buttonArr.length; i++) {
+        for (var i = 0; i < buttonArr.length; i += 1) {
           if (buttonArr[i].classList.contains('active')) {
             activeButton = +buttonArr[i].innerText;
           }
         }
-      } //showing a new image after pressing a button pagination
+      }; // search for a link to a picture of the corresponding pressed button
 
 
-      function showNotActiveImg() {
+      var searchIndexNewImage = function searchIndexNewImage() {
+        for (var i = 0; i < links.length; i += 1) {
+          if (i + 1 === numberPushButton) {
+            linkNewImage = links[i];
+            break;
+          }
+        }
+      }; // adding a new image after pressing the button with the number more than the active one
+
+
+      var addNextImageFromPagination = function addNextImageFromPagination() {
+        if (isFlagAction) {
+          return;
+        }
+
+        var rightImg = document.createElement('img');
+        searchIndexNewImage();
+        slides[0].remove();
+        slides[2].remove();
+        rightImg.src = linkNewImage;
+        rightImg.classList.add('slide-single');
+        rightImg.style.left = "".concat(100, "%");
+        sliderBlock.appendChild(rightImg);
+        slides = document.querySelectorAll('.slide-single');
+        isFlagAction = true;
+        setTimeout(function () {
+          shiftImageLeft();
+        }, 200);
+        setTimeout(function () {
+          findIndexLastImg(slides[1]);
+          addNextImage();
+          slides[0].remove();
+          findIndexLastImg(slides[1]);
+          addPrevImage();
+          addClassButton();
+          numberPushButton = 0;
+          linkNewImage = 0;
+          isFlagAction = false;
+        }, 2000);
+      }; // adding a new image after pressing the button with the number less than the active one
+
+
+      var addPrevImageFromPagination = function addPrevImageFromPagination() {
+        if (isFlagAction) {
+          return;
+        }
+
+        var leftImg = document.createElement('img');
+        searchIndexNewImage();
+        slides[0].remove();
+        slides[2].remove();
+        leftImg.src = linkNewImage;
+        leftImg.classList.add('slide-single');
+        leftImg.style.left = "".concat(-100, "%");
+        sliderBlock.insertBefore(leftImg, sliderBlock.children[0]);
+        slides = document.querySelectorAll('.slide-single');
+        isFlagAction = true;
+        setTimeout(function () {
+          shiftImageRight();
+        }, 200);
+        setTimeout(function () {
+          findIndexLastImg(slides[0]);
+          addPrevImage();
+          slides[1].remove();
+          findIndexLastImg(slides[0]);
+          addNextImage();
+          addClassButton();
+          numberPushButton = 0;
+          linkNewImage = 0;
+          isFlagAction = false;
+        }, 2000);
+      }; // showing a new image after pressing a button pagination
+
+
+      var showNotActiveImg = function showNotActiveImg() {
         var indexWaitImage = 0;
         var buttonArr = document.querySelectorAll('.img-navigation');
         bruteForcePagination();
 
-        outer: for (; indexWaitImage <= links.length; indexWaitImage++) {
+        outer: for (; indexWaitImage <= links.length; indexWaitImage += 1) {
           if (indexWaitImage === numberPushButton) {
-            for (var i = 0; i < buttonArr.length; i++) {
+            for (var i = 0; i < buttonArr.length; i += 1) {
               if (+buttonArr[i].innerText === numberPushButton) {
                 if (indexWaitImage > activeButton) {
                   addNextImageFromPagination();
@@ -465,81 +505,40 @@
             }
           }
         }
-      } //search for a link to a picture of the corresponding pressed button
+      }; // checking whether the active class has a button
 
 
-      function searchIndexNewImage() {
-        for (var i = 0; i < links.length; i++) {
-          if (i + 1 === numberPushButton) {
-            linkNewImage = links[i];
-            break;
+      var containsActiveClass = function containsActiveClass(x) {
+        var numButton = +x;
+        var buttonArr = document.querySelectorAll('.img-navigation');
+
+        for (var i = 0; i < buttonArr.length; i += 1) {
+          if (numButton === +buttonArr[i].innerText) {
+            if (buttonArr[i].classList.contains('active')) {
+              break;
+            } else {
+              showNotActiveImg();
+              break;
+            }
           }
         }
-      } //adding a new image after pressing the button with the number more than the active one
+      };
 
+      paginationImgBlock.onclick = function (event) {
+        var target = event.target;
 
-      function addNextImageFromPagination() {
-        if (isFlagAction) {
-          return false;
-        } else {
-          var rightImg = document.createElement('img');
-          searchIndexNewImage();
-          slides[0].remove();
-          slides[2].remove();
-          rightImg.src = linkNewImage;
-          rightImg.classList.add('slide-single');
-          rightImg.style.left = 100 + '%';
-          sliderBlock.appendChild(rightImg);
-          slides = document.querySelectorAll('.slide-single');
-          isFlagAction = true;
-          setTimeout(function () {
-            shiftImageLeft();
-          }, 200);
-          setTimeout(function () {
-            findIndexLastImg(slides[1]);
-            addNextImage();
-            slides[0].remove();
-            findIndexLastImg(slides[1]);
-            addPrevImage();
-            addClassButton();
-            numberPushButton = 0;
-            linkNewImage = 0;
-            isFlagAction = false;
-          }, 2000);
+        if (target.id === 'moreImg') {
+          showNextPagination();
+        } else if (target.id === 'lessImg') {
+          showPrevPagination();
+        } else if (target.id !== 'lessImg' && 'moreImg') {
+          numberPushButton = +target.innerText;
+          containsActiveClass(target.innerText);
         }
-      } //adding a new image after pressing the button with the number less than the active one
+      };
 
-
-      function addPrevImageFromPagination() {
-        if (isFlagAction) {
-          return false;
-        } else {
-          var leftImg = document.createElement('img');
-          searchIndexNewImage();
-          slides[0].remove();
-          slides[2].remove();
-          leftImg.src = linkNewImage;
-          leftImg.classList.add('slide-single');
-          leftImg.style.left = -100 + '%';
-          sliderBlock.insertBefore(leftImg, sliderBlock.children[0]);
-          slides = document.querySelectorAll('.slide-single');
-          isFlagAction = true;
-          setTimeout(function () {
-            shiftImageRight();
-          }, 200);
-          setTimeout(function () {
-            findIndexLastImg(slides[0]);
-            addPrevImage();
-            slides[1].remove();
-            findIndexLastImg(slides[0]);
-            addNextImage();
-            addClassButton();
-            numberPushButton = 0;
-            linkNewImage = 0;
-            isFlagAction = false;
-          }, 2000);
-        }
-      }
+      showImage();
+      showPagination();
     };
   }, {}],
   3: [function (require, module, exports) {}, {}],
