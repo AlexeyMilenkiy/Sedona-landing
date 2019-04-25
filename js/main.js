@@ -1,7 +1,3 @@
-"use strict";
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
 (function () {
   function r(e, n, t) {
     function o(i, f) {
@@ -26,9 +22,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
       return n[i].exports;
     }
 
-    for (var u = "function" == typeof require && require, i = 0; i < t.length; i++) {
-      o(t[i]);
-    }
+    for (var u = "function" == typeof require && require, i = 0; i < t.length; i++) o(t[i]);
 
     return o;
   }
@@ -37,25 +31,25 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 })()({
   1: [function (require, module, exports) {
     window.onload = function () {
-      var mobileMenuIcon = document.querySelector('.mobile-menu');
-      var mobileMenu = document.querySelector('.mobile-navigation');
-      var closeMobMenu = document.querySelector('.close-mobile-nav');
-      var name = document.getElementById('name');
-      var surName = document.getElementById('surname');
-      var tel = document.querySelector('#tel');
-      var errorMessageEmail = document.querySelector('.wrong-email-hidden');
-      var errorMessageTel = document.querySelector('.wrong-number-hidden');
+      let mobileMenuIcon = document.querySelector('.mobile-menu');
+      let mobileMenu = document.querySelector('.mobile-navigation');
+      let closeMobMenu = document.querySelector('.close-mobile-nav');
+      const name = document.getElementById('name');
+      const surName = document.getElementById('surname');
+      const tel = document.querySelector('#tel');
+      const errorMessageEmail = document.querySelector('.wrong-email-hidden');
+      const errorMessageTel = document.querySelector('.wrong-number-hidden');
 
-      var VMasker = require("vanilla-masker");
+      let VMasker = require("vanilla-masker");
 
-      var validate = require("validate-js");
+      let validate = require("validate-js");
 
-      var popUpContainer = document.querySelector('.pop-up-container');
-      var closePopUp = document.querySelector('.pop-up__close');
-      var formInputs = document.getElementsByTagName('input');
-      var pushButton = document.querySelector('.push');
+      const popUpContainer = document.querySelector('.pop-up-container');
+      const closePopUp = document.querySelector('.pop-up__close');
+      const formInputs = document.getElementsByTagName('input');
+      const pushButton = document.querySelector('.push');
 
-      mobileMenuIcon.onclick = function (e) {
+      mobileMenuIcon.onclick = e => {
         e.preventDefault();
         mobileMenu.classList.add("show-nav");
         setTimeout(function () {
@@ -63,7 +57,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
         }, 10);
       };
 
-      closeMobMenu.onclick = function (e) {
+      closeMobMenu.onclick = e => {
         e.preventDefault();
         mobileMenu.classList.remove("visible-nav");
         setTimeout(function () {
@@ -71,11 +65,11 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
         }, 1000);
       };
 
-      var showPopUpWindow = function showPopUpWindow() {
+      const showPopUpWindow = function () {
         popUpContainer.classList.remove('pop-up-none');
         popUpContainer.classList.add('pop-up-show');
-        var scrollX = window.scrollX;
-        var scrollY = window.scrollY;
+        let scrollX = window.scrollX;
+        let scrollY = window.scrollY;
 
         window.onscroll = function () {
           window.scrollTo(scrollX, scrollY);
@@ -93,20 +87,20 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
         };
       };
 
-      var clearInputs = function clearInputs() {
-        for (var i = 0; i < formInputs.length; i++) {
+      const clearInputs = function () {
+        for (let i = 0; i < formInputs.length; i++) {
           formInputs[i].value = "";
         }
       };
 
-      var clearErrors = function clearErrors() {
+      const clearErrors = function () {
         name.classList.remove("review-user__input-error");
         surName.classList.remove("review-user__input-error");
         errorMessageTel.classList.remove("wrong-number-or-email-visible");
         errorMessageEmail.classList.remove("wrong-number-or-email-visible");
       };
 
-      var constraints = [{
+      const constraints = [{
         name: 'name',
         display: 'required',
         rules: 'required|min_length[2]|alpha'
@@ -123,11 +117,11 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
         display: 'Email No',
         rules: 'required|valid_email'
       }];
-      var validator = new validate('form', constraints, function (errors, evt) {
+      let validator = new validate('form', constraints, function (errors, evt) {
         clearErrors();
 
         if (errors.length > 0) {
-          for (var i = 0; i < errors.length; i++) {
+          for (let i = 0; i < errors.length; i++) {
             if (errors[i].id === "name") {
               name.classList.add("review-user__input-error");
             } else if (errors[i].id === 'surname') {
@@ -152,67 +146,44 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
           evt.returnValue = false;
         }
       });
-      var _iteratorNormalCompletion = true;
-      var _didIteratorError = false;
-      var _iteratorError = undefined;
 
-      try {
-        var _loop = function _loop() {
-          var input = _step.value;
-          var currentInputName = input.name;
-          var currentInputSurName = input.surname;
-          var currentInputTel = input.telephone;
-          var currentInputEmail = input.email;
-          input.addEventListener('change', function () {
-            var click = document.createEvent("MouseEvents");
-            click.initMouseEvent("click", true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
-            constraints.forEach(function (item) {
-              if (item.name === currentInputName) {
-                pushButton.dispatchEvent(click);
-              } else if (item.name === currentInputSurName) {
-                pushButton.dispatchEvent(click);
-              } else if (item.name === currentInputTel) {
-                pushButton.dispatchEvent(click);
-              } else if (item.name === currentInputEmail) {
-                pushButton.dispatchEvent(click);
-              }
-            });
+      for (let input of formInputs) {
+        const currentInputName = input.name;
+        const currentInputSurName = input.surname;
+        const currentInputTel = input.telephone;
+        const currentInputEmail = input.email;
+        input.addEventListener('change', () => {
+          const click = document.createEvent("MouseEvents");
+          click.initMouseEvent("click", true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+          constraints.forEach(item => {
+            if (item.name === currentInputName) {
+              pushButton.dispatchEvent(click);
+            } else if (item.name === currentInputSurName) {
+              pushButton.dispatchEvent(click);
+            } else if (item.name === currentInputTel) {
+              pushButton.dispatchEvent(click);
+            } else if (item.name === currentInputEmail) {
+              pushButton.dispatchEvent(click);
+            }
           });
-        };
-
-        for (var _iterator = formInputs[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-          _loop();
-        }
-      } catch (err) {
-        _didIteratorError = true;
-        _iteratorError = err;
-      } finally {
-        try {
-          if (!_iteratorNormalCompletion && _iterator["return"] != null) {
-            _iterator["return"]();
-          }
-        } finally {
-          if (_didIteratorError) {
-            throw _iteratorError;
-          }
-        }
+        });
       }
 
       validator.registerCallback('check_phone', function (value) {
-        var phoneCheck = /^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$/;
+        let phoneCheck = /^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$/;
         return phoneCheck.test(value);
       }).setMessage('check_phone', ''); //mask for phone
 
-      var inputHandler = function inputHandler(masks, max, event) {
-        var input = event.target;
-        var inputValue = input.value.replace(/\D/g, '');
-        var maxLength = input.value.length > max ? 1 : 0;
+      const inputHandler = function (masks, max, event) {
+        let input = event.target;
+        let inputValue = input.value.replace(/\D/g, '');
+        let maxLength = input.value.length > max ? 1 : 0;
         VMasker(input).unMask();
         VMasker(input).maskPattern(masks[maxLength]);
         input.value = VMasker.toPattern(inputValue, masks[maxLength]);
       };
 
-      var telMask = ['+9(999)999-99-99', '+9(999)999-99-99'];
+      let telMask = ['+9(999)999-99-99', '+9(999)999-99-99'];
       VMasker(tel).maskPattern(telMask[0]);
       tel.addEventListener('input', inputHandler.bind(undefined, telMask, 14), false); //
     };
@@ -263,7 +234,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
           greater_than_or_equal_date: 'The %s field must contain a date that\'s at least as recent as %s.',
           less_than_or_equal_date: 'The %s field must contain a date that\'s %s or older.'
         },
-        callback: function callback(errors) {}
+        callback: function (errors) {}
       };
       /*
        * Define the regular expressions that will be used
@@ -298,7 +269,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
        *     @argument event - The javascript event
        */
 
-      var FormValidator = function FormValidator(formNameOrNode, fields, callback) {
+      var FormValidator = function (formNameOrNode, fields, callback) {
         this.callback = callback || defaults.callback;
         this.errors = [];
         this.fields = {};
@@ -344,7 +315,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
           };
         }(this);
       },
-          attributeValue = function attributeValue(element, attributeName) {
+          attributeValue = function (element, attributeName) {
         var i;
 
         if (element.length > 0 && (element[0].type === 'radio' || element[0].type === 'checkbox')) {
@@ -446,7 +417,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 
 
       FormValidator.prototype._formByNameOrNode = function (formNameOrNode) {
-        return _typeof(formNameOrNode) === 'object' ? formNameOrNode : document.forms[formNameOrNode];
+        return typeof formNameOrNode === 'object' ? formNameOrNode : document.forms[formNameOrNode];
       };
       /*
        * @private
@@ -656,7 +627,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 
 
       FormValidator.prototype._hooks = {
-        required: function required(field) {
+        required: function (field) {
           var value = field.value;
 
           if (field.type === 'checkbox' || field.type === 'radio') {
@@ -665,10 +636,10 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 
           return value !== null && value !== '';
         },
-        "default": function _default(field, defaultName) {
+        "default": function (field, defaultName) {
           return field.value !== defaultName;
         },
-        matches: function matches(field, matchName) {
+        matches: function (field, matchName) {
           var el = this.form[matchName];
 
           if (el) {
@@ -677,10 +648,10 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 
           return false;
         },
-        valid_email: function valid_email(field) {
+        valid_email: function (field) {
           return emailRegex.test(field.value);
         },
-        valid_emails: function valid_emails(field) {
+        valid_emails: function (field) {
           var result = field.value.split(/\s*,\s*/g);
 
           for (var i = 0, resultLength = result.length; i < resultLength; i++) {
@@ -691,75 +662,75 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 
           return true;
         },
-        min_length: function min_length(field, length) {
+        min_length: function (field, length) {
           if (!numericRegex.test(length)) {
             return false;
           }
 
           return field.value.length >= parseInt(length, 10);
         },
-        max_length: function max_length(field, length) {
+        max_length: function (field, length) {
           if (!numericRegex.test(length)) {
             return false;
           }
 
           return field.value.length <= parseInt(length, 10);
         },
-        exact_length: function exact_length(field, length) {
+        exact_length: function (field, length) {
           if (!numericRegex.test(length)) {
             return false;
           }
 
           return field.value.length === parseInt(length, 10);
         },
-        greater_than: function greater_than(field, param) {
+        greater_than: function (field, param) {
           if (!decimalRegex.test(field.value)) {
             return false;
           }
 
           return parseFloat(field.value) > parseFloat(param);
         },
-        less_than: function less_than(field, param) {
+        less_than: function (field, param) {
           if (!decimalRegex.test(field.value)) {
             return false;
           }
 
           return parseFloat(field.value) < parseFloat(param);
         },
-        alpha: function alpha(field) {
+        alpha: function (field) {
           return alphaRegex.test(field.value);
         },
-        alpha_numeric: function alpha_numeric(field) {
+        alpha_numeric: function (field) {
           return alphaNumericRegex.test(field.value);
         },
-        alpha_dash: function alpha_dash(field) {
+        alpha_dash: function (field) {
           return alphaDashRegex.test(field.value);
         },
-        numeric: function numeric(field) {
+        numeric: function (field) {
           return numericRegex.test(field.value);
         },
-        integer: function integer(field) {
+        integer: function (field) {
           return integerRegex.test(field.value);
         },
-        decimal: function decimal(field) {
+        decimal: function (field) {
           return decimalRegex.test(field.value);
         },
-        is_natural: function is_natural(field) {
+        is_natural: function (field) {
           return naturalRegex.test(field.value);
         },
-        is_natural_no_zero: function is_natural_no_zero(field) {
+        is_natural_no_zero: function (field) {
           return naturalNoZeroRegex.test(field.value);
         },
-        valid_ip: function valid_ip(field) {
+        valid_ip: function (field) {
           return ipRegex.test(field.value);
         },
-        valid_base64: function valid_base64(field) {
+        valid_base64: function (field) {
           return base64Regex.test(field.value);
         },
-        valid_url: function valid_url(field) {
+        valid_url: function (field) {
           return urlRegex.test(field.value);
         },
-        valid_credit_card: function valid_credit_card(field) {
+        valid_credit_card: function (field) {
           // Luhn Check Code from https://gist.github.com/4075533
           // accept only digits, dashes or spaces
           if (!numericDashRegex.test(field.value)) return false; // The Luhn Algorithm. It's so pretty.
@@ -783,7 +754,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 
           return nCheck % 10 === 0;
         },
-        is_file_type: function is_file_type(field, type) {
+        is_file_type: function (field, type) {
           if (field.type !== 'file') {
             return true;
           }
@@ -800,7 +771,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 
           return inArray;
         },
-        greater_than_date: function greater_than_date(field, date) {
+        greater_than_date: function (field, date) {
           var enteredDate = this._getValidDate(field.value),
               validDate = this._getValidDate(date);
 
@@ -810,7 +781,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 
           return enteredDate > validDate;
         },
-        less_than_date: function less_than_date(field, date) {
+        less_than_date: function (field, date) {
           var enteredDate = this._getValidDate(field.value),
               validDate = this._getValidDate(date);
 
@@ -820,7 +791,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 
           return enteredDate < validDate;
         },
-        greater_than_or_equal_date: function greater_than_or_equal_date(field, date) {
+        greater_than_or_equal_date: function (field, date) {
           var enteredDate = this._getValidDate(field.value),
               validDate = this._getValidDate(date);
 
@@ -830,7 +801,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 
           return enteredDate >= validDate;
         },
-        less_than_or_equal_date: function less_than_or_equal_date(field, date) {
+        less_than_or_equal_date: function (field, date) {
           var enteredDate = this._getValidDate(field.value),
               validDate = this._getValidDate(date);
 
@@ -856,7 +827,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
     (function (root, factory) {
       if (typeof define === 'function' && define.amd) {
         define(factory);
-      } else if (_typeof(exports) === 'object') {
+      } else if (typeof exports === 'object') {
         module.exports = factory();
       } else {
         root.VMasker = factory();
@@ -866,7 +837,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
           ALPHA = "A",
           ALPHANUM = "S",
           BY_PASS_KEYS = [9, 16, 17, 18, 36, 37, 38, 39, 40, 91, 92, 93],
-          isAllowedKeyCode = function isAllowedKeyCode(keyCode) {
+          isAllowedKeyCode = function (keyCode) {
         for (var i = 0, len = BY_PASS_KEYS.length; i < len; i++) {
           if (keyCode == BY_PASS_KEYS[i]) {
             return false;
@@ -875,7 +846,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 
         return true;
       },
-          mergeMoneyOptions = function mergeMoneyOptions(opts) {
+          mergeMoneyOptions = function (opts) {
         opts = opts || {};
         opts = {
           delimiter: opts.delimiter || ".",
@@ -891,7 +862,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
         return opts;
       },
           // Fill wildcards past index in output with placeholder
-      addPlaceholdersToOutput = function addPlaceholdersToOutput(output, index, placeholder) {
+      addPlaceholdersToOutput = function (output, index, placeholder) {
         for (; index < output.length; index++) {
           if (output[index] === DIGIT || output[index] === ALPHA || output[index] === ALPHANUM) {
             output[index] = placeholder;
@@ -901,7 +872,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
         return output;
       };
 
-      var VanillaMasker = function VanillaMasker(elements) {
+      var VanillaMasker = function (elements) {
         this.elements = elements;
       };
 
@@ -919,7 +890,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 
       VanillaMasker.prototype.bindElementToMask = function (maskFunction) {
         var that = this,
-            onType = function onType(e) {
+            onType = function (e) {
           e = e || window.event;
           var source = e.target || e.srcElement;
 
@@ -972,7 +943,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
         this.unbindElementToMask();
       };
 
-      var VMasker = function VMasker(el) {
+      var VMasker = function (el) {
         if (!el) {
           throw new Error("VanillaMasker: There is no element to bind.");
         }
@@ -1034,7 +1005,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
       };
 
       VMasker.toPattern = function (value, opts) {
-        var pattern = _typeof(opts) === 'object' ? opts.pattern : opts,
+        var pattern = typeof opts === 'object' ? opts.pattern : opts,
             patternChars = pattern.replace(/\W/g, ''),
             output = pattern.split(""),
             values = value.toString().replace(/\W/g, ""),
@@ -1042,7 +1013,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
             index = 0,
             i,
             outputLength = output.length,
-            placeholder = _typeof(opts) === 'object' ? opts.placeholder : undefined;
+            placeholder = typeof opts === 'object' ? opts.placeholder : undefined;
 
         for (i = 0; i < outputLength; i++) {
           // Reached the end of input
