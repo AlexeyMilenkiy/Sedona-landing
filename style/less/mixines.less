@@ -1,0 +1,100 @@
+.font(@fz: 1.125em, @fw: 700, @lh: 26px, @tx: uppercase) {
+    font-family: 'PT Sans', sans-serif;
+    font-size: @fz;
+    font-weight: @fw;
+    line-height: @lh;
+    text-transform: @tx;
+}
+
+.flex(@jc: space-between) {
+    display: flex;
+    justify-content: @jc;
+}
+
+.position(@top: 36%, @left: 30%, @right: none) {
+    position: absolute;
+    top: @top;
+    left: @left;
+    right: @right;
+}
+
+.size(@wd: 46px, @hi: 46px) {
+    width: @wd;
+    height: @hi;
+}
+
+.animation(@wd: 29%, @tp: 53%, @anim: widthing) {
+    content: '';
+    border: 1px solid #e6e6e6;
+    width: @wd;
+    top: @tp;
+    right: auto;
+    position: absolute;
+    animation: @anim 2s;
+}
+
+.contact-container-pseudo(@bgI: url(../img/phone.png)) {
+    position: relative;
+    .flex(none);
+    margin-top: 7.7%;
+    max-height: 58px;
+
+    &:after {
+        top: 0;
+        .transform-position(auto, 1%, 1%);
+        border: none;
+        .size(58px, 57px);
+        z-index: 0;
+        background-color: @gray;
+    }
+
+    &:before {
+        top: 30%;
+        .transform-position(auto, 5.5%, 5.5%);
+        border: none;
+        z-index: 1;
+        .size(20px, 20px);
+        background: @bgI no-repeat center 100%;
+    }
+}
+
+.transform-position(@lft: 50%, @rgt: auto, @trf: -50%) {
+    left: @lft;
+    right: @rgt;
+    transform: translateX(@trf);
+    content: '';
+    position: absolute;
+}
+
+.hover-input() {
+    &:hover {
+        background-color: @grayHover;
+        transition: 0.5s;
+    }
+
+    &:focus {
+        background-color: @white;
+        outline: 4px solid @grayHover;
+        border: none;
+        transition: 0.5s;
+    }
+}
+
+.desktop-new(@rules) {
+    @media (min-width: 640px) and (max-width: 991px) {
+        @rules();
+    }
+}
+
+.tablet-new(@rules) {
+    @media (max-width: 768px) {
+        @rules();
+    }
+}
+
+.mobile-new(@rules) {
+    @media (max-width: 639px) {
+        @rules();
+    }
+}
+
