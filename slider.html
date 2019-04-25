@@ -19,13 +19,17 @@
     <script src="js/modernizr-custom.js"></script>
     <title>Sedona</title>
 </head>
-
 <body>
 <div class="mobile-navigation">
     <a href="#main" class="mobile__nav">ГЛАВНАЯ
-        <img src="img/icon-cross.webp" alt="close" class="close-mobile-nav"></a>
+        <picture>
+            <source srcset="img/icon-cross.webp" type="image/webp">
+            <source srcset="img/icon-cross.png" type="image/png">
+            <img src="img/icon-cross.webp" alt="close" class="close-mobile-nav">
+        </picture>
+    </a>
     <a href="#" class="mobile__nav">ФОТО И ВИДЕО</a>
-    <a href="#review-form" class="mobile__nav">ФОРМА ОТЗЫВА</a>
+    <a href="/index.html#review-form" class="mobile__nav">ФОРМА ОТЗЫВА</a>
     <a href="#html-academy" class="mobile__nav">HTML ACADEMY</a>
 </div>
 <header class="header" id="main">
@@ -34,10 +38,15 @@
         <a href="#" class="header__nav-link">ФОТО И ВИДЕО</a>
         <a href="#main" class="header__nav-link nav-logo">
         </a>
-        <a href="#review-form" class="header__nav-link">ФОРМА ОТЗЫВА</a>
+        <a href="/index.html#review-form" class="header__nav-link">ФОРМА ОТЗЫВА</a>
         <a href="#html-academy" class="header__nav-link">HTML ACADEMY</a>
         <a href="#" class="mobile-menu">
-            <img src="img/icon-menu.webp" alt="menu" class="icon-menu-img"></a>
+            <picture>
+                <source srcset="img/icon-menu.webp" type="image/webp">
+                <source srcset="img/icon-menu.png" type="image/png">
+                <img src="img/icon-menu.webp" alt="menu" class="icon-menu-img">
+            </picture>
+        </a>
     </div>
     <div class="header__name">
         <span class="header__name-text">Sedona</span>
