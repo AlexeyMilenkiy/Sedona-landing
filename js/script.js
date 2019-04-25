@@ -1,98 +1,97 @@
-window.onload = function() {
-    let mobileMenuIcon = document.querySelector('.mobile-menu');
-    let mobileMenu = document.querySelector('.mobile-navigation');
-    let closeMobMenu = document.querySelector('.close-mobile-nav');
-    const name = document.getElementById('name');
-    const surName = document.getElementById('surname');
-    const tel = document.querySelector('#tel');
-    const errorMessageEmail = document.querySelector('.wrong-email-hidden');
-    const errorMessageTel = document.querySelector('.wrong-number-hidden');
-    let VMasker = require("vanilla-masker");
-    let validate = require("validate-js");
-    const popUpContainer = document.querySelector('.pop-up-container');
-    const closePopUp = document.querySelector('.pop-up__close');
-    const formInputs = document.getElementsByTagName('input');
-    const pushButton = document.querySelector('.push');
 
-    mobileMenuIcon.onclick = (e) => {
-        e.preventDefault();
-        mobileMenu.classList.add("show-nav");
-        setTimeout(function(){
-            mobileMenu.classList.add("visible-nav");
-        },10);
-    };
+window.onload = () => {
+  require('./slider.js');
+  let mobileMenuIcon = document.querySelector('.mobile-menu');
+  let mobileMenu = document.querySelector('.mobile-navigation');
+  let closeMobMenu = document.querySelector('.close-mobile-nav');
+  const name = document.getElementById('name');
+  const surName = document.getElementById('surname');
+  const tel = document.querySelector('#tel');
+  const errorMessageEmail = document.querySelector('.wrong-email-hidden');
+  const errorMessageTel = document.querySelector('.wrong-number-hidden');
+  let VMasker = require("vanilla-masker");
+  let validate = require("validate-js");
+  const popUpContainer = document.querySelector('.pop-up-container');
+  const closePopUp = document.querySelector('.pop-up__close');
+  const formInputs = document.getElementsByTagName('input');
+  const pushButton = document.querySelector('.push');
 
-    closeMobMenu.onclick = (e) => {
-        e.preventDefault();
-        mobileMenu.classList.remove("visible-nav");
-        setTimeout(function (){
-            mobileMenu.classList.remove("show-nav");
-        },1000)
-    };
+  mobileMenuIcon.onclick = (e) => {
+    e.preventDefault();
+    mobileMenu.classList.add("show-nav");
+    setTimeout(function(){
+      mobileMenu.classList.add("visible-nav");
+    },10);
+  };
 
-    const showPopUpWindow = function () {
-        popUpContainer.classList.remove('pop-up-none');
-        popUpContainer.classList.add('pop-up-show');
-        let scrollX = window.scrollX;
-        let scrollY = window.scrollY;
-        window.onscroll = function () { window.scrollTo(scrollX, scrollY);};
-    };
+  closeMobMenu.onclick = (e) => {
+    e.preventDefault();
+    mobileMenu.classList.remove("visible-nav");
+    setTimeout(function (){
+      mobileMenu.classList.remove("show-nav");
+    },1000)
+  };
 
-    closePopUp.onclick =  function () {
-        popUpContainer.classList.remove('pop-up-show');
-        popUpContainer.addEventListener("animationend", function(){
-            popUpContainer.classList.add('pop-up-none');
-        });
-        window.onscroll = function() { window.scrollTo(); };
-    };
+  const showPopUpWindow = function () {
+    popUpContainer.classList.remove('pop-up-none');
+    popUpContainer.classList.add('pop-up-show');
+    let scrollX = window.scrollX;
+    let scrollY = window.scrollY;
+    window.onscroll = function () { window.scrollTo(scrollX, scrollY);};
+  };
 
-    const clearInputs = function () {
-            for (let i = 0; i < formInputs.length; i++) {
-                formInputs[i].value = "";
-            }
-    };
+  closePopUp.onclick =  function () {
+    popUpContainer.classList.remove('pop-up-show');
+    popUpContainer.addEventListener("animationend", function(){
+      popUpContainer.classList.add('pop-up-none');
+    });
+    window.onscroll = function() { window.scrollTo(); };
+  };
 
-    const clearErrors = function () {
-        name.classList.remove("review-user__input-error");
-        surName.classList.remove("review-user__input-error");
-        errorMessageTel.classList.remove("wrong-number-or-email-visible");
-        errorMessageEmail.classList.remove("wrong-number-or-email-visible");
-    };
+  const clearInputs = function () {
+    for (let i = 0; i < formInputs.length; i++) {
+      formInputs[i].value = "";
+    }
+  };
 
-    const constraints = [{
-        name: 'name',
-        display: 'required',
-        rules: 'required|min_length[2]|alpha',
-    }, {
-        name: 'surname',
-        display: 'required',
-        rules: 'required|min_length[2]|alpha'
-    }, {
-        name: 'telephone',
-        display: 'Telephone No',
-        rules: 'required|callback_check_phone'
-    }, {
-        name: 'email',
-        display: 'Email No',
-        rules: 'required|valid_email'
-    }];
+  const clearErrors = function () {
+    name.classList.remove("review-user__input-error");
+    surName.classList.remove("review-user__input-error");
+    errorMessageTel.classList.remove("wrong-number-or-email-visible");
+    errorMessageEmail.classList.remove("wrong-number-or-email-visible");
+  };
 
-    let validator = new validate('form', constraints, function(errors, evt) {
-        clearErrors();
-        if (errors.length > 0) {
-            for (let i = 0; i < errors.length; i++) {
-                if (errors[i].id === "name") {
-                    name.classList.add("review-user__input-error");
-                } else if (errors[i].id === 'surname') {
-                    surName.classList.add("review-user__input-error");
-                } else if (errors[i].id === 'tel') {
-                    errorMessageTel.classList.add("wrong-number-or-email-visible");
-                } else if (errors[i].id === "email") {
-                    errorMessageEmail.classList.add("wrong-number-or-email-visible");
-                } else {
-                    errors.length = 0;
-                }
-            }
+  const constraints = [{
+    name: 'name',
+    display: 'required',
+    rules: 'required|min_length[2]|alpha',
+  }, {
+    name: 'surname',
+    display: 'required',
+    rules: 'required|min_length[2]|alpha'
+  }, {
+    name: 'telephone',
+    display: 'Telephone No',
+    rules: 'required|callback_check_phone'
+  }, {
+    name: 'email',
+    display: 'Email No',
+    rules: 'required|valid_email'
+  }];
+
+  let validator = new validate('form', constraints, function(errors, evt) {
+    clearErrors();
+    if (errors.length > 0) {
+      for (let i = 0; i < errors.length; i++) {
+        if (errors[i].id === "name") {
+          name.classList.add("review-user__input-error");
+        } else if (errors[i].id === 'surname') {
+          surName.classList.add("review-user__input-error");
+        } else if (errors[i].id === 'tel') {
+          errorMessageTel.classList.add("wrong-number-or-email-visible");
+        } else if (errors[i].id === "email") {
+          errorMessageEmail.classList.add("wrong-number-or-email-visible");
+
         } else {
             clearInputs();
             popUpContainer.classList.add('pop-up-show');
@@ -104,7 +103,6 @@ window.onload = function() {
             evt.returnValue = false;
         }
     });
-
     for (let input of formInputs) {
         const currentInputName = input.name;
         const currentInputSurName = input.surname;
@@ -129,7 +127,6 @@ window.onload = function() {
             });
         });
     }
-
     validator.registerCallback('check_phone', function(value) {
             let phoneCheck = /^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$/;
             return phoneCheck.test(value);
