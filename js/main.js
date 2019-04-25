@@ -35,16 +35,12 @@
 })()({
   1: [function (require, module, exports) {
     window.onload = function () {
-      require('./slider.js');
+      require('./slider.js'); // require('./slider/slider-img.js');
+      // require('./slider/slider-pagination.js');
 
-      require('./slider/slider-img.js');
-
-      require('./slider/slider-pagination.js');
     };
   }, {
-    "./slider.js": 2,
-    "./slider/slider-img.js": 3,
-    "./slider/slider-pagination.js": 4
+    "./slider.js": 2
   }],
   2: [function (require, module, exports) {
     window.onload = function () {
@@ -176,7 +172,7 @@
       var searchActiveImg = function searchActiveImg() {
         slides = document.querySelectorAll('.slide-single');
 
-        for (var i = 0; indexActiveImg < links.length; i += 1) {
+        for (var i = 0; i < links.length; i += 1) {
           if (links[i] === slides[1].src) {
             indexActiveImg = i;
           }
@@ -219,39 +215,39 @@
 
 
       next.onclick = function () {
-        if (isFlagAction) {
-          return false;
+        if (!isFlagAction) {
+          slides = document.querySelectorAll('.slide-single');
+          findIndexLastImg(slides[2]);
+          slides[0].remove();
+          shiftImageLeft();
+          isFlagAction = true;
+          setTimeout(function () {
+            addNextImage();
+            addClassButton();
+            isFlagAction = false;
+          }, 2000);
         }
 
-        slides = document.querySelectorAll('.slide-single');
-        findIndexLastImg(slides[2]);
-        slides[0].remove();
-        shiftImageLeft();
-        isFlagAction = true;
-        setTimeout(function () {
-          addNextImage();
-          addClassButton();
-          isFlagAction = false;
-        }, 2000);
+        return false;
       }; // function showing new image after pressing a button "previous"
 
 
       previous.onclick = function () {
-        if (isFlagAction) {
-          return false;
+        if (!isFlagAction) {
+          slides = document.querySelectorAll('.slide-single');
+          offset = 0;
+          findIndexLastImg(slides[0]);
+          slides[2].remove();
+          shiftImageRight();
+          isFlagAction = true;
+          setTimeout(function () {
+            addPrevImage();
+            addClassButton();
+            isFlagAction = false;
+          }, 2000);
         }
 
-        slides = document.querySelectorAll('.slide-single');
-        offset = 0;
-        findIndexLastImg(slides[0]);
-        slides[2].remove();
-        shiftImageRight();
-        isFlagAction = true;
-        setTimeout(function () {
-          addPrevImage();
-          addClassButton();
-          isFlagAction = false;
-        }, 2000);
+        return false;
       };
 
       var showButtonMore = function showButtonMore() {
@@ -393,13 +389,13 @@
 
         if (lessButton) {
           if (lessButton.classList.contains('active')) {
-            return activeButton = -1;
+            activeButton = -1;
           }
         }
 
         if (moreButton) {
           if (moreButton.classList.contains('active')) {
-            return activeButton = links.length + 1;
+            activeButton = links.length + 1;
           }
         }
 
@@ -490,16 +486,16 @@
         var buttonArr = document.querySelectorAll('.img-navigation');
         bruteForcePagination();
 
-        outer: for (; indexWaitImage <= links.length; indexWaitImage += 1) {
+        for (; indexWaitImage <= links.length; indexWaitImage += 1) {
           if (indexWaitImage === numberPushButton) {
             for (var i = 0; i < buttonArr.length; i += 1) {
               if (+buttonArr[i].innerText === numberPushButton) {
                 if (indexWaitImage > activeButton) {
                   addNextImageFromPagination();
-                  break outer;
+                  break;
                 } else {
                   addPrevImageFromPagination();
-                  break outer;
+                  break;
                 }
               }
             }
@@ -540,11 +536,5 @@
       showImage();
       showPagination();
     };
-  }, {}],
-  3: [function (require, module, exports) {}, {}],
-  4: [function (require, module, exports) {
-    arguments[4][3][0].apply(exports, arguments);
-  }, {
-    "dup": 3
-  }]
+  }, {}]
 }, {}, [1]);
