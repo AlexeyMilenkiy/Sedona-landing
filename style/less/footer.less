@@ -4,18 +4,18 @@
     max-width: 960px;
     margin: 7% auto 0;
     .flex();
-    align-items: center; 
+    align-items: center;
     padding-bottom: 2%;
-        .desktop-new({
+    .desktop-new({
         max-width: 92%;
-       });
-        .mobile-new( {
+    });
+    .mobile-new( {
         display: block;
         margin-top: 15%;
         padding-top: 8%;
         width: 160px;
         height: 200px;
-       });
+    });
 }
 
 .hashtag{
@@ -23,10 +23,10 @@
     margin: 0 0 -0.5% 1.3%;
     color: @black;
     .font(1.31em, 700, 26px);
-        .mobile-new( {
+    .mobile-new( {
         margin-left: 6%;
         display: block;
-       });
+    });
 }
 
 .social-networks{
@@ -34,12 +34,12 @@
     max-height: 48px;
     width: 154px;
     display:flex;
-       .desktop-new({
+    .desktop-new({
         width: 23%;
-       });
-        .mobile-new( {
+    });
+    .mobile-new( {
         margin-top: 25%;
-       });
+    });
 }
 
 .social-networks__link{
@@ -58,25 +58,31 @@
         .transform-position(50%, auto, -50%);
         .size(19px,15px);
         top: 35%;
-        background:url(../img/icon-twitter.webp) no-repeat;
+        background:url(../img/icon-twitter.webp) no-repeat,
+        url(../img/icon-twitter.png) no-repeat;
     }
     &:nth-child(1):active:after{
-        background:url(../img/twitter_copy_2.webp);
+        background:url(../img/twitter_copy_2.webp),
+        url(../img/twitter_copy_2.png);
     }
     &:nth-child(2):after{
-        background:url(../img/icon-facebook.webp) no-repeat;
+        background:url(../img/icon-facebook.webp) no-repeat,
+        url(../img/icon-facebook.png) no-repeat;
         .size(10px,19px);
         top: 30%;
     }
     &:nth-child(2):active:after{
-        background:url(../img/facebook_copy_2.webp);
+        background:url(../img/facebook_copy_2.webp)no-repeat,
+        url(../img/facebook_copy_2.png)no-repeat;
     }
     &:nth-child(3):after{
-        background:url(../img/icon-youtube.webp) no-repeat;
+        background:url(../img/icon-youtube.webp) no-repeat,
+        url(../img/icon-youtube.png) no-repeat;
         height: 15px;
     }
-        &:nth-child(3):active:after{
-        background:url(../img/youtube_copy_2.webp);
+    &:nth-child(3):active:after{
+        background:url(../img/youtube_copy_2.webp),
+        url(../img/youtube_copy_2.png);
     }
 }
 
@@ -87,25 +93,30 @@
     position: relative;
     align-items: center;
     &:after{
-    .transform-position(auto,0,0);
-    background:url(../img/htmlacademy.webp);
-    .size(27px,34px);
+        .transform-position(auto,0,0);
+        background:url(../img/htmlacademy.webp),
+        url(../img/htmlacademy.png);
+        .size(27px,34px);
     }
     &:hover:after{
-        background:url(../img/academy_hover.webp);
-        transition: 1s;
-    }    
-    &:active:after{
-        background:url(../img/academy_active.webp);
+        content: '';
+        cursor: pointer;
+        background:url(../img/academy_hover.png)no-repeat;
+        -webkit-transition:1s ;
+        -moz-transition:1s ;
+        transition:1s ;
     }
-        .mobile-new( {
+    &:active:after{
+        content: '';
+        background:url(../img/academy_active.png)no-repeat;
+    }
+    .mobile-new( {
         margin: 28% 0 0 9%;
-       });
+    });
 }
 
 .producer__text{
     color: @black;
     .font(0.9em, 400, 26px);
     margin: -1% 8% 0 0;
-
 }
