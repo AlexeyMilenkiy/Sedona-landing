@@ -38,7 +38,6 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
   1: [function (require, module, exports) {
     window.onload = function () {
       require('./slider.js');
-
       var mobileMenuIcon = document.querySelector('.mobile-menu');
       var mobileMenu = document.querySelector('.mobile-navigation');
       var closeMobMenu = document.querySelector('.close-mobile-nav');
@@ -1351,6 +1350,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
     }
   }, {}],
   4: [function (require, module, exports) {
+
     (function (root, factory) {
       if (typeof define === 'function' && define.amd) {
         define(factory);

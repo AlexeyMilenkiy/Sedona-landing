@@ -1,138 +1,5 @@
 @import 'main-import.less';
 
-//styles for slider
-
-.main-block {
-  max-width: 1000px;
-  max-height: 1000px;
-  margin: 0 auto;
-}
-
-.slider {
-  width: 79%;
-  height: 61vw;
-  max-height: 600px;
-  margin: 0 auto;
-  position: relative;
-  display: block;
-  overflow: hidden;
-  border: 5px solid @darkGray;
-}
-
-.slide-single {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  transition: all ease 2s;
-  left: 0;
-  top: 0;
-}
-
-.slider-headline {
-  .font(2em, 700, 24px);
-  margin: 6% auto;
-  display: block;
-  width: 210px;
-}
-
-.pagination-block {
-  width: 80%;
-  height: auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 6% auto;
-  .mobile-new({ flex-direction: column; height: 200px; width: 100%;});
-}
-
-.slide-navigation {
-  border: none;
-  outline: none;
-  background: @lightBlue;
-  color: @white;
-  .font(0.872em, 400, 24px);
-  width: auto;
-  height: 40px;
-
-  &:hover {
-    cursor: pointer;
-    background-color: @blue;
-    transition: 1s;
-  }
-
-  &:active {
-    background-color: @darkBlue;
-    color: @darkGray;
-  }
-}
-
-.pagination-img-block {
-  width: 60%;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  .mobile-new({
-    width: 100%;
-  }
-  );
-}
-
-.img-navigation {
-  width: 10%;
-  height: 4vh;
-  border: none;
-  outline: none;
-  background-color: @blue;
-  color: @white;
-  .font(1em, 400, 24px);
-  .mobile-new({
-    width: 40px;
-    height: 40px;});
-
-
-  &:hover {
-    cursor: pointer;
-    background-color: @blue;
-    transition: 1s;
-  }
-
-  &:active {
-    background-color: @darkBlue;
-    color: @darkGray;
-  }
-}
-
-.lessImg-class, .moreImg-class {
-  width: 10%;
-  height: 4vh;
-  border: none;
-  outline: none;
-  background-color: @blue;
-  color: @white;
-  .font(1em, 400, 24px);
-  .mobile-new({
-    width: 40px;
-    height: 40px;});
-
-  &:hover {
-    cursor: pointer;
-    background-color: @blue;
-    transition: 1s;
-  }
-
-  &:active {
-    background-color: @darkBlue;
-    color: @darkGray;
-  }
-}
-
-.active {
-  background-color: @darkBlue;
-  color: @darkGray;
-}
-
-////////////////////
-
 .main-container {
   max-width: 960px;
   margin: 0 auto;
@@ -188,30 +55,28 @@
   .desktop-new( {
     width: 452px;
   });
-
 }
 
 .review__headline {
-  display: block;
-  width: calc(100% - 26%);
-  margin: 5.5% auto 0;
-  color: @black;
-  .font(2.39em, 700, 26px);
-
+    display: block;
+    width: calc(100% - 26%);
+    margin: 5.5% auto 0;
+    color: @black;
+    .font(2.39em, 700, 26px);
   .mobile-new( {
     width: 200px;
     font-size: 1.45em;
     margin: 6.5% auto 0;
   });
 
+
 }
 
 .review__podcast {
-  display: block;
-  margin-top: 1.5%;
-  .font(1.11em, 400, 26px);
-
-  .mobile-new( {
+    display: block;
+    margin-top: 1.5%;
+    .font(1.11em, 400, 26px);
+ .mobile-new( {
     max-width: 330px;
     margin: 1% auto 0;
     line-height: 24px;
@@ -219,16 +84,14 @@
 
   );
 }
-
 @keyframes stretching {
   0% {
     height: 0;
   }
 
-  100% {
-    height: 87%;
-  }
-
+    100% {
+        height: 87%;
+    }
 }
 
 .review-info__feeling {
@@ -257,10 +120,10 @@
 }
 
 .review-info__label {
-  color: @black;
-  .font(1.125em, 700, 26px, none);
-  margin: 0 0 10% 21%;
-  display: block;
+    color: @black;
+    .font(1.125em, 700, 26px, none);
+    margin: 0 0 10% 21%;
+    display: block;
 
   .tablet-new( {
     margin-bottom: 18%;
@@ -378,10 +241,11 @@
     order: 2;
   });
 
-  #name {
-    width: calc(100% - 36%);
 
-    .tablet-new( {
+    #name {
+        width: calc(100% - 36%);
+
+   .tablet-new( {
       width: calc(100% - 41%);
     });
 
@@ -391,80 +255,83 @@
     });
   }
 
-  #name-span {
-    width: calc(100% - 92%);
+    #name-span {
+        width: calc(100% - 92%);
 
     .mobile-new( {
       margin: 0 7% 7% 6%;
     });
   }
+
 }
 .review-user__label {
-  width: calc(100% - 85%);
-  color: @ligthBlack;
-  .font(0.87em, 400, 26px);
-  display: inline-block;
-  margin: 0 2.5% 7% 16.5%;
+    width: calc(100% - 85%);
+    color: @ligthBlack;
+    .font(0.87em, 400, 26px);
+    display: inline-block;
+    margin: 0 2.5% 7% 16.5%;
 
-  .desktop-new( {
-    margin: 0 4% 7% 10%;
-  });
+   .desktop-new( {
+        margin: 0 4% 7% 10%;
+    });
 
-  .tablet-new( {
-    margin: 0 9% 7% 10%;
-  });
+    .tablet-new( {
+        margin: 0 9% 7% 10%;
+    });
 
-  .mobile-new( {
-    margin: 0 11% 7% 6%;
-  });
+    .mobile-new( {
+        margin: 0 11% 7% 6%;
+    });
+
 }
 
 .review-user__headline {
-  width: calc(100% - 65%);
-  margin: 0 16.3% 12%;
-  color: @black;
-  .font(1.37em, 700, 26px);
-  display: block;
+    width: calc(100% - 65%);
+    margin: 0 16.3% 12%;
+    color: @black;
+    .font(1.37em, 700, 26px);
+    display: block;
 
-  .desktop-new( {
-    margin: 0 auto 12%;
-  });
 
-  .mobile-new( {
-    width: 138px;
-    font-size: 1.15em;
-    margin: 2% auto 7%;
-  });
+    .desktop-new( {
+        margin: 0 auto 12%;
+    });
+
+    .mobile-new( {
+        width: 138px;
+        font-size: 1.15em;
+        margin: 2% auto 7%;
+    });
 }
 
 .review-user__input {
-  width: calc(100% - 43%);
-  height: 16.6%;
-  margin-bottom: 4.3%;
-  background-color: @lightGray;
-  border: none;
-  padding-left: 7%;
-  color: @black;
-  .font(1.125em, 700, 26px, none);
-  outline: none;
-  .hover-input();
+    width: calc(100% - 43%);
+    height: 16.6%;
+    margin-bottom: 4.3%;
+    background-color: @lightGray;
+    border: none;
+    padding-left: 7%;
+    color: @black;
+    .font(1.125em, 700, 26px, none);
+    outline: none;
+    .hover-input();
 
-  .tablet-new( {
-    width: calc(100% - 48%);
-  }
+    .tablet-new( {
+        width: calc(100% - 48%);
+    }
 
-  );
+    );
 
-  .tablet-new( {
-    margin-bottom: 7%;
-  }
+    .tablet-new( {
+        margin-bottom: 7%;
+    }
 
-  );
-  .mobile-new ({
-    width: calc(100% - 46%);
-    min-height: 56px;
-    margin-bottom: 6%;
-  });
+    );
+    .mobile-new ({
+        width: calc(100% - 46%);
+        min-height: 56px;
+        margin-bottom: 6%;
+    });
 }
 .review-user__input-error{
   box-shadow: inset 0 0 2px 2px @red;

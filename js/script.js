@@ -1,3 +1,4 @@
+
 window.onload = () => {
   require('./slider.js');
   let mobileMenuIcon = document.querySelector('.mobile-menu');
@@ -90,66 +91,61 @@ window.onload = () => {
           errorMessageTel.classList.add("wrong-number-or-email-visible");
         } else if (errors[i].id === "email") {
           errorMessageEmail.classList.add("wrong-number-or-email-visible");
+
         } else {
-          errors.length = 0;
+            clearInputs();
+            popUpContainer.classList.add('pop-up-show');
+            showPopUpWindow();
         }
-      }
-    } else {
-      clearInputs();
-      popUpContainer.classList.add('pop-up-show');
-      showPopUpWindow();
-    }
-    if (evt && evt.preventDefault) {
-      evt.preventDefault();
-    } else if (evt) {
-      evt.returnValue = false;
-    }
-  });
-
-  for (let input of formInputs) {
-    const currentInputName = input.name;
-    const currentInputSurName = input.surname;
-    const currentInputTel = input.telephone;
-    const currentInputEmail = input.email;
-
-    input.addEventListener('change', () => {
-      const click = document.createEvent("MouseEvents");
-      click.initMouseEvent("click", true, true, window,
-          0, 0, 0, 0, 0, false, false, false, false, 0, null);
-
-      constraints.forEach(item => {
-        if (item.name === currentInputName) {
-          pushButton.dispatchEvent(click);
-        } else if (item.name === currentInputSurName) {
-          pushButton.dispatchEvent(click);
-        } else if (item.name === currentInputTel) {
-          pushButton.dispatchEvent(click);
-        } else if (item.name === currentInputEmail) {
-          pushButton.dispatchEvent(click);
+        if (evt && evt.preventDefault) {
+            evt.preventDefault();
+        } else if (evt) {
+            evt.returnValue = false;
         }
-      });
     });
-  }
+    for (let input of formInputs) {
+        const currentInputName = input.name;
+        const currentInputSurName = input.surname;
+        const currentInputTel = input.telephone;
+        const currentInputEmail = input.email;
 
-  validator.registerCallback('check_phone', function(value) {
-    let phoneCheck = /^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$/;
-    return phoneCheck.test(value);
-  })
-      .setMessage('check_phone', '');
+        input.addEventListener('change', () => {
+            const click = document.createEvent("MouseEvents");
+            click.initMouseEvent("click", true, true, window,
+                0, 0, 0, 0, 0, false, false, false, false, 0, null);
 
-  //mask for phone
-  const inputHandler = function (masks, max, event) {
-    let input = event.target;
-    let inputValue = input.value.replace(/\D/g, '');
-    let maxLength = input.value.length > max ? 1 : 0;
-    VMasker(input).unMask();
-    VMasker(input).maskPattern(masks[maxLength]);
-    input.value = VMasker.toPattern(inputValue, masks[maxLength]);
-  };
+            constraints.forEach(item => {
+                if (item.name === currentInputName) {
+                    pushButton.dispatchEvent(click);
+                } else if (item.name === currentInputSurName) {
+                    pushButton.dispatchEvent(click);
+                } else if (item.name === currentInputTel) {
+                    pushButton.dispatchEvent(click);
+                } else if (item.name === currentInputEmail) {
+                    pushButton.dispatchEvent(click);
+                }
+            });
+        });
+    }
+    validator.registerCallback('check_phone', function(value) {
+            let phoneCheck = /^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$/;
+            return phoneCheck.test(value);
+        })
+        .setMessage('check_phone', '');
 
-  let telMask = ['+9(999)999-99-99', '+9(999)999-99-99'];
-  VMasker(tel).maskPattern(telMask[0]);
-  tel.addEventListener('input', inputHandler.bind(undefined, telMask, 14), false);
+    //mask for phone
+    const inputHandler = function (masks, max, event) {
+        let input = event.target;
+        let inputValue = input.value.replace(/\D/g, '');
+        let maxLength = input.value.length > max ? 1 : 0;
+        VMasker(input).unMask();
+        VMasker(input).maskPattern(masks[maxLength]);
+        input.value = VMasker.toPattern(inputValue, masks[maxLength]);
+    };
 
-  //
+    let telMask = ['+9(999)999-99-99', '+9(999)999-99-99'];
+    VMasker(tel).maskPattern(telMask[0]);
+    tel.addEventListener('input', inputHandler.bind(undefined, telMask, 14), false);
+
+    //
 };

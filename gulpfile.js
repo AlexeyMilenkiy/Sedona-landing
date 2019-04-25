@@ -32,6 +32,7 @@ gulp.task('css', function () {
 gulp.task('browserify', function(){
   var bundleStream = browserify('./js/script.js').bundle()
 
+
   return bundleStream
       .pipe(source('script.js'))
       .pipe(streamify(babel()))
@@ -41,7 +42,6 @@ gulp.task('browserify', function(){
 });
 
 gulp.task('default', gulp.parallel('less', 'css', 'browserify', function(){
-
   browserSync.init({
     server: {baseDir: './'}
   })
@@ -51,6 +51,7 @@ gulp.task('default', gulp.parallel('less', 'css', 'browserify', function(){
   gulp.watch('./js/script.js').on('change', gulp.series('browserify'), browserSync.reload);
   gulp.watch('./style/less/*.less', gulp.series('less'));
   gulp.watch('./style/dest/*.css', gulp.series('css'));
+
 }));
 
 
@@ -101,6 +102,7 @@ gulp.task('inject-favicon-markups', function() {
   gulp.src([ './*.html' ])
       .pipe(realFavicon.injectFaviconMarkups(JSON.parse(fs.readFileSync(FAVICON_DATA_FILE)).favicon.html_code))
       .pipe(gulp.dest('./'));
+
 });
 
 

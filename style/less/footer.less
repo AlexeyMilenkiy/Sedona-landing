@@ -43,47 +43,48 @@
 }
 
 .social-networks__link{
-  position: relative;
-  margin: 0 2% 0;
-  .size(46px, 48px);
-  background-color: @lightBlue;
-  &:hover{
-    background-color:@blue;
-    transition: 1s;
-  }
-  &:active{
-    background-color:@darkBlue;
-  }
-  &:after{
-    .transform-position(50%, auto, -50%);
-    .size(19px,15px);
-    top: 35%;
-    background:url(../img/icon-twitter.webp) no-repeat,
-    url(../img/icon-twitter.png) no-repeat;
-  }
-  &:nth-child(1):active:after{
-    background:url(../img/twitter_copy_2.webp),
-    url(../img/twitter_copy_2.png);
-  }
-  &:nth-child(2):after{
-    background:url(../img/icon-facebook.webp) no-repeat,
-    url(../img/icon-facebook.png) no-repeat;
-    .size(10px,19px);
-    top: 30%;
-  }
-  &:nth-child(2):active:after{
-    background:url(../img/facebook_copy_2.webp)no-repeat,
-    url(../img/facebook_copy_2.png)no-repeat;
-  }
-  &:nth-child(3):after{
-    background:url(../img/icon-youtube.webp) no-repeat,
-    url(../img/icon-youtube.png) no-repeat;
-    height: 15px;
-  }
-  &:nth-child(3):active:after{
-    background:url(../img/youtube_copy_2.webp),
-    url(../img/youtube_copy_2.png);
-  }
+
+    position: relative;
+    margin: 0 2% 0;
+    .size(46px, 48px);
+    background-color: @lightBlue;
+    &:hover{
+        background-color:@blue;
+        transition: 1s;
+    }
+    &:active{
+        background-color:@darkBlue;
+    }
+    &:after{
+        .transform-position(50%, auto, -50%);
+        .size(19px,15px);
+        top: 35%;
+        background:url(../img/icon-twitter.webp) no-repeat,
+        url(../img/icon-twitter.png) no-repeat;
+    }
+    &:nth-child(1):active:after{
+        background:url(../img/twitter_copy_2.webp),
+        url(../img/twitter_copy_2.png);
+    }
+    &:nth-child(2):after{
+        background:url(../img/icon-facebook.webp) no-repeat,
+        url(../img/icon-facebook.png) no-repeat;
+        .size(10px,19px);
+        top: 30%;
+    }
+    &:nth-child(2):active:after{
+        background:url(../img/facebook_copy_2.webp)no-repeat,
+        url(../img/facebook_copy_2.png)no-repeat;
+    }
+    &:nth-child(3):after{
+        background:url(../img/icon-youtube.webp) no-repeat,
+        url(../img/icon-youtube.png) no-repeat;
+        height: 15px;
+    }
+        &:nth-child(3):active:after{
+        background:url(../img/youtube_copy_2.webp),
+        url(../img/youtube_copy_2.png);
+    }
 }
 
 .producer{
