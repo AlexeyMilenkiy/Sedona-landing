@@ -22,6 +22,7 @@ window.onload = function() {
         },10);
     };
 
+
     closeMobMenu.onclick = (e) => {
         e.preventDefault();
         mobileMenu.classList.remove("visible-nav");
