@@ -30,19 +30,19 @@
   return r;
 })()({
   1: [function (require, module, exports) {
-    window.onload = function () {
-      let mobileMenuIcon = document.querySelector('.mobile-menu');
-      let mobileMenu = document.querySelector('.mobile-navigation');
-      let closeMobMenu = document.querySelector('.close-mobile-nav');
+    window.onload = () => {
+      const mobileMenuIcon = document.querySelector('.mobile-menu');
+      const mobileMenu = document.querySelector('.mobile-navigation');
+      const closeMobMenu = document.querySelector('.close-mobile-nav');
       const name = document.getElementById('name');
       const surName = document.getElementById('surname');
       const tel = document.querySelector('#tel');
       const errorMessageEmail = document.querySelector('.wrong-email-hidden');
       const errorMessageTel = document.querySelector('.wrong-number-hidden');
 
-      let VMasker = require("vanilla-masker");
+      const VMasker = require('vanilla-masker');
 
-      let validate = require("validate-js");
+      const validate = require('validate-js');
 
       const popUpContainer = document.querySelector('.pop-up-container');
       const closePopUp = document.querySelector('.pop-up__close');
@@ -51,53 +51,57 @@
 
       mobileMenuIcon.onclick = e => {
         e.preventDefault();
-        mobileMenu.classList.add("show-nav");
-        setTimeout(function () {
-          mobileMenu.classList.add("visible-nav");
+        mobileMenu.classList.add('show-nav');
+        setTimeout(() => {
+          mobileMenu.classList.add('visible-nav');
         }, 10);
       };
 
       closeMobMenu.onclick = e => {
         e.preventDefault();
-        mobileMenu.classList.remove("visible-nav");
-        setTimeout(function () {
-          mobileMenu.classList.remove("show-nav");
+        mobileMenu.classList.remove('visible-nav');
+        setTimeout(() => {
+          mobileMenu.classList.remove('show-nav');
         }, 1000);
       };
 
-      const showPopUpWindow = function () {
+      const showPopUpWindow = () => {
         popUpContainer.classList.remove('pop-up-none');
         popUpContainer.classList.add('pop-up-show');
-        let scrollX = window.scrollX;
-        let scrollY = window.scrollY;
+        const {
+          scrollX
+        } = window;
+        const {
+          scrollY
+        } = window;
 
-        window.onscroll = function () {
+        window.onscroll = () => {
           window.scrollTo(scrollX, scrollY);
         };
       };
 
-      closePopUp.onclick = function () {
+      closePopUp.onclick = () => {
         popUpContainer.classList.remove('pop-up-show');
-        popUpContainer.addEventListener("animationend", function () {
+        popUpContainer.addEventListener('animationend', () => {
           popUpContainer.classList.add('pop-up-none');
         });
 
-        window.onscroll = function () {
+        window.onscroll = () => {
           window.scrollTo();
         };
       };
 
-      const clearInputs = function () {
-        for (let i = 0; i < formInputs.length; i++) {
-          formInputs[i].value = "";
+      const clearInputs = () => {
+        for (let i = 0; i < formInputs.length; i += 1) {
+          formInputs[i].value = '';
         }
       };
 
-      const clearErrors = function () {
-        name.classList.remove("review-user__input-error");
-        surName.classList.remove("review-user__input-error");
-        errorMessageTel.classList.remove("wrong-number-or-email-visible");
-        errorMessageEmail.classList.remove("wrong-number-or-email-visible");
+      const clearErrors = () => {
+        name.classList.remove('review-user__input-error');
+        surName.classList.remove('review-user__input-error');
+        errorMessageTel.classList.remove('wrong-number-or-email-visible');
+        errorMessageEmail.classList.remove('wrong-number-or-email-visible');
       };
 
       const constraints = [{
@@ -117,21 +121,19 @@
         display: 'Email No',
         rules: 'required|valid_email'
       }];
-      let validator = new validate('form', constraints, function (errors, evt) {
+      const validator = new validate('form', constraints, (errors, evt) => {
         clearErrors();
 
         if (errors.length > 0) {
           for (let i = 0; i < errors.length; i++) {
-            if (errors[i].id === "name") {
-              name.classList.add("review-user__input-error");
+            if (errors[i].id === 'name') {
+              name.classList.add('review-user__input-error');
             } else if (errors[i].id === 'surname') {
-              surName.classList.add("review-user__input-error");
+              surName.classList.add('review-user__input-error');
             } else if (errors[i].id === 'tel') {
-              errorMessageTel.classList.add("wrong-number-or-email-visible");
-            } else if (errors[i].id === "email") {
-              errorMessageEmail.classList.add("wrong-number-or-email-visible");
-            } else {
-              errors.length = 0;
+              errorMessageTel.classList.add('wrong-number-or-email-visible');
+            } else if (errors[i].id === 'email') {
+              errorMessageEmail.classList.add('wrong-number-or-email-visible');
             }
           }
         } else {
@@ -147,14 +149,14 @@
         }
       });
 
-      for (let input of formInputs) {
+      for (const input of formInputs) {
         const currentInputName = input.name;
         const currentInputSurName = input.surname;
         const currentInputTel = input.telephone;
         const currentInputEmail = input.email;
         input.addEventListener('change', () => {
-          const click = document.createEvent("MouseEvents");
-          click.initMouseEvent("click", true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+          const click = document.createEvent('MouseEvents');
+          click.initMouseEvent('click', true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
           constraints.forEach(item => {
             if (item.name === currentInputName) {
               pushButton.dispatchEvent(click);
@@ -169,21 +171,21 @@
         });
       }
 
-      validator.registerCallback('check_phone', function (value) {
-        let phoneCheck = /^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$/;
+      validator.registerCallback('check_phone', value => {
+        const phoneCheck = /^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$/;
         return phoneCheck.test(value);
-      }).setMessage('check_phone', ''); //mask for phone
+      }).setMessage('check_phone', ''); // mask for phone
 
       const inputHandler = function (masks, max, event) {
-        let input = event.target;
-        let inputValue = input.value.replace(/\D/g, '');
-        let maxLength = input.value.length > max ? 1 : 0;
+        const input = event.target;
+        const inputValue = input.value.replace(/\D/g, '');
+        const maxLength = input.value.length > max ? 1 : 0;
         VMasker(input).unMask();
         VMasker(input).maskPattern(masks[maxLength]);
         input.value = VMasker.toPattern(inputValue, masks[maxLength]);
       };
 
-      let telMask = ['+9(999)999-99-99', '+9(999)999-99-99'];
+      const telMask = ['+9(999)999-99-99', '+9(999)999-99-99'];
       VMasker(tel).maskPattern(telMask[0]);
       tel.addEventListener('input', inputHandler.bind(undefined, telMask, 14), false); //
     };
