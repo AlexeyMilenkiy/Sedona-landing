@@ -21,6 +21,7 @@
     "babel-upgrade": "^1.0.1",
     "browser-sync": "^2.26.4",
     "browserify": "^16.2.3",
+    "browserify-shim": "^3.8.14",
     "gulp": "^4.0.0",
     "gulp-browserify": "^0.5.1",
     "gulp-less": "^4.0.1",
