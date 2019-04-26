@@ -2,8 +2,8 @@ if (document.querySelector('.slider-headline')) {
   const paginationImgBlock = document.querySelector('.pagination-img-block');
   const sliderBlock = document.querySelector('.slider');
   let slides = document.querySelectorAll('.slide-single');
-  let indexPagination = 3; //  number of buttons pagination
-  let indexStartNumButton = 0;
+  const indexPagination = 3; //  number of buttons pagination
+  // let indexStartNumButton = 0;
   let numberPushButton = 0;
   let activeButton = 0;
   let imgIndex = 0;
@@ -15,6 +15,12 @@ if (document.querySelector('.slider-headline')) {
   const moduleImages = require('./show-images');
   const { links } = moduleImages;
 
+  // eslint-disable-next-line global-require
+  const moduleShowMoreLess = require('./more-less-pagination');
+  const { showPrevPagination } = moduleShowMoreLess;
+  const { showNextPagination } = moduleShowMoreLess;
+
+  // find link active image after shift
   // eslint-disable-next-line consistent-return
   const findIndexLastImg = (arg) => {
     for (; imgIndex < links.length; imgIndex += 1) {
@@ -39,8 +45,6 @@ if (document.querySelector('.slider-headline')) {
     imgIndex = 0;
   };
 
-  exports.addNextImage = addNextImage;
-
   // add new image on the left after shift
   const addPrevImage = () => {
     const leftImg = document.createElement('img');
@@ -55,8 +59,6 @@ if (document.querySelector('.slider-headline')) {
     sliderBlock.insertBefore(leftImg, sliderBlock.children[0]);
     imgIndex = 0;
   };
-
-  exports.addPrevImage = addPrevImage;
 
   // image shift function to the left
   const shiftImageLeft = () => {
@@ -73,8 +75,6 @@ if (document.querySelector('.slider-headline')) {
     }
   };
 
-  exports.shiftImageLeft = shiftImageLeft;
-
   // image shift function to the rights
   const shiftImageRight = () => {
     offset = 0;
@@ -89,8 +89,6 @@ if (document.querySelector('.slider-headline')) {
       slides[i].style.left = `${offset * 100}%`;
     }
   };
-
-  exports.shiftImageRight = shiftImageRight;
 
   // active image index definition
   const searchActiveImg = () => {
@@ -134,35 +132,12 @@ if (document.querySelector('.slider-headline')) {
   exports.addClassButton = addClassButton;
 
   // function showing new image after pressing a button "next"
-
   const showButtonMore = () => {
     const moreImg = document.createElement('button');
     moreImg.classList.add('moreImg-class');
     moreImg.id = 'moreImg';
     moreImg.textContent = '>>';
     paginationImgBlock.appendChild(moreImg);
-  };
-
-  const showButtonLess = () => {
-    const lessImg = document.createElement('button');
-    lessImg.classList.add('lessImg-class');
-    lessImg.id = 'lessImg';
-    lessImg.textContent = '<<';
-    paginationImgBlock.appendChild(lessImg);
-  };
-    // creating a new button with a number greater than the previous one
-  const createNewButtonMore = () => {
-    const imgNumber = document.createElement('button');
-    imgNumber.classList.add('img-navigation');
-    imgNumber.textContent = +indexStartNumButton + 1;
-    paginationImgBlock.appendChild(imgNumber);
-  };
-    // creating a new button with a number less than the previous one
-  const createNewButtonLess = () => {
-    const imgNumber = document.createElement('button');
-    imgNumber.classList.add('img-navigation');
-    imgNumber.textContent = +indexStartNumButton - 1;
-    paginationImgBlock.insertBefore(imgNumber, paginationImgBlock.children[0]);
   };
 
   // start function create pagination button
@@ -183,75 +158,6 @@ if (document.querySelector('.slider-headline')) {
         paginationImgBlock.appendChild(imgNumber);
       }
     }
-    addClassButton();
-  };
-
-  // search for the number of the last button pagination
-  const searchLastNumberButton = (n) => {
-    const buttonArr = document.querySelectorAll('.img-navigation');
-    for (let i = 0; i < buttonArr.length; i += 1) {
-      if (i + 1 === n) {
-        indexStartNumButton = +buttonArr[i].innerText;
-      }
-    }
-  };
-
-  // clear all button pagination
-  const clearPagination = () => {
-    while (paginationImgBlock.firstChild) {
-      paginationImgBlock.removeChild(paginationImgBlock.firstChild);
-    }
-  };
-
-  // show new pagination button after push button ">>"
-  const showNextPagination = () => {
-    searchLastNumberButton(indexPagination);
-    clearPagination();
-    showButtonLess();
-    const reserveVariables = indexStartNumButton;
-    indexPagination = indexStartNumButton + indexPagination;
-
-    if (indexPagination === links.length) {
-      for (indexStartNumButton; indexStartNumButton < indexPagination; indexStartNumButton += 1) {
-        createNewButtonMore();
-      }
-    } else if (indexPagination < links.length) {
-      for (indexStartNumButton; indexStartNumButton < indexPagination; indexStartNumButton += 1) {
-        createNewButtonMore();
-      }
-      showButtonMore();
-    } else {
-      for (indexStartNumButton; indexStartNumButton < links.length; indexStartNumButton += 1) {
-        createNewButtonMore();
-      }
-    }
-    indexPagination -= reserveVariables;
-    addClassButton();
-  };
-
-  // show new pagination button after push button "<<"
-  const showPrevPagination = () => {
-    searchLastNumberButton(1);
-    clearPagination();
-    showButtonMore();
-    const reserveVariables = indexStartNumButton;
-    indexPagination = indexStartNumButton - indexPagination;
-
-    if (indexPagination > 1) {
-      for (indexStartNumButton; indexStartNumButton > indexPagination; indexStartNumButton -= 1) {
-        createNewButtonLess();
-      }
-      const lessImg = document.createElement('button');
-      lessImg.classList.add('lessImg-class');
-      lessImg.id = 'lessImg';
-      lessImg.textContent = '<<';
-      paginationImgBlock.insertBefore(lessImg, paginationImgBlock.children[0]);
-    } else {
-      for (indexStartNumButton; indexStartNumButton > 1; indexStartNumButton -= 1) {
-        createNewButtonLess();
-      }
-    }
-    indexPagination = reserveVariables - indexPagination;
     addClassButton();
   };
 
@@ -353,7 +259,8 @@ if (document.querySelector('.slider-headline')) {
       isFlagAction = false;
     }, 2000);
   };
-    // showing a new image after pressing a button pagination
+
+  // showing a new image after pressing a button pagination
   const showNotActiveImg = () => {
     let indexWaitImage = 0;
     const buttonArr = document.querySelectorAll('.img-navigation');
@@ -374,7 +281,8 @@ if (document.querySelector('.slider-headline')) {
       }
     }
   };
-    // checking whether the active class has a button
+
+  // checking whether the active class has a button
   const containsActiveClass = (x) => {
     const numButton = +x;
     const buttonArr = document.querySelectorAll('.img-navigation');
@@ -390,6 +298,7 @@ if (document.querySelector('.slider-headline')) {
       }
     }
   };
+
   paginationImgBlock.onclick = (event) => {
     const { target } = event;
     if (target.id === 'moreImg') {
@@ -401,6 +310,5 @@ if (document.querySelector('.slider-headline')) {
       containsActiveClass(target.innerText);
     }
   };
-
   showPagination();
 }

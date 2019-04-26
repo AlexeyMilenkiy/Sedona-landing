@@ -14,6 +14,7 @@ if (document.querySelector('.slider-headline')) {
   // eslint-disable-next-line global-require
   const modulePagination = require('./pagination');
   const { addClassButton } = modulePagination;
+  console.log(addClassButton);
 
   // find link active image after shift
   // eslint-disable-next-line consistent-return

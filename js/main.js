@@ -61,7 +61,7 @@
       tel.addEventListener('input', inputHandler.bind(undefined, telMask, 14), false);
     }
   }, {
-    "vanilla-masker": 11
+    "vanilla-masker": 12
   }],
   3: [function (require, module, exports) {
     if (document.querySelector('.review__headline')) {
@@ -212,7 +212,7 @@
       }).setMessage('check_phone', '');
     }
   }, {
-    "validate-js": 10
+    "validate-js": 11
   }],
   5: [function (require, module, exports) {
     require('./main-page/main-page.js');
@@ -220,9 +220,143 @@
     require('./slider/slider.js');
   }, {
     "./main-page/main-page.js": 1,
-    "./slider/slider.js": 9
+    "./slider/slider.js": 10
   }],
   6: [function (require, module, exports) {
+    if (document.querySelector('.slider-headline')) {
+      const paginationImgBlock = document.querySelector('.pagination-img-block');
+      let indexPagination = 3; //  number of buttons pagination
+
+      let indexStartNumButton = 0; // eslint-disable-next-line global-require
+
+      const modPagination = require('./pagination');
+
+      const {
+        addClassButton
+      } = modPagination;
+      console.log(addClassButton); // eslint-disable-next-line global-require
+
+      const moduleImages = require('./show-images');
+
+      const {
+        links
+      } = moduleImages;
+      console.log(links); // search for the number of the last button pagination
+
+      const searchLastNumberButton = n => {
+        const buttonArr = document.querySelectorAll('.img-navigation');
+
+        for (let i = 0; i < buttonArr.length; i += 1) {
+          if (i + 1 === n) {
+            indexStartNumButton = +buttonArr[i].innerText;
+          }
+        }
+      }; // clear all button pagination
+
+
+      const clearPagination = () => {
+        while (paginationImgBlock.firstChild) {
+          paginationImgBlock.removeChild(paginationImgBlock.firstChild);
+        }
+      };
+
+      const showButtonLess = () => {
+        const lessImg = document.createElement('button');
+        lessImg.classList.add('lessImg-class');
+        lessImg.id = 'lessImg';
+        lessImg.textContent = '<<';
+        paginationImgBlock.appendChild(lessImg);
+      }; // creating a new button with a number greater than the previous one
+
+
+      const createNewButtonMore = () => {
+        const imgNumber = document.createElement('button');
+        imgNumber.classList.add('img-navigation');
+        imgNumber.textContent = +indexStartNumButton + 1;
+        paginationImgBlock.appendChild(imgNumber);
+      }; // function showing new image after pressing a button "next"
+
+
+      const showButtonMore = () => {
+        const moreImg = document.createElement('button');
+        moreImg.classList.add('moreImg-class');
+        moreImg.id = 'moreImg';
+        moreImg.textContent = '>>';
+        paginationImgBlock.appendChild(moreImg);
+      }; // creating a new button with a number less than the previous one
+
+
+      const createNewButtonLess = () => {
+        const imgNumber = document.createElement('button');
+        imgNumber.classList.add('img-navigation');
+        imgNumber.textContent = +indexStartNumButton - 1;
+        paginationImgBlock.insertBefore(imgNumber, paginationImgBlock.children[0]);
+      }; // show new pagination button after push button ">>"
+
+
+      const showNextPagination = () => {
+        searchLastNumberButton(indexPagination);
+        clearPagination();
+        showButtonLess();
+        const reserveVariables = indexStartNumButton;
+        indexPagination = indexStartNumButton + indexPagination;
+
+        if (indexPagination === links.length) {
+          for (indexStartNumButton; indexStartNumButton < indexPagination; indexStartNumButton += 1) {
+            createNewButtonMore();
+          }
+        } else if (indexPagination < links.length) {
+          for (indexStartNumButton; indexStartNumButton < indexPagination; indexStartNumButton += 1) {
+            createNewButtonMore();
+          }
+
+          showButtonMore();
+        } else {
+          for (indexStartNumButton; indexStartNumButton < links.length; indexStartNumButton += 1) {
+            createNewButtonMore();
+          }
+        }
+
+        indexPagination -= reserveVariables;
+        addClassButton();
+      }; // show new pagination button after push button "<<"
+
+
+      const showPrevPagination = () => {
+        searchLastNumberButton(1);
+        clearPagination();
+        showButtonMore();
+        const reserveVariables = indexStartNumButton;
+        indexPagination = indexStartNumButton - indexPagination;
+
+        if (indexPagination > 1) {
+          for (indexStartNumButton; indexStartNumButton > indexPagination; indexStartNumButton -= 1) {
+            createNewButtonLess();
+          }
+
+          const lessImg = document.createElement('button');
+          lessImg.classList.add('lessImg-class');
+          lessImg.id = 'lessImg';
+          lessImg.textContent = '<<';
+          paginationImgBlock.insertBefore(lessImg, paginationImgBlock.children[0]);
+        } else {
+          for (indexStartNumButton; indexStartNumButton > 1; indexStartNumButton -= 1) {
+            createNewButtonLess();
+          }
+        }
+
+        indexPagination = reserveVariables - indexPagination;
+        addClassButton();
+      };
+
+      exports.showPrevPagination = showPrevPagination;
+      exports.showNextPagination = showNextPagination;
+    }
+  }, {
+    "./pagination": 8,
+    "./show-images": 9
+  }],
+  7: [function (require, module, exports) {
     if (document.querySelector('.slider-headline')) {
       const next = document.querySelector('#next-slide');
       const sliderBlock = document.querySelector('.slider');
@@ -242,7 +376,8 @@
 
       const {
         addClassButton
-      } = modulePagination; // find link active image after shift
+      } = modulePagination;
+      console.log(addClassButton); // find link active image after shift
       // eslint-disable-next-line consistent-return
 
       const findIndexLastImg = arg => {
@@ -356,17 +491,17 @@
       };
     }
   }, {
-    "./pagination": 7,
-    "./show-images": 8
+    "./pagination": 8,
+    "./show-images": 9
   }],
-  7: [function (require, module, exports) {
+  8: [function (require, module, exports) {
     if (document.querySelector('.slider-headline')) {
       const paginationImgBlock = document.querySelector('.pagination-img-block');
       const sliderBlock = document.querySelector('.slider');
       let slides = document.querySelectorAll('.slide-single');
-      let indexPagination = 3; //  number of buttons pagination
+      const indexPagination = 3; //  number of buttons pagination
+      // let indexStartNumButton = 0;
 
-      let indexStartNumButton = 0;
       let numberPushButton = 0;
       let activeButton = 0;
       let imgIndex = 0;
@@ -379,7 +514,17 @@
 
       const {
         links
-      } = moduleImages; // eslint-disable-next-line consistent-return
+      } = moduleImages; // eslint-disable-next-line global-require
+
+      const moduleShowMoreLess = require('./more-less-pagination');
+
+      const {
+        showPrevPagination
+      } = moduleShowMoreLess;
+      const {
+        showNextPagination
+      } = moduleShowMoreLess; // find link active image after shift
+      // eslint-disable-next-line consistent-return
 
       const findIndexLastImg = arg => {
         for (; imgIndex < links.length; imgIndex += 1) {
@@ -404,9 +549,8 @@
         rightImg.style.left = `${100}%`;
         sliderBlock.appendChild(rightImg);
         imgIndex = 0;
-      };
+      }; // add new image on the left after shift
 
-      exports.addNextImage = addNextImage; // add new image on the left after shift
 
       const addPrevImage = () => {
         const leftImg = document.createElement('img');
@@ -422,9 +566,8 @@
         leftImg.style.left = `${-100}%`;
         sliderBlock.insertBefore(leftImg, sliderBlock.children[0]);
         imgIndex = 0;
-      };
+      }; // image shift function to the left
 
-      exports.addPrevImage = addPrevImage; // image shift function to the left
 
       const shiftImageLeft = () => {
         offset = 0;
@@ -440,9 +583,8 @@
 
           slides[i].style.left = `${offset * 100 - 100}%`;
         }
-      };
+      }; // image shift function to the rights
 
-      exports.shiftImageLeft = shiftImageLeft; // image shift function to the rights
 
       const shiftImageRight = () => {
         offset = 0;
@@ -458,9 +600,8 @@
 
           slides[i].style.left = `${offset * 100}%`;
         }
-      };
+      }; // active image index definition
 
-      exports.shiftImageRight = shiftImageRight; // active image index definition
 
       const searchActiveImg = () => {
         slides = document.querySelectorAll('.slide-single');
@@ -514,30 +655,6 @@
         moreImg.id = 'moreImg';
         moreImg.textContent = '>>';
         paginationImgBlock.appendChild(moreImg);
-      };
-
-      const showButtonLess = () => {
-        const lessImg = document.createElement('button');
-        lessImg.classList.add('lessImg-class');
-        lessImg.id = 'lessImg';
-        lessImg.textContent = '<<';
-        paginationImgBlock.appendChild(lessImg);
-      }; // creating a new button with a number greater than the previous one
-
-
-      const createNewButtonMore = () => {
-        const imgNumber = document.createElement('button');
-        imgNumber.classList.add('img-navigation');
-        imgNumber.textContent = +indexStartNumButton + 1;
-        paginationImgBlock.appendChild(imgNumber);
-      }; // creating a new button with a number less than the previous one
-
-
-      const createNewButtonLess = () => {
-        const imgNumber = document.createElement('button');
-        imgNumber.classList.add('img-navigation');
-        imgNumber.textContent = +indexStartNumButton - 1;
-        paginationImgBlock.insertBefore(imgNumber, paginationImgBlock.children[0]);
       }; // start function create pagination button
 
 
@@ -560,80 +677,6 @@
           }
         }
 
-        addClassButton();
-      }; // search for the number of the last button pagination
-
-
-      const searchLastNumberButton = n => {
-        const buttonArr = document.querySelectorAll('.img-navigation');
-
-        for (let i = 0; i < buttonArr.length; i += 1) {
-          if (i + 1 === n) {
-            indexStartNumButton = +buttonArr[i].innerText;
-          }
-        }
-      }; // clear all button pagination
-
-
-      const clearPagination = () => {
-        while (paginationImgBlock.firstChild) {
-          paginationImgBlock.removeChild(paginationImgBlock.firstChild);
-        }
-      }; // show new pagination button after push button ">>"
-
-
-      const showNextPagination = () => {
-        searchLastNumberButton(indexPagination);
-        clearPagination();
-        showButtonLess();
-        const reserveVariables = indexStartNumButton;
-        indexPagination = indexStartNumButton + indexPagination;
-
-        if (indexPagination === links.length) {
-          for (indexStartNumButton; indexStartNumButton < indexPagination; indexStartNumButton += 1) {
-            createNewButtonMore();
-          }
-        } else if (indexPagination < links.length) {
-          for (indexStartNumButton; indexStartNumButton < indexPagination; indexStartNumButton += 1) {
-            createNewButtonMore();
-          }
-
-          showButtonMore();
-        } else {
-          for (indexStartNumButton; indexStartNumButton < links.length; indexStartNumButton += 1) {
-            createNewButtonMore();
-          }
-        }
-
-        indexPagination -= reserveVariables;
-        addClassButton();
-      }; // show new pagination button after push button "<<"
-
-
-      const showPrevPagination = () => {
-        searchLastNumberButton(1);
-        clearPagination();
-        showButtonMore();
-        const reserveVariables = indexStartNumButton;
-        indexPagination = indexStartNumButton - indexPagination;
-
-        if (indexPagination > 1) {
-          for (indexStartNumButton; indexStartNumButton > indexPagination; indexStartNumButton -= 1) {
-            createNewButtonLess();
-          }
-
-          const lessImg = document.createElement('button');
-          lessImg.classList.add('lessImg-class');
-          lessImg.id = 'lessImg';
-          lessImg.textContent = '<<';
-          paginationImgBlock.insertBefore(lessImg, paginationImgBlock.children[0]);
-        } else {
-          for (indexStartNumButton; indexStartNumButton > 1; indexStartNumButton -= 1) {
-            createNewButtonLess();
-          }
-        }
-
-        indexPagination = reserveVariables - indexPagination;
         addClassButton();
       }; // brute force pagination array
 
@@ -794,9 +837,10 @@
       showPagination();
     }
   }, {
-    "./show-images": 8
+    "./more-less-pagination": 6,
+    "./show-images": 9
   }],
-  8: [function (require, module, exports) {
+  9: [function (require, module, exports) {
     if (document.querySelector('.slider-headline')) {
       const slides = document.querySelectorAll('.slide-single');
       const sliderBlock = document.querySelector('.slider');
@@ -836,18 +880,21 @@
       showImage();
     }
   }, {}],
-  9: [function (require, module, exports) {
+  10: [function (require, module, exports) {
     require('./show-images.js');
 
     require('./next-prev.js');
 
+    require('./more-less-pagination.js');
+
     require('./pagination.js');
   }, {
-    "./next-prev.js": 6,
-    "./pagination.js": 7,
-    "./show-images.js": 8
+    "./more-less-pagination.js": 6,
+    "./next-prev.js": 7,
+    "./pagination.js": 8,
+    "./show-images.js": 9
   }],
-  10: [function (require, module, exports) {
+  11: [function (require, module, exports) {
     /*
      * validate.js 2.0.1
      * Copyright (c) 2011 - 2015 Rick Harrison, http://rickharrison.me
@@ -1479,7 +1526,7 @@
       module.exports = FormValidator;
     }
   }, {}],
-  11: [function (require, module, exports) {
+  12: [function (require, module, exports) {
     (function (root, factory) {
       if (typeof define === 'function' && define.amd) {
         define(factory);
