@@ -4,8 +4,12 @@ if (document.querySelector('.slider-headline')) {
   const sliderBlock = document.querySelector('.slider');
   const links = [];
   exports.links = links;
-  let imgIndex = 0;
+  const imgIndex = 0;
   const offset = 0;
+  const offset1 = 1;
+  const img = document.createElement('img');
+  const img1 = document.createElement('img');
+  const img2 = document.createElement('img');
 
   // create array with links images on slider
   const findLinksImg = () => {
@@ -18,12 +22,6 @@ if (document.querySelector('.slider-headline')) {
   // start function create images on pages
   const showImage = () => {
     findLinksImg();
-    imgIndex = 0;
-    const offset1 = 1;
-    const img = document.createElement('img');
-    const img1 = document.createElement('img');
-    const img2 = document.createElement('img');
-
     img.src = links[links.length - 1];
     img.classList.add('slide-single');
     img.style.left = `${offset1 - 100}%`;

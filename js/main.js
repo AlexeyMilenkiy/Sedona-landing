@@ -42,6 +42,7 @@
   }],
   2: [function (require, module, exports) {
     if (document.querySelector('.review__headline')) {
+      // eslint-disable-next-line global-require
       const VMasker = require('vanilla-masker');
 
       const tel = document.querySelector('#tel');
@@ -241,7 +242,8 @@
 
       const {
         addClassButton
-      } = modulePagination; // eslint-disable-next-line consistent-return
+      } = modulePagination; // find link active image after shift
+      // eslint-disable-next-line consistent-return
 
       const findIndexLastImg = arg => {
         for (; imgIndex < links.length; imgIndex += 1) {
@@ -800,8 +802,12 @@
       const sliderBlock = document.querySelector('.slider');
       const links = [];
       exports.links = links;
-      let imgIndex = 0;
-      const offset = 0; // create array with links images on slider
+      const imgIndex = 0;
+      const offset = 0;
+      const offset1 = 1;
+      const img = document.createElement('img');
+      const img1 = document.createElement('img');
+      const img2 = document.createElement('img'); // create array with links images on slider
 
       const findLinksImg = () => {
         for (let i = 0; i < slides.length; i += 1) {
@@ -813,11 +819,6 @@
 
       const showImage = () => {
         findLinksImg();
-        imgIndex = 0;
-        const offset1 = 1;
-        const img = document.createElement('img');
-        const img1 = document.createElement('img');
-        const img2 = document.createElement('img');
         img.src = links[links.length - 1];
         img.classList.add('slide-single');
         img.style.left = `${offset1 - 100}%`;

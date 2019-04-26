@@ -1,7 +1,7 @@
 if (document.querySelector('.review__headline')) {
+  // eslint-disable-next-line global-require
   const VMasker = require('vanilla-masker');
   const tel = document.querySelector('#tel');
-
   const inputHandler = (masks, max, event) => {
     const input = event.target;
     const inputValue = input.value.replace(/\D/g, '');
