@@ -220,13 +220,18 @@
     "./slider/show-images.js": 6
   }],
   5: [function (require, module, exports) {
-    if (!!document.querySelector('.slider-headline')) {
+    if (document.querySelector('.slider-headline')) {
+      // eslint-disable-next-line global-require
+      const module = require('./show-images');
+
+      const {
+        links
+      } = module;
       const paginationImgBlock = document.querySelector('.pagination-img-block');
       const next = document.querySelector('#next-slide');
       const previous = document.querySelector('#prev-slide');
       const sliderBlock = document.querySelector('.slider');
-      let slides = document.querySelectorAll('.slide-single'); // let links = export.from('./show-images.js');
-
+      let slides = document.querySelectorAll('.slide-single');
       let imgIndex = 0;
       let offset = 0;
       let indexPagination = 3; //  number of buttons pagination
@@ -236,17 +241,9 @@
       let numberPushButton = 0;
       let activeButton = 0;
       let linkNewImage = 0;
-      let isFlagAction = false; //
-      // create array with links images on slider
-      // const findLinksImg = () => {
-      //   for (let i = 0; i < slides.length; i += 1) {
-      //     links[i] = slides[i].src;
-      //     slides[i].remove();
-      //   }
-      // };
-      // findLinksImg();
+      let isFlagAction = false; // eslint-disable-next-line no-console
 
-      console.log(links); // find link active image after shift
+      console.log(links); // eslint-disable-next-line consistent-return
 
       const findIndexLastImg = arg => {
         for (; imgIndex < links.length; imgIndex += 1) {
@@ -690,17 +687,18 @@
 
         return false;
       };
-    } else {
-      return;
     }
-  }, {}],
+  }, {
+    "./show-images": 6
+  }],
   6: [function (require, module, exports) {
-    if (!!document.querySelector('.slider-headline')) {
-      let slides = document.querySelectorAll('.slide-single');
+    if (document.querySelector('.slider-headline')) {
+      const slides = document.querySelectorAll('.slide-single');
       const sliderBlock = document.querySelector('.slider');
-      window.links = [];
+      const links = [];
+      exports.links = links;
       let imgIndex = 0;
-      let offset = 0; // create array with links images on slider
+      const offset = 0; // create array with links images on slider
 
       const findLinksImg = () => {
         for (let i = 0; i < slides.length; i += 1) {
@@ -733,8 +731,6 @@
       };
 
       showImage();
-    } else {
-      return;
     }
   }, {}],
   7: [function (require, module, exports) {

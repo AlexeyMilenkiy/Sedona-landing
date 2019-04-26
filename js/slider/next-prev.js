@@ -1,433 +1,431 @@
-  if (!!document.querySelector('.slider-headline')) {
+if (document.querySelector('.slider-headline')) {
+  // eslint-disable-next-line global-require
+  const module = require('./show-images');
+  const { links } = module;
+  const paginationImgBlock = document.querySelector('.pagination-img-block');
+  const next = document.querySelector('#next-slide');
+  const previous = document.querySelector('#prev-slide');
+  const sliderBlock = document.querySelector('.slider');
+  let slides = document.querySelectorAll('.slide-single');
+  let imgIndex = 0;
+  let offset = 0;
+  let indexPagination = 3; //  number of buttons pagination
+  let indexStartNumButton = 0;
+  let indexActiveImg = 0;
+  let numberPushButton = 0;
+  let activeButton = 0;
+  let linkNewImage = 0;
+  let isFlagAction = false;
 
-    const paginationImgBlock = document.querySelector('.pagination-img-block');
-    const next = document.querySelector('#next-slide');
-    const previous = document.querySelector('#prev-slide');
-    const sliderBlock = document.querySelector('.slider');
-    let slides = document.querySelectorAll('.slide-single');
-    let imgIndex = 0;
-    let offset = 0;
-    let indexPagination = 3; //  number of buttons pagination
-    let indexStartNumButton = 0;
-    let indexActiveImg = 0;
-    let numberPushButton = 0;
-    let activeButton = 0;
-    let linkNewImage = 0;
-    let isFlagAction = false;
 
-console.log(links);
-
-    const findIndexLastImg = (arg) => {
-      for (; imgIndex < links.length; imgIndex += 1) {
-        if (links[imgIndex] === arg.src) {
-          return imgIndex;
-        }
+  // eslint-disable-next-line consistent-return
+  const findIndexLastImg = (arg) => {
+    for (; imgIndex < links.length; imgIndex += 1) {
+      if (links[imgIndex] === arg.src) {
+        return imgIndex;
       }
-    };
+    }
+  };
     // add new image on the right after shift
-    const addNextImage = () => {
-      const rightImg = document.createElement('img');
-      if (imgIndex >= links.length - 1) {
-        imgIndex = 0;
-      } else {
-        imgIndex += 1;
-      }
-      rightImg.src = links[imgIndex];
-      rightImg.classList.add('slide-single');
-      rightImg.style.left = `${100}%`;
-      sliderBlock.appendChild(rightImg);
+  const addNextImage = () => {
+    const rightImg = document.createElement('img');
+    if (imgIndex >= links.length - 1) {
       imgIndex = 0;
-    };
+    } else {
+      imgIndex += 1;
+    }
+    rightImg.src = links[imgIndex];
+    rightImg.classList.add('slide-single');
+    rightImg.style.left = `${100}%`;
+    sliderBlock.appendChild(rightImg);
+    imgIndex = 0;
+  };
 
-    // add new image on the left after shift
-    const addPrevImage = () => {
-      const leftImg = document.createElement('img');
-      if (imgIndex <= 0) {
-        imgIndex = links.length - 1;
+  // add new image on the left after shift
+  const addPrevImage = () => {
+    const leftImg = document.createElement('img');
+    if (imgIndex <= 0) {
+      imgIndex = links.length - 1;
+    } else {
+      imgIndex -= 1;
+    }
+    leftImg.src = links[imgIndex];
+    leftImg.classList.add('slide-single');
+    leftImg.style.left = `${-100}%`;
+    sliderBlock.insertBefore(leftImg, sliderBlock.children[0]);
+    imgIndex = 0;
+  };
+
+  // image shift function to the left
+  const shiftImageLeft = () => {
+    offset = 0;
+    let step2 = 0;
+    for (let i = 0; i < slides.length; i += 1) {
+      if (step2 + 1 === slides.length) {
+        offset = 1;
       } else {
-        imgIndex -= 1;
+        offset = 0;
+        step2 += 1;
       }
-      leftImg.src = links[imgIndex];
-      leftImg.classList.add('slide-single');
-      leftImg.style.left = `${-100}%`;
-      sliderBlock.insertBefore(leftImg, sliderBlock.children[0]);
-      imgIndex = 0;
-    };
+      slides[i].style.left = `${offset * 100 - 100}%`;
+    }
+  };
 
-    // image shift function to the left
-    const shiftImageLeft = () => {
-      offset = 0;
-      let step2 = 0;
-      for (let i = 0; i < slides.length; i += 1) {
-        if (step2 + 1 === slides.length) {
-          offset = 1;
-        } else {
-          offset = 0;
-          step2 += 1;
-        }
-        slides[i].style.left = `${offset * 100 - 100}%`;
+  // image shift function to the rights
+  const shiftImageRight = () => {
+    offset = 0;
+    let step3 = slides.length;
+    for (let i = slides.length - 1; i >= 0; i -= 1) {
+      if (step3 - 1 > 0) {
+        offset = 1;
+        step3 -= 1;
+      } else {
+        offset = 0;
       }
-    };
+      slides[i].style.left = `${offset * 100}%`;
+    }
+  };
 
-    // image shift function to the rights
-    const shiftImageRight = () => {
-      offset = 0;
-      let step3 = slides.length;
-      for (let i = slides.length - 1; i >= 0; i -= 1) {
-        if (step3 - 1 > 0) {
-          offset = 1;
-          step3 -= 1;
-        } else {
-          offset = 0;
-        }
-        slides[i].style.left = `${offset * 100}%`;
+  // active image index definition
+  const searchActiveImg = () => {
+    slides = document.querySelectorAll('.slide-single');
+    for (let i = 0; i < links.length; i += 1) {
+      if (links[i] === slides[1].src) {
+        indexActiveImg = i;
       }
-    };
+    }
+  };
 
-    // active image index definition
-    const searchActiveImg = () => {
-      slides = document.querySelectorAll('.slide-single');
+  // adding "active" class to a button
+  const addClassButton = () => {
+    let indexActiveButton = 0;
+    searchActiveImg();
+    indexActiveImg += 1;
+    const buttonArr = document.querySelectorAll('.img-navigation');
+    const buttonMore = document.getElementById('moreImg');
+    const buttonLess = document.getElementById('lessImg');
+
+    for (; indexActiveButton < buttonArr.length; indexActiveButton += 1) {
+      buttonArr[indexActiveButton].classList.remove('active');
+      if (buttonMore) {
+        buttonMore.classList.remove('active');
+      }
+      if (buttonLess) {
+        buttonLess.classList.remove('active');
+      }
+      if (indexActiveImg > +buttonArr[buttonArr.length - 1].innerText) {
+        buttonMore.classList.add('active');
+      }
+      if (indexActiveImg < +buttonArr[0].innerText) {
+        buttonLess.classList.add('active');
+      } else if (+buttonArr[indexActiveButton].innerText === indexActiveImg) {
+        buttonArr[indexActiveButton].classList.add('active');
+      }
+    }
+    indexActiveImg = 0;
+  };
+
+  // function showing new image after pressing a button "next"
+
+  const showButtonMore = () => {
+    const moreImg = document.createElement('button');
+    moreImg.classList.add('moreImg-class');
+    moreImg.id = 'moreImg';
+    moreImg.textContent = '>>';
+    paginationImgBlock.appendChild(moreImg);
+  };
+
+  const showButtonLess = () => {
+    const lessImg = document.createElement('button');
+    lessImg.classList.add('lessImg-class');
+    lessImg.id = 'lessImg';
+    lessImg.textContent = '<<';
+    paginationImgBlock.appendChild(lessImg);
+  };
+    // creating a new button with a number greater than the previous one
+  const createNewButtonMore = () => {
+    const imgNumber = document.createElement('button');
+    imgNumber.classList.add('img-navigation');
+    imgNumber.textContent = +indexStartNumButton + 1;
+    paginationImgBlock.appendChild(imgNumber);
+  };
+    // creating a new button with a number less than the previous one
+  const createNewButtonLess = () => {
+    const imgNumber = document.createElement('button');
+    imgNumber.classList.add('img-navigation');
+    imgNumber.textContent = +indexStartNumButton - 1;
+    paginationImgBlock.insertBefore(imgNumber, paginationImgBlock.children[0]);
+  };
+
+  // start function create pagination button
+  const showPagination = () => {
+    if (links.length > indexPagination) {
+      for (let i = 0; i < indexPagination; i += 1) {
+        const imgNumber = document.createElement('button');
+        imgNumber.classList.add('img-navigation');
+        imgNumber.textContent = i + 1;
+        paginationImgBlock.appendChild(imgNumber);
+      }
+      showButtonMore();
+    } else if (links.length <= indexPagination) {
       for (let i = 0; i < links.length; i += 1) {
-        if (links[i] === slides[1].src) {
-          indexActiveImg = i;
-        }
+        const imgNumber = document.createElement('button');
+        imgNumber.classList.add('img-navigation');
+        imgNumber.textContent = i + 1;
+        paginationImgBlock.appendChild(imgNumber);
       }
-    };
+    }
+    addClassButton();
+  };
 
-    // adding "active" class to a button
-    const addClassButton = () => {
-      let indexActiveButton = 0;
-      searchActiveImg();
-      indexActiveImg += 1;
-      const buttonArr = document.querySelectorAll('.img-navigation');
-      const buttonMore = document.getElementById('moreImg');
-      const buttonLess = document.getElementById('lessImg');
-
-      for (; indexActiveButton < buttonArr.length; indexActiveButton += 1) {
-        buttonArr[indexActiveButton].classList.remove('active');
-        if (buttonMore) {
-          buttonMore.classList.remove('active');
-        }
-        if (buttonLess) {
-          buttonLess.classList.remove('active');
-        }
-        if (indexActiveImg > +buttonArr[buttonArr.length - 1].innerText) {
-          buttonMore.classList.add('active');
-        }
-        if (indexActiveImg < +buttonArr[0].innerText) {
-          buttonLess.classList.add('active');
-        } else if (+buttonArr[indexActiveButton].innerText === indexActiveImg) {
-          buttonArr[indexActiveButton].classList.add('active');
-        }
+  // search for the number of the last button pagination
+  const searchLastNumberButton = (n) => {
+    const buttonArr = document.querySelectorAll('.img-navigation');
+    for (let i = 0; i < buttonArr.length; i += 1) {
+      if (i + 1 === n) {
+        indexStartNumButton = +buttonArr[i].innerText;
       }
-      indexActiveImg = 0;
-    };
+    }
+  };
 
-    // function showing new image after pressing a button "next"
+  // clear all button pagination
+  const clearPagination = () => {
+    while (paginationImgBlock.firstChild) {
+      paginationImgBlock.removeChild(paginationImgBlock.firstChild);
+    }
+  };
 
-    const showButtonMore = () => {
-      const moreImg = document.createElement('button');
-      moreImg.classList.add('moreImg-class');
-      moreImg.id = 'moreImg';
-      moreImg.textContent = '>>';
-      paginationImgBlock.appendChild(moreImg);
-    };
+  // show new pagination button after push button ">>"
+  const showNextPagination = () => {
+    searchLastNumberButton(indexPagination);
+    clearPagination();
+    showButtonLess();
+    const reserveVariables = indexStartNumButton;
+    indexPagination = indexStartNumButton + indexPagination;
 
-    const showButtonLess = () => {
+    if (indexPagination === links.length) {
+      for (indexStartNumButton; indexStartNumButton < indexPagination; indexStartNumButton += 1) {
+        createNewButtonMore();
+      }
+    } else if (indexPagination < links.length) {
+      for (indexStartNumButton; indexStartNumButton < indexPagination; indexStartNumButton += 1) {
+        createNewButtonMore();
+      }
+      showButtonMore();
+    } else {
+      for (indexStartNumButton; indexStartNumButton < links.length; indexStartNumButton += 1) {
+        createNewButtonMore();
+      }
+    }
+    indexPagination -= reserveVariables;
+    addClassButton();
+  };
+
+  // show new pagination button after push button "<<"
+  const showPrevPagination = () => {
+    searchLastNumberButton(1);
+    clearPagination();
+    showButtonMore();
+    const reserveVariables = indexStartNumButton;
+    indexPagination = indexStartNumButton - indexPagination;
+
+    if (indexPagination > 1) {
+      for (indexStartNumButton; indexStartNumButton > indexPagination; indexStartNumButton -= 1) {
+        createNewButtonLess();
+      }
       const lessImg = document.createElement('button');
       lessImg.classList.add('lessImg-class');
       lessImg.id = 'lessImg';
       lessImg.textContent = '<<';
-      paginationImgBlock.appendChild(lessImg);
-    };
-    // creating a new button with a number greater than the previous one
-    const createNewButtonMore = () => {
-      const imgNumber = document.createElement('button');
-      imgNumber.classList.add('img-navigation');
-      imgNumber.textContent = +indexStartNumButton + 1;
-      paginationImgBlock.appendChild(imgNumber);
-    };
-    // creating a new button with a number less than the previous one
-    const createNewButtonLess = () => {
-      const imgNumber = document.createElement('button');
-      imgNumber.classList.add('img-navigation');
-      imgNumber.textContent = +indexStartNumButton - 1;
-      paginationImgBlock.insertBefore(imgNumber, paginationImgBlock.children[0]);
-    };
-
-    // start function create pagination button
-    const showPagination = () => {
-      if (links.length > indexPagination) {
-        for (let i = 0; i < indexPagination; i += 1) {
-          const imgNumber = document.createElement('button');
-          imgNumber.classList.add('img-navigation');
-          imgNumber.textContent = i + 1;
-          paginationImgBlock.appendChild(imgNumber);
-        }
-        showButtonMore();
-      } else if (links.length <= indexPagination) {
-        for (let i = 0; i < links.length; i += 1) {
-          const imgNumber = document.createElement('button');
-          imgNumber.classList.add('img-navigation');
-          imgNumber.textContent = i + 1;
-          paginationImgBlock.appendChild(imgNumber);
-        }
+      paginationImgBlock.insertBefore(lessImg, paginationImgBlock.children[0]);
+    } else {
+      for (indexStartNumButton; indexStartNumButton > 1; indexStartNumButton -= 1) {
+        createNewButtonLess();
       }
-      addClassButton();
-    };
+    }
+    indexPagination = reserveVariables - indexPagination;
+    addClassButton();
+  };
 
-    // search for the number of the last button pagination
-    const searchLastNumberButton = (n) => {
-      const buttonArr = document.querySelectorAll('.img-navigation');
-      for (let i = 0; i < buttonArr.length; i += 1) {
-        if (i + 1 === n) {
-          indexStartNumButton = +buttonArr[i].innerText;
-        }
+  // brute force pagination array
+  const bruteForcePagination = () => {
+    const buttonArr = document.querySelectorAll('.img-navigation');
+    const lessButton = document.getElementById('lessImg');
+    const moreButton = document.getElementById('moreImg');
+
+    if (lessButton) {
+      if (lessButton.classList.contains('active')) {
+        activeButton = -1;
       }
-    };
-
-    // clear all button pagination
-    const clearPagination = () => {
-      while (paginationImgBlock.firstChild) {
-        paginationImgBlock.removeChild(paginationImgBlock.firstChild);
+    }
+    if (moreButton) {
+      if (moreButton.classList.contains('active')) {
+        activeButton = links.length + 1;
       }
-    };
-
-    // show new pagination button after push button ">>"
-    const showNextPagination = () => {
-      searchLastNumberButton(indexPagination);
-      clearPagination();
-      showButtonLess();
-      const reserveVariables = indexStartNumButton;
-      indexPagination = indexStartNumButton + indexPagination;
-
-      if (indexPagination === links.length) {
-        for (indexStartNumButton; indexStartNumButton < indexPagination; indexStartNumButton += 1) {
-          createNewButtonMore();
-        }
-      } else if (indexPagination < links.length) {
-        for (indexStartNumButton; indexStartNumButton < indexPagination; indexStartNumButton += 1) {
-          createNewButtonMore();
-        }
-        showButtonMore();
-      } else {
-        for (indexStartNumButton; indexStartNumButton < links.length; indexStartNumButton += 1) {
-          createNewButtonMore();
-        }
+    }
+    for (let i = 0; i < buttonArr.length; i += 1) {
+      if (buttonArr[i].classList.contains('active')) {
+        activeButton = +buttonArr[i].innerText;
       }
-      indexPagination -= reserveVariables;
-      addClassButton();
-    };
+    }
+  };
 
-    // show new pagination button after push button "<<"
-    const showPrevPagination = () => {
-      searchLastNumberButton(1);
-      clearPagination();
-      showButtonMore();
-      const reserveVariables = indexStartNumButton;
-      indexPagination = indexStartNumButton - indexPagination;
+  // search for a link to a picture of the corresponding pressed button
+  const searchIndexNewImage = () => {
+    for (let i = 0; i < links.length; i += 1) {
+      if (i + 1 === numberPushButton) {
+        linkNewImage = links[i];
+        break;
+      }
+    }
+  };
 
-      if (indexPagination > 1) {
-        for (indexStartNumButton; indexStartNumButton > indexPagination; indexStartNumButton -= 1) {
-          createNewButtonLess();
-        }
-        const lessImg = document.createElement('button');
-        lessImg.classList.add('lessImg-class');
-        lessImg.id = 'lessImg';
-        lessImg.textContent = '<<';
-        paginationImgBlock.insertBefore(lessImg, paginationImgBlock.children[0]);
-      } else {
-        for (indexStartNumButton; indexStartNumButton > 1; indexStartNumButton -= 1) {
-          createNewButtonLess();
-        }
-      }
-      indexPagination = reserveVariables - indexPagination;
-      addClassButton();
-    };
+  // adding a new image after pressing the button with the number more than the active one
+  const addNextImageFromPagination = () => {
+    if (isFlagAction) {
+      return;
+    }
+    const rightImg = document.createElement('img');
+    searchIndexNewImage();
+    slides[0].remove();
+    slides[2].remove();
 
-    // brute force pagination array
-    const bruteForcePagination = () => {
-      const buttonArr = document.querySelectorAll('.img-navigation');
-      const lessButton = document.getElementById('lessImg');
-      const moreButton = document.getElementById('moreImg');
+    rightImg.src = linkNewImage;
+    rightImg.classList.add('slide-single');
+    rightImg.style.left = `${100}%`;
+    sliderBlock.appendChild(rightImg);
+    slides = document.querySelectorAll('.slide-single');
+    isFlagAction = true;
+    setTimeout(() => {
+      shiftImageLeft();
+    }, 200);
 
-      if (lessButton) {
-        if (lessButton.classList.contains('active')) {
-          activeButton = -1;
-        }
-      }
-      if (moreButton) {
-        if (moreButton.classList.contains('active')) {
-          activeButton = links.length + 1;
-        }
-      }
-      for (let i = 0; i < buttonArr.length; i += 1) {
-        if (buttonArr[i].classList.contains('active')) {
-          activeButton = +buttonArr[i].innerText;
-        }
-      }
-    };
-
-    // search for a link to a picture of the corresponding pressed button
-    const searchIndexNewImage = () => {
-      for (let i = 0; i < links.length; i += 1) {
-        if (i + 1 === numberPushButton) {
-          linkNewImage = links[i];
-          break;
-        }
-      }
-    };
-
-    // adding a new image after pressing the button with the number more than the active one
-    const addNextImageFromPagination = () => {
-      if (isFlagAction) {
-        return;
-      }
-      const rightImg = document.createElement('img');
-      searchIndexNewImage();
+    setTimeout(() => {
+      findIndexLastImg(slides[1]);
+      addNextImage();
       slides[0].remove();
-      slides[2].remove();
+      findIndexLastImg(slides[1]);
+      addPrevImage();
+      addClassButton();
+      numberPushButton = 0;
+      linkNewImage = 0;
+      isFlagAction = false;
+    }, 2000);
+  };
 
-      rightImg.src = linkNewImage;
-      rightImg.classList.add('slide-single');
-      rightImg.style.left = `${100}%`;
-      sliderBlock.appendChild(rightImg);
-      slides = document.querySelectorAll('.slide-single');
-      isFlagAction = true;
-      setTimeout(() => {
-        shiftImageLeft();
-      }, 200);
+  // adding a new image after pressing the button with the number less than the active one
+  const addPrevImageFromPagination = () => {
+    if (isFlagAction) {
+      return;
+    }
+    const leftImg = document.createElement('img');
+    searchIndexNewImage();
+    slides[0].remove();
+    slides[2].remove();
 
-      setTimeout(() => {
-        findIndexLastImg(slides[1]);
-        addNextImage();
-        slides[0].remove();
-        findIndexLastImg(slides[1]);
-        addPrevImage();
-        addClassButton();
-        numberPushButton = 0;
-        linkNewImage = 0;
-        isFlagAction = false;
-      }, 2000);
-    };
+    leftImg.src = linkNewImage;
+    leftImg.classList.add('slide-single');
+    leftImg.style.left = `${-100}%`;
+    sliderBlock.insertBefore(leftImg, sliderBlock.children[0]);
+    slides = document.querySelectorAll('.slide-single');
+    isFlagAction = true;
+    setTimeout(() => {
+      shiftImageRight();
+    }, 200);
 
-    // adding a new image after pressing the button with the number less than the active one
-    const addPrevImageFromPagination = () => {
-      if (isFlagAction) {
-        return;
-      }
-      const leftImg = document.createElement('img');
-      searchIndexNewImage();
-      slides[0].remove();
-      slides[2].remove();
-
-      leftImg.src = linkNewImage;
-      leftImg.classList.add('slide-single');
-      leftImg.style.left = `${-100}%`;
-      sliderBlock.insertBefore(leftImg, sliderBlock.children[0]);
-      slides = document.querySelectorAll('.slide-single');
-      isFlagAction = true;
-      setTimeout(() => {
-        shiftImageRight();
-      }, 200);
-
-      setTimeout(() => {
-        findIndexLastImg(slides[0]);
-        addPrevImage();
-        slides[1].remove();
-        findIndexLastImg(slides[0]);
-        addNextImage();
-        addClassButton();
-        numberPushButton = 0;
-        linkNewImage = 0;
-        isFlagAction = false;
-      }, 2000);
-    };
+    setTimeout(() => {
+      findIndexLastImg(slides[0]);
+      addPrevImage();
+      slides[1].remove();
+      findIndexLastImg(slides[0]);
+      addNextImage();
+      addClassButton();
+      numberPushButton = 0;
+      linkNewImage = 0;
+      isFlagAction = false;
+    }, 2000);
+  };
     // showing a new image after pressing a button pagination
-    const showNotActiveImg = () => {
-      let indexWaitImage = 0;
-      const buttonArr = document.querySelectorAll('.img-navigation');
-      bruteForcePagination();
-      for (; indexWaitImage <= links.length; indexWaitImage += 1) {
-        if (indexWaitImage === numberPushButton) {
-          for (let i = 0; i < buttonArr.length; i += 1) {
-            if (+buttonArr[i].innerText === numberPushButton) {
-              if (indexWaitImage > activeButton) {
-                addNextImageFromPagination();
-                break;
-              } else {
-                addPrevImageFromPagination();
-                break;
-              }
+  const showNotActiveImg = () => {
+    let indexWaitImage = 0;
+    const buttonArr = document.querySelectorAll('.img-navigation');
+    bruteForcePagination();
+    for (; indexWaitImage <= links.length; indexWaitImage += 1) {
+      if (indexWaitImage === numberPushButton) {
+        for (let i = 0; i < buttonArr.length; i += 1) {
+          if (+buttonArr[i].innerText === numberPushButton) {
+            if (indexWaitImage > activeButton) {
+              addNextImageFromPagination();
+              break;
+            } else {
+              addPrevImageFromPagination();
+              break;
             }
           }
         }
       }
-    };
+    }
+  };
     // checking whether the active class has a button
-    const containsActiveClass = (x) => {
-      const numButton = +x;
-      const buttonArr = document.querySelectorAll('.img-navigation');
+  const containsActiveClass = (x) => {
+    const numButton = +x;
+    const buttonArr = document.querySelectorAll('.img-navigation');
 
-      for (let i = 0; i < buttonArr.length; i += 1) {
-        if (numButton === +buttonArr[i].innerText) {
-          if (buttonArr[i].classList.contains('active')) {
-            break;
-          } else {
-            showNotActiveImg();
-            break;
-          }
+    for (let i = 0; i < buttonArr.length; i += 1) {
+      if (numButton === +buttonArr[i].innerText) {
+        if (buttonArr[i].classList.contains('active')) {
+          break;
+        } else {
+          showNotActiveImg();
+          break;
         }
       }
-    };
-    paginationImgBlock.onclick = (event) => {
-      const { target } = event;
-      if (target.id === 'moreImg') {
-        showNextPagination();
-      } else if (target.id === 'lessImg') {
-        showPrevPagination();
-      } else if (target.id !== 'lessImg' && 'moreImg') {
-        numberPushButton = +target.innerText;
-        containsActiveClass(target.innerText);
-      }
-    };
+    }
+  };
+  paginationImgBlock.onclick = (event) => {
+    const { target } = event;
+    if (target.id === 'moreImg') {
+      showNextPagination();
+    } else if (target.id === 'lessImg') {
+      showPrevPagination();
+    } else if (target.id !== 'lessImg' && 'moreImg') {
+      numberPushButton = +target.innerText;
+      containsActiveClass(target.innerText);
+    }
+  };
 
-    showPagination();
+  showPagination();
 
-    next.onclick = () => {
-      if (!isFlagAction) {
-        slides = document.querySelectorAll('.slide-single');
-        findIndexLastImg(slides[2]);
-        slides[0].remove();
-        shiftImageLeft();
-        isFlagAction = true;
-        setTimeout(() => {
-          addNextImage();
-          addClassButton();
-          isFlagAction = false;
-        }, 2000);
-      } return false;
-    };
+  next.onclick = () => {
+    if (!isFlagAction) {
+      slides = document.querySelectorAll('.slide-single');
+      findIndexLastImg(slides[2]);
+      slides[0].remove();
+      shiftImageLeft();
+      isFlagAction = true;
+      setTimeout(() => {
+        addNextImage();
+        addClassButton();
+        isFlagAction = false;
+      }, 2000);
+    } return false;
+  };
 
-    // function showing new image after pressing a button "previous"
-    previous.onclick = () => {
-      if (!isFlagAction) {
-        slides = document.querySelectorAll('.slide-single');
-        offset = 0;
-        findIndexLastImg(slides[0]);
-        slides[2].remove();
-        shiftImageRight();
-        isFlagAction = true;
-        setTimeout(() => {
-          addPrevImage();
-          addClassButton();
-          isFlagAction = false;
-        }, 2000);
-      }
-      return false;
-    };
-
-  }else{
-      return;
-  }
-
+  // function showing new image after pressing a button "previous"
+  previous.onclick = () => {
+    if (!isFlagAction) {
+      slides = document.querySelectorAll('.slide-single');
+      offset = 0;
+      findIndexLastImg(slides[0]);
+      slides[2].remove();
+      shiftImageRight();
+      isFlagAction = true;
+      setTimeout(() => {
+        addPrevImage();
+        addClassButton();
+        isFlagAction = false;
+      }, 2000);
+    }
+    return false;
+  };
+}
