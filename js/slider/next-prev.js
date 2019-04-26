@@ -7,17 +7,12 @@ if (document.querySelector('.slider-headline')) {
   let offset = 0;
   let isFlagAction = false;
 
-  // eslint-disable-next-line global-require
   const moduleImages = require('./show-images');
   const { links } = moduleImages;
 
-  // eslint-disable-next-line global-require
   const modulePagination = require('./pagination');
   const { addClassButton } = modulePagination;
-  console.log(addClassButton);
 
-  // find link active image after shift
-  // eslint-disable-next-line consistent-return
   const findIndexLastImg = (arg) => {
     for (; imgIndex < links.length; imgIndex += 1) {
       if (links[imgIndex] === arg.src) {

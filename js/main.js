@@ -294,7 +294,7 @@
       }; // show new pagination button after push button ">>"
 
 
-      const showNextPagination = () => {
+      exports.showNextPagination = () => {
         searchLastNumberButton(indexPagination);
         clearPagination();
         showButtonLess();
@@ -322,7 +322,7 @@
       }; // show new pagination button after push button "<<"
 
 
-      const showPrevPagination = () => {
+      exports.showPrevPagination = () => {
         searchLastNumberButton(1);
         clearPagination();
         showButtonMore();
@@ -348,9 +348,6 @@
         indexPagination = reserveVariables - indexPagination;
         addClassButton();
       };
-
-      exports.showPrevPagination = showPrevPagination;
-      exports.showNextPagination = showNextPagination;
     }
   }, {
     "./pagination": 8,
@@ -364,21 +361,19 @@
       let slides = document.querySelectorAll('.slide-single');
       let imgIndex = 0;
       let offset = 0;
-      let isFlagAction = false; // eslint-disable-next-line global-require
+      let isFlagAction = false;
 
       const moduleImages = require('./show-images');
 
       const {
         links
-      } = moduleImages; // eslint-disable-next-line global-require
+      } = moduleImages;
 
       const modulePagination = require('./pagination');
 
       const {
         addClassButton
       } = modulePagination;
-      console.log(addClassButton); // find link active image after shift
-      // eslint-disable-next-line consistent-return
 
       const findIndexLastImg = arg => {
         for (; imgIndex < links.length; imgIndex += 1) {
@@ -514,16 +509,7 @@
 
       const {
         links
-      } = moduleImages; // eslint-disable-next-line global-require
-
-      const moduleShowMoreLess = require('./more-less-pagination');
-
-      const {
-        showPrevPagination
-      } = moduleShowMoreLess;
-      const {
-        showNextPagination
-      } = moduleShowMoreLess; // find link active image after shift
+      } = moduleImages; // find link active image after shift
       // eslint-disable-next-line consistent-return
 
       const findIndexLastImg = arg => {
@@ -820,6 +806,15 @@
       };
 
       paginationImgBlock.onclick = event => {
+        // eslint-disable-next-line global-require
+        const moduleShowMoreLess = require('./more-less-pagination');
+
+        const {
+          showPrevPagination
+        } = moduleShowMoreLess;
+        const {
+          showNextPagination
+        } = moduleShowMoreLess;
         const {
           target
         } = event;
@@ -881,13 +876,13 @@
     }
   }, {}],
   10: [function (require, module, exports) {
-    require('./show-images.js');
+    require('./more-less-pagination.js');
 
     require('./next-prev.js');
 
-    require('./more-less-pagination.js');
-
     require('./pagination.js');
+
+    require('./show-images.js');
   }, {
     "./more-less-pagination.js": 6,
     "./next-prev.js": 7,

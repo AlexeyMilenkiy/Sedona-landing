@@ -11,8 +11,6 @@ if (document.querySelector('.slider-headline')) {
   // eslint-disable-next-line global-require
   const moduleImages = require('./show-images');
   const { links } = moduleImages;
-  console.log(links);
-
 
   // search for the number of the last button pagination
   const searchLastNumberButton = (n) => {
@@ -65,7 +63,7 @@ if (document.querySelector('.slider-headline')) {
   };
 
   // show new pagination button after push button ">>"
-  const showNextPagination = () => {
+  exports.showNextPagination = () => {
     searchLastNumberButton(indexPagination);
     clearPagination();
     showButtonLess();
@@ -91,7 +89,7 @@ if (document.querySelector('.slider-headline')) {
   };
 
   // show new pagination button after push button "<<"
-  const showPrevPagination = () => {
+  exports.showPrevPagination = () => {
     searchLastNumberButton(1);
     clearPagination();
     showButtonMore();
@@ -115,7 +113,4 @@ if (document.querySelector('.slider-headline')) {
     indexPagination = reserveVariables - indexPagination;
     addClassButton();
   };
-
-  exports.showPrevPagination = showPrevPagination;
-  exports.showNextPagination = showNextPagination;
 }

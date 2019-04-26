@@ -15,10 +15,6 @@ if (document.querySelector('.slider-headline')) {
   const moduleImages = require('./show-images');
   const { links } = moduleImages;
 
-  // eslint-disable-next-line global-require
-  const moduleShowMoreLess = require('./more-less-pagination');
-  const { showPrevPagination } = moduleShowMoreLess;
-  const { showNextPagination } = moduleShowMoreLess;
 
   // find link active image after shift
   // eslint-disable-next-line consistent-return
@@ -300,6 +296,11 @@ if (document.querySelector('.slider-headline')) {
   };
 
   paginationImgBlock.onclick = (event) => {
+    // eslint-disable-next-line global-require
+    const moduleShowMoreLess = require('./more-less-pagination');
+    const { showPrevPagination } = moduleShowMoreLess;
+    const { showNextPagination } = moduleShowMoreLess;
+
     const { target } = event;
     if (target.id === 'moreImg') {
       showNextPagination();
