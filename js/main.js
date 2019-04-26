@@ -30,9 +30,29 @@
   return r;
 })()({
   1: [function (require, module, exports) {
-    require('./validator.js');
+    if (document.querySelector('.review__headline')) {
+      const VMasker = require('vanilla-masker');
 
-    if (!!document.querySelector('.review__headline')) {
+      const tel = document.querySelector('#tel');
+
+      const inputHandler = (masks, max, event) => {
+        const input = event.target;
+        const inputValue = input.value.replace(/\D/g, '');
+        const maxLength = input.value.length > max ? 1 : 0;
+        VMasker(input).unMask();
+        VMasker(input).maskPattern(masks[maxLength]);
+        input.value = VMasker.toPattern(inputValue, masks[maxLength]);
+      };
+
+      const telMask = ['+9(999)999-99-99', '+9(999)999-99-99'];
+      VMasker(tel).maskPattern(telMask[0]);
+      tel.addEventListener('input', inputHandler.bind(undefined, telMask, 14), false);
+    }
+  }, {
+    "vanilla-masker": 8
+  }],
+  2: [function (require, module, exports) {
+    if (document.querySelector('.review__headline')) {
       const mobileMenuIcon = document.querySelector('.mobile-menu');
       const mobileMenu = document.querySelector('.mobile-navigation');
       const closeMobMenu = document.querySelector('.close-mobile-nav');
@@ -52,34 +72,21 @@
           mobileMenu.classList.remove('show-nav');
         }, 1000);
       };
-    } else {
-      return;
-    }
-  }, {
-    "./validator.js": 2
-  }],
-  2: [function (require, module, exports) {
-    require('./animation.js');
-
-    if (!!document.querySelector('.review__headline')) {
+    } else {}
+  }, {}],
+  3: [function (require, module, exports) {
+    if (document.querySelector('.review__headline')) {
       const name = document.getElementById('name');
       const surName = document.getElementById('surname');
-      const tel = document.querySelector('#tel');
       const errorMessageEmail = document.querySelector('.wrong-email-hidden');
       const errorMessageTel = document.querySelector('.wrong-number-hidden');
-      const popUpContainer = document.querySelector('.pop-up-container');
-      const formInputs = document.getElementsByTagName('input');
-      const pushButton = document.querySelector('.push');
-
-      const VMasker = require('vanilla-masker');
 
       const validate = require('validate-js');
 
-      const clearInputs = () => {
-        for (let i = 0; i < formInputs.length; i += 1) {
-          formInputs[i].value = '';
-        }
-      };
+      const popUpContainer = document.querySelector('.pop-up-container');
+      const closePopUp = document.querySelector('.pop-up__close');
+      const formInputs = document.getElementsByTagName('input');
+      const pushButton = document.querySelector('.push');
 
       const showPopUpWindow = () => {
         popUpContainer.classList.remove('pop-up-none');
@@ -94,6 +101,23 @@
         window.onscroll = () => {
           window.scrollTo(scrollX, scrollY);
         };
+      };
+
+      closePopUp.onclick = () => {
+        popUpContainer.classList.remove('pop-up-show');
+        popUpContainer.addEventListener('animationend', () => {
+          popUpContainer.classList.add('pop-up-none');
+        });
+
+        window.onscroll = () => {
+          window.scrollTo();
+        };
+      };
+
+      const clearInputs = () => {
+        for (let i = 0; i < formInputs.length; i += 1) {
+          formInputs[i].value = '';
+        }
       };
 
       const clearErrors = () => {
@@ -173,43 +197,29 @@
       validator.registerCallback('check_phone', value => {
         const phoneCheck = /^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$/;
         return phoneCheck.test(value);
-      }).setMessage('check_phone', ''); // mask for phone
-
-      const inputHandler = (masks, max, event) => {
-        const input = event.target;
-        const inputValue = input.value.replace(/\D/g, '');
-        const maxLength = input.value.length > max ? 1 : 0;
-        VMasker(input).unMask();
-        VMasker(input).maskPattern(masks[maxLength]);
-        input.value = VMasker.toPattern(inputValue, masks[maxLength]);
-      };
-
-      const telMask = ['+9(999)999-99-99', '+9(999)999-99-99'];
-      VMasker(tel).maskPattern(telMask[0]);
-      tel.addEventListener('input', inputHandler.bind(undefined, telMask, 14), false); //
-    } else {
-      return;
+      }).setMessage('check_phone', '');
     }
   }, {
-    "./animation.js": 1,
-    "validate-js": 6,
-    "vanilla-masker": 7
+    "validate-js": 7
   }],
-  3: [function (require, module, exports) {
+  4: [function (require, module, exports) {
     require('./main-page/validator.js');
 
-    require('./main-page/animation.js');
+    require('./main-page/mask.js');
+
+    require('./main-page/mobile-menu.js');
 
     require('./slider/slider-images.js');
 
     require('./slider/slider-pagination.js');
   }, {
-    "./main-page/animation.js": 1,
-    "./main-page/validator.js": 2,
-    "./slider/slider-images.js": 4,
-    "./slider/slider-pagination.js": 5
+    "./main-page/mask.js": 1,
+    "./main-page/mobile-menu.js": 2,
+    "./main-page/validator.js": 3,
+    "./slider/slider-images.js": 5,
+    "./slider/slider-pagination.js": 6
   }],
-  4: [function (require, module, exports) {
+  5: [function (require, module, exports) {
     require('./slider-pagination.js');
 
     if (!!document.querySelector('.slider-headline')) {
@@ -404,9 +414,9 @@
       return;
     }
   }, {
-    "./slider-pagination.js": 5
+    "./slider-pagination.js": 6
   }],
-  5: [function (require, module, exports) {
+  6: [function (require, module, exports) {
     require('./slider-images.js');
 
     if (!!document.querySelector('.slider-headline')) {
@@ -711,9 +721,9 @@
       return;
     }
   }, {
-    "./slider-images.js": 4
+    "./slider-images.js": 5
   }],
-  6: [function (require, module, exports) {
+  7: [function (require, module, exports) {
     /*
      * validate.js 2.0.1
      * Copyright (c) 2011 - 2015 Rick Harrison, http://rickharrison.me
@@ -1345,7 +1355,7 @@
       module.exports = FormValidator;
     }
   }, {}],
-  7: [function (require, module, exports) {
+  8: [function (require, module, exports) {
     (function (root, factory) {
       if (typeof define === 'function' && define.amd) {
         define(factory);
@@ -1575,4 +1585,4 @@
       return VMasker;
     });
   }, {}]
-}, {}, [3]);
+}, {}, [4]);
