@@ -64,7 +64,7 @@ if (document.querySelector('.review__headline')) {
   const validator = new validate('form', constraints, ((errors, evt) => {
     clearErrors();
     if (errors.length > 0) {
-      for (let i = 0; i < errors.length; i++) {
+      for (let i = 0; i < errors.length; i += 1) {
         if (errors[i].id === 'name') {
           name.classList.add('review-user__input-error');
         } else if (errors[i].id === 'surname') {

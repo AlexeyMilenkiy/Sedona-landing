@@ -18,6 +18,4 @@ if (document.querySelector('.review__headline')) {
       mobileMenu.classList.remove('show-nav');
     }, 1000);
   };
-} else {
-
 }

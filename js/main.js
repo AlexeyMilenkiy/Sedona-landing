@@ -72,7 +72,7 @@
           mobileMenu.classList.remove('show-nav');
         }, 1000);
       };
-    } else {}
+    }
   }, {}],
   3: [function (require, module, exports) {
     if (document.querySelector('.review__headline')) {
@@ -148,7 +148,7 @@
         clearErrors();
 
         if (errors.length > 0) {
-          for (let i = 0; i < errors.length; i++) {
+          for (let i = 0; i < errors.length; i += 1) {
             if (errors[i].id === 'name') {
               name.classList.add('review-user__input-error');
             } else if (errors[i].id === 'surname') {
@@ -209,47 +209,44 @@
 
     require('./main-page/mobile-menu.js');
 
-    require('./slider/slider-images.js');
+    require('./slider/show-images.js');
 
-    require('./slider/slider-pagination.js');
+    require('./slider/next-prev.js');
   }, {
     "./main-page/mask.js": 1,
     "./main-page/mobile-menu.js": 2,
     "./main-page/validator.js": 3,
-    "./slider/slider-images.js": 5,
-    "./slider/slider-pagination.js": 6
+    "./slider/next-prev.js": 5,
+    "./slider/show-images.js": 6
   }],
   5: [function (require, module, exports) {
-    require('./slider-pagination.js');
-
     if (!!document.querySelector('.slider-headline')) {
-      let slides = document.querySelectorAll('.slide-single');
-      const sliderBlock = document.querySelector('.slider');
-      let links = [];
+      const paginationImgBlock = document.querySelector('.pagination-img-block');
       const next = document.querySelector('#next-slide');
-      const previous = document.querySelector('#prev-slide'); // start function create images on pages
+      const previous = document.querySelector('#prev-slide');
+      const sliderBlock = document.querySelector('.slider');
+      let slides = document.querySelectorAll('.slide-single'); // let links = export.from('./show-images.js');
 
-      const showImage = () => {
-        findLinksImg();
-        imgIndex = 0;
-        const offset1 = 1;
-        const img = document.createElement('img');
-        const img1 = document.createElement('img');
-        const img2 = document.createElement('img');
-        img.src = links[links.length - 1];
-        img.classList.add('slide-single');
-        img.style.left = `${offset1 - 100}%`;
-        sliderBlock.appendChild(img);
-        img1.src = links[imgIndex];
-        img1.classList.add('slide-single');
-        img1.style.left = `${offset * 100}%`;
-        sliderBlock.appendChild(img1);
-        img2.src = links[imgIndex + 1];
-        img2.classList.add('slide-single');
-        img2.style.left = `${offset1 * 100}%`;
-        sliderBlock.appendChild(img2);
-      }; // find link active image after shift
+      let imgIndex = 0;
+      let offset = 0;
+      let indexPagination = 3; //  number of buttons pagination
 
+      let indexStartNumButton = 0;
+      let indexActiveImg = 0;
+      let numberPushButton = 0;
+      let activeButton = 0;
+      let linkNewImage = 0;
+      let isFlagAction = false; //
+      // create array with links images on slider
+      // const findLinksImg = () => {
+      //   for (let i = 0; i < slides.length; i += 1) {
+      //     links[i] = slides[i].src;
+      //     slides[i].remove();
+      //   }
+      // };
+      // findLinksImg();
+
+      console.log(links); // find link active image after shift
 
       const findIndexLastImg = arg => {
         for (; imgIndex < links.length; imgIndex += 1) {
@@ -372,66 +369,6 @@
         indexActiveImg = 0;
       }; // function showing new image after pressing a button "next"
 
-
-      next.onclick = () => {
-        if (!isFlagAction) {
-          slides = document.querySelectorAll('.slide-single');
-          findIndexLastImg(slides[2]);
-          slides[0].remove();
-          shiftImageLeft();
-          isFlagAction = true;
-          setTimeout(() => {
-            addNextImage();
-            addClassButton();
-            isFlagAction = false;
-          }, 2000);
-        }
-
-        return false;
-      }; // function showing new image after pressing a button "previous"
-
-
-      previous.onclick = () => {
-        if (!isFlagAction) {
-          slides = document.querySelectorAll('.slide-single');
-          offset = 0;
-          findIndexLastImg(slides[0]);
-          slides[2].remove();
-          shiftImageRight();
-          isFlagAction = true;
-          setTimeout(() => {
-            addPrevImage();
-            addClassButton();
-            isFlagAction = false;
-          }, 2000);
-        }
-
-        return false;
-      };
-
-      showImage();
-    } else {
-      return;
-    }
-  }, {
-    "./slider-pagination.js": 6
-  }],
-  6: [function (require, module, exports) {
-    require('./slider-images.js');
-
-    if (!!document.querySelector('.slider-headline')) {
-      const paginationImgBlock = document.querySelector('.pagination-img-block');
-      let links = [];
-      let imgIndex = 0;
-      let offset = 0;
-      let indexPagination = 3; //  number of buttons pagination
-
-      let indexStartNumButton = 0;
-      let indexActiveImg = 0;
-      let numberPushButton = 0;
-      let activeButton = 0;
-      let linkNewImage = 0;
-      let isFlagAction = false;
 
       const showButtonMore = () => {
         const moreImg = document.createElement('button');
@@ -717,12 +654,89 @@
       };
 
       showPagination();
+
+      next.onclick = () => {
+        if (!isFlagAction) {
+          slides = document.querySelectorAll('.slide-single');
+          findIndexLastImg(slides[2]);
+          slides[0].remove();
+          shiftImageLeft();
+          isFlagAction = true;
+          setTimeout(() => {
+            addNextImage();
+            addClassButton();
+            isFlagAction = false;
+          }, 2000);
+        }
+
+        return false;
+      }; // function showing new image after pressing a button "previous"
+
+
+      previous.onclick = () => {
+        if (!isFlagAction) {
+          slides = document.querySelectorAll('.slide-single');
+          offset = 0;
+          findIndexLastImg(slides[0]);
+          slides[2].remove();
+          shiftImageRight();
+          isFlagAction = true;
+          setTimeout(() => {
+            addPrevImage();
+            addClassButton();
+            isFlagAction = false;
+          }, 2000);
+        }
+
+        return false;
+      };
     } else {
       return;
     }
-  }, {
-    "./slider-images.js": 5
-  }],
+  }, {}],
+  6: [function (require, module, exports) {
+    if (!!document.querySelector('.slider-headline')) {
+      let slides = document.querySelectorAll('.slide-single');
+      const sliderBlock = document.querySelector('.slider');
+      window.links = [];
+      let imgIndex = 0;
+      let offset = 0; // create array with links images on slider
+
+      const findLinksImg = () => {
+        for (let i = 0; i < slides.length; i += 1) {
+          links[i] = slides[i].src;
+          slides[i].remove();
+        }
+      };
+
+      console.log(links); // start function create images on pages
+
+      const showImage = () => {
+        findLinksImg();
+        imgIndex = 0;
+        const offset1 = 1;
+        const img = document.createElement('img');
+        const img1 = document.createElement('img');
+        const img2 = document.createElement('img');
+        img.src = links[links.length - 1];
+        img.classList.add('slide-single');
+        img.style.left = `${offset1 - 100}%`;
+        sliderBlock.appendChild(img);
+        img1.src = links[imgIndex];
+        img1.classList.add('slide-single');
+        img1.style.left = `${offset * 100}%`;
+        sliderBlock.appendChild(img1);
+        img2.src = links[imgIndex + 1];
+        img2.classList.add('slide-single');
+        img2.style.left = `${offset1 * 100}%`;
+        sliderBlock.appendChild(img2);
+      };
+
+      showImage();
+    } else {
+      return;
+    }
+  }, {}],
   7: [function (require, module, exports) {
     /*
      * validate.js 2.0.1
