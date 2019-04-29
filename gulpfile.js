@@ -16,7 +16,7 @@ var rename = require('gulp-rename');
 gulp.task('less', function(){
 	return gulp.src(['./style/less/*.less'])
 	       .pipe(less())
-         .pipe(concat('main.css'))
+           .pipe(concat('main.css'))
 	       .pipe(gulp.dest('./style/dest'))
 	       .pipe(browserSync.stream());
 });
@@ -29,7 +29,7 @@ gulp.task('css', function () {
          .pipe(browserSync.stream());
 });
 
-gulp.task('browserify', function(){
+gulp.task('script', function(){
  var bundleStream = browserify('./js/script.js').bundle()
 
   return bundleStream
@@ -40,15 +40,16 @@ gulp.task('browserify', function(){
     .pipe(browserSync.stream());
 });
 
-gulp.task('default', gulp.parallel('less', 'css', 'browserify', function(){
+gulp.task('default', gulp.parallel('less', 'css', 'script', function(){
        
        browserSync.init({
        	server: {baseDir: './'}
-       })
+       });
 
     gulp.watch('./index.html').on('change', browserSync.reload);
     gulp.watch('./style/main.css').on('change', browserSync.reload);
-    gulp.watch('./js/script.js').on('change', gulp.series('browserify'), browserSync.reload);
+    gulp.watch('./js/slider/*.js').on('change', gulp.series('script'), browserSync.reload);
+    gulp.watch('./js/main-page/*.js').on('change', gulp.series('script'), browserSync.reload);
     gulp.watch('./style/less/*.less', gulp.series('less'));
     gulp.watch('./style/dest/*.css', gulp.series('css'));
 }));
