@@ -240,8 +240,7 @@
 
       const {
         links
-      } = moduleImages;
-      console.log(links); // search for the number of the last button pagination
+      } = moduleImages; // search for the number of the last button pagination
 
       const searchLastNumberButton = n => {
         const buttonArr = document.querySelectorAll('.img-navigation');
