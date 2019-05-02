@@ -549,6 +549,7 @@ body {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  list-style-type: none;
 }
 @media (max-width: 639px) {
   .pagination-img-block {

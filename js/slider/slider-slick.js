@@ -2,10 +2,9 @@ $(document).ready(function(){
     $('.slider').slick({
         dots: true,
 
-        customPaging: function (slider, i) {
-
-            return '<button class="tab">' + $(slider.$slides[i]).find('.slide-title').text() + '</button>';
-
+        customPaging : function(slider, i) {
+            var thumb = $(slider.$slides[i]).data();
+            return '<button class="img-navigation">' + (i+1) + '</button>';
         },
 
         arrows: false,
@@ -18,7 +17,9 @@ $(document).ready(function(){
 
         adaptiveHeight: true,
 
-        speed: 2000
+        speed: 2000,
+
+        dotsClass: "pagination-img-block"
 
     });
 
