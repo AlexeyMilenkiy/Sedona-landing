@@ -544,7 +544,8 @@ body {
   background-color: #5496bd;
   color: #b8b8b8;
 }
-.pagination-img-block {
+.pagination-img-block,
+.pagination-dots {
   width: 60%;
   display: flex;
   justify-content: space-around;
@@ -552,12 +553,17 @@ body {
   list-style-type: none;
 }
 @media (max-width: 639px) {
-  .pagination-img-block {
+  .pagination-img-block,
+  .pagination-dots {
     width: 100%;
   }
 }
+.active {
+  background-color: #5496bd;
+  color: #b8b8b8;
+}
 .img-navigation {
-  width: 10%;
+  width: 30px;
   height: 4vh;
   border: none;
   outline: none;

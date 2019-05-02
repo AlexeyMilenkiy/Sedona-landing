@@ -7,15 +7,17 @@ $(document).ready(function(){
             return '<button class="img-navigation">' + (i+1) + '</button>';
         },
 
-        arrows: false,
+        arrows: true,
+
+        appendArrows: '.pagination-block',
+
+        prevArrow : '<button class="slide-navigation">Назад</button>',
+
+        appendDots : '.pagination-dots',
+
+        nextArrow : '<button class="slide-navigation">Вперед</button>',
 
         autoplay: false,
-
-        slidesToShow: 1,
-
-        slidesToScroll: 1,
-
-        adaptiveHeight: true,
 
         speed: 2000,
 
@@ -23,7 +25,10 @@ $(document).ready(function(){
 
     });
 
-    $('#prev-slide').on('click',function(){ $('.slider').slick('slickPrev'); });
-    $('#next-slide').on('click',function(){ $('.slider').slick('slickNext'); });
+    // $('.pagination-img-block').slick({ // настройка навигации
+    //     slidesToShow: 3, // указываем что нужно показывать 3 навигационных изображения
+    //     asNavFor: '.slider', // указываем что это навигация для блока выше
+    //     focusOnSelect: true // указываем что бы слайделось по клику
+    // });
 
 });

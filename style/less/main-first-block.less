@@ -65,7 +65,7 @@
     }
 }
 
-.pagination-img-block {
+.pagination-img-block, .pagination-dots {
     width: 60%;
     display: flex;
     justify-content: space-around;
@@ -77,8 +77,13 @@
     );
 }
 
+.active{
+    background-color: @darkBlue;
+    color: @darkGray;
+}
+
 .img-navigation {
-    width: 10%;
+    width: 30px;
     height: 4vh;
     border: none;
     outline: none;
