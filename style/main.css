@@ -544,8 +544,7 @@ body {
   background-color: #5496bd;
   color: #b8b8b8;
 }
-.pagination-img-block,
-.pagination-dots {
+.pagination-img-block {
   width: 60%;
   display: flex;
   justify-content: space-around;
@@ -553,14 +552,20 @@ body {
   list-style-type: none;
 }
 @media (max-width: 639px) {
-  .pagination-img-block,
-  .pagination-dots {
+  .pagination-img-block {
     width: 100%;
   }
 }
-.active {
-  background-color: #5496bd;
-  color: #b8b8b8;
+.pagination-dots {
+  display: flex;
+  align-items: center;
+  list-style-type: none;
+  padding: 0;
+}
+@media (max-width: 639px) {
+  .pagination-dots {
+    width: 100%;
+  }
 }
 .img-navigation {
   width: 30px;
