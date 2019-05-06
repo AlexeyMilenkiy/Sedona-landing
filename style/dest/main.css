@@ -448,9 +448,6 @@ body {
 }
 
 @import 'normalize.css';
-.body-block {
-  background-color: gray;
-}
 .main-block {
   max-width: 1000px;
   max-height: 1000px;
@@ -526,9 +523,23 @@ body {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  list-style-type: none;
 }
 @media (max-width: 639px) {
   .pagination-img-block {
+    width: 100%;
+  }
+}
+.pagination-dots {
+  width: 60%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  list-style-type: none;
+  padding: 0;
+}
+@media (max-width: 639px) {
+  .pagination-dots {
     width: 100%;
   }
 }
@@ -595,6 +606,14 @@ body {
 .active {
   background-color: #5496bd;
   color: #b8b8b8;
+}
+.slider-nav {
+  width: 30px;
+  margin: 0 15px 0 15px;
+}
+.slick-list-nav {
+  margin-left: -15px;
+  margin-right: -15px;
 }
 .main-container {
   max-width: 960px;

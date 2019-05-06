@@ -498,6 +498,7 @@
 
             _.$dots.find('li').first().addClass('slick-active');
 
+
         }
 
     };
