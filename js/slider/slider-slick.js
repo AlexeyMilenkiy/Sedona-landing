@@ -13,6 +13,7 @@ $(document).ready(() => {
   slider.slick({
     slidesToShow: 1,
     slidesToScroll: 1,
+    adaptiveHeight: true,
     dots: false,
     arrows: true,
     appendArrows: '.pagination-block',
@@ -29,8 +30,8 @@ $(document).ready(() => {
     dots: false,
     infinite: false,
     focusOnSelect: false,
-    prevArrow: '<button class="lessImg-class"><<</button>',
-    nextArrow: '<button class="moreImg-class">>></button>',
+    prevArrow: '<button class="lessImg"><<</button>',
+    nextArrow: '<button class="moreImg">>></button>',
   });
 
   paging.on('click', '.slick-slide', function (event) {
@@ -44,7 +45,6 @@ $(document).ready(() => {
     paging.slick('slickCurrentSlide', currentSlide);
     const currrentNavSlideElem = `.pagination-dots .slick-slide[data-slick-index="${currentSlide}"]`;
 
-    // $('.pagination-dots .slick-slide.is-active').removeClass('active');
     $(currrentNavSlideElem).find('.img-navigation').removeClass('active');
     $(currrentNavSlideElem).find('.img-navigation').addClass('active');
   });
@@ -52,25 +52,27 @@ $(document).ready(() => {
   paging.find('.slick-slide').addClass('slider-nav');
   paging.find('.slick-list').addClass('slick-list-nav');
 
-  // $('.img-navigation').slick({ // настройка навигации
-  //     // slidesToShow: 3, // указываем что нужно показывать 3 навигационных изображения
-  //     asNavFor: '.slider', // указываем что это навигация для блока выше
-  //     focusOnSelect: true // указываем что бы слайделось по клику
+  // function addClass() {
+  //   $('.slick-slide').find('.img-navigation').removeClass('active');
+  //   $('.pagination-dots').find('.slick-current').find('.img-navigation').addClass('active');
+  // }
+  // addClass();
+  //
+  // $('.pagination-dots').on('click', () => {
+  //   addClass();
   // });
   //
+  // $('.slide-navigation').on('click', () => {
+  //   addClass();
+  // });
 
+  slider.on('setPosition', () => {
+    // $slickSlider = $('.slide-container');
+    slider.find('.slick-slide').height('auto');
 
-  function addClass() {
-    $('.slick-slide').find('.img-navigation').removeClass('active');
-    $('.pagination-dots').find('.slick-current').find('.img-navigation').addClass('active');
-  }
-  addClass();
+    const slickTrack = $('.body-block').find('.slider');
+    const slickTrackHeight = $(slickTrack).height();
 
-  $('.pagination-dots').on('click', () => {
-    addClass();
-  });
-
-  $('.slide-navigation').on('click', () => {
-    addClass();
+    slider.find('img').css('height', `${slickTrackHeight}px`);
   });
 });

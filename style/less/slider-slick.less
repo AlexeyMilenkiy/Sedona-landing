@@ -1,0 +1,47 @@
+@import 'main-import.less';
+.pagination-dots {
+    width: 60%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    list-style-type: none;
+    padding: 0;
+.mobile-new({
+    width: 70%;
+}
+);
+}
+
+.lessImg, .moreImg {
+    width: 10%;
+    height: 4vh;
+    border: none;
+    outline: none;
+    background-color: @blue;
+    color: @white;
+    .font(1em, 400, 24px);
+    .mobile-new({
+        width: 40px;
+        height: 40px;
+    });
+}
+.lessImg{
+    margin-right: 30px;
+}
+.moreImg{
+    margin-left: 30px;
+}
+
+.active {
+    background-color: @darkBlue;
+    color: @darkGray;
+}
+
+.slider-nav{
+    margin: 0 30px 0 30px;
+}
+
+.slick-list-nav{
+    margin-left: -30px;
+    margin-right: -30px;
+}
