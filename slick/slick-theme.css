@@ -19,6 +19,18 @@
 .slick-prev,
 .slick-next
 {
+    border: none;
+    outline: none;
+    background: #81b3d2;
+    color: #ffffff;
+    font-family: 'PT Sans', sans-serif;
+    font-size: 0.872em;
+    font-weight: 400;
+    line-height: 24px;
+    text-transform: uppercase;
+    width: auto;
+    height: 40px;
+
     font-size: 0;
     line-height: 0;
 
@@ -27,8 +39,6 @@
 
     display: block;
 
-    width: 20px;
-    height: 20px;
     padding: 0;
     -webkit-transform: translate(0, -50%);
     -ms-transform: translate(0, -50%);
@@ -36,10 +46,8 @@
 
     cursor: pointer;
 
-    color: transparent;
     border: none;
     outline: none;
-    background: transparent;
 }
 .slick-prev:hover,
 .slick-prev:focus,
