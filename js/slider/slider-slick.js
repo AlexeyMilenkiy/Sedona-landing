@@ -37,7 +37,6 @@ $(document).ready(() => {
   paging.on('click', '.slick-slide', function (event) {
     event.preventDefault();
     const goToSingleSlide = $(this).data('slick-index');
-
     $('.slider').slick('slickGoTo', goToSingleSlide);
   });
 
@@ -45,12 +44,13 @@ $(document).ready(() => {
     paging.slick('slickCurrentSlide', currentSlide);
     const currrentNavSlideElem = `.pagination-dots .slick-slide[data-slick-index="${currentSlide}"]`;
 
-    $(currrentNavSlideElem).find('.img-navigation').removeClass('active');
+    $('.slick-slide').find('.img-navigation').removeClass('active');
     $(currrentNavSlideElem).find('.img-navigation').addClass('active');
   });
 
   paging.find('.slick-slide').addClass('slider-nav');
   paging.find('.slick-list').addClass('slick-list-nav');
+  paging.find('.slick-current').find('.img-navigation').addClass('active');
 
   // function addClass() {
   //   $('.slick-slide').find('.img-navigation').removeClass('active');
@@ -68,23 +68,12 @@ $(document).ready(() => {
 
   slider.on('setPosition', () => {
     slider.find('.slick-slide').height('auto');
-
     const slickTrack = $('.body-block').find('.slider');
     const slickTrackHeight = $(slickTrack).height();
-
     slider.find('img').css('height', `${slickTrackHeight}px`);
   });
 
   paging.on('setPosition', () => {
-    // $slickSlider = $('.slide-container');
     paging.find('.slick-slide').width('50px');
-    //
-    // const slickTrack = paging.find('.lessImg');
-    // const slickTrackWidth = $(slickTrack).width();
-    //
-    // slider.find('.slick-slide').css('width', `${slickTrackWidth}px`);
   });
-
-
-
 });
