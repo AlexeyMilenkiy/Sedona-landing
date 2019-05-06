@@ -1,7 +1,6 @@
 $(document).ready(() => {
   const slider = $('.slider');
   const paging = $('.pagination-dots');
-
   const images = Array.from($('.slider img'));
   images.forEach((item, i) => {
     const newDots = document.createElement('button');
@@ -34,16 +33,29 @@ $(document).ready(() => {
     nextArrow: '<button class="moreImg">>></button>',
   });
 
+  let indexImg = 0;
+
   paging.on('click', '.slick-slide', function (event) {
     event.preventDefault();
     const goToSingleSlide = $(this).data('slick-index');
-    $('.slider').slick('slickGoTo', goToSingleSlide);
+    slider.slick('slickGoTo', goToSingleSlide);
+  });
+
+  $('.lessImg').on('click', () => {
+    console.log(indexImg);
+    addClass(indexImg);
+  });
+
+  $('.moreImg').on('click', () => {
+    console.log(indexImg);
+    addClass(indexImg);
   });
 
   slider.on('afterChange', (event, slick, currentSlide) => {
     paging.slick('slickCurrentSlide', currentSlide);
+    indexImg = currentSlide;
     const currrentNavSlideElem = `.pagination-dots .slick-slide[data-slick-index="${currentSlide}"]`;
-
+    addClass(currentSlide);
     $('.slick-slide').find('.img-navigation').removeClass('active');
     $(currrentNavSlideElem).find('.img-navigation').addClass('active');
   });
@@ -52,20 +64,16 @@ $(document).ready(() => {
   paging.find('.slick-list').addClass('slick-list-nav');
   paging.find('.slick-current').find('.img-navigation').addClass('active');
 
-  // function addClass() {
-  //   $('.slick-slide').find('.img-navigation').removeClass('active');
-  //   $('.pagination-dots').find('.slick-current').find('.img-navigation').addClass('active');
-  // }
-  // addClass();
-  //
-  // $('.pagination-dots').on('click', () => {
-  //   addClass();
-  // });
-  //
-  // $('.slide-navigation').on('click', () => {
-  //   addClass();
-  // });
-
+  function addClass(index) {
+    const currentNavPaging = Array.from(paging.find('.slick-active'));
+    $('.lessImg').removeClass('active');
+    $('.moreImg').removeClass('active');
+    if (currentNavPaging[0].getAttribute('data-slick-index') > index) {
+      $('.lessImg').addClass('active');
+    } if (currentNavPaging[2].getAttribute('data-slick-index') < index) {
+      $('.moreImg').addClass('active');
+    }
+  }
   slider.on('setPosition', () => {
     slider.find('.slick-slide').height('auto');
     const slickTrack = $('.body-block').find('.slider');
