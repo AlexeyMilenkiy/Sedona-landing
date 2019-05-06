@@ -1716,4 +1716,8 @@ body {
   margin-left: -40px;
   margin-right: -40px;
 }
+.hidden {
+  opacity: 0;
+  cursor: default;
+}
 

@@ -22,33 +22,34 @@ $(document).ready(() => {
     speed: 2000,
   });
 
-  const indexPaging = 3;
   paging.slick({
-    slidesToShow: indexPaging,
-    slidesToScroll: indexPaging,
+    slidesToShow: 3,
+    slidesToScroll: 3,
     dots: false,
     infinite: false,
     focusOnSelect: false,
     prevArrow: '<button class="lessImg"><<</button>',
     nextArrow: '<button class="moreImg">>></button>',
   });
-
+  const lessButton = $('.lessImg');
+  const moreButton = $('.moreImg');
   let indexImg = 0;
 
   paging.on('click', '.slick-slide', function (event) {
     event.preventDefault();
     const goToSingleSlide = $(this).data('slick-index');
     slider.slick('slickGoTo', goToSingleSlide);
+    addHidden();
   });
 
-  $('.lessImg').on('click', () => {
-    console.log(indexImg);
+  lessButton.on('click', () => {
     addClass(indexImg);
+    addHidden();
   });
 
-  $('.moreImg').on('click', () => {
-    console.log(indexImg);
+  moreButton.on('click', () => {
     addClass(indexImg);
+    addHidden();
   });
 
   slider.on('afterChange', (event, slick, currentSlide) => {
@@ -58,6 +59,7 @@ $(document).ready(() => {
     addClass(currentSlide);
     $('.slick-slide').find('.img-navigation').removeClass('active');
     $(currrentNavSlideElem).find('.img-navigation').addClass('active');
+    addHidden();
   });
 
   paging.find('.slick-slide').addClass('slider-nav');
@@ -66,14 +68,26 @@ $(document).ready(() => {
 
   function addClass(index) {
     const currentNavPaging = Array.from(paging.find('.slick-active'));
-    $('.lessImg').removeClass('active');
-    $('.moreImg').removeClass('active');
+    lessButton.removeClass('active');
+    moreButton.removeClass('active');
     if (currentNavPaging[0].getAttribute('data-slick-index') > index) {
-      $('.lessImg').addClass('active');
+      lessButton.addClass('active');
     } if (currentNavPaging[2].getAttribute('data-slick-index') < index) {
-      $('.moreImg').addClass('active');
+      moreButton.addClass('active');
     }
   }
+
+  function addHidden() {
+    lessButton.removeClass('hidden');
+    moreButton.removeClass('hidden');
+    if (lessButton.attr('aria-disabled') === 'true') {
+      lessButton.addClass('hidden');
+    } if (moreButton.attr('aria-disabled') === 'true') {
+      moreButton.addClass('hidden');
+    }
+  }
+  addHidden();
+
   slider.on('setPosition', () => {
     slider.find('.slick-slide').height('auto');
     const slickTrack = $('.body-block').find('.slider');
