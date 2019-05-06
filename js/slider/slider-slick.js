@@ -1,4 +1,6 @@
-$(document).ready(() => {
+if (document.querySelector('.slider-slick-headline')) {
+  require('../../slick/slick.js');
+
   const slider = $('.slider');
   const paging = $('.pagination-dots');
   const images = Array.from($('.slider img'));
@@ -98,4 +100,4 @@ $(document).ready(() => {
   paging.on('setPosition', () => {
     paging.find('.slick-slide').width('50px');
   });
-});
+}
