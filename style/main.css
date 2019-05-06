@@ -1777,7 +1777,7 @@ body {
   }
 }
 .lessImg {
-  margin-right: 30px;
+  margin-right: 32px;
 }
 .moreImg {
   margin-left: 30px;
@@ -1787,10 +1787,10 @@ body {
   color: #b8b8b8;
 }
 .slider-nav {
-  margin: 0 30px 0 30px;
+  margin: 0 41px 0 40px;
 }
 .slick-list-nav {
-  margin-left: -30px;
-  margin-right: -30px;
+  margin-left: -40px;
+  margin-right: -40px;
 }
 

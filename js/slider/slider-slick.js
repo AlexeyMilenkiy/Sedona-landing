@@ -67,7 +67,6 @@ $(document).ready(() => {
   // });
 
   slider.on('setPosition', () => {
-    // $slickSlider = $('.slide-container');
     slider.find('.slick-slide').height('auto');
 
     const slickTrack = $('.body-block').find('.slider');
@@ -75,4 +74,17 @@ $(document).ready(() => {
 
     slider.find('img').css('height', `${slickTrackHeight}px`);
   });
+
+  paging.on('setPosition', () => {
+    // $slickSlider = $('.slide-container');
+    paging.find('.slick-slide').width('50px');
+    //
+    // const slickTrack = paging.find('.lessImg');
+    // const slickTrackWidth = $(slickTrack).width();
+    //
+    // slider.find('.slick-slide').css('width', `${slickTrackWidth}px`);
+  });
+
+
+
 });
