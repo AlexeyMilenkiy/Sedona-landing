@@ -1,60 +1,91 @@
 @import 'main-import.less';
 
 .slider-slick-headline {
-    .font(2em, 700, 24px);
-    margin: 6% auto;
-    display: block;
-    width: 210px;
+  .font(2em, 700, 24px);
+  margin: 6% auto;
+  display: block;
+  width: 210px;
+}
+
+.paging-slick{
+  .tablet-new({
+    width: 90%;
+  });
 }
 
 .pagination-dots {
-    width: 60%;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    list-style-type: none;
-    padding: 0;
-.mobile-new({
+  width: 60%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  list-style-type: none;
+  padding: 0;
+
+  .tablet-new({
     width: 70%;
+  });
+
+  .mobile-new({
+    width: 70%;
+  });
 }
-);
+
+.slide-dots {
+  width: 10%;
+  height: 40px;
+  border: none;
+  outline: none;
+  background-color: @blue;
+  color: @white;
+  .font(1em, 400, 24px);
+  .mobile-new({
+    width: 40px;
+    height: 40px;
+  });
 }
 
 .lessImg, .moreImg {
-    width: 10%;
-    height: 4vh;
-    border: none;
-    outline: none;
-    background-color: @blue;
-    color: @white;
-    .font(1em, 400, 24px);
-    .mobile-new({
-        width: 40px;
-        height: 40px;
-    });
+  width: 10%;
+  height: 40px;
+  border: none;
+  outline: none;
+  background-color: @blue;
+  color: @white;
+  .font(1em, 400, 24px);
+  .mobile-new({
+    width: 40px;
+    height: 40px;
+  });
 }
-.lessImg{
-    margin-right: 32px;
+
+.lessImg {
+  margin-right: 32px;
 }
-.moreImg{
-    margin-left: 30px;
+
+.moreImg {
+  margin-left: 30px;
 }
 
 .active {
-    background-color: @darkBlue;
-    color: @darkGray;
+  background-color: @darkBlue;
+  color: @darkGray;
 }
 
-.slider-nav{
-    margin: 0 41px 0 40px;
+.slider-nav {
+  margin: 0 41px 0 40px;
 }
 
-.slick-list-nav{
-    margin-left: -40px;
-    margin-right: -40px;
+.slick-list-nav {
+  margin-left: -40px;
+  margin-right: -40px;
 }
 
-.hidden{
-    opacity: 0;
-    cursor: default;
+.active {
+  background-color: @darkBlue;
+  color: @darkGray;
+}
+
+.hidden {
+  opacity: 0;
+  cursor: default;
 }

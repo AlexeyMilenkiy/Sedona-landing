@@ -1659,10 +1659,6 @@ body {
   background-color: #5496bd;
   color: #b8b8b8;
 }
-.active {
-  background-color: #5496bd;
-  color: #b8b8b8;
-}
 
 @import 'normalize.css';
 .slider-slick-headline {
@@ -1675,6 +1671,11 @@ body {
   display: block;
   width: 210px;
 }
+@media (max-width: 768px) {
+  .paging-slick {
+    width: 90%;
+  }
+}
 .pagination-dots {
   width: 60%;
   display: flex;
@@ -1683,15 +1684,39 @@ body {
   list-style-type: none;
   padding: 0;
 }
+@media (max-width: 768px) {
+  .pagination-dots {
+    width: 70%;
+  }
+}
 @media (max-width: 639px) {
   .pagination-dots {
     width: 70%;
   }
 }
+.slide-dots {
+  width: 10%;
+  height: 40px;
+  border: none;
+  outline: none;
+  background-color: #669ec0;
+  color: #ffffff;
+  font-family: 'PT Sans', sans-serif;
+  font-size: 1em;
+  font-weight: 400;
+  line-height: 24px;
+  text-transform: uppercase;
+}
+@media (max-width: 639px) {
+  .slide-dots {
+    width: 40px;
+    height: 40px;
+  }
+}
 .lessImg,
 .moreImg {
   width: 10%;
-  height: 4vh;
+  height: 40px;
   border: none;
   outline: none;
   background-color: #669ec0;
@@ -1725,6 +1750,10 @@ body {
 .slick-list-nav {
   margin-left: -40px;
   margin-right: -40px;
+}
+.active {
+  background-color: #5496bd;
+  color: #b8b8b8;
 }
 .hidden {
   opacity: 0;
