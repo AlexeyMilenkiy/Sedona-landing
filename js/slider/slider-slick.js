@@ -4,6 +4,7 @@ if (document.querySelector('.slider-slick-headline')) {
     const $ = jQuery;
     const slider = $('.slider');
     const paging = $('.pagination-dots');
+
     const images = Array.from($('.slider img'));
     images.forEach((item, i) => {
       const newDots = document.createElement('button');
@@ -99,7 +100,7 @@ if (document.querySelector('.slider-slick-headline')) {
     });
 
     paging.on('setPosition', () => {
-      paging.find('.slick-slide').css({"min-width": "30px"});
+      paging.find('.slick-slide').css({ 'min-width': '30px' });
     });
   });
 }

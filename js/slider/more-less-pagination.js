@@ -3,12 +3,9 @@ if (document.querySelector('.slider-headline')) {
   let indexPagination = 3; //  number of buttons pagination
   let indexStartNumButton = 0;
 
-  // eslint-disable-next-line global-require
   const modPagination = require('./pagination');
   const { addClassButton } = modPagination;
-  console.log(addClassButton);
 
-  // eslint-disable-next-line global-require
   const moduleImages = require('./show-images');
   const { links } = moduleImages;
 
@@ -29,6 +26,7 @@ if (document.querySelector('.slider-headline')) {
     }
   };
 
+  // function showing new image after pressing a button "prev"
   const showButtonLess = () => {
     const lessImg = document.createElement('button');
     lessImg.classList.add('lessImg-class');

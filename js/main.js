@@ -232,14 +232,13 @@
       const paginationImgBlock = document.querySelector('.pagination-img-block');
       let indexPagination = 3; //  number of buttons pagination
 
-      let indexStartNumButton = 0; // eslint-disable-next-line global-require
+      let indexStartNumButton = 0;
 
       const modPagination = require('./pagination');
 
       const {
         addClassButton
       } = modPagination;
-      console.log(addClassButton); // eslint-disable-next-line global-require
 
       const moduleImages = require('./show-images');
 
@@ -262,7 +261,8 @@
         while (paginationImgBlock.firstChild) {
           paginationImgBlock.removeChild(paginationImgBlock.firstChild);
         }
-      };
+      }; // function showing new image after pressing a button "prev"
+
 
       const showButtonLess = () => {
         const lessImg = document.createElement('button');
@@ -499,7 +499,6 @@
       const sliderBlock = document.querySelector('.slider');
       let slides = document.querySelectorAll('.slide-single');
       const indexPagination = 3; //  number of buttons pagination
-      // let indexStartNumButton = 0;
 
       let numberPushButton = 0;
       let activeButton = 0;
@@ -507,14 +506,13 @@
       let offset = 0;
       let indexActiveImg = 0;
       let linkNewImage = 0;
-      let isFlagAction = false; // eslint-disable-next-line global-require
+      let isFlagAction = false;
 
       const moduleImages = require('./show-images');
 
       const {
         links
       } = moduleImages; // find link active image after shift
-      // eslint-disable-next-line consistent-return
 
       const findIndexLastImg = arg => {
         for (; imgIndex < links.length; imgIndex += 1) {
@@ -810,7 +808,6 @@
       };
 
       paginationImgBlock.onclick = event => {
-        // eslint-disable-next-line global-require
         const moduleShowMoreLess = require('./more-less-pagination');
 
         const {
@@ -981,7 +978,7 @@
         });
         paging.on('setPosition', () => {
           paging.find('.slick-slide').css({
-            "min-width": "30px"
+            'min-width': '30px'
           });
         });
       });
@@ -998,16 +995,13 @@
 
     require('./show-images.js');
 
-    require('jquery');
-
     require('./slider-slick.js');
   }, {
     "./more-less-pagination.js": 6,
     "./next-prev.js": 7,
     "./pagination.js": 8,
     "./show-images.js": 9,
-    "./slider-slick.js": 10,
-    "jquery": 12
+    "./slider-slick.js": 10
   }],
   12: [function (require, module, exports) {
     /*!
