@@ -937,13 +937,13 @@
           indexImg = currentSlide;
           const currrentNavSlideElem = `.pagination-dots .slick-slide[data-slick-index="${currentSlide}"]`;
           addClass(currentSlide);
-          $('.slick-slide').find('.img-navigation').removeClass('active');
-          $(currrentNavSlideElem).find('.img-navigation').addClass('active');
+          $('.slick-slide').find('.slide-dots').removeClass('active');
+          $(currrentNavSlideElem).find('.slide-dots').addClass('active');
           addHidden();
         });
         paging.find('.slick-slide').addClass('slider-nav');
         paging.find('.slick-list').addClass('slick-list-nav');
-        paging.find('.slick-current').find('.img-navigation').addClass('active');
+        paging.find('.slick-current').find('.slide-dots').addClass('active');
 
         function addClass(index) {
           const currentNavPaging = Array.from(paging.find('.slick-active'));
