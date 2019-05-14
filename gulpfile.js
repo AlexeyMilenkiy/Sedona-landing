@@ -12,6 +12,15 @@ var browserify = require('browserify');
 var source = require('vinyl-source-stream');
 var streamify = require('gulp-streamify');
 var rename = require('gulp-rename');
+var pug = require('gulp-pug');
+
+gulp.task('pug', function(){
+    return gulp.src('pug/pages/*.pug')
+        .pipe(pug({
+            pretty : true
+        }))
+        .pipe(gulp.dest('./'));
+});
 
 gulp.task('less', function(){
 	return gulp.src(['./style/less/*.less'])
