@@ -1,4 +1,4 @@
-if (document.querySelector('.review__headline')) {
+if (document.querySelector('.header')) {
   const mobileMenuIcon = document.querySelector('.mobile-menu');
   const mobileMenu = document.querySelector('.mobile-navigation');
   const closeMobMenu = document.querySelector('.close-mobile-nav');
