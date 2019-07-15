@@ -2,7 +2,8 @@
 
 To start the project run
 
-index.html<br>
+<h3>main.html</h3><br>
+
 or open
 
-https://alexeymilenkiy.github.io/sedona_html_css_js/
+<h3>https://alexeymilenkiy.github.io/sedona_html_css_js/</h3>
